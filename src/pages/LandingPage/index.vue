@@ -1,5 +1,6 @@
 <template>
   <q-page class="row items-center justify-evenly">
+    Landing Page
     <example-component
       title="Example component"
       active
