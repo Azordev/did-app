@@ -1,13 +1,16 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    Landing Page
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-      @createTodoItem="(todoName) => addNewTodoItem(todoName)"
-    ></example-component>
+    <div>
+      Landing Page
+      <hr />
+      <example-component
+        title="Example component"
+        active
+        :todos="todos"
+        :meta="meta"
+        @createTodoItem="(todoName) => addNewTodoItem(todoName)"
+      ></example-component>
+    </div>
   </q-page>
 </template>
 
