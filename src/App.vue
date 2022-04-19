@@ -3,9 +3,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, provide } from 'vue';
+import { DefaultApolloClient, apolloClient } from './VueApollo.ts';
 
 export default defineComponent({
-  name: 'App'
+  name: 'App',
+  setup() {
+    provide(DefaultApolloClient, apolloClient);
+  },
 });
 </script>
