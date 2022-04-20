@@ -16,7 +16,7 @@ import { Notify } from 'quasar';
 
 const httpLink = createHttpLink({
   // You should use an absolute URL here
-  uri: 'https://did-db.herokuapp.com/v1/graphql',
+  uri: process.env.GRAPHQL_URL,
 });
 
 // Cache implementation
