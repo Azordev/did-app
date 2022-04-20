@@ -17,7 +17,7 @@ export const passwordValidations = [
   (val: string) =>
     val.match(/(?=.*?[0-9])/) || 'Password should have min one number',
   (val: string) =>
-    val.match(/(?=.*?[#?!@$%^&*-])/) ||
+    val.match(/(?=.*?[#?!@$%^&*-\.])/) ||
     'Password should have min one special character',
   (val: string) =>
     val.match(/.{8,}/) || 'Password should have min eight letters',
