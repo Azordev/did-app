@@ -3,22 +3,22 @@
     <login-layout
       v-model:email-value="userEmail"
       v-model:password-value="userPassword"
+      v-model:terms-and-conditions="termsAndConditions"
       :passwordValidations="passwordValidations"
       :emailValidations="emailValidations"
       :onSubmit="onSubmit"
+      :isLoading="loginIsLoading"
     />
-
-    {{ loginResult }}
-    {{ loginState }}
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue';
+import { defineComponent, ref } from 'vue';
 import './Login.css';
 import { handleUserLogin, userAuthData } from '../../actions';
 import { emailValidations, passwordValidations } from '../../utils/validations';
 import LoginLayout from './Login.layout.vue';
+import { LocalStorage } from 'quasar';
 
 export default defineComponent({
   name: 'Login',
@@ -28,7 +28,7 @@ export default defineComponent({
   setup: async () => {
     const userEmail = ref<string>('');
     const userPassword = ref<string>('');
-    const loginResult = ref<object>({});
+    const termsAndConditions = ref<boolean>(false);
     const loginIsLoading = ref<boolean>(false);
 
     const logUser = ({ email, password }: userAuthData) => {
@@ -36,10 +36,8 @@ export default defineComponent({
 
       handleUserLogin({ email, password })
         .then((res) => {
+          LocalStorage.set('user', res);
           console.log(res);
-        })
-        .catch((err) => {
-          console.error(err);
         })
         .finally(() => {
           loginIsLoading.value = false;
@@ -52,8 +50,8 @@ export default defineComponent({
       userPassword,
       emailValidations,
       passwordValidations,
-      loginResult,
       loginIsLoading,
+      termsAndConditions,
     };
   },
 });

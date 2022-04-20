@@ -25,13 +25,20 @@
       :rules="passwordValidations"
     />
 
-    {{ emailValue }}
-
-    <q-toggle v-model="accept" label="I accept the license and terms" />
+    <q-checkbox
+      :model-value="termsAndConditions"
+      @update:model-value="$emit('update:termsAndConditions', $event)"
+      label="I accept the license and terms"
+    />
 
     <div>
-      <q-btn label="Submit" type="submit" color="primary" />
-      <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+      <q-btn
+        label="Submit"
+        type="submit"
+        :loading="isLoading"
+        color="primary"
+      />
+      {{ isLoading }}
     </div>
   </q-form>
 </template>
@@ -75,6 +82,14 @@ export default defineComponent({
         };
       },
     },
+    termsAndConditions: {
+      type: Boolean,
+      default: false,
+    },
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
     emailValidations: {
       type: Array,
       default: () => [],
@@ -84,6 +99,10 @@ export default defineComponent({
       default: () => [],
     },
   },
-  emits: ['update:emailValue', 'update:passwordValue'],
+  emits: [
+    'update:emailValue',
+    'update:passwordValue',
+    'update:termsAndConditions',
+  ],
 });
 </script>
