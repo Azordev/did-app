@@ -1,8 +1,8 @@
 {
-  "name": "diprap",
+  "name": "did",
   "version": "0.0.1",
-  "description": "A project for Dipap members",
-  "productName": "Diprap",
+  "description": "A project for DID members",
+  "productName": "DID",
   "author": "Victor P <victordev2002@gmail.com>",
   "private": true,
   "scripts": {

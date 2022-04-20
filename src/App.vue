@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { defineComponent, provide } from 'vue';
-import { DefaultApolloClient, apolloClient } from './VueApollo.ts';
+import { DefaultApolloClient, apolloClient } from './VueApollo';
 
 export default defineComponent({
   name: 'App',
