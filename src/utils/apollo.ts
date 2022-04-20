@@ -35,9 +35,10 @@ export interface queryResult {
 
 interface queryData {
   users?: any;
+  providers?: any;
 }
 
-export const useQuery = (query: DocumentNode, variables: object) => {
+export const useQuery = (query: DocumentNode, variables: object = {}) => {
   return new Promise<queryResult>((res, rej) => {
     const { onResult, onError } = _useQuery(query, variables);
 
