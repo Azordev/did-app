@@ -8,26 +8,32 @@ export interface userAuthData {
 }
 
 export const handleUserLogin = ({ email, password }: userAuthData) => {
-  return new Promise((res) => {
+  return new Promise((res, rej) => {
     const variables: object = { email, password };
 
-    useQuery(getUserSession, variables).then((result) => {
-      const data = result?.data;
+    useQuery(getUserSession, variables)
+      .then((result) => {
+        const data = result?.data;
 
-      if (!data?.users[0]) {
+        if (!data?.users[0]) {
+          Notify.create({
+            message: 'Los datos que ingresaste no son correctos',
+            type: 'negative',
+          });
+
+          rej(null);
+          return null;
+        }
+
         Notify.create({
-          message: 'Los datos que ingresaste no son correctos',
-          type: 'negative',
+          message: 'Has iniciado sesion exitosamente',
+          type: 'positive',
         });
-
+        res(data?.users[0]);
+      })
+      .catch((err) => {
+        rej(null);
         return null;
-      }
-
-      Notify.create({
-        message: 'Has iniciado sesion exitosamente',
-        type: 'positive',
       });
-      res(data?.users[0]);
-    });
   });
 };
