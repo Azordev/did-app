@@ -1,6 +1,6 @@
 # DID
 
-A project for Dipap members
+A project for DID members
 
 ## Install the dependencies
 
