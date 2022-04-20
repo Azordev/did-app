@@ -63,7 +63,9 @@ module.exports = configure(function (/* ctx */) {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+      env: {
+        GRAPHQL_URL: 'https://did-db.herokuapp.com/v1/graphql',
+      },
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
@@ -194,7 +196,7 @@ module.exports = configure(function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'diprap',
+        appId: 'did',
       },
     },
 
