@@ -9,9 +9,11 @@
       />
       <q-select
         filled
-        v-model="modelSingle"
+        :model-value="currentSortValue"
+        @update:model-value="$emit('onSortList', $event)"
         :options="options"
-        use-chips
+        option-label="name"
+        option-value="id"
         stack-label
         label="Single selection"
       />
@@ -30,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import ProductList from './ProductList.vue';
 import SearchBar from '../../components/SearchBar/';
 import PagePagination from '../../components/PagePagination.vue';
@@ -67,7 +69,25 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    currentSortValue: {
+      type: String,
+      default: '',
+    },
   },
   emits: ['update:queryValue', 'onChangePage', 'onSearch', 'onClear'],
+  setup() {
+    const options = ref([
+      {
+        name: 'Menor precio primero',
+        id: 'order_by_price_asc',
+      },
+      {
+        name: 'Mayor precio primero',
+        id: 'order_by_price_desc',
+      },
+    ]);
+
+    return { options };
+  },
 });
 </script>

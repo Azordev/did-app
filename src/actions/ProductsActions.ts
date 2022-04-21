@@ -2,19 +2,40 @@ import { Notify } from 'quasar';
 import { getListOfProductsQuery } from '../services';
 import { useQuery } from '../utils/apollo';
 
-interface getListOfProductsTypes {
+interface getListOfProductsReturnTypes {
   products: object[];
   totalProducts: number;
 }
 
-export const getListOfProducts = ({ limit = 10, offset = 0, query = '' }) => {
+interface getListOfProductsTypes {
+  limit: number;
+  offset: number;
+  query: string;
+  order_by: getListOfProductsOrderByTypes;
+}
+
+interface getListOfProductsOrderByTypes {
+  order_by_price?: any;
+  order_by_name?: any;
+}
+
+export const getListOfProducts = ({
+  limit = 10,
+  offset = 0,
+  query = '',
+  order_by = {
+    order_by_price: null,
+    order_by_name: null,
+  },
+}: getListOfProductsTypes) => {
   query = `%${query}%`;
 
-  return new Promise<getListOfProductsTypes>((res, rej) => {
+  return new Promise<getListOfProductsReturnTypes>((res, rej) => {
     const variables = {
       name: query,
       offset,
       limit,
+      ...order_by,
     };
 
     useQuery(getListOfProductsQuery, variables)

@@ -1,17 +1,17 @@
 <template>
-  <div>
-    <products-layout
-      :products="products"
-      :totalProducts="totalProducts"
-      :totalPages="totalPages"
-      :isLoading="isLoading"
-      v-model:current-page="currentPage"
-      v-model:query-value="searchText"
-      @onSearch="getProductList(1, searchText)"
-      @onClear="getProductList(1, '')"
-      @onChangePage="getProductList($event, query)"
-    />
-  </div>
+  <products-layout
+    :products="products"
+    :totalProducts="totalProducts"
+    :totalPages="totalPages"
+    :isLoading="isLoading"
+    :currentSortValue="order_by"
+    v-model:current-page="currentPage"
+    v-model:query-value="searchText"
+    @onSearch="getProductList(1, searchText, order_by)"
+    @onClear="getProductList(1, '', order_by)"
+    @onChangePage="getProductList($event, query, order_by)"
+    @onSortList="getProductList(1, query, $event)"
+  />
 </template>
 
 <script lang="ts">
@@ -30,11 +30,41 @@ const handleProductList = () => {
   const currentPage = ref<number>(1);
   const isLoading = ref<boolean>(false);
   const searchText = ref<string>('');
+  const order_by = ref<string>('');
 
-  const getProductList = (_currentPage: number, _query: string) => {
+  const getOrderByGraphQLVariables = (order_by: any): object => {
+    const order_by_query = <any>{
+      order_by_price: null,
+      order_by_name: null,
+    };
+
+    switch (order_by.id) {
+      case 'order_by_price_asc':
+        order_by_query.order_by_price = 'asc';
+        break;
+      case 'order_by_price_desc':
+        order_by_query.order_by_price = 'desc';
+        break;
+      case 'order_by_name_asc':
+        order_by_query.order_by_name = 'asc';
+        break;
+      case 'order_by_name_desc':
+        order_by_query.order_by_name = 'desc';
+        break;
+    }
+
+    return order_by_query;
+  };
+
+  const getProductList = (
+    _currentPage: number,
+    _query: string,
+    _order_by: string
+  ) => {
     isLoading.value = true;
     currentPage.value = _currentPage;
     query.value = _query;
+    order_by.value = _order_by;
 
     const offset = getOffset({
       currentPage: currentPage.value,
@@ -45,6 +75,7 @@ const handleProductList = () => {
       offset,
       limit: limit.value,
       query: query.value,
+      order_by: getOrderByGraphQLVariables(order_by.value),
     };
 
     getListOfProducts(variables)
@@ -74,6 +105,7 @@ const handleProductList = () => {
     currentPage,
     isLoading,
     searchText,
+    order_by,
     getProductList,
   };
 };
@@ -93,10 +125,11 @@ export default defineComponent({
       currentPage,
       isLoading,
       searchText,
+      order_by,
       getProductList,
     } = handleProductList();
 
-    getProductList(currentPage.value, query.value);
+    getProductList(currentPage.value, query.value, order_by.value);
 
     return {
       products,
@@ -107,6 +140,7 @@ export default defineComponent({
       currentPage,
       isLoading,
       searchText,
+      order_by,
       getProductList,
     };
   },
