@@ -9,9 +9,9 @@
       />
       <q-select
         filled
-        :model-value="currentSortValue"
+        :model-value="sortSelectValue"
         @update:model-value="$emit('onSortList', $event)"
-        :options="options"
+        :options="sortSelectOptions"
         option-label="name"
         option-value="id"
         stack-label
@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 import ProductList from './ProductList.vue';
 import SearchBar from '../../components/SearchBar/';
 import PagePagination from '../../components/PagePagination.vue';
@@ -69,33 +69,17 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    currentSortValue: {
+    sortSelectValue: {
       type: String,
       default: '',
     },
+    sortSelectOptions: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
   },
   emits: ['update:queryValue', 'onChangePage', 'onSearch', 'onClear'],
-  setup() {
-    const options = ref([
-      {
-        name: 'Menor precio primero',
-        id: 'order_by_price_asc',
-      },
-      {
-        name: 'Mayor precio primero',
-        id: 'order_by_price_desc',
-      },
-      {
-        name: 'Ordenar alfabeticamente A-Z',
-        id: 'order_by_name_asc',
-      },
-      {
-        name: 'Ordenar alfabeticamente Z-A',
-        id: 'order_by_name_desc',
-      },
-    ]);
-
-    return { options };
-  },
 });
 </script>

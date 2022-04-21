@@ -4,7 +4,8 @@
     :totalProducts="totalProducts"
     :totalPages="totalPages"
     :isLoading="isLoading"
-    :currentSortValue="order_by"
+    :sortSelectValue="order_by"
+    :sortSelectOptions="options"
     v-model:current-page="currentPage"
     v-model:query-value="searchText"
     @onSearch="getProductList(1, searchText, order_by)"
@@ -110,6 +111,25 @@ const handleProductList = () => {
   };
 };
 
+const options = ref([
+  {
+    name: 'Menor precio primero',
+    id: 'order_by_price_asc',
+  },
+  {
+    name: 'Mayor precio primero',
+    id: 'order_by_price_desc',
+  },
+  {
+    name: 'Ordenar alfabeticamente A-Z',
+    id: 'order_by_name_asc',
+  },
+  {
+    name: 'Ordenar alfabeticamente Z-A',
+    id: 'order_by_name_desc',
+  },
+]);
+
 export default defineComponent({
   name: 'Products',
   components: {
@@ -141,6 +161,7 @@ export default defineComponent({
       isLoading,
       searchText,
       order_by,
+      options,
       getProductList,
     };
   },
