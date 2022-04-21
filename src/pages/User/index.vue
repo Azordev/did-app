@@ -13,9 +13,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useQuery } from '@vue/apollo-composable';
-import { getAllUsers } from '../../services';
+import { getAllUsersQuery } from '../../services';
 
-const getUsers = () => useQuery(getAllUsers);
+const getUsers = () => useQuery(getAllUsersQuery);
 
 export default defineComponent({
   name: 'User',
