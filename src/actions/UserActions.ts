@@ -12,8 +12,8 @@ export const handleUserLogin = ({ email, password }: userAuthData) => {
     const variables: object = { email, password };
 
     useQuery(getUserSessionQuery, variables)
-      .then((result) => {
-        if (!result || !result?.users[0]) {
+      .then(({ users }) => {
+        if (!users || !users[0]) {
           Notify.create({
             message: 'Los datos que ingresaste no son correctos',
             type: 'negative',
@@ -28,7 +28,7 @@ export const handleUserLogin = ({ email, password }: userAuthData) => {
           type: 'positive',
         });
 
-        res(result.users[0]);
+        res(users[0]);
       })
       .catch((err) => {
         rej(null);
