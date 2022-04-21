@@ -30,10 +30,6 @@ const apolloClient = new ApolloClient({
 provideApolloClient(apolloClient);
 
 export interface queryResult {
-  data: queryData;
-}
-
-interface queryData {
   users?: any;
   providers?: any;
 }
@@ -52,7 +48,8 @@ export const useQuery = (query: DocumentNode, variables: object = {}) => {
     });
 
     onResult((result) => {
-      res(result);
+      const { data } = result;
+      res(data);
     });
   });
 };
