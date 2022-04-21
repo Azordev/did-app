@@ -14,8 +14,15 @@
         {{ product.description }}
       </q-card-section>
 
+      <q-card-section class="q-pt-none">
+        <span class="ProductList__item_price">{{
+          product.base_price_sol
+        }}</span>
+        Soles
+      </q-card-section>
+
       <q-card-actions align="center">
-        <q-btn class="ProductList__button_buy" color="primary"
+        <q-btn class="ProductList__item_button" color="primary"
           >Comprar ahora</q-btn
         >
       </q-card-actions>

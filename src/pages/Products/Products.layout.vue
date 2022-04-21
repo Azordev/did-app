@@ -1,5 +1,5 @@
 <template>
-  <div class="ProductsLayout">
+  <div class="Products">
     <div class="Products__filters">
       <search-bar
         @on-search="$emit('onSearch')"
@@ -84,6 +84,14 @@ export default defineComponent({
       {
         name: 'Mayor precio primero',
         id: 'order_by_price_desc',
+      },
+      {
+        name: 'Ordenar alfabeticamente A-Z',
+        id: 'order_by_name_asc',
+      },
+      {
+        name: 'Ordenar alfabeticamente Z-A',
+        id: 'order_by_name_desc',
       },
     ]);
 

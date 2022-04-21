@@ -6,16 +6,23 @@
   margin: 20px;
 }
 
-.ProductsLayout {
+.Products {
   margin: 20px;
+
+  &__filters {
+    display: grid;
+    grid-template-columns: 0.8fr 0.2fr;
+    gap: 20px;
+  }
 }
 
-.ProductList__button_buy {
-  width: 100%;
-}
+.ProductList__item {
+  &_button {
+    width: 100%;
+  }
 
-.Products__filters {
-  display: grid;
-  grid-template-columns: 0.8fr 0.2fr;
-  gap: 20px;
+  &_price {
+    color: $positive;
+    font-size: 1.2rem;
+  }
 }
