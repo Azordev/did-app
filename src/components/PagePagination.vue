@@ -13,7 +13,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'ProductSearchBar',
+  name: 'PagePagination',
   props: {
     currentPage: {
       type: Number,
