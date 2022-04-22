@@ -2,6 +2,8 @@
 
 A project for DID members
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4a490b7e-3490-4a89-882b-16c0ce21a965/deploy-status)](https://app.netlify.com/sites/did-app/deploys)
+
 ## Install the dependencies
 
 ```bash
