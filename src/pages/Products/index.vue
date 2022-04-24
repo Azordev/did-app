@@ -9,7 +9,7 @@
     v-model:current-page="currentPage"
     v-model:query-value="searchText"
     @onSearch="getProductList(1, searchText, order_by)"
-    @onClear="getProductList(1, '', order_by)"
+    @onClear="onClearSearch()"
     @onChangePage="getProductList($event, query, order_by)"
     @onSortList="getProductList(1, query, $event)"
   />
@@ -97,6 +97,14 @@ const handleProductList = () => {
       });
   };
 
+  const onClearSearch = () => {
+    searchText.value = '';
+
+    if (query.value) {
+      getProductList(1, '', order_by.value);
+    }
+  };
+
   return {
     products,
     limit,
@@ -107,11 +115,16 @@ const handleProductList = () => {
     isLoading,
     searchText,
     order_by,
+    onClearSearch,
     getProductList,
   };
 };
 
 const options = ref([
+  {
+    name: 'No ordenar',
+    id: 'none_filter',
+  },
   {
     name: 'Menor precio primero',
     id: 'order_by_price_asc',
@@ -146,6 +159,7 @@ export default defineComponent({
       isLoading,
       searchText,
       order_by,
+      onClearSearch,
       getProductList,
     } = handleProductList();
 
@@ -162,6 +176,7 @@ export default defineComponent({
       searchText,
       order_by,
       options,
+      onClearSearch,
       getProductList,
     };
   },
