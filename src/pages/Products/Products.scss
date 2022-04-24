@@ -1,0 +1,27 @@
+.ProductList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 20px;
+}
+
+.Products {
+  margin: 20px;
+
+  &__filters {
+    display: grid;
+    grid-template-columns: 0.8fr 0.2fr;
+    gap: 20px;
+  }
+}
+
+.ProductList__item {
+  &_button {
+    width: 100%;
+  }
+
+  &_price {
+    color: $positive;
+    font-size: 1.2rem;
+  }
+}

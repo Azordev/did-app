@@ -30,15 +30,12 @@ const apolloClient = new ApolloClient({
 provideApolloClient(apolloClient);
 
 export interface queryResult {
-  data: queryData;
-}
-
-interface queryData {
   users?: any;
+  providers?: any;
 }
 
-export const useQuery = (query: DocumentNode, variables: object) => {
-  return new Promise<queryResult>((res, rej) => {
+export const useQuery = (query: DocumentNode, variables: object = {}) => {
+  return new Promise<queryResult>((resolve, reject) => {
     const { onResult, onError } = _useQuery(query, variables);
 
     onError((err) => {
@@ -47,11 +44,12 @@ export const useQuery = (query: DocumentNode, variables: object) => {
         type: 'negative',
       });
 
-      rej(err);
+      reject(err);
     });
 
     onResult((result) => {
-      res(result);
+      const { data } = result;
+      resolve(data);
     });
   });
 };

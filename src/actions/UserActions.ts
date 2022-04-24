@@ -1,5 +1,5 @@
 import { Notify } from 'quasar';
-import { getUserSession } from '../services';
+import { getUserSessionQuery } from '../services';
 import { useQuery } from '../utils/apollo';
 
 export interface userAuthData {
@@ -8,20 +8,18 @@ export interface userAuthData {
 }
 
 export const handleUserLogin = ({ email, password }: userAuthData) => {
-  return new Promise((res, rej) => {
+  return new Promise((resolve, reject) => {
     const variables: object = { email, password };
 
-    useQuery(getUserSession, variables)
-      .then((result) => {
-        const data = result?.data;
-
-        if (!data?.users[0]) {
+    useQuery(getUserSessionQuery, variables)
+      .then(({ users }) => {
+        if (!users || !users[0]) {
           Notify.create({
             message: 'Los datos que ingresaste no son correctos',
             type: 'negative',
           });
 
-          rej(null);
+          reject(null);
           return null;
         }
 
@@ -29,10 +27,11 @@ export const handleUserLogin = ({ email, password }: userAuthData) => {
           message: 'Has iniciado sesion exitosamente',
           type: 'positive',
         });
-        res(data?.users[0]);
+
+        resolve(users[0]);
       })
       .catch((err) => {
-        rej(null);
+        reject(null);
         return null;
       });
   });
