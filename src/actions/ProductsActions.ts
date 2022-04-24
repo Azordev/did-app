@@ -28,11 +28,11 @@ export const getListOfProducts = ({
     order_by_name: null,
   },
 }: getListOfProductsTypes) => {
-  query = `%${query}%`;
+  const name = `%${query}%`;
 
   return new Promise<getListOfProductsReturnTypes>((resolve, reject) => {
     const variables = {
-      name: query,
+      name,
       offset,
       limit,
       ...order_by,
