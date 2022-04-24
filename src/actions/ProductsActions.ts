@@ -30,7 +30,7 @@ export const getListOfProducts = ({
 }: getListOfProductsTypes) => {
   query = `%${query}%`;
 
-  return new Promise<getListOfProductsReturnTypes>((res, rej) => {
+  return new Promise<getListOfProductsReturnTypes>((resolve, reject) => {
     const variables = {
       name: query,
       offset,
@@ -46,17 +46,17 @@ export const getListOfProducts = ({
             type: 'negative',
           });
 
-          rej(null);
+          reject(null);
           return null;
         }
 
-        res({
+        resolve({
           products: providers[0].products,
           totalProducts: providers[0].products_aggregate.aggregate.count,
         });
       })
       .catch((err) => {
-        rej(null);
+        reject(null);
         return null;
       });
   });

@@ -8,7 +8,7 @@ export interface userAuthData {
 }
 
 export const handleUserLogin = ({ email, password }: userAuthData) => {
-  return new Promise((res, rej) => {
+  return new Promise((resolve, reject) => {
     const variables: object = { email, password };
 
     useQuery(getUserSessionQuery, variables)
@@ -19,7 +19,7 @@ export const handleUserLogin = ({ email, password }: userAuthData) => {
             type: 'negative',
           });
 
-          rej(null);
+          reject(null);
           return null;
         }
 
@@ -28,10 +28,10 @@ export const handleUserLogin = ({ email, password }: userAuthData) => {
           type: 'positive',
         });
 
-        res(users[0]);
+        resolve(users[0]);
       })
       .catch((err) => {
-        rej(null);
+        reject(null);
         return null;
       });
   });

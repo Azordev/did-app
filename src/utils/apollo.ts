@@ -35,7 +35,7 @@ export interface queryResult {
 }
 
 export const useQuery = (query: DocumentNode, variables: object = {}) => {
-  return new Promise<queryResult>((res, rej) => {
+  return new Promise<queryResult>((resolve, reject) => {
     const { onResult, onError } = _useQuery(query, variables);
 
     onError((err) => {
@@ -44,12 +44,12 @@ export const useQuery = (query: DocumentNode, variables: object = {}) => {
         type: 'negative',
       });
 
-      rej(err);
+      reject(err);
     });
 
     onResult((result) => {
       const { data } = result;
-      res(data);
+      resolve(data);
     });
   });
 };
