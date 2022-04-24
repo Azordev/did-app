@@ -4,7 +4,7 @@ export const getListOfProductsQuery = gql`
   query getListOfProducts(
     $name: String = "%%"
     $limit: Int = 10
-    $offset: Int = 10
+    $offset: Int = 0
     $order_by_price: order_by = null
     $order_by_name: order_by = null
   ) {
