@@ -1,0 +1,16 @@
+.providersList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 20px;
+
+  &__item {
+    img {
+      border: 1px solid gray;
+      border-radius: 10px;
+      max-width: 100%;
+      height: 350px;
+      object-fit: scale-down;
+    }
+  }
+}

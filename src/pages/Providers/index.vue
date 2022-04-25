@@ -3,7 +3,7 @@
     Providers:
     <div class="providersList">
       <div
-        class="providerList__item"
+        class="providersList__item"
         v-for="provider of providers"
         :key="provider.logo_url"
       >
@@ -17,7 +17,7 @@
 import { defineComponent } from 'vue';
 import { getListOfProviders } from '../../actions';
 import { handleListQuery } from '../../utils/apollo';
-import './Providers.css';
+import './Providers.scss';
 
 export default defineComponent({
   name: 'Providers',
