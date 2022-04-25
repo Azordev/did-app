@@ -10,6 +10,14 @@
         <img :src="provider.logo_url" />
       </div>
     </div>
+
+    Data:
+    <ul>
+      <li>Total: {{ totalProviders }}</li>
+      <li>isLoading: {{ isLoading }}</li>
+      <li>CurrentPage: {{ currentPage }}</li>
+      <li>TotalPages: {{ totalPages }}</li>
+    </ul>
   </div>
 </template>
 
