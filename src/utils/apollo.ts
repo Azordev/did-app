@@ -103,9 +103,9 @@ export const handleListQuery = (actionCallback: actionCallback) => {
   const getOrderByGraphQLVariables = (
     order_by: orderByGraphQLVariablesTypes
   ) => {
-    if (!order_by.label || !order_by.value || !order_by.name) return {};
+    if (!order_by.value || !order_by.name) return {};
 
-    return { [order_by.label]: order_by.value };
+    return { [order_by.name]: order_by.value };
   };
 
   const getItemsList = (
@@ -127,9 +127,7 @@ export const handleListQuery = (actionCallback: actionCallback) => {
       offset,
       limit: limit.value,
       query: `%${query.value}%`,
-      ...(order_by.value && {
-        order_by: getOrderByGraphQLVariables(order_by.value),
-      }),
+      ...(order_by.value && getOrderByGraphQLVariables(order_by.value)),
     };
 
     actionCallback(variables)
