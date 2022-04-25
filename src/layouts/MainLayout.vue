@@ -17,6 +17,8 @@
         <q-btn :to="{ name: 'register' }">Register</q-btn>
         <q-btn :to="{ name: 'userSettings' }">Settings</q-btn>
         <q-btn :to="{ name: 'userProfile' }">User</q-btn>
+        <q-btn :to="{ name: 'providers' }">Providers</q-btn>
+        <q-btn :to="{ name: 'providerDetail' }">Provider</q-btn>
       </q-toolbar>
     </q-header>
 
