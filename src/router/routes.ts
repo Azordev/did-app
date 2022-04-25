@@ -63,7 +63,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/Providers/index.vue'),
       },
       {
-        path: 'providers/:provider?',
+        path: 'providers/:provider',
         name: 'providerDetail',
         component: () => import('pages/Provider/index.vue'),
       },
