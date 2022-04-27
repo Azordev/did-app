@@ -2,9 +2,9 @@ import gql from 'graphql-tag';
 
 export const getListOfProductsQuery = gql`
   query getListOfProducts(
-    $name: String = "%%"
+    $query: String = "%%"
     $limit: Int = 10
-    $offset: Int = 10
+    $offset: Int = 0
     $order_by_price: order_by = null
     $order_by_name: order_by = null
   ) {
@@ -12,12 +12,12 @@ export const getListOfProductsQuery = gql`
       products(
         where: {
           _or: [
-            { name: { _ilike: $name } }
-            { description: { _ilike: $name } }
+            { name: { _ilike: $query } }
+            { description: { _ilike: $query } }
             {
               provider: {
-                commercial_name: { _ilike: $name }
-                legal_name: { _ilike: $name }
+                commercial_name: { _ilike: $query }
+                legal_name: { _ilike: $query }
               }
             }
           ]
@@ -41,12 +41,12 @@ export const getListOfProductsQuery = gql`
       products_aggregate(
         where: {
           _or: [
-            { name: { _ilike: $name } }
-            { description: { _ilike: $name } }
+            { name: { _ilike: $query } }
+            { description: { _ilike: $query } }
             {
               provider: {
-                commercial_name: { _ilike: $name }
-                legal_name: { _ilike: $name }
+                commercial_name: { _ilike: $query }
+                legal_name: { _ilike: $query }
               }
             }
           ]

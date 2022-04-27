@@ -12,8 +12,8 @@
         :model-value="sortSelectValue"
         @update:model-value="$emit('onSortList', $event)"
         :options="sortSelectOptions"
-        option-label="name"
-        option-value="id"
+        option-label="label"
+        option-value="label"
         stack-label
         label="Single selection"
       />
