@@ -11,6 +11,12 @@
         v-for="provider in providers"
         :key="provider.id"
         :provider="provider"
+        @onClick="
+          $router.push({
+            name: 'providerDetail',
+            params: { provider: provider.id },
+          })
+        "
       />
     </list-grid>
 
