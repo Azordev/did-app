@@ -25,27 +25,27 @@ import './Products.scss';
 const options = ref([
   {
     label: 'No ordenar',
-    value: null,
+    content: null,
     name: 'none_filter',
   },
   {
     label: 'Menor precio primero',
-    value: 'asc',
+    content: 'asc',
     name: 'order_by_price',
   },
   {
     label: 'Mayor precio primero',
-    value: 'desc',
+    content: 'desc',
     name: 'order_by_price',
   },
   {
     label: 'Ordenar alfabeticamente A-Z',
-    value: 'asc',
+    content: 'asc',
     name: 'order_by_name',
   },
   {
     label: 'Ordenar alfabeticamente Z-A',
-    value: 'desc',
+    content: 'desc',
     name: 'order_by_name',
   },
 ]);

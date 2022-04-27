@@ -64,7 +64,7 @@ export interface actionCallbackReturnTypes {
 
 export interface orderByGraphQLVariablesTypes {
   label?: string;
-  value?: string;
+  content?: string;
   name?: string;
 }
 
@@ -89,8 +89,8 @@ export const handleListQuery = (actionCallback: actionCallback) => {
   // Filters
   const order_by = ref<orderByGraphQLVariablesTypes>({
     label: '',
-    value: '',
     name: '',
+    content: '',
   });
   const limit = ref<number>(10);
   const query = ref<string>('');
@@ -103,9 +103,9 @@ export const handleListQuery = (actionCallback: actionCallback) => {
   const getOrderByGraphQLVariables = (
     order_by: orderByGraphQLVariablesTypes
   ) => {
-    if (!order_by.value || !order_by.name) return {};
+    if (!order_by.content || !order_by.name) return {};
 
-    return { [order_by.name]: order_by.value };
+    return { [order_by.name]: order_by.content };
   };
 
   const getItemsList = (
@@ -127,7 +127,8 @@ export const handleListQuery = (actionCallback: actionCallback) => {
       offset,
       limit: limit.value,
       query: `%${query.value}%`,
-      ...(order_by.value && getOrderByGraphQLVariables(order_by.value)),
+      ...(order_by.value?.content &&
+        getOrderByGraphQLVariables(order_by.value)),
     };
 
     actionCallback(variables)
