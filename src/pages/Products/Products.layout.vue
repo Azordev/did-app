@@ -17,7 +17,13 @@
       />
     </div>
 
-    <product-list :isLoading="isLoading" :products="products" />
+    <list-grid :isLoading="isLoading" :listItemsLength="products.length">
+      <product-list-item
+        v-for="product in products"
+        :key="product.id"
+        :product="product"
+      />
+    </list-grid>
 
     <div class="q-pa-lg flex flex-center">
       <page-pagination
@@ -31,8 +37,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import ProductList from './ProductList.vue';
-import SearchBar from '../../components/SearchBar/';
+import ListGrid from '../../components/ListGrid';
+import ProductListItem from './ProductListItem.vue';
+import SearchBar from '../../components/SearchBar';
 import PagePagination from '../../components/PagePagination.vue';
 import InputSelect from '../../components/InputSelect';
 
@@ -40,9 +47,10 @@ export default defineComponent({
   name: 'ProductsLayout',
   components: {
     PagePagination,
-    ProductList,
+    ListGrid,
     SearchBar,
     InputSelect,
+    ProductListItem,
   },
   props: {
     products: {
