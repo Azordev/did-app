@@ -1,34 +1,25 @@
 <template>
-  <div>
-    Providers:
-    <div class="providersList">
-      <div
-        class="providersList__item"
-        v-for="provider of providers"
-        :key="provider.logo_url"
-      >
-        <img :src="provider.logo_url" />
-      </div>
-    </div>
-
-    Data:
-    <ul>
-      <li>Total: {{ totalProviders }}</li>
-      <li>isLoading: {{ isLoading }}</li>
-      <li>CurrentPage: {{ currentPage }}</li>
-      <li>TotalPages: {{ totalPages }}</li>
-    </ul>
-  </div>
+  <providers-layout
+    :isLoading="isLoading"
+    :providers="providers"
+    :totalPages="totalPages"
+    :currentPage="currentPage"
+    @onChangePage="getProductList($event, query.value, order_by.value)"
+  />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { getListOfProviders } from '../../actions';
 import { handleListQuery } from '../../utils/apollo';
+import ProvidersLayout from './Providers.layout.vue';
 import './Providers.scss';
 
 export default defineComponent({
   name: 'Providers',
+  components: {
+    ProvidersLayout,
+  },
   setup() {
     const {
       items: providers,

@@ -14,6 +14,7 @@ export const getListOfProvidersQuery = gql`
       order_by: { legal_name: $order_by_name }
     ) {
       logo_url
+      id
     }
     providers_aggregate(
       where: { commercial_name: { _ilike: $query }, is_active: { _eq: true } }
