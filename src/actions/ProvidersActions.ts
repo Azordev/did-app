@@ -11,9 +11,9 @@ export const getListOfProviders = ({
   offset = 0,
   query = '',
 }: actionCallbackParamsTypes) => {
-  const name = `%${query}%`;
-
   return new Promise<actionCallbackReturnTypes>((resolve, reject) => {
+    const name = `%${query}%`;
+
     const variables = {
       name,
       offset,
