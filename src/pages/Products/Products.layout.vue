@@ -7,15 +7,13 @@
         @update:query-value="$emit('update:queryValue', $event)"
         :query-value="queryValue"
       />
-      <q-select
-        filled
-        :model-value="sortSelectValue"
-        @update:model-value="$emit('onSortList', $event)"
+      <input-select
+        :value="sortSelectValue"
         :options="sortSelectOptions"
         option-label="label"
         option-value="label"
-        stack-label
         label="Single selection"
+        @onChange="$emit('onSortList', $event)"
       />
     </div>
 
@@ -36,6 +34,7 @@ import { defineComponent } from 'vue';
 import ProductList from './ProductList.vue';
 import SearchBar from '../../components/SearchBar/';
 import PagePagination from '../../components/PagePagination.vue';
+import InputSelect from '../../components/InputSelect';
 
 export default defineComponent({
   name: 'ProductsLayout',
@@ -43,6 +42,7 @@ export default defineComponent({
     PagePagination,
     ProductList,
     SearchBar,
+    InputSelect,
   },
   props: {
     products: {
