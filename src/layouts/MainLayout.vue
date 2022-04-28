@@ -1,6 +1,12 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="hHh lpR fFf">
+    <q-page-container>
+      <Suspense>
+        <router-view />
+      </Suspense>
+    </q-page-container>
+
+    <q-footer bordered class="bg-white text-black">
       <q-toolbar>
         <q-toolbar-title> DID App </q-toolbar-title>
 
@@ -20,13 +26,7 @@
         <q-btn :to="{ name: 'providers' }">Providers</q-btn>
         <q-btn :to="{ name: 'providerDetail' }">Provider</q-btn>
       </q-toolbar>
-    </q-header>
-
-    <q-page-container>
-      <Suspense>
-        <router-view />
-      </Suspense>
-    </q-page-container>
+    </q-footer>
   </q-layout>
 </template>
 
