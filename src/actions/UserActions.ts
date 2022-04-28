@@ -1,6 +1,7 @@
 import { Notify } from 'quasar';
 import { getUserSessionQuery } from '../services';
 import { useQuery } from '../utils/apollo';
+import { logger } from '../utils/logger';
 
 export interface userAuthData {
   email: string;
@@ -31,8 +32,8 @@ export const handleUserLogin = ({ email, password }: userAuthData) => {
         resolve(users[0]);
       })
       .catch((err) => {
+        logger(err);
         reject(null);
-        return null;
       });
   });
 };

@@ -5,6 +5,7 @@ import {
   actionCallbackReturnTypes,
   actionCallbackParamsTypes,
 } from '../utils/apollo';
+import { logger } from '../utils/logger';
 
 export const getListOfProviders = ({
   limit = 10,
@@ -38,26 +39,31 @@ export const getListOfProviders = ({
         });
       })
       .catch((err) => {
+        logger(err);
         reject(null);
-        return null;
       });
   });
 };
 
 export const getSpecificProvider = (id: string) => {
   return new Promise<string[]>((resolve, reject) => {
-    useQuery(getProviderDetailsQuery, { id }).then(({ providers }) => {
-      if (!providers || !providers[0]) {
-        Notify.create({
-          message: 'No se encontro al proveedor',
-          type: 'negative',
-        });
+    useQuery(getProviderDetailsQuery, { id })
+      .then(({ providers }) => {
+        if (!providers || !providers[0]) {
+          Notify.create({
+            message: 'No se encontro al proveedor',
+            type: 'negative',
+          });
 
+          reject(null);
+          return null;
+        }
+
+        resolve(providers[0]);
+      })
+      .catch((err) => {
+        logger(err);
         reject(null);
-        return null;
-      }
-
-      resolve(providers[0]);
-    });
+      });
   });
 };
