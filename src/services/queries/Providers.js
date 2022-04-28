@@ -28,3 +28,16 @@ export const getListOfProvidersQuery = gql`
     }
   }
 `;
+
+export const getProviderDetailsQuery = gql`
+  query getProviderDetail($id: uuid = "") {
+    providers(where: { id: { _eq: $id } }) {
+      address
+      b2b_email
+      b2b_phone
+      commercial_name
+      details
+      logo_url
+    }
+  }
+`;

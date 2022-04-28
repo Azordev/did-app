@@ -59,3 +59,20 @@ export const getListOfProductsQuery = gql`
     }
   }
 `;
+
+export const getProviderProductsQuery = gql`
+  query getProviderProducts($id: uuid = "") {
+    providers(where: { id: { _eq: $id } }) {
+      products {
+        id
+        available
+        description
+        name
+        base_price_sol
+        details
+        image_url
+        offer_discount
+      }
+    }
+  }
+`;

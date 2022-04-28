@@ -1,5 +1,5 @@
 import { Notify } from 'quasar';
-import { getListOfProductsQuery } from '../services';
+import { getListOfProductsQuery, getProviderProductsQuery } from '../services';
 import {
   useQuery,
   actionCallbackReturnTypes,
@@ -29,5 +29,23 @@ export const getListOfProducts = (variables: actionCallbackParamsTypes) => {
         reject(null);
         return null;
       });
+  });
+};
+
+export const getProductsByProvider = (id: string) => {
+  return new Promise<string[]>((resolve, reject) => {
+    useQuery(getProviderProductsQuery, { id }).then(({ providers }) => {
+      if (!providers || !providers[0]) {
+        Notify.create({
+          message: 'No se encontro al proveedor',
+          type: 'negative',
+        });
+
+        reject(null);
+        return null;
+      }
+
+      resolve(providers[0].products);
+    });
   });
 };
