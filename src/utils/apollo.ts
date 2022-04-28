@@ -39,7 +39,7 @@ export interface queryResult {
 
 export const useQuery = (query: DocumentNode, variables: object = {}) => {
   return new Promise<queryResult>((resolve, reject) => {
-    const { onResult, onError, refetch } = _useQuery(query, variables, {
+    const { onResult, onError } = _useQuery(query, variables, {
       fetchPolicy: 'cache-and-network',
     });
 
