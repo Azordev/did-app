@@ -1,5 +1,10 @@
 <template>
   <div class="providerHeader">
+    <div class="providerHeader__backBtn" @click="$router.back()">
+      <img
+        src="https://img.icons8.com/material-outlined/48/FFFFFF/back--v1.png"
+      />
+    </div>
     <q-img class="providerHeader__img" ratio="16/9" :src="logoUrl" />
     <div class="providerHeader__name">{{ name }}</div>
   </div>

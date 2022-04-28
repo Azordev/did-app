@@ -33,6 +33,20 @@
     color: white;
   }
 
+  &__backBtn {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+  }
+
   &__tabs {
     .q-tabs__content {
       .q-tab {
