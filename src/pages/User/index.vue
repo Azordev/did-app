@@ -2,9 +2,6 @@
   <div>
     User Page. This is the list of users of app:
     <ul>
-      {{
-        users
-      }}
       <li :key="user.id" v-for="user in users">Nombre: {{ user }}</li>
     </ul>
   </div>

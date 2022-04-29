@@ -4,7 +4,10 @@ import {
   useQuery,
   actionCallbackReturnTypes,
   actionCallbackParamsTypes,
-} from '../utils/apollo';
+  provider,
+  getListOfProvidersReturnTypes,
+  getProviderReturnType,
+} from '../utils';
 import { logger } from '../utils/logger';
 
 export const getListOfProviders = ({
@@ -21,7 +24,7 @@ export const getListOfProviders = ({
       limit,
     };
 
-    useQuery(getListOfProvidersQuery, variables)
+    useQuery<getListOfProvidersReturnTypes>(getListOfProvidersQuery, variables)
       .then(({ providers, providers_aggregate }) => {
         if (!providers || !providers[0]) {
           Notify.create({
@@ -46,8 +49,8 @@ export const getListOfProviders = ({
 };
 
 export const getSpecificProvider = (id: string) => {
-  return new Promise<string[]>((resolve, reject) => {
-    useQuery(getProviderDetailsQuery, { id })
+  return new Promise<provider>((resolve, reject) => {
+    useQuery<getProviderReturnType>(getProviderDetailsQuery, { id })
       .then(({ providers }) => {
         if (!providers || !providers[0]) {
           Notify.create({

@@ -20,7 +20,6 @@ import {
   orderByParamTypes,
   orderByGraphQLParamType,
   actionCallbackType,
-  queryResultTypes,
 } from './index';
 
 const httpLink = createHttpLink({
@@ -38,8 +37,11 @@ const apolloClient = new ApolloClient({
 
 provideApolloClient(apolloClient);
 
-export const useQuery = (query: DocumentNode, variables: object = {}) => {
-  return new Promise<queryResultTypes>((resolve, reject) => {
+export const useQuery = <returnType>(
+  query: DocumentNode,
+  variables: object = {}
+) => {
+  return new Promise<returnType>((resolve, reject) => {
     const { onResult, onError } = _useQuery(query, variables, {
       fetchPolicy: 'cache-and-network',
     });
@@ -53,8 +55,7 @@ export const useQuery = (query: DocumentNode, variables: object = {}) => {
       reject(err);
     });
 
-    onResult((result) => {
-      const { data } = result;
+    onResult(({ data }) => {
       resolve(data);
     });
   });

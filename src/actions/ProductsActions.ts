@@ -4,12 +4,14 @@ import {
   useQuery,
   actionCallbackReturnTypes,
   actionCallbackParamsTypes,
+  getProviderReturnType,
+  product,
 } from '../utils';
 import { logger } from '../utils/logger';
 
 export const getListOfProducts = (variables: actionCallbackParamsTypes) => {
   return new Promise<actionCallbackReturnTypes>((resolve, reject) => {
-    useQuery(getListOfProductsQuery, variables)
+    useQuery<getProviderReturnType>(getListOfProductsQuery, variables)
       .then(({ providers }) => {
         if (!providers || !providers[0] || !providers[0].products) {
           Notify.create({
@@ -23,7 +25,7 @@ export const getListOfProducts = (variables: actionCallbackParamsTypes) => {
 
         resolve({
           items: providers[0].products,
-          totalItems: providers[0].products_aggregate.aggregate.count,
+          totalItems: providers[0]?.products_aggregate?.aggregate.count || 0,
         });
       })
       .catch((err) => {
@@ -34,8 +36,8 @@ export const getListOfProducts = (variables: actionCallbackParamsTypes) => {
 };
 
 export const getProductsByProvider = (id: string) => {
-  return new Promise<string[]>((resolve, reject) => {
-    useQuery(getProviderProductsQuery, { id })
+  return new Promise<product[]>((resolve, reject) => {
+    useQuery<getProviderReturnType>(getProviderProductsQuery, { id })
       .then(({ providers }) => {
         if (!providers || !providers[0]) {
           Notify.create({
@@ -47,7 +49,7 @@ export const getProductsByProvider = (id: string) => {
           return null;
         }
 
-        resolve(providers[0].products);
+        resolve(providers[0].products || []);
       })
       .catch((err) => {
         logger(err);

@@ -19,14 +19,6 @@
         "
       />
     </list-grid>
-
-    <div class="q-pa-lg flex flex-center">
-      <page-pagination
-        @onChangePage="$emit('onChangePage', $event)"
-        :currentPage="currentPage"
-        :totalPages="totalPages"
-      />
-    </div>
   </div>
 </template>
 
