@@ -26,27 +26,27 @@ const options = ref([
   {
     label: 'No ordenar',
     content: null,
-    name: 'none_filter',
+    column: null,
   },
   {
     label: 'Menor precio primero',
     content: 'asc',
-    name: 'order_by_price',
+    column: 'base_price_sol',
   },
   {
     label: 'Mayor precio primero',
     content: 'desc',
-    name: 'order_by_price',
+    column: 'base_price_sol',
   },
   {
     label: 'Ordenar alfabeticamente A-Z',
     content: 'asc',
-    name: 'order_by_name',
+    column: 'name',
   },
   {
     label: 'Ordenar alfabeticamente Z-A',
     content: 'desc',
-    name: 'order_by_name',
+    column: 'name',
   },
 ]);
 

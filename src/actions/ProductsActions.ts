@@ -4,7 +4,7 @@ import {
   useQuery,
   actionCallbackReturnTypes,
   actionCallbackParamsTypes,
-} from '../utils/apollo';
+} from '../utils';
 import { logger } from '../utils/logger';
 
 export const getListOfProducts = (variables: actionCallbackParamsTypes) => {
