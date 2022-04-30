@@ -14,7 +14,13 @@ import { DocumentNode } from 'graphql';
 
 import { Notify } from 'quasar';
 import { ref } from 'vue';
-import { getOffset, getTotalPages } from './pagination';
+import {
+  getOffset,
+  getTotalPages,
+  orderByParamTypes,
+  orderByGraphQLParamType,
+  actionCallbackType,
+} from './index';
 
 const httpLink = createHttpLink({
   // You should use an absolute URL here
@@ -31,15 +37,14 @@ const apolloClient = new ApolloClient({
 
 provideApolloClient(apolloClient);
 
-export interface queryResult {
-  users?: any;
-  providers?: any;
-  providers_aggregate?: any;
-}
-
-export const useQuery = (query: DocumentNode, variables: object = {}) => {
-  return new Promise<queryResult>((resolve, reject) => {
-    const { onResult, onError } = _useQuery(query, variables);
+export const useQuery = <returnType>(
+  query: DocumentNode,
+  variables: object = {}
+) => {
+  return new Promise<returnType>((resolve, reject) => {
+    const { onResult, onError } = _useQuery(query, variables, {
+      fetchPolicy: 'cache-and-network',
+    });
 
     onError((err) => {
       Notify.create({
@@ -50,35 +55,13 @@ export const useQuery = (query: DocumentNode, variables: object = {}) => {
       reject(err);
     });
 
-    onResult((result) => {
-      const { data } = result;
+    onResult(({ data }) => {
       resolve(data);
     });
   });
 };
 
-export interface actionCallbackReturnTypes {
-  items: object[];
-  totalItems: number;
-}
-
-export interface orderByGraphQLVariablesTypes {
-  label?: string;
-  content?: string;
-  name?: string;
-}
-
-export interface actionCallbackParamsTypes {
-  limit: number;
-  offset: number;
-  query: string;
-  order_by?: orderByGraphQLVariablesTypes;
-}
-
-export type actionCallback =
-  ({}: actionCallbackParamsTypes) => Promise<actionCallbackReturnTypes>;
-
-export const handleListQuery = (actionCallback: actionCallback) => {
+export const handleListQuery = (actionCallback: actionCallbackType) => {
   // Editable states
   const searchText = ref<string>('');
 
@@ -87,9 +70,9 @@ export const handleListQuery = (actionCallback: actionCallback) => {
   const currentPage = ref<number>(1);
 
   // Filters
-  const order_by = ref<orderByGraphQLVariablesTypes>({
+  const order_by = ref<orderByParamTypes>({
     label: '',
-    name: '',
+    column: '',
     content: '',
   });
   const limit = ref<number>(10);
@@ -101,17 +84,17 @@ export const handleListQuery = (actionCallback: actionCallback) => {
   const items = ref<object[]>([]);
 
   const getOrderByGraphQLVariables = (
-    order_by: orderByGraphQLVariablesTypes
-  ) => {
-    if (!order_by.content || !order_by.name) return {};
+    order_by: orderByParamTypes
+  ): orderByGraphQLParamType => {
+    if (!order_by.content || !order_by.column) return {};
 
-    return { [order_by.name]: order_by.content };
+    return { [order_by.column]: order_by.content };
   };
 
   const getItemsList = (
     _currentPage: number,
     _query: string,
-    _order_by: orderByGraphQLVariablesTypes
+    _order_by: orderByParamTypes
   ) => {
     isLoading.value = true;
     currentPage.value = _currentPage;
@@ -126,9 +109,10 @@ export const handleListQuery = (actionCallback: actionCallback) => {
     const variables = {
       offset,
       limit: limit.value,
-      query: `%${query.value}%`,
-      ...(order_by.value?.content &&
-        getOrderByGraphQLVariables(order_by.value)),
+      ...(query.value && { query: `%${query.value}%` }),
+      ...(order_by.value?.content && {
+        order_by: getOrderByGraphQLVariables(order_by.value),
+      }),
     };
 
     actionCallback(variables)

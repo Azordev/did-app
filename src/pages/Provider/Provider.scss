@@ -1,0 +1,111 @@
+.providerHeader {
+  position: relative;
+
+  &__img {
+    max-height: 30vh;
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    aspect-ratio: 16/9;
+    position: relative;
+
+    &::after {
+      content: '';
+      color: red;
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      background-color: rgba(0, 0, 0, 0.45);
+    }
+  }
+
+  &__name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 4rem;
+    color: white;
+  }
+
+  &__backBtn {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+  }
+
+  &__tabs {
+    .q-tabs__content {
+      .q-tab {
+        color: darkgray;
+
+        &--active {
+          color: black;
+        }
+
+        .q-tab__indicator {
+          height: 4px;
+          border-radius: 4px;
+        }
+
+        &:first-of-type {
+          justify-content: start;
+          padding-left: 10%;
+
+          .q-tab__indicator {
+            width: 80%;
+          }
+        }
+        &:last-of-type {
+          justify-content: end;
+          padding-right: 10%;
+
+          .q-tab__indicator {
+            width: 80%;
+            margin-left: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+.Provider {
+  background: rgba($dark, 0.05);
+  min-height: 100vh;
+}
+
+.ProviderProducts {
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-rows: 250px;
+  gap: 40px;
+}
+
+.ProviderProduct {
+  max-height: 350px;
+  overflow: hidden;
+
+  &__img {
+    height: 350px;
+    max-width: 400px;
+
+    img {
+      height: 350px;
+      max-width: 400px;
+    }
+  }
+}

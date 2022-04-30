@@ -1,0 +1,17 @@
+.ProvidersList {
+  display: flex;
+  gap: 20px;
+  margin: 20px;
+
+  &__item {
+    cursor: pointer;
+
+    img {
+      border: 1px solid gray;
+      border-radius: 10px;
+      width: 200px;
+      height: 200px;
+      object-fit: scale-down;
+    }
+  }
+}

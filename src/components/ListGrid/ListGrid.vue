@@ -1,10 +1,6 @@
 <template>
-  <div class="ProductList" v-if="products.length && !isLoading">
-    <product-list-item
-      v-for="product in products"
-      :key="product.id"
-      :product="product"
-    />
+  <div :class="`${className} List`" v-if="listItemsLength && !isLoading">
+    <slot></slot>
   </div>
   <div v-else-if="isLoading" class="flex flex-center">
     <q-spinner color="primary" size="3em" />
@@ -14,17 +10,19 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import ProductListItem from './ProductListItem.vue';
+import './ListGrid.scss';
 
 export default defineComponent({
-  name: 'ProductsList',
-  components: {
-    ProductListItem,
-  },
+  name: 'ListGrid',
+  components: {},
   props: {
-    products: {
-      type: Array,
-      default: () => [],
+    className: {
+      type: String,
+      default: '',
+    },
+    listItemsLength: {
+      type: Number,
+      default: 0,
     },
     isLoading: {
       type: Boolean,

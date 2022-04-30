@@ -1,19 +1,32 @@
 import { Notify } from 'quasar';
-import { getListOfProductsQuery, getProviderProductsQuery } from '../services';
+import { getListOfProvidersQuery, getProviderDetailsQuery } from '../services';
 import {
   useQuery,
   actionCallbackReturnTypes,
   actionCallbackParamsTypes,
+  provider,
+  getListOfProvidersReturnTypes,
   getProviderReturnType,
-  product,
 } from '../utils';
 import { logger } from '../utils/logger';
 
-export const getListOfProducts = (variables: actionCallbackParamsTypes) => {
+export const getListOfProviders = ({
+  limit = 10,
+  offset = 0,
+  query = '',
+}: actionCallbackParamsTypes) => {
   return new Promise<actionCallbackReturnTypes>((resolve, reject) => {
-    useQuery<getProviderReturnType>(getListOfProductsQuery, variables)
-      .then(({ providers }) => {
-        if (!providers || !providers[0] || !providers[0].products) {
+    const name = `%${query}%`;
+
+    const variables = {
+      name,
+      offset,
+      limit,
+    };
+
+    useQuery<getListOfProvidersReturnTypes>(getListOfProvidersQuery, variables)
+      .then(({ providers, providers_aggregate }) => {
+        if (!providers || !providers[0]) {
           Notify.create({
             message: 'No se encontraron resultados para la busqueda actual',
             type: 'negative',
@@ -24,8 +37,8 @@ export const getListOfProducts = (variables: actionCallbackParamsTypes) => {
         }
 
         resolve({
-          items: providers[0].products,
-          totalItems: providers[0]?.products_aggregate?.aggregate.count || 0,
+          items: providers,
+          totalItems: providers_aggregate.aggregate.count,
         });
       })
       .catch((err) => {
@@ -35,9 +48,9 @@ export const getListOfProducts = (variables: actionCallbackParamsTypes) => {
   });
 };
 
-export const getProductsByProvider = (id: string) => {
-  return new Promise<product[]>((resolve, reject) => {
-    useQuery<getProviderReturnType>(getProviderProductsQuery, { id })
+export const getSpecificProvider = (id: string) => {
+  return new Promise<provider>((resolve, reject) => {
+    useQuery<getProviderReturnType>(getProviderDetailsQuery, { id })
       .then(({ providers }) => {
         if (!providers || !providers[0]) {
           Notify.create({
@@ -49,7 +62,7 @@ export const getProductsByProvider = (id: string) => {
           return null;
         }
 
-        resolve(providers[0].products || []);
+        resolve(providers[0]);
       })
       .catch((err) => {
         logger(err);

@@ -5,8 +5,7 @@ export const getListOfProductsQuery = gql`
     $query: String = "%%"
     $limit: Int = 10
     $offset: Int = 0
-    $order_by_price: order_by = null
-    $order_by_name: order_by = null
+    $order_by: products_order_by! = {}
   ) {
     providers {
       products(
@@ -22,7 +21,7 @@ export const getListOfProductsQuery = gql`
             }
           ]
         }
-        order_by: { base_price_sol: $order_by_price, name: $order_by_name }
+        order_by: [$order_by]
         offset: $offset
         limit: $limit
       ) {
@@ -55,6 +54,23 @@ export const getListOfProductsQuery = gql`
         aggregate {
           count(columns: available)
         }
+      }
+    }
+  }
+`;
+
+export const getProviderProductsQuery = gql`
+  query getProviderProducts($id: uuid = "") {
+    providers(where: { id: { _eq: $id } }) {
+      products {
+        id
+        available
+        description
+        name
+        base_price_sol
+        details
+        image_url
+        offer_discount
       }
     }
   }
