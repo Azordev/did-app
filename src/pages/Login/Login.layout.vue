@@ -1,50 +1,72 @@
 <template>
-  <q-form
-    @submit="() => onSubmit({ email: emailValue, password: passwordValue })"
-    class="q-gutter-md"
-  >
-    <q-input
-      filled
-      :label="emailAttrs.label"
-      :hint="emailAttrs.hint"
-      :type="emailAttrs.type"
-      :model-value="emailValue"
-      @update:model-value="$emit('update:emailValue', $event)"
-      lazy-rules
-      :rules="emailValidations"
-    />
+  <div class="login__container">
+    <header>
+      <img class="login__logo" :src="didlogo" alt="DID Logo" />
+    </header>
+    <main>
+      <div class="login__caption">
+        <p>Ingresa a DID Peru</p>
+      </div>
+      <q-form
+        @submit="
+          () => onSubmit({ username: usernameValue, password: passwordValue })
+        "
+        class="q-gutter-md"
+      >
+        <q-input
+          input-class="login__input"
+          rounded
+          color="black"
+          outlined
+          :label="usernameAttrs.label"
+          :hint="usernameAttrs.hint"
+          :type="usernameAttrs.type"
+          :model-value="usernameValue"
+          @update:model-value="$emit('update:usernameValue', $event)"
+          lazy-rules
+          :rules="usernameValidations"
+        />
 
-    <q-input
-      filled
-      :label="passwordAttrs.label"
-      :hint="passwordAttrs.hint"
-      :type="passwordAttrs.type"
-      :model-value="passwordValue"
-      @update:model-value="$emit('update:passwordValue', $event)"
-      lazy-rules
-      :rules="passwordValidations"
-    />
-
-    <q-checkbox
-      :model-value="termsAndConditions"
-      @update:model-value="$emit('update:termsAndConditions', $event)"
-      label="I accept the license and terms"
-    />
-
-    <div>
-      <q-btn
-        label="Submit"
-        type="submit"
-        :loading="isLoading"
-        color="primary"
-      />
-      {{ isLoading }}
-    </div>
-  </q-form>
+        <q-input
+          input-class="login__input"
+          rounded
+          color="black"
+          outlined
+          :label="passwordAttrs.label"
+          :hint="passwordAttrs.hint"
+          :type="passwordAttrs.type"
+          :model-value="passwordValue"
+          @update:model-value="$emit('update:passwordValue', $event)"
+          lazy-rules
+          :rules="passwordValidations"
+        />
+        <div>
+          <q-btn
+            label="Ingresar"
+            type="submit"
+            :loading="isLoading"
+            color="black"
+            unelevated
+            rounded
+            class="full-width login__submit"
+          />
+        </div>
+      </q-form>
+      <div class="login__other_links">
+        <a class="login__forgotten_link" href="mailto:admin@didperu.com"
+          >¿Olvidaste tu contraseña?</a
+        >
+        <a class="login__get_account" href="mailto:clientsupport@didperu.com">
+          ¿Deseas asociarte a DID Perú?
+        </a>
+      </div>
+    </main>
+  </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
+import didlogo from '../../assets/logos/didperu.svg';
 
 export default defineComponent({
   props: {
@@ -54,16 +76,15 @@ export default defineComponent({
         return {};
       },
     },
-    emailValue: {
+    usernameValue: {
       type: String,
       default: '',
     },
-    emailAttrs: {
+    usernameAttrs: {
       type: Object,
       default: () => {
         return {
-          label: 'Your email',
-          hint: 'example@example.com',
+          label: 'Código de socio',
           type: 'text',
         };
       },
@@ -76,8 +97,7 @@ export default defineComponent({
       type: Object,
       default: () => {
         return {
-          label: 'Your password',
-          hint: '',
+          label: 'Contraseña',
           type: 'password',
         };
       },
@@ -90,7 +110,7 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    emailValidations: {
+    usernameValidations: {
       type: Array,
       default: () => [],
     },
@@ -100,9 +120,14 @@ export default defineComponent({
     },
   },
   emits: [
-    'update:emailValue',
+    'update:usernameValue',
     'update:passwordValue',
     'update:termsAndConditions',
   ],
+  setup() {
+    return {
+      didlogo,
+    };
+  },
 });
 </script>
