@@ -26,7 +26,7 @@ export type actionCallbackType =
 
 /** Database Models */
 // Users
-export interface users {
+export interface Users {
   __typename: 'users';
   username: string;
   id: string;
@@ -77,6 +77,8 @@ export interface product {
 }
 
 /** Query returns */
+// Products
+
 export interface getListOfProvidersReturnTypes {
   providers: provider[];
   providers_aggregate: query_aggregate;
@@ -84,6 +86,11 @@ export interface getListOfProvidersReturnTypes {
 
 export interface getProviderReturnType {
   providers: provider[];
+}
+
+// Users
+export interface GetUsers {
+  users: Users[];
 }
 
 /** Util types */

@@ -1,19 +1,21 @@
 import { Notify } from 'quasar';
 import { getUserSessionQuery } from '../services';
-import { useQuery } from '../utils/apollo';
+import { useQuery, GetUsers } from '../utils';
 import { logger } from '../utils/logger';
 
 export interface userAuthData {
-  email: string;
+  user_code: string;
   password: string;
 }
 
-export const handleUserLogin = ({ email, password }: userAuthData) => {
+export const handleUserLogin = ({ user_code, password }: userAuthData) => {
   return new Promise((resolve, reject) => {
-    const variables: object = { email, password };
+    const variables: object = { user_code, password };
 
-    useQuery(getUserSessionQuery, variables)
+    useQuery<GetUsers>(getUserSessionQuery, variables)
       .then(({ users }) => {
+        console.log(users);
+
         if (!users || !users[0]) {
           Notify.create({
             message: 'Los datos que ingresaste no son correctos',

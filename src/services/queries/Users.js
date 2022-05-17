@@ -15,8 +15,10 @@ export const getAllUsersQuery = gql`
 `;
 
 export const getUserSessionQuery = gql`
-  query GetUserSession($password: String = "", $email: String = "") {
-    users(where: { password: { _eq: $password }, username: { _eq: $email } }) {
+  query GetUserSession($password: String = "", $user_code: String = "") {
+    users(
+      where: { password: { _eq: $password }, username: { _eq: $user_code } }
+    ) {
       username
       type
       password

@@ -30,10 +30,11 @@ export default defineComponent({
     const termsAndConditions = ref<boolean>(false);
     const loginIsLoading = ref<boolean>(false);
 
-    const logUser = ({ email, password }: userAuthData) => {
+    const logUser = ({ user_code, password }: userAuthData) => {
       loginIsLoading.value = true;
+      const variables = { user_code, password };
 
-      handleUserLogin({ email, password })
+      handleUserLogin(variables)
         .then((res) => {
           LocalStorage.set('user', res);
           console.log(res);
