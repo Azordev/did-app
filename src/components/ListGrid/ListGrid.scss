@@ -1,6 +1,10 @@
 .List {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
-  margin: 20px;
+
+  &__loading {
+    display: flex !important;
+    justify-content: center;
+  }
 }

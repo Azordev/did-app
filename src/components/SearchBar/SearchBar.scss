@@ -1,0 +1,16 @@
+.SearchBar {
+  .q-field__control {
+    background-color: $secondary;
+  }
+
+  .q-field__label,
+  &__button {
+    font-weight: bolder;
+    color: $gray-chinese-silver;
+  }
+
+  &__button {
+    cursor: pointer;
+    margin-left: 2px;
+  }
+}
