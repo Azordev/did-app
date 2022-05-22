@@ -53,10 +53,10 @@
         </div>
       </q-form>
       <div class="login__other_links">
-        <a class="login__forgotten_link" href="mailto:admin@didperu.com"
+        <a class="login__forgotten_link" href="mailto:adidperu@gmail.com"
           >¿Olvidaste tu contraseña?</a
         >
-        <a class="login__get_account" href="mailto:clientsupport@didperu.com">
+        <a class="login__get_account" href="mailto:adidperu@gmail.com">
           ¿Deseas asociarte a DID Perú?
         </a>
       </div>
