@@ -14,8 +14,6 @@ export const handleUserLogin = ({ user_code, password }: userAuthData) => {
 
     useQuery<GetUsers>(getUserSessionQuery, variables)
       .then(({ users }) => {
-        console.log(users);
-
         if (!users || !users[0]) {
           Notify.create({
             message: 'Los datos que ingresaste no son correctos',

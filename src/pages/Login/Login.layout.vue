@@ -1,7 +1,7 @@
 <template>
   <div class="login__container">
     <header>
-      <img class="login__logo" :src="didlogo" alt="DID Logo" />
+      <img class="login__logo" :src="didLogo" alt="DID Logo" />
     </header>
     <main>
       <div class="login__caption">
@@ -66,7 +66,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-import didlogo from '../../assets/logos/didperu.svg';
+import didLogo from '../../assets/logos/didperu.svg';
 
 export default defineComponent({
   props: {
@@ -126,7 +126,7 @@ export default defineComponent({
   ],
   setup() {
     return {
-      didlogo,
+      didLogo,
     };
   },
 });
