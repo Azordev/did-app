@@ -8,12 +8,33 @@
       padding: 30px;
     }
   }
+
+  &__categoriesItem {
+    display: flex;
+    width: 100%;
+    overflow-x: scroll;
+
+    .q-chip {
+      &.q-chip--clickable:focus {
+        box-shadow: none;
+      }
+
+      &__icon {
+        display: none;
+      }
+
+      &--selected {
+        font-weight: bolder;
+      }
+    }
+  }
 }
 
 .ProvidersList {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+  gap: 40px 20px;
+  margin-top: 20px;
 
   &__item {
     cursor: pointer;
@@ -21,8 +42,6 @@
     width: 100%;
 
     img {
-      border: 1px solid gray;
-      border-radius: 10px;
       aspect-ratio: 1/1;
       object-fit: scale-down;
     }

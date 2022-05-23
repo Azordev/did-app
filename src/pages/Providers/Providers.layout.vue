@@ -1,15 +1,15 @@
 <template>
   <div class="Providers">
-    <back-button />
+    <back-button toHome />
 
     <div class="Providers__content">
       <search-bar class="Providers__search" />
 
-      <div class="Providers__header">
-        <div class="Providers__categoriesList">
-          <!-- TODO: Add categoriesList -->
-        </div>
-      </div>
+      <providers-categories
+        :categorySelected="categorySelected"
+        :categories="categories"
+        @update:categorySelected="$emit('onSelectCategory', $event)"
+      />
 
       <list-grid
         className="ProvidersList"
@@ -38,11 +38,18 @@ import ListGrid from '../../components/ListGrid';
 import BackButton from '../../components/BackButton';
 import SearchBar from '../../components/SearchBar';
 import ProvidersListItem from './ProvidersListItem.vue';
+import ProvidersCategories from './ProvidersCategories.vue';
 
 export default defineComponent({
   name: 'ProductsLayout',
-  components: { ListGrid, ProvidersListItem, BackButton, SearchBar },
-  emits: ['onChangePage'],
+  components: {
+    ListGrid,
+    ProvidersListItem,
+    BackButton,
+    SearchBar,
+    ProvidersCategories,
+  },
+  emits: ['onChangePage', 'onSelectCategory'],
   props: {
     isLoading: {
       type: Boolean,
@@ -59,6 +66,14 @@ export default defineComponent({
     currentPage: {
       type: Number,
       default: 1,
+    },
+    categories: {
+      type: Array,
+      default: () => [],
+    },
+    categorySelected: {
+      type: String,
+      default: '',
     },
   },
 });
