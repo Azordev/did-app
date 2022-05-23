@@ -1,5 +1,9 @@
 import { Notify } from 'quasar';
-import { getListOfProvidersQuery, getProviderDetailsQuery } from '../services';
+import {
+  getListOfProvidersQuery,
+  getProviderDetailsQuery,
+  getProviderCategory,
+} from '../services';
 import {
   useQuery,
   actionCallbackReturnTypes,
@@ -7,6 +11,8 @@ import {
   provider,
   getListOfProvidersReturnTypes,
   getProviderReturnType,
+  provider_category,
+  GetProvidersCategories,
 } from '../utils';
 import { logger } from '../utils/logger';
 
@@ -68,5 +74,15 @@ export const getSpecificProvider = (id: string) => {
         logger(err);
         reject(null);
       });
+  });
+};
+
+export const getProvidersCategories = () => {
+  return new Promise<provider_category[]>((resolve) => {
+    useQuery<GetProvidersCategories>(getProviderCategory).then(
+      ({ provider_categories }) => {
+        resolve(provider_categories);
+      }
+    );
   });
 };

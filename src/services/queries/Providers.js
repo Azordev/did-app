@@ -40,3 +40,17 @@ export const getProviderDetailsQuery = gql`
     }
   }
 `;
+
+export const getProviderCategory = gql`
+  query getProviderCategory {
+    provider_categories(
+      where: { category: { is_active: { _eq: true } } }
+      distinct_on: category_id
+    ) {
+      category {
+        name
+        id
+      }
+    }
+  }
+`;
