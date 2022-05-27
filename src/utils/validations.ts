@@ -6,19 +6,26 @@ export const emailValidations = [
     ) || 'Please check if your email is correct',
 ];
 
+export const userCodeValidations = [
+  (val: string) =>
+    val.length === 10 || 'El codigo debe tener una longitud de 10 caracteres',
+  (val: string) =>
+    val.match(/^[A-Z]{2}[0-9]{8}$/i) || 'El formato del codigo es incorrecto',
+];
+
 export const passwordValidations = [
-  (val: string) => val.length > 0 || 'Password field can not be empty',
+  (val: string) => val.length > 0 || 'La contraseña',
   (val: string) =>
     val.match(/(?=.*?[A-Z])/) ||
-    'Password should have min one upper case English Letter',
+    'La contraseña debe tener mínimo una letra en mayúscula',
   (val: string) =>
     val.match(/(?=.*?[a-z])/) ||
-    'Password should have min one lower case English Letter',
+    'La contraseña debe tener mínimo una letra en minúscula',
   (val: string) =>
-    val.match(/(?=.*?[0-9])/) || 'Password should have min one number',
+    val.match(/(?=.*?[0-9])/) || 'La contraseña debe tener mínimo un número',
   (val: string) =>
     val.match(/(?=.*?[#?!@$%^&*-\.])/) ||
-    'Password should have min one special character',
+    'La contraseña debe tener mínimo un carácter especial',
   (val: string) =>
-    val.match(/.{8,}/) || 'Password should have min eight letters',
+    val.match(/.{8,}/) || 'La contraseña debe tener mínimo ocho letras',
 ];

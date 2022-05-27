@@ -1,0 +1,54 @@
+.login {
+  padding: 40px 20px 0;
+  max-width: 1024px;
+  margin: 0 auto;
+
+  &__container {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    margin: 0 auto;
+    display: block;
+    width: 57px;
+    margin-bottom: 57px;
+  }
+
+  &__caption {
+    font-size: 19px;
+    text-align: center;
+    margin-bottom: 26px;
+  }
+
+  &__submit {
+    padding: 12px 0;
+  }
+
+  &__other_links {
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  &__forgotten_link {
+    color: black;
+    text-decoration: none;
+  }
+
+  &__get_account {
+    display: block;
+    text-decoration: none;
+    margin-top: 51px;
+    color: $gray;
+    font-weight: 500;
+  }
+
+  &__input {
+    padding: 0 14px;
+
+    & ~ div {
+      padding: 0 14px;
+      color: $lightgray;
+    }
+  }
+}
