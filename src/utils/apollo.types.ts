@@ -1,4 +1,4 @@
-/** Functions types */
+// Functions types
 export interface actionCallbackReturnTypes {
   items: object[];
   totalItems: number;
@@ -24,7 +24,7 @@ export interface actionCallbackParamsTypes {
 export type actionCallbackType =
   ({}: actionCallbackParamsTypes) => Promise<actionCallbackReturnTypes>;
 
-/** Database Models */
+// Database Models
 // Users
 export interface Users {
   __typename: 'users';
@@ -76,7 +76,7 @@ export interface product {
   with_offer?: boolean;
 }
 
-/** Query returns */
+// Query returns
 // Products
 
 export interface getListOfProvidersReturnTypes {
@@ -93,7 +93,7 @@ export interface GetUsers {
   users: Users[];
 }
 
-/** Util types */
+// Util types
 export interface query_aggregate {
   __typename: string;
   aggregate: query_aggregate_fields;
