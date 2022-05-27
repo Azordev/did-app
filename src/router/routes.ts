@@ -8,23 +8,18 @@ const routes: RouteRecordRaw[] = [
       {
         path: '',
         name: 'home',
-        component: () => import('src/pages/LandingPage/index.vue'),
+        component: () => import('pages/LandingPage/index.vue'),
       },
     ],
   },
   {
     path: '/auth',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/AuthLayout.vue'),
     children: [
       {
         path: 'login',
         name: 'login',
         component: () => import('pages/Login/index.vue'),
-      },
-      {
-        path: 'register',
-        name: 'register',
-        component: () => import('pages/Register/index.vue'),
       },
     ],
   },
@@ -35,7 +30,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: '',
         name: 'dashboard',
-        component: () => import('src/pages/Home/index.vue'),
+        component: () => import('pages/Home/index.vue'),
       },
       {
         path: 'events',
@@ -85,7 +80,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/:catchAll(.*)*',
     name: 'error',
-    component: () => import('src/pages/Error/ErrorNotFound.vue'),
+    component: () => import('pages/Error/ErrorNotFound.vue'),
   },
 ];
 

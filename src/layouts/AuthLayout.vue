@@ -1,11 +1,13 @@
 <template>
-  <div>Register Page</div>
+  <Suspense>
+    <router-view />
+  </Suspense>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'Register',
+  name: 'LoginLayout',
 });
 </script>
