@@ -8,7 +8,13 @@ export const getListOfProvidersQuery = gql`
     $order_by: providers_order_by! = {}
   ) {
     providers(
-      where: { commercial_name: { _ilike: $query }, is_active: { _eq: true } }
+      where: {
+        _or: {
+          commercial_name: { _ilike: $query }
+          legal_name: { _ilike: $query }
+        }
+        is_active: { _eq: true }
+      }
       offset: $offset
       limit: $limit
       order_by: [$order_by]
