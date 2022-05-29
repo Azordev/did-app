@@ -3,8 +3,13 @@
     <back-button toHome />
 
     <div class="Providers__content">
-      <search-bar class="Providers__search" />
-
+      <search-bar
+        @on-search="$emit('onSearch')"
+        @on-clear="$emit('onClear')"
+        @update:query-value="$emit('update:queryValue', $event)"
+        :query-value="queryValue"
+        class="Providers__search"
+      />
       <providers-categories
         :categorySelected="categorySelected"
         :categories="categories"
@@ -49,7 +54,7 @@ export default defineComponent({
     SearchBar,
     ProvidersCategories,
   },
-  emits: ['onChangePage', 'onSelectCategory'],
+  emits: ['onSelectCategory', 'update:queryValue', 'onClear', 'onSearch'],
   props: {
     isLoading: {
       type: Boolean,
@@ -72,6 +77,10 @@ export default defineComponent({
       default: () => [],
     },
     categorySelected: {
+      type: String,
+      default: '',
+    },
+    queryValue: {
       type: String,
       default: '',
     },

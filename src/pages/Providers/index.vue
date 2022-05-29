@@ -6,8 +6,10 @@
     :currentPage="currentPage"
     :categories="categories"
     :categorySelected="categorySelected"
+    v-model:query-value="searchText"
+    @onClear="onClearSearch()"
+    @onSearch="getProductList(1, searchText, order_by)"
     @onSelectCategory="onSelectProvidersCategory"
-    @onChangePage="getProductList($event, query.value, order_by.value)"
   />
 </template>
 

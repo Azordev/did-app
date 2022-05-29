@@ -16,20 +16,8 @@ import {
 } from '../utils';
 import { logger } from '../utils/logger';
 
-export const getListOfProviders = ({
-  limit = 10,
-  offset = 0,
-  query = '',
-}: actionCallbackParamsTypes) => {
+export const getListOfProviders = (variables: actionCallbackParamsTypes) => {
   return new Promise<actionCallbackReturnTypes>((resolve, reject) => {
-    const name = `%${query}%`;
-
-    const variables = {
-      name,
-      offset,
-      limit,
-    };
-
     useQuery<getListOfProvidersReturnTypes>(getListOfProvidersQuery, variables)
       .then(({ providers, providers_aggregate }) => {
         if (!providers || !providers[0]) {
