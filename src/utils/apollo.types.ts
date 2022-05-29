@@ -38,6 +38,18 @@ export interface Users {
   password?: string;
 }
 
+// Query return
+export interface GetUsers {
+  users: Users[];
+}
+
+// Category
+export interface category {
+  __typename: 'categories';
+  id: string;
+  name: string;
+}
+
 // Providers
 export interface provider {
   __typename: 'providers';
@@ -60,6 +72,25 @@ export interface provider {
   products_aggregate?: query_aggregate;
 }
 
+export interface provider_category {
+  __typename: 'provider_categories';
+  category: category;
+}
+
+// Query returns
+export interface getListOfProvidersReturnTypes {
+  providers: provider[];
+  providers_aggregate: query_aggregate;
+}
+
+export interface getProviderReturnType {
+  providers: provider[];
+}
+
+export interface GetProvidersCategories {
+  provider_categories: provider_category[];
+}
+
 // Products
 export interface product {
   __typename: 'products';
@@ -77,8 +108,6 @@ export interface product {
 }
 
 // Query returns
-// Products
-
 export interface getListOfProvidersReturnTypes {
   providers: provider[];
   providers_aggregate: query_aggregate;
@@ -86,11 +115,6 @@ export interface getListOfProvidersReturnTypes {
 
 export interface getProviderReturnType {
   providers: provider[];
-}
-
-// Users
-export interface GetUsers {
-  users: Users[];
 }
 
 // Util types

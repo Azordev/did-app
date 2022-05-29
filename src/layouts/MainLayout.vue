@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh lpR fFf">
+  <q-layout class="page_body" view="hHh lpR fFf">
     <q-page-container>
       <Suspense>
         <router-view />
@@ -36,3 +36,9 @@ export default defineComponent({
   name: 'MainLayout',
 });
 </script>
+
+<style lang="scss">
+.page_body {
+  background-color: $white-flight;
+}
+</style>

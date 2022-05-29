@@ -12,8 +12,8 @@
 // to match your app's branding.
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
-$primary: #1976d2;
-$secondary: #26a69a;
+$primary: #010101;
+$secondary: #ffffff;
 $accent: #9c27b0;
 
 $dark: #1d1d1d;
@@ -22,6 +22,23 @@ $positive: #21ba45;
 $negative: #c10015;
 $info: #31ccec;
 $warning: #f2c037;
+
+// Custom colors
+$white-flight: #f2f2f2;
+$gray-dim: #707070;
+$gray-chinese-silver: #ccc7c7;
+
+.bg-white-flight {
+  background-color: $white-flight;
+}
+
+.text-white-flight {
+  color: $white-flight;
+}
+
+.text-gray-dim {
+  color: $gray-dim;
+}
 
 $gray: #7e8b77;
 $lightgray: #c9c9c9;

@@ -8,7 +8,13 @@ export const getListOfProvidersQuery = gql`
     $order_by: providers_order_by! = {}
   ) {
     providers(
-      where: { commercial_name: { _ilike: $query }, is_active: { _eq: true } }
+      where: {
+        _or: {
+          commercial_name: { _ilike: $query }
+          legal_name: { _ilike: $query }
+        }
+        is_active: { _eq: true }
+      }
       offset: $offset
       limit: $limit
       order_by: [$order_by]
@@ -37,6 +43,20 @@ export const getProviderDetailsQuery = gql`
       commercial_name
       details
       logo_url
+    }
+  }
+`;
+
+export const getProviderCategory = gql`
+  query getProviderCategory {
+    provider_categories(
+      where: { category: { is_active: { _eq: true } } }
+      distinct_on: category_id
+    ) {
+      category {
+        name
+        id
+      }
     }
   }
 `;

@@ -1,5 +1,9 @@
 import { Notify } from 'quasar';
-import { getListOfProvidersQuery, getProviderDetailsQuery } from '../services';
+import {
+  getListOfProvidersQuery,
+  getProviderDetailsQuery,
+  getProviderCategory,
+} from '../services';
 import {
   useQuery,
   actionCallbackReturnTypes,
@@ -7,23 +11,13 @@ import {
   provider,
   getListOfProvidersReturnTypes,
   getProviderReturnType,
+  provider_category,
+  GetProvidersCategories,
 } from '../utils';
 import { logger } from '../utils/logger';
 
-export const getListOfProviders = ({
-  limit = 10,
-  offset = 0,
-  query = '',
-}: actionCallbackParamsTypes) => {
+export const getListOfProviders = (variables: actionCallbackParamsTypes) => {
   return new Promise<actionCallbackReturnTypes>((resolve, reject) => {
-    const name = `%${query}%`;
-
-    const variables = {
-      name,
-      offset,
-      limit,
-    };
-
     useQuery<getListOfProvidersReturnTypes>(getListOfProvidersQuery, variables)
       .then(({ providers, providers_aggregate }) => {
         if (!providers || !providers[0]) {
@@ -68,5 +62,15 @@ export const getSpecificProvider = (id: string) => {
         logger(err);
         reject(null);
       });
+  });
+};
+
+export const getProvidersCategories = () => {
+  return new Promise<provider_category[]>((resolve) => {
+    useQuery<GetProvidersCategories>(getProviderCategory).then(
+      ({ provider_categories }) => {
+        resolve(provider_categories);
+      }
+    );
   });
 };
