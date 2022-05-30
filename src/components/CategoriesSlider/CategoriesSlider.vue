@@ -32,7 +32,14 @@ export default defineComponent({
   },
   emits: ['update:categorySelected'],
   setup(props) {
-    const parsedCategories = ref<provider_category[]>();
+    const parsedCategories = ref<provider_category[]>([
+      {
+        category: {
+          name: 'Todos',
+          id: '',
+        },
+      },
+    ]);
 
     onUpdated(() => {
       parsedCategories.value = [

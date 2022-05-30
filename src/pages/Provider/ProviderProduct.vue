@@ -1,30 +1,28 @@
 <template>
   <q-card class="ProviderProduct">
-    <q-card-section horizontal>
-      <q-img
-        class="ProviderProduct__img"
-        ratio="4/3"
-        :src="product.image_url"
-      />
+    <q-card-section class="ProviderProduct__card" horizontal>
+      <div class="ProviderProduct__imgContainer">
+        <q-img
+          class="ProviderProduct__img"
+          ratio="4/3"
+          :src="product.image_url"
+        />
+      </div>
 
-      <q-card-section>
-        <div class="text-h6">{{ product.name }}</div>
+      <div class="ProviderProduct__name">
+        <p>{{ product.name }}</p>
+      </div>
 
-        <q-card-section class="q-pt-none">
-          {{ product.description }}
-        </q-card-section>
-
-        <q-card-section class="q-pt-none">
-          <span class="ProviderProduct__price">{{
-            product.base_price_sol
-          }}</span>
-          Soles
-        </q-card-section>
-
-        <q-card-actions align="center">
-          <q-btn class="ProductList__item_button" color="primary"
-            >Comprar ahora</q-btn
-          >
+      <q-card-section class="q-p-none ProviderProduct__checkoutInfo">
+        <span class="ProviderProduct__price">
+          <strong>S./ {{ product.base_price_sol }} </strong></span
+        >
+        <q-card-actions>
+          <q-btn
+            class="ProductList__item_button"
+            color="accent"
+            icon="add_shopping_cart"
+          />
         </q-card-actions>
       </q-card-section>
     </q-card-section>
