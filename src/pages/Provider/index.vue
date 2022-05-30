@@ -16,7 +16,6 @@ const getProviderById = () => {
 
   getSpecificProvider(id).then((res) => {
     provider.value = res;
-    console.log(res);
   });
 
   return {
