@@ -3,11 +3,11 @@
     <q-input
       class="SearchBar"
       outlined
-      rounded
+      :rounded="rounded"
       bottom-slots
       :model-value="queryValue"
       @update:model-value="$emit('update:queryValue', $event)"
-      label="Buscar..."
+      :label="placeholder"
     >
       <template v-slot:append>
         <q-icon
@@ -35,6 +35,14 @@ export default defineComponent({
     queryValue: {
       type: String,
       default: '',
+    },
+    placeholder: {
+      type: String,
+      default: 'Buscar...',
+    },
+    rounded: {
+      type: Boolean,
+      default: true,
     },
   },
   emit: ['update:queryValue', 'onClear'],
