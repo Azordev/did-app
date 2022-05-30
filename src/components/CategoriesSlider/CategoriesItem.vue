@@ -16,14 +16,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { provider_category } from 'src/utils';
+import { defineComponent, PropType } from 'vue';
 import './CategoriesSlider.scss';
 
 export default defineComponent({
   name: 'CategoriesItem',
   props: {
     categories: {
-      type: Array,
+      type: Array as PropType<provider_category[]>,
       default: () => {
         return [];
       },

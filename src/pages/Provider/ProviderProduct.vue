@@ -30,13 +30,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { product } from '../../utils';
+import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
   name: 'ProviderProduct',
   props: {
     product: {
-      type: Object,
+      type: Object as PropType<product>,
       default: () => {
         return {};
       },
