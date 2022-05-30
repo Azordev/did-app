@@ -35,9 +35,16 @@ export const getListOfProducts = (variables: actionCallbackParamsTypes) => {
   });
 };
 
-export const getProductsByProvider = (id: string) => {
+export const getProductsByProvider = (id: string, query = '') => {
+  const parsedQuery = `%${query}%`;
+
+  const variables = {
+    id,
+    query: parsedQuery,
+  };
+
   return new Promise<product[]>((resolve, reject) => {
-    useQuery<getProviderReturnType>(getProviderProductsQuery, { id })
+    useQuery<getProviderReturnType>(getProviderProductsQuery, variables)
       .then(({ providers }) => {
         if (!providers || !providers[0]) {
           Notify.create({

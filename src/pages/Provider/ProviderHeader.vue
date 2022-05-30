@@ -16,13 +16,14 @@
         bg-color="secondary"
         outlined
         placeholder="Buscar producto..."
-        @update:query-value="$emit('update:queryValue', $event)"
-        :query-value="queryValue"
+        @update:model-value="$emit('update:queryValue', $event)"
+        :model-value="queryValue"
         class="providerHeader__form_search"
         :rounded="false"
       />
       <q-btn
         unelevated
+        type="submit"
         color="primary"
         icon="search"
         class="providerHeader__form_button"
