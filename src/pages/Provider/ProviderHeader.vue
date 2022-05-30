@@ -16,8 +16,6 @@
         bg-color="secondary"
         outlined
         placeholder="Buscar producto..."
-        @on-search="$emit('onSearch')"
-        @on-clear="$emit('onClear')"
         @update:query-value="$emit('update:queryValue', $event)"
         :query-value="queryValue"
         class="providerHeader__form_search"
