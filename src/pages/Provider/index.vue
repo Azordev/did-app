@@ -1,5 +1,5 @@
 <template>
-  <provider-layout :id="id" :provider="provider" v-model:tab-value="tab" />
+  <provider-layout :id="id" :provider="provider" />
 </template>
 
 <script lang="ts">
@@ -31,11 +31,9 @@ export default defineComponent({
   },
   setup() {
     const { provider, id } = getProviderById();
-    const tab = ref<string>('history');
 
     return {
       provider,
-      tab,
       id,
     };
   },

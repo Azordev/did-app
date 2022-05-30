@@ -1,10 +1,8 @@
 <template>
   <div class="Provider">
     <provider-header
-      :tab-value="tabValue"
       :logo-url="provider.logo_url"
       :name="provider.commercial_name"
-      @update:tab-value="$emit('update:tabValue', $event)"
     />
     <div class="Provider__container">
       <suspense>
