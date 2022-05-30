@@ -1,0 +1,19 @@
+.categoriesItem {
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+
+  .q-chip {
+    &.q-chip--clickable:focus {
+      box-shadow: none;
+    }
+
+    &__icon {
+      display: none;
+    }
+
+    &--selected {
+      font-weight: bolder;
+    }
+  }
+}
