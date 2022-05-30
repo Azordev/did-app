@@ -6,27 +6,16 @@
       :name="provider.commercial_name"
       @update:tab-value="$emit('update:tabValue', $event)"
     />
-    <q-tab-panels
-      :model-value="tabValue"
-      @update:model-value="$emit('update:tabValue', $event)"
-      animated
-      class="bg-transparent"
-    >
-      <q-tab-panel name="history">
-        {{ provider.details }}
-      </q-tab-panel>
-
-      <q-tab-panel name="products">
-        <suspense>
-          <template #default>
-            <provider-products :id="id" :products="provider.products" />
-          </template>
-          <template #fallback>
-            <base-loading />
-          </template>
-        </suspense>
-      </q-tab-panel>
-    </q-tab-panels>
+    <div class="Provider__container">
+      <suspense>
+        <template #default>
+          <provider-products :id="id" :products="provider.products" />
+        </template>
+        <template #fallback>
+          <base-loading />
+        </template>
+      </suspense>
+    </div>
   </div>
 </template>
 
@@ -42,10 +31,6 @@ const ProviderProducts = defineAsyncComponent(
 export default defineComponent({
   name: 'ProviderLayout',
   props: {
-    tabValue: {
-      type: String,
-      default: 'history',
-    },
     id: {
       type: String,
       default: '',
