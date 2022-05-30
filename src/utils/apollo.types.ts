@@ -117,6 +117,10 @@ export interface getProviderReturnType {
   providers: provider[];
 }
 
+export interface getProductByIdReturnTypes {
+  products: product[];
+}
+
 // Util types
 export interface query_aggregate {
   __typename: string;

@@ -1,10 +1,15 @@
 import { Notify } from 'quasar';
-import { getListOfProductsQuery, getProviderProductsQuery } from '../services';
+import {
+  getListOfProductsQuery,
+  getProviderProductsQuery,
+  getProductByIdQuery,
+} from '../services';
 import {
   useQuery,
   actionCallbackReturnTypes,
   actionCallbackParamsTypes,
   getProviderReturnType,
+  getProductByIdReturnTypes,
   product,
 } from '../utils';
 import { logger } from '../utils/logger';
@@ -62,5 +67,25 @@ export const getProductsByProvider = (id: string, query = '') => {
         logger(err);
         reject(null);
       });
+  });
+};
+
+export const getProductById = (id: string) => {
+  return new Promise<product>((resolve, reject) => {
+    useQuery<getProductByIdReturnTypes>(getProductByIdQuery, { id }).then(
+      ({ products }) => {
+        if (!products || !products[0]) {
+          Notify.create({
+            message: 'No se encontro el producto',
+            type: 'negative',
+          });
+
+          reject(null);
+          return null;
+        }
+
+        resolve(products[0]);
+      }
+    );
   });
 };

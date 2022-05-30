@@ -1,5 +1,8 @@
 <template>
-  <q-card class="ProviderProduct">
+  <q-card
+    @click="$router.push({ name: 'productDetail', params: { id: product.id } })"
+    class="ProviderProduct"
+  >
     <q-card-section class="ProviderProduct__card" horizontal>
       <div class="ProviderProduct__imgContainer">
         <q-img
