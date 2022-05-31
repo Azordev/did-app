@@ -12,6 +12,7 @@ import { BaseLoading } from '../../components/LoadingComponent';
 import BackButton from '../../components/BackButton';
 import { getProductById } from '../../actions/ProductsActions';
 import { product } from 'src/utils';
+import './Product.scss';
 
 const handleProductQuery = () => {
   const route = useRoute();

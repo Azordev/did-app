@@ -1,14 +1,14 @@
 <template>
-  <div>
-    <h1>{{ product.name }}</h1>
-    <img :src="product.image_url" />
-    <div>
+  <div class="Product__container">
+    <h1 class="Product__name">{{ product.name }}</h1>
+    <q-img class="Product__image" :src="product.image_url" />
+    <div class="Product__details">
       <div>
-        <span>S/. {{ product.base_price_sol }}</span>
-        <p>{{ product.details }}</p>
+        <span class="Product__price">S/. {{ product.base_price_sol }}</span>
+        <p class="Product__description">{{ product.description }}</p>
       </div>
       <q-btn
-        class="ProductList__item_button"
+        class="Product__cart_button"
         color="accent"
         icon="add_shopping_cart"
       />
