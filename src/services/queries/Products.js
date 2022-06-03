@@ -60,9 +60,11 @@ export const getListOfProductsQuery = gql`
 `;
 
 export const getProviderProductsQuery = gql`
-  query getProviderProducts($id: uuid = "") {
+  query getProviderProducts($id: uuid = "", $query: String = "") {
     providers(where: { id: { _eq: $id } }) {
-      products {
+      products(
+        where: { name: { _ilike: $query }, description: { _ilike: $query } }
+      ) {
         id
         available
         description

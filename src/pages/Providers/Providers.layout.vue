@@ -43,7 +43,7 @@ import ListGrid from '../../components/ListGrid';
 import BackButton from '../../components/BackButton';
 import SearchBar from '../../components/SearchBar';
 import ProvidersListItem from './ProvidersListItem.vue';
-import ProvidersCategories from './ProvidersCategories.vue';
+import ProvidersCategories from '../../components/CategoriesSlider/CategoriesSlider.vue';
 
 export default defineComponent({
   name: 'ProductsLayout',

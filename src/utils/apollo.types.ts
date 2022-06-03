@@ -45,7 +45,7 @@ export interface GetUsers {
 
 // Category
 export interface category {
-  __typename: 'categories';
+  __typename?: 'categories';
   id: string;
   name: string;
 }
@@ -73,7 +73,7 @@ export interface provider {
 }
 
 export interface provider_category {
-  __typename: 'provider_categories';
+  __typename?: 'provider_categories';
   category: category;
 }
 

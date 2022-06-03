@@ -1,67 +1,91 @@
 <template>
   <div class="Provider">
     <provider-header
-      :tab-value="tabValue"
       :logo-url="provider.logo_url"
       :name="provider.commercial_name"
-      @update:tab-value="$emit('update:tabValue', $event)"
+      v-model:query-value="searchText"
+      @onSearch="getProductLists(id, searchText)"
     />
-    <q-tab-panels
-      :model-value="tabValue"
-      @update:model-value="$emit('update:tabValue', $event)"
-      animated
-      class="bg-transparent"
-    >
-      <q-tab-panel name="history">
-        {{ provider.details }}
-      </q-tab-panel>
-
-      <q-tab-panel name="products">
-        <suspense>
-          <template #default>
-            <provider-products :id="id" :products="provider.products" />
-          </template>
-          <template #fallback>
-            <base-loading />
-          </template>
-        </suspense>
-      </q-tab-panel>
-    </q-tab-panels>
+    <categories-slider
+      class="Provider__categories"
+      :categories="[]"
+      :categorySelected="''"
+    />
+    <div class="Provider__container">
+      <suspense>
+        <template #default>
+          <provider-products :products="products" />
+        </template>
+        <template #fallback>
+          <base-loading />
+        </template>
+      </suspense>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineAsyncComponent, defineComponent } from 'vue';
+import { defineComponent, PropType, ref } from 'vue';
 import { BaseLoading } from '../../components/LoadingComponent';
+import { getProductsByProvider } from '../../actions';
 import providerHeader from './ProviderHeader.vue';
+import ProviderProducts from './ProviderProducts.vue';
+import CategoriesSlider from '../../components/CategoriesSlider';
+import { product, provider } from 'src/utils';
 
-const ProviderProducts = defineAsyncComponent(
-  () => import('./ProviderProducts.vue')
-);
+const handleProviderProducts = () => {
+  const products = ref<product[]>([]);
+  const query = ref<string>('');
+  const searchText = ref<string>('');
+
+  const getProductLists = async (id: string, query: string) => {
+    if (id) {
+      await getProductsByProvider(id, query).then((res) => {
+        products.value = res;
+      });
+    }
+  };
+
+  return {
+    getProductLists,
+    query,
+    products,
+    searchText,
+  };
+};
 
 export default defineComponent({
   name: 'ProviderLayout',
   props: {
-    tabValue: {
-      type: String,
-      default: 'history',
-    },
     id: {
       type: String,
       default: '',
     },
     provider: {
-      type: Object,
+      type: Object as PropType<provider>,
       default: () => {
         return {};
       },
     },
   },
-  emits: ['update:tabValue'],
   components: {
     ProviderProducts,
+    CategoriesSlider,
     BaseLoading,
     providerHeader,
+  },
+  async setup(props) {
+    const { getProductLists, query, products, searchText } =
+      handleProviderProducts();
+
+    getProductLists(props.id, query.value);
+
+    return {
+      getProductLists,
+      products,
+      query,
+      searchText,
+    };
   },
 });
 </script>
