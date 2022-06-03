@@ -66,11 +66,14 @@ export const getSpecificProvider = (id: string) => {
 };
 
 export const getProvidersCategories = () => {
-  return new Promise<provider_category[]>((resolve) => {
-    useQuery<GetProvidersCategories>(getProviderCategory).then(
-      ({ provider_categories }) => {
+  return new Promise<provider_category[]>((resolve, reject) => {
+    useQuery<GetProvidersCategories>(getProviderCategory)
+      .then(({ provider_categories }) => {
         resolve(provider_categories);
-      }
-    );
+      })
+      .catch((err) => {
+        logger(err);
+        reject(null);
+      });
   });
 };

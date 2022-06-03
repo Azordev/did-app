@@ -72,8 +72,8 @@ export const getProductsByProvider = (id: string, query = '') => {
 
 export const getProductById = (id: string) => {
   return new Promise<product>((resolve, reject) => {
-    useQuery<getProductByIdReturnTypes>(getProductByIdQuery, { id }).then(
-      ({ products }) => {
+    useQuery<getProductByIdReturnTypes>(getProductByIdQuery, { id })
+      .then(({ products }) => {
         if (!products || !products[0]) {
           Notify.create({
             message: 'No se encontro el producto',
@@ -85,7 +85,10 @@ export const getProductById = (id: string) => {
         }
 
         resolve(products[0]);
-      }
-    );
+      })
+      .catch((err) => {
+        logger(err);
+        reject(null);
+      });
   });
 };
