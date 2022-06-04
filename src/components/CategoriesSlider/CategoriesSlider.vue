@@ -27,7 +27,7 @@ export default defineComponent({
     },
     categorySelected: {
       type: String,
-      default: null,
+      default: '',
     },
   },
   emits: ['update:categorySelected'],

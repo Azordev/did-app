@@ -1,0 +1,42 @@
+.Product {
+  &__container {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &__name {
+    font-size: 0.95rem;
+    color: $gray-dim;
+    font-weight: bolder;
+    line-height: normal;
+    margin-top: 1.31rem;
+    margin-bottom: 1.44rem;
+  }
+
+  &__image {
+    border-radius: 5px;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.25rem;
+  }
+
+  &__price {
+    color: $accent;
+    font-size: 1.125rem;
+    font-weight: bold;
+  }
+
+  &__cart_button {
+    align-self: start;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  &__description {
+    font-size: 0.75rem;
+    color: $gray-dim;
+  }
+}

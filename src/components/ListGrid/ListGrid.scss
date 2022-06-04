@@ -1,7 +1,7 @@
 .List {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+  gap: 1.25rem;
 
   &__loading {
     display: flex !important;

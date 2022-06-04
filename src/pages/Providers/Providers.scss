@@ -1,11 +1,11 @@
 .Providers {
-  padding: 10px;
+  padding: 0.625rem;
 
   &__content {
-    padding: 10px;
+    padding: 0.625rem;
 
-    @media screen and (min-width: 400px) {
-      padding: 30px;
+    @media screen and (min-width: 25rem) {
+      padding: 1.875rem;
     }
   }
 }
@@ -13,8 +13,8 @@
 .ProvidersList {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 40px 20px;
-  margin-top: 20px;
+  gap: 2.5rem 1.25rem;
+  margin-top: 1.25rem;
 
   &__item {
     cursor: pointer;
@@ -27,7 +27,7 @@
     }
   }
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 37.5rem) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }

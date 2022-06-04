@@ -17,13 +17,11 @@
         <q-btn :to="{ name: 'events' }">Events</q-btn>
         <q-btn :to="{ name: 'dashboard' }">Home</q-btn>
         <q-btn :to="{ name: 'home' }">Landing Page</q-btn>
-        <q-btn :to="{ name: 'productDetail' }">Product</q-btn>
         <q-btn :to="{ name: 'products' }">Products</q-btn>
         <q-btn :to="{ name: 'login' }">Login</q-btn>
         <q-btn :to="{ name: 'userSettings' }">Settings</q-btn>
         <q-btn :to="{ name: 'userProfile' }">User</q-btn>
         <q-btn :to="{ name: 'providers' }">Providers</q-btn>
-        <q-btn :to="{ name: 'providerDetail' }">Provider</q-btn>
       </q-toolbar>
     </q-footer>
   </q-layout>
