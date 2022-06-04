@@ -18,7 +18,11 @@ export const getListOfProducts = (variables: actionCallbackParamsTypes) => {
   return new Promise<actionCallbackReturnTypes>((resolve, reject) => {
     useQuery<getProviderReturnType>(getListOfProductsQuery, variables)
       .then(({ providers }) => {
-        if (!providers || !providers[0] || !providers[0].products) {
+        if (
+          !providers ||
+          !providers.length ||
+          !providers[0]?.products?.length
+        ) {
           Notify.create({
             message: 'No se encontraron resultados para la busqueda actual',
             type: 'negative',
@@ -51,7 +55,7 @@ export const getProductsByProvider = (id: string, query = '') => {
   return new Promise<product[]>((resolve, reject) => {
     useQuery<getProviderReturnType>(getProviderProductsQuery, variables)
       .then(({ providers }) => {
-        if (!providers || !providers[0]) {
+        if (!providers || !providers.length) {
           Notify.create({
             message: 'No se encontro al proveedor',
             type: 'negative',
@@ -74,7 +78,7 @@ export const getProductById = (id: string) => {
   return new Promise<product>((resolve, reject) => {
     useQuery<getProductByIdReturnTypes>(getProductByIdQuery, { id })
       .then(({ products }) => {
-        if (!products || !products[0]) {
+        if (!products || !products.length) {
           Notify.create({
             message: 'No se encontro el producto',
             type: 'negative',

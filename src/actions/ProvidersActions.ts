@@ -20,7 +20,7 @@ export const getListOfProviders = (variables: actionCallbackParamsTypes) => {
   return new Promise<actionCallbackReturnTypes>((resolve, reject) => {
     useQuery<getListOfProvidersReturnTypes>(getListOfProvidersQuery, variables)
       .then(({ providers, providers_aggregate }) => {
-        if (!providers || !providers[0]) {
+        if (!providers || !providers.length) {
           Notify.create({
             message: 'No se encontraron resultados para la busqueda actual',
             type: 'negative',
@@ -46,7 +46,7 @@ export const getSpecificProvider = (id: string) => {
   return new Promise<provider>((resolve, reject) => {
     useQuery<getProviderReturnType>(getProviderDetailsQuery, { id })
       .then(({ providers }) => {
-        if (!providers || !providers[0]) {
+        if (!providers || !providers.length) {
           Notify.create({
             message: 'No se encontro al proveedor',
             type: 'negative',
