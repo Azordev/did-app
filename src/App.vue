@@ -13,3 +13,17 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss">
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+#q-app {
+  height: 100%;
+}
+</style>
