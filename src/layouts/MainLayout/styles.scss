@@ -9,7 +9,6 @@
 .navbar__container {
   position: sticky;
   bottom: 0;
-  padding: 0.5rem 0 0.25rem;
 }
 
 .navbar {
@@ -20,6 +19,7 @@
   justify-content: center;
 
   &__button {
+    padding: 0.5rem 0 0.25rem;
     color: $lightgray;
     max-width: 100%;
     overflow: hidden;
@@ -39,6 +39,10 @@
     path {
       stroke: currentcolor;
       fill: currentcolor;
+    }
+
+    &--active {
+      color: $gray-dim;
     }
   }
 
