@@ -16,8 +16,14 @@ const getUsers = () => useQuery(getAllUsersQuery);
 
 export default defineComponent({
   name: 'User',
-  setup: async () => {
+  // This is an example of how to use suspense fallback
+  // with async components on VueJS
+  async setup() {
     const { result } = await getUsers();
+
+    await new Promise((res) => {
+      setTimeout(res, 3000);
+    });
 
     return { users: result };
   },
