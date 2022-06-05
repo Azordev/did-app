@@ -1,17 +1,12 @@
 <template>
-  <router-link
-    :to="{ name: 'dashboard' }"
-    custom
-    v-slot="{ isExactActive, navigate }"
-    exact
-  >
+  <router-link :to="to" custom v-slot="{ isExactActive, navigate }" exact>
     <q-btn
       :class="`navbar__button ${isExactActive ? 'navbar__button--active' : ''}`"
       @click="navigate"
       flat
     >
       <slot name="icon"></slot>
-      <span class="navbar__text">Inicio</span>
+      <span class="navbar__text">{{ title }}</span>
     </q-btn>
   </router-link>
 </template>
