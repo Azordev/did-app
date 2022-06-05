@@ -1,10 +1,16 @@
 <template>
   <div class="mainLayout">
     <div>
-      <Suspense>
-        <router-view />
-        <template #fallback> Loading... </template>
-      </Suspense>
+      <router-view v-slot="{ Component }">
+        <suspense>
+          <template #default>
+            <component :is="Component"></component>
+          </template>
+          <template #fallback>
+            <div>Loading...</div>
+          </template>
+        </suspense>
+      </router-view>
     </div>
 
     <nav bordered class="navbar__container bg-white text-black">
