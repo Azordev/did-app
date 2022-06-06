@@ -5,6 +5,7 @@
     :lastName="lastName"
     :userCode="userCode"
     :isMembershipActive="isMembershipActive"
+    :avatar="avatar"
   />
 </template>
 
@@ -60,6 +61,7 @@ const handleUserData = () => {
     ),
     ...getUserName(user.member_information[0]),
     ...getUserMemberCode(user.username),
+    avatar: user.avatar_url,
   });
 
   return { parseUserData };
@@ -79,20 +81,8 @@ export default defineComponent({
   setup(props) {
     const { parseUserData } = handleUserData();
 
-    const {
-      expirationDate,
-      firstName,
-      lastName,
-      isMembershipActive,
-      userCode,
-    } = parseUserData(props.user);
-
     return {
-      expirationDate,
-      firstName,
-      lastName,
-      isMembershipActive,
-      userCode,
+      ...parseUserData(props.user),
     };
   },
 });
