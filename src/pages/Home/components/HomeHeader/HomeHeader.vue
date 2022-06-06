@@ -21,16 +21,22 @@
       </div>
     </div>
     <div class="Header__actions">
-      <q-avatar class="Header__avatar" color="black" text-color="white">
-        <img v-if="avatar" :src="avatar" />
-        <q-icon size="38px" v-else name="person" />
-        <q-icon
-          color="black"
-          size="19px"
-          class="Header__editIcon"
-          name="edit"
-        />
-      </q-avatar>
+      <q-btn flat round>
+        <q-avatar class="Header__avatar" color="black" text-color="white">
+          <img v-if="avatar" :src="avatar" />
+          <q-icon size="2.375rem" v-else name="person" />
+          <q-icon
+            color="black"
+            size="1.19rem"
+            class="Header__editIcon"
+            name="edit"
+          />
+        </q-avatar>
+      </q-btn>
+      <q-btn class="Header__calendar" color="accent" dense no-caps>
+        <q-icon name="today" left />
+        Calendario
+      </q-btn>
     </div>
   </header>
 </template>
