@@ -1,19 +1,25 @@
 <template>
-  <home-layout :user="user" />
+  <home-layout :user="user" :events="events" />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import HomeLayout from './Home.layout.vue';
 import { user } from './mock';
+import { getListOfEventsForHome } from '../../actions';
+import { Event } from '../../utils';
 
 export default defineComponent({
   name: 'Home',
   components: {
     HomeLayout,
   },
-  setup() {
-    return { user };
+  async setup() {
+    const events = ref<Event[]>();
+
+    events.value = await getListOfEventsForHome();
+
+    return { user, events };
   },
 });
 </script>

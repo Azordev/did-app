@@ -121,6 +121,19 @@ export interface getProductByIdReturnTypes {
   products: product[];
 }
 
+// Events
+export interface Event {
+  __typename: 'events';
+  title: string;
+  image_url?: string;
+  date: string;
+}
+
+// Query returns
+export interface getListOfEventsReturnTypes {
+  events: Event[];
+}
+
 // Util types
 export interface query_aggregate {
   __typename: string;

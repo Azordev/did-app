@@ -7,12 +7,16 @@
     :isMembershipActive="isMembershipActive"
     :avatar="avatar"
   />
+  <pre>
+    {{ events }}
+  </pre>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType, ref } from 'vue';
 import { MemberInformation, UserType } from './mock';
 import { HomeHeader } from './components';
+import { Event } from '../../utils';
 
 const handleUserData = () => {
   const getExpirationDate = (expiration: string) => {
@@ -76,6 +80,10 @@ export default defineComponent({
     user: {
       type: Object as PropType<UserType>,
       default: () => ({}),
+    },
+    events: {
+      type: Array as PropType<Event[]>,
+      default: () => [],
     },
   },
   setup(props) {
