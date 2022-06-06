@@ -1,13 +1,22 @@
 <template>
   <header>
-    <p>
-      Hola<br /><span>{{ firstName }} {{ lastName }}</span>
+    <p class="Header__greetings">
+      Hola<br /><span class="Header__names"
+        >{{ firstName }} {{ lastName }}</span
+      >
     </p>
+    <div class="Header__text">
+      <p>Codigo: {{ userCode }}</p>
+      <p>{{ userMembershipStatus }}</p>
+      <p>Valido hasta: {{ parsedExpirationDate }}</p>
+    </div>
   </header>
 </template>
 
 <script>
-export default {
+import { defineComponent, computed } from 'vue';
+
+export default defineComponent({
   name: 'HomeHeader',
   props: {
     firstName: {
@@ -36,5 +45,20 @@ export default {
       require: true,
     },
   },
-};
+  setup(props) {
+    const userMembershipStatus = computed(() =>
+      props.isMembershipActive ? 'Membresia activa' : 'Membresia inactiva'
+    );
+
+    const parsedExpirationDate = computed(() =>
+      props.expirationDate.toLocaleString('en-US', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+      })
+    );
+
+    return { userMembershipStatus, parsedExpirationDate };
+  },
+});
 </script>
