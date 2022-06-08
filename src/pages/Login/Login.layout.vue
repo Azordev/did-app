@@ -67,6 +67,7 @@
 <script>
 import { defineComponent } from 'vue';
 import didLogo from '../../assets/logos/didperu.svg';
+import './Login.scss';
 
 export default defineComponent({
   props: {
