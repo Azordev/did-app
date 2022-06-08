@@ -1,5 +1,5 @@
 <template>
-  <q-btn class="button_custom" type="button" @click="onClick" color="accent">{{
+  <q-btn class="button_custom" type="button" @click="onClick">{{
     label
   }}</q-btn>
 </template>
