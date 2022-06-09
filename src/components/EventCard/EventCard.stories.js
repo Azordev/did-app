@@ -21,4 +21,5 @@ Default.args = {
   title: 'Reunion Privada',
   image_url: DIDLogo,
   date: new Date(),
+  isAnnouncement: false,
 };

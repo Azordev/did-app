@@ -9,8 +9,11 @@
         <p>{{ title }}</p>
       </div>
 
-      <div class="q-p-none EventCard__date">
+      <div class="EventCard__date">
         <strong>{{ parsedExpirationDate }}</strong>
+      </div>
+      <div v-if="isAnnouncement" class="EventCard__bookmark">
+        <book-mark label="Convocatoria" />
       </div>
     </q-card-section>
   </q-card>
@@ -19,9 +22,13 @@
 <script lang="ts">
 import './styles.scss';
 import { computed, defineComponent } from 'vue';
+import BookMark from '../BookMark';
 
 export default defineComponent({
   name: 'EventCard',
+  components: {
+    BookMark,
+  },
   props: {
     title: {
       type: String,
@@ -34,6 +41,10 @@ export default defineComponent({
     date: {
       type: Date,
       default: new Date('01/01/1999'),
+    },
+    isAnnouncement: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {

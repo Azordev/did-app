@@ -6,7 +6,6 @@
 
   &__container {
     height: 100%;
-    overflow: hidden;
   }
 
   &__image {
@@ -47,5 +46,10 @@
     position: absolute;
     bottom: 0px;
     right: 0px;
+  }
+
+  &__bookmark {
+    position: absolute;
+    right: -10px;
   }
 }

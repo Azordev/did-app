@@ -1,12 +1,11 @@
 .BookMark {
   background-color: $accent;
   width: max-content;
-  padding: 0.3rem;
   color: white;
   font-weight: 300;
   font-size: 0.75rem;
-  position: absolute;
-  padding-left: 10px;
+  position: relative;
+  padding: 0.3rem 0.95em;
 
   &::before {
     content: '';
