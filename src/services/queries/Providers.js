@@ -47,9 +47,12 @@ export const getProviderDetailsQuery = gql`
   }
 `;
 
-export const getProvidersForHome = gql`
+export const getProvidersForHomeQuery = gql`
   query GetProvidersForHome($limit: Int = 6) {
-    providers(where: { logo_url: { _is_null: false } }, limit: $limit) {
+    providers(
+      where: { logo_url: { _is_null: false }, is_active: { _eq: true } }
+      limit: $limit
+    ) {
       logo_url
       id
     }

@@ -1,5 +1,9 @@
 import { Notify } from 'quasar';
-import { getListOfProvidersQuery, getProviderDetailsQuery } from '../services';
+import {
+  getListOfProvidersQuery,
+  getProviderDetailsQuery,
+  getProvidersForHomeQuery,
+} from '../services';
 import {
   useQuery,
   actionCallbackReturnTypes,
@@ -51,6 +55,27 @@ export const getSpecificProvider = (id: string) => {
         }
 
         resolve(providers[0]);
+      })
+      .catch((err) => {
+        logger(err);
+        reject(null);
+      });
+  });
+};
+
+export interface GetListOfProvidersForHomeProps {
+  limit: number;
+}
+
+export const getListOfProvidersForHome = (
+  variables: GetListOfProvidersForHomeProps = {
+    limit: 6,
+  }
+) => {
+  return new Promise<Provider[]>((resolve, reject) => {
+    useQuery<getListOfProvidersReturnTypes>(getProvidersForHomeQuery, variables)
+      .then(({ providers }) => {
+        resolve(providers);
       })
       .catch((err) => {
         logger(err);
