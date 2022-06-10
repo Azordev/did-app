@@ -46,3 +46,12 @@ export const getProviderDetailsQuery = gql`
     }
   }
 `;
+
+export const getProvidersForHome = gql`
+  query GetProvidersForHome($limit: Int = 6) {
+    providers(where: { logo_url: { _is_null: false } }, limit: $limit) {
+      logo_url
+      id
+    }
+  }
+`;
