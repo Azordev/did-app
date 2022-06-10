@@ -1,10 +1,12 @@
 <template>
-  <home-title>{{ title }}</home-title>
-  <horizontal-scroll>
-    <slot>
-      <div class="HomeList__comingSoon">Muy pronto!</div>
-    </slot>
-  </horizontal-scroll>
+  <div>
+    <home-title>{{ title }}</home-title>
+    <horizontal-scroll>
+      <slot>
+        <div class="HomeList__comingSoon">Muy pronto!</div>
+      </slot>
+    </horizontal-scroll>
+  </div>
 </template>
 
 <script setup lang="ts">

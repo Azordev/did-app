@@ -1,0 +1,11 @@
+@import '../../css/app.scss';
+
+.HomeLayout {
+  &__content {
+    padding: 1.375rem 0 1.25rem 2rem;
+  }
+
+  &__list {
+    margin-bottom: 40px;
+  }
+}
