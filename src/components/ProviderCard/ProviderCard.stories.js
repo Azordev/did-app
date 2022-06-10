@@ -10,10 +10,16 @@ export default {
 const Template = (args) => ({
   components: { ProviderCard },
   setup() {
-    return { args };
+    const styles = {
+      justifyContent: 'center',
+      backgroundColor: '#ccc',
+      display: 'flex',
+      padding: '10px',
+    };
+
+    return { args, styles };
   },
-  template:
-    '<div style="justify-content: center; background-color: #ccc; display: flex; padding: 10px;"><provider-card v-bind="args" /></div>',
+  template: '<div :style="styles"><provider-card v-bind="args" /></div>',
 });
 
 export const Default = Template.bind({});
