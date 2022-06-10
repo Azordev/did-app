@@ -7,9 +7,6 @@
     :isMembershipActive="isMembershipActive"
     :avatar="avatar"
   />
-  <pre>
-    {{ events }}
-  </pre>
 </template>
 
 <script lang="ts">
