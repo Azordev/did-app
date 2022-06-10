@@ -1,4 +1,4 @@
-import { GetEventsForHomeQuery } from '../services';
+import { EVENTS_QUERY } from '../services';
 import { useQuery, getListOfEventsReturnTypes, Event } from '../utils';
 
 import { logger } from '../utils/logger';
@@ -13,7 +13,7 @@ export const getListOfEventsForHome = (
   }
 ) => {
   return new Promise<Event[]>((resolve, reject) => {
-    useQuery<getListOfEventsReturnTypes>(GetEventsForHomeQuery, variables)
+    useQuery<getListOfEventsReturnTypes>(EVENTS_QUERY, variables)
       .then(({ events }) => {
         resolve(events);
       })

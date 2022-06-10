@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const getListOfProductsQuery = gql`
+export const PRODUCTS_QUERY = gql`
   query getListOfProducts(
     $query: String = "%%"
     $limit: Int = 10
@@ -59,7 +59,7 @@ export const getListOfProductsQuery = gql`
   }
 `;
 
-export const getProviderProductsQuery = gql`
+export const PRODUCTS_BY_PROVIDER_QUERY = gql`
   query getProviderProducts($id: uuid = "", $query: String = "") {
     providers(where: { id: { _eq: $id } }) {
       products(
@@ -78,7 +78,7 @@ export const getProviderProductsQuery = gql`
   }
 `;
 
-export const getProductByIdQuery = gql`
+export const PRODUCT_QUERY = gql`
   query getDetailProduct($id: uuid = "") {
     products(where: { id: { _eq: $id } }) {
       base_price_sol

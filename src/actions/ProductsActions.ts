@@ -1,8 +1,8 @@
 import { Notify } from 'quasar';
 import {
-  getListOfProductsQuery,
-  getProviderProductsQuery,
-  getProductByIdQuery,
+  PRODUCTS_QUERY,
+  PRODUCTS_BY_PROVIDER_QUERY,
+  PRODUCT_QUERY,
 } from '../services';
 import {
   useQuery,
@@ -16,7 +16,7 @@ import { logger } from '../utils/logger';
 
 export const getListOfProducts = (variables: actionCallbackParamsTypes) => {
   return new Promise<actionCallbackReturnTypes>((resolve, reject) => {
-    useQuery<getProviderReturnType>(getListOfProductsQuery, variables)
+    useQuery<getProviderReturnType>(PRODUCTS_QUERY, variables)
       .then(({ providers }) => {
         if (
           !providers ||
@@ -53,7 +53,7 @@ export const getProductsByProvider = (id: string, query = '') => {
   };
 
   return new Promise<product[]>((resolve, reject) => {
-    useQuery<getProviderReturnType>(getProviderProductsQuery, variables)
+    useQuery<getProviderReturnType>(PRODUCTS_BY_PROVIDER_QUERY, variables)
       .then(({ providers }) => {
         if (!providers || !providers.length) {
           Notify.create({
@@ -76,7 +76,7 @@ export const getProductsByProvider = (id: string, query = '') => {
 
 export const getProductById = (id: string) => {
   return new Promise<product>((resolve, reject) => {
-    useQuery<getProductByIdReturnTypes>(getProductByIdQuery, { id })
+    useQuery<getProductByIdReturnTypes>(PRODUCT_QUERY, { id })
       .then(({ products }) => {
         if (!products || !products.length) {
           Notify.create({

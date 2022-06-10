@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const GetEventsForHomeQuery = gql`
+export const EVENTS_QUERY = gql`
   query GetEventsForHome($limit: Int = 4) {
     events(
       order_by: { date: asc }

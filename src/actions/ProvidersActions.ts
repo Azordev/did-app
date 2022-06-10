@@ -1,9 +1,5 @@
 import { Notify } from 'quasar';
-import {
-  getListOfProvidersQuery,
-  getProviderDetailsQuery,
-  getProvidersForHomeQuery,
-} from '../services';
+import { PROVIDERS_QUERY, PROVIDER_QUERY } from '../services';
 import {
   useQuery,
   actionCallbackReturnTypes,
@@ -16,7 +12,7 @@ import { logger } from '../utils/logger';
 
 export const getListOfProviders = (variables: actionCallbackParamsTypes) => {
   return new Promise<actionCallbackReturnTypes>((resolve, reject) => {
-    useQuery<getListOfProvidersReturnTypes>(getListOfProvidersQuery, variables)
+    useQuery<getListOfProvidersReturnTypes>(PROVIDERS_QUERY, variables)
       .then(({ providers, providers_aggregate }) => {
         if (!providers || !providers.length) {
           Notify.create({
@@ -42,7 +38,7 @@ export const getListOfProviders = (variables: actionCallbackParamsTypes) => {
 
 export const getSpecificProvider = (id: string) => {
   return new Promise<Provider>((resolve, reject) => {
-    useQuery<getProviderReturnType>(getProviderDetailsQuery, { id })
+    useQuery<getProviderReturnType>(PROVIDER_QUERY, { id })
       .then(({ providers }) => {
         if (!providers || !providers.length) {
           Notify.create({
@@ -66,20 +62,3 @@ export const getSpecificProvider = (id: string) => {
 export interface GetListOfProvidersForHomeProps {
   limit: number;
 }
-
-export const getListOfProvidersForHome = (
-  variables: GetListOfProvidersForHomeProps = {
-    limit: 6,
-  }
-) => {
-  return new Promise<Provider[]>((resolve, reject) => {
-    useQuery<getListOfProvidersReturnTypes>(getProvidersForHomeQuery, variables)
-      .then(({ providers }) => {
-        resolve(providers);
-      })
-      .catch((err) => {
-        logger(err);
-        reject(null);
-      });
-  });
-};

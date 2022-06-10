@@ -6,10 +6,7 @@
 import { defineComponent, ref } from 'vue';
 import HomeLayout from './Home.layout.vue';
 import { user } from './mock';
-import {
-  getListOfEventsForHome,
-  getListOfProvidersForHome,
-} from '../../actions';
+import { getListOfEventsForHome, getListOfProviders } from '../../actions';
 import { Event, Provider } from '../../utils';
 
 export default defineComponent({
@@ -22,7 +19,9 @@ export default defineComponent({
     const providers = ref<Provider[]>();
 
     events.value = await getListOfEventsForHome();
-    providers.value = await getListOfProvidersForHome();
+    await getListOfProviders({ limit: 6 }).then(({ items }) => {
+      providers.value = items;
+    });
 
     return { user, events, providers };
   },
