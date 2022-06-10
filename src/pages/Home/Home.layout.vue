@@ -20,7 +20,17 @@
     </home-list>
     <home-list class="HomeLayout__list" title="Proveedores">
       <div v-for="provider of providers" :key="provider.id">
-        <provider-card :image_url="provider.logo_url" :id="provider.id" />
+        <provider-card
+          :onClick="
+            () =>
+              $router.push({
+                name: 'providerDetail',
+                params: { provider: provider.id },
+              })
+          "
+          :image_url="provider.logo_url"
+          :id="provider.id"
+        />
       </div>
     </home-list>
   </div>
