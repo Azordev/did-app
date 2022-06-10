@@ -47,7 +47,7 @@ import './styles.scss';
 
 export interface HomeHeaderProps {
   firstName: string;
-  lastname: number;
+  lastName: number;
   userCode: string;
   isMembershipActive: boolean;
   expirationDate: Date;
