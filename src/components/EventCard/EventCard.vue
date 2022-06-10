@@ -1,5 +1,5 @@
 <template>
-  <q-card class="EventCard">
+  <q-card @click="$emit('onClick')" class="EventCard">
     <q-card-section class="EventCard__container" horizontal>
       <div class="EventCard__imageContainer">
         <q-img class="EventCard__image" ratio="4/3" :src="image_url" />

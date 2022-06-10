@@ -15,18 +15,25 @@
           :image_url="event.image_url"
           :date="new Date(event.date)"
           :isAnnouncement="event.type === 'PUBLIC'"
+          @onClick="
+            $router.push({
+              name: 'eventDetail',
+              params: {
+                event: event.id,
+              },
+            })
+          "
         />
       </div>
     </home-list>
     <home-list class="HomeLayout__list" title="Proveedores">
       <div v-for="provider of providers" :key="provider.id">
         <provider-card
-          :onClick="
-            () =>
-              $router.push({
-                name: 'providerDetail',
-                params: { provider: provider.id },
-              })
+          @onClick="
+            $router.push({
+              name: 'providerDetail',
+              params: { provider: provider.id },
+            })
           "
           :image_url="provider.logo_url"
           :id="provider.id"
