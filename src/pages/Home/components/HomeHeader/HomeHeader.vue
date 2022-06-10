@@ -47,11 +47,11 @@ import './styles.scss';
 
 export interface HomeHeaderProps {
   firstName: string;
-  lastName: number;
+  lastName: string;
   userCode: string;
   isMembershipActive: boolean;
   expirationDate: Date;
-  avatar: string;
+  avatar?: string;
 }
 
 const props = defineProps<HomeHeaderProps>();
