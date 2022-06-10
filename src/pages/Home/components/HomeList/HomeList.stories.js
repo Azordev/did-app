@@ -31,23 +31,24 @@ Events.args = {
   title: 'Events',
 };
 
-export const ProviderCard = (args) => ({
-  components: { HomeList, EventCard },
+export const Providers = (args) => ({
+  components: { HomeList, ProviderCard },
   setup() {
-    return { args, events };
+    return { args, providers };
   },
   template: `
-  <home-list v-bind="args">
-    <div v-for="event of events" :key="event.id">
-      <event-card
-        :title="event.title"
-        :date="new Date(event.date)"
-        :image_url="event.image_url"
-        :isAnnouncement="event.type == 'PUBLIC'"
-      />
-    </div>
-  </home-list>`,
+  <div style="background-color: #f2f2f2; padding: 4px;">
+    <home-list v-bind="args">
+      <div v-for="provider of providers" :key="provider.id">
+        <provider-card
+        :image_url="provider.logo_url"
+        :id="provider.id"
+        />
+      </div>
+    </home-list>
+  </div>
+  `,
 });
 ProviderCard.args = {
-  title: 'Events',
+  title: 'Proveedores',
 };
