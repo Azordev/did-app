@@ -40,10 +40,10 @@ export const handleUserData = () => {
     const memberCode = ref<string>(user.username);
     const avatar = user.avatar_url;
 
-    const { firstName, lastName } = getUserName(user.member_information[0]);
+    const { firstName, lastName } = getUserName(user.member_info[0]);
 
     const { expirationDate, isMembershipActive } = getExpirationDate(
-      user.member_information[0].subscriptions[0].expiration
+      user.member_info[0].subscriptions[0].expiration
     );
 
     return {
