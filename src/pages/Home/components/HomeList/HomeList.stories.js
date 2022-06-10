@@ -1,6 +1,6 @@
 import HomeList from './HomeList.vue';
 import EventCard from '../../../../components/EventCard';
-import { events } from './mock.ts';
+import { events } from '../../../Events/mock.ts';
 
 export default {
   title: 'Home/Components/HomeList',
@@ -25,3 +25,6 @@ export const Events = (args) => ({
     </div>
   </home-list>`,
 });
+Events.args = {
+  title: 'Events',
+};

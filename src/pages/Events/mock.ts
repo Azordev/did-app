@@ -1,5 +1,5 @@
-import { Event } from '../../../../utils';
-import DIDLogo from '../../../../assets/logos/didperu.svg';
+import { Event } from '../../utils';
+import DIDLogo from '../../assets/logos/didperu.svg';
 
 export const events: Event[] = [
   {
