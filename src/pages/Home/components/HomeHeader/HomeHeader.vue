@@ -41,57 +41,30 @@
   </header>
 </template>
 
-<script>
-import { defineComponent, computed } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 import './styles.scss';
 
-export default defineComponent({
-  name: 'HomeHeader',
-  props: {
-    firstName: {
-      type: String,
-      default: '',
-      require: true,
-    },
-    lastName: {
-      type: String,
-      default: '',
-      require: true,
-    },
-    userCode: {
-      type: String,
-      default: '',
-      require: true,
-    },
-    isMembershipActive: {
-      type: Boolean,
-      default: false,
-      require: true,
-    },
-    expirationDate: {
-      type: Date,
-      default: new Date('01/01/1999'),
-      require: true,
-    },
-    avatar: {
-      type: String,
-      default: '',
-    },
-  },
-  setup(props) {
-    const userMembershipStatus = computed(() =>
-      props.isMembershipActive ? 'Membresia activa' : 'Membresia inactiva'
-    );
+export interface HomeHeaderProps {
+  firstName: string;
+  lastname: number;
+  userCode: string;
+  isMembershipActive: boolean;
+  expirationDate: Date;
+  avatar: string;
+}
 
-    const parsedExpirationDate = computed(() =>
-      props.expirationDate.toLocaleString('en-US', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-      })
-    );
+const props = defineProps<HomeHeaderProps>();
 
-    return { userMembershipStatus, parsedExpirationDate };
-  },
-});
+const userMembershipStatus = computed(() =>
+  props.isMembershipActive ? 'Membresia activa' : 'Membresia inactiva'
+);
+
+const parsedExpirationDate = computed(() =>
+  props.expirationDate.toLocaleString('en-US', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  })
+);
 </script>

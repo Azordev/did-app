@@ -10,7 +10,7 @@
       </div>
 
       <div class="EventCard__date">
-        <strong>{{ parsedExpirationDate }}</strong>
+        <strong>{{ parsedDate }}</strong>
       </div>
       <div v-if="isAnnouncement" class="EventCard__bookmark">
         <book-mark label="Convocatoria" />
@@ -48,7 +48,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const parsedExpirationDate = computed(() =>
+    const parsedDate = computed(() =>
       props.date.toLocaleString('en-US', {
         day: '2-digit',
         month: '2-digit',
@@ -56,7 +56,7 @@ export default defineComponent({
       })
     );
 
-    return { parsedExpirationDate };
+    return { parsedDate };
   },
 });
 </script>

@@ -124,9 +124,11 @@ export interface getProductByIdReturnTypes {
 // Events
 export interface Event {
   __typename: 'events';
+  id: string;
   title: string;
   image_url?: string;
   date: string;
+  type: 'PRIVATE' | 'PUBLIC';
 }
 
 // Query returns

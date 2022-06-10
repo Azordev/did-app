@@ -1,7 +1,7 @@
 <template>
-  <div class="HorizontalScroll">
+  <h2 class="HomeTitle">
     <slot></slot>
-  </div>
+  </h2>
 </template>
 
 <script setup>
