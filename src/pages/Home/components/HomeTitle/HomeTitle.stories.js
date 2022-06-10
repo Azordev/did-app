@@ -1,7 +1,7 @@
 import HomeTitle from './HomeTitle.vue';
 
 export default {
-  title: 'Home/Components/HomeTitle',
+  title: 'Pages/Home/Components/HomeTitle',
   component: HomeTitle,
   argTypes: {
     default: {

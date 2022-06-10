@@ -1,7 +1,7 @@
 import HomeHeader from './HomeHeader.vue';
 
 export default {
-  title: 'Home/Components/Header',
+  title: 'Pages/Home/Components/Header',
   component: HomeHeader,
   argsTypes: {
     expirationDate: {
@@ -11,7 +11,7 @@ export default {
 };
 
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
-const Template = (args) => ({
+const HomeHeaderTemplate = (args) => ({
   components: { HomeHeader },
   setup() {
     return { args };
@@ -19,7 +19,7 @@ const Template = (args) => ({
   template: '<home-header v-bind="args" />',
 });
 
-export const Default = Template.bind({});
+export const Default = HomeHeaderTemplate.bind({});
 // More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Default.args = {
   userCode: 'VP00000000',

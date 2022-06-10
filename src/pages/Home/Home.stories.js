@@ -4,12 +4,12 @@ import { events } from '../Events/mock.ts';
 import { providers } from '../Providers/mock.ts';
 
 export default {
-  title: 'Home/Page',
+  title: 'Pages/Home',
   component: HomeLayout,
 };
 
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
-const Template = (args) => ({
+const HomeTemplate = (args) => ({
   components: { HomeLayout },
   setup() {
     return { args };
@@ -18,9 +18,9 @@ const Template = (args) => ({
     '<div style="background-color: #f2f2f2"><home-layout v-bind="args" /></div>',
 });
 
-export const Default = Template.bind({});
+export const Page = HomeTemplate.bind({});
 // More on args: https://storybook.js.org/docs/vue/writing-stories/args
-Default.args = {
+Page.args = {
   user,
   events,
   providers,

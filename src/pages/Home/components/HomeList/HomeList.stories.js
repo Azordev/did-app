@@ -5,7 +5,7 @@ import { events } from '../../../Events/mock.ts';
 import { providers } from '../../../Providers/mock.ts';
 
 export default {
-  title: 'Home/Components/HomeList',
+  title: 'Pages/Home/Components/HomeList',
   component: HomeList,
 };
 

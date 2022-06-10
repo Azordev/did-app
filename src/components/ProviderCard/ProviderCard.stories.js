@@ -2,7 +2,7 @@ import ProviderCard from './ProviderCard';
 import DIDLogo from '../../assets/logos/didperu.svg';
 
 export default {
-  title: 'Pages/Providers/ProviderCard',
+  title: 'Pages/Providers/Components/ProviderCard',
   component: ProviderCard,
 };
 

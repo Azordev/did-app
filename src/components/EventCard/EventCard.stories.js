@@ -2,7 +2,7 @@ import EventCard from './EventCard';
 import DIDLogo from '../../assets/logos/didperu.svg';
 
 export default {
-  title: 'Events/Components/Card',
+  title: 'Pages/Events/Components/Card',
   component: EventCard,
 };
 
