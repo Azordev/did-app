@@ -28,7 +28,7 @@ export type actionCallbackType =
 // Users
 export interface Users {
   __typename: 'users';
-  username: string;
+  member_code: string;
   id: string;
   avatar_url: string;
   is_active: boolean;

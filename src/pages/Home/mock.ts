@@ -13,14 +13,14 @@ export type MemberInformation = {
 export type UserType = {
   __typename: 'users';
   avatar_url: string | null;
-  username: string;
+  member_code: string;
   member_info: MemberInformation[];
 };
 
 export const user = {
   __typename: 'users',
   avatar_url: null,
-  username: 'VP00000000',
+  member_code: 'VP00000000',
   member_info: [
     {
       __typename: 'members',
