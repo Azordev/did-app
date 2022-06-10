@@ -5,7 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import './styles.scss';
 
 interface ProviderCardProps {

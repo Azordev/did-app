@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import './styles.scss';
-import { computed, defineProps } from 'vue';
+import { computed } from 'vue';
 import BookMark from '../BookMark';
 
 export interface EventCardProps {

@@ -1,4 +1,4 @@
-import EventCard from './EventCard.vue';
+import EventCard from './EventCard';
 import DIDLogo from '../../assets/logos/didperu.svg';
 
 export default {

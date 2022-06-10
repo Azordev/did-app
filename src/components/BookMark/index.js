@@ -1,3 +1,3 @@
-import BookMark from './BookMark';
+import BookMark from './BookMark.vue';
 
 export default BookMark;

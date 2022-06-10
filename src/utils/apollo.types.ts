@@ -51,7 +51,7 @@ export interface category {
 }
 
 // Providers
-export interface provider {
+export interface Provider {
   __typename: 'providers';
   id: string;
   logo_url: string;
@@ -79,12 +79,12 @@ export interface provider_category {
 
 // Query returns
 export interface getListOfProvidersReturnTypes {
-  providers: provider[];
+  providers: Provider[];
   providers_aggregate: query_aggregate;
 }
 
 export interface getProviderReturnType {
-  providers: provider[];
+  providers: Provider[];
 }
 
 export interface GetProvidersCategories {
@@ -109,12 +109,12 @@ export interface product {
 
 // Query returns
 export interface getListOfProvidersReturnTypes {
-  providers: provider[];
+  providers: Provider[];
   providers_aggregate: query_aggregate;
 }
 
 export interface getProviderReturnType {
-  providers: provider[];
+  providers: Provider[];
 }
 
 export interface getProductByIdReturnTypes {

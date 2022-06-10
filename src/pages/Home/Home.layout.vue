@@ -13,7 +13,7 @@
         <event-card
           :title="event.title"
           :image_url="event.image_url"
-          :date="event.date"
+          :date="new Date(event.date)"
           :isAnnouncement="event.type === 'PUBLIC'"
         />
       </div>
@@ -27,18 +27,17 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import { UserType } from './mock';
 import { HomeHeader, HomeList } from './components';
 import { ProviderCard, EventCard } from '../../components';
-import { Event, provider } from '../../utils';
+import { Event, Provider } from '../../utils';
 import { handleUserData } from './utils/handleUserData.ts';
 import './styles.scss';
 
 interface HomeLayoutProps {
   user: UserType;
   events: Event[];
-  providers: provider[];
+  providers: Provider[];
 }
 
 const props = defineProps<HomeLayoutProps>();

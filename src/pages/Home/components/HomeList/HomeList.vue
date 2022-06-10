@@ -10,8 +10,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
-
 import HorizontalScroll from '../../../../components/HorizontalScroll';
 import HomeTitle from '../HomeTitle';
 

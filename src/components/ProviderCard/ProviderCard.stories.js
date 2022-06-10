@@ -1,4 +1,4 @@
-import ProviderCard from './ProviderCard.vue';
+import ProviderCard from './ProviderCard';
 import DIDLogo from '../../assets/logos/didperu.svg';
 
 export default {

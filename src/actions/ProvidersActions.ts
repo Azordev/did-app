@@ -4,11 +4,9 @@ import {
   useQuery,
   actionCallbackReturnTypes,
   actionCallbackParamsTypes,
-  provider,
+  Provider,
   getListOfProvidersReturnTypes,
   getProviderReturnType,
-  provider_category,
-  GetProvidersCategories,
 } from '../utils';
 import { logger } from '../utils/logger';
 
@@ -39,7 +37,7 @@ export const getListOfProviders = (variables: actionCallbackParamsTypes) => {
 };
 
 export const getSpecificProvider = (id: string) => {
-  return new Promise<provider>((resolve, reject) => {
+  return new Promise<Provider>((resolve, reject) => {
     useQuery<getProviderReturnType>(getProviderDetailsQuery, { id })
       .then(({ providers }) => {
         if (!providers || !providers.length) {
