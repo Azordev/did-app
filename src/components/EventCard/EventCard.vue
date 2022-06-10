@@ -19,44 +19,25 @@
   </q-card>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import './styles.scss';
-import { computed, defineComponent } from 'vue';
+import { computed, defineProps } from 'vue';
 import BookMark from '../BookMark';
 
-export default defineComponent({
-  name: 'EventCard',
-  components: {
-    BookMark,
-  },
-  props: {
-    title: {
-      type: String,
-      default: '',
-    },
-    image_url: {
-      type: String,
-      default: '',
-    },
-    date: {
-      type: Date,
-      default: new Date('01/01/1999'),
-    },
-    isAnnouncement: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  setup(props) {
-    const parsedDate = computed(() =>
-      props.date.toLocaleString('en-US', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-      })
-    );
+export interface EventCardProps {
+  title: string;
+  image_url: string;
+  date: Date;
+  isAnnouncement: boolean;
+}
 
-    return { parsedDate };
-  },
-});
+const props = defineProps<EventCardProps>();
+
+const parsedDate = computed(() =>
+  props.date.toLocaleString('en-US', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  })
+);
 </script>
