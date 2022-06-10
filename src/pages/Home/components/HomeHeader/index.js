@@ -1,3 +1,3 @@
-import HomeHeader from './HomeHeader';
+import HomeHeader from './HomeHeader.vue';
 
 export default HomeHeader;

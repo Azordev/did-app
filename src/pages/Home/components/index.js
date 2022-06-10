@@ -1,5 +1,5 @@
-import HomeHeader from './HomeHeader/HomeHeader.vue';
+import HomeHeader from './HomeHeader';
 import HomeProviders from './HomeProviders.vue';
-import HomeEvents from './HomeEvents.vue';
+import HomeList from './HomeList';
 
-export { HomeHeader, HomeProviders, HomeEvents };
+export { HomeHeader, HomeProviders, HomeList };

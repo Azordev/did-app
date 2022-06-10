@@ -2,7 +2,7 @@
   <home-title>{{ title }}</home-title>
   <horizontal-scroll>
     <slot>
-      <div class="HomeEvents__comingSoon">Muy pronto!</div>
+      <div class="HomeList__comingSoon">Muy pronto!</div>
     </slot>
   </horizontal-scroll>
 </template>
@@ -15,9 +15,9 @@ import HomeTitle from '../HomeTitle';
 
 import './styles.scss';
 
-interface HomeEventsProps {
+interface HomeListProps {
   title: string;
 }
 
-defineProps<HomeEventsProps>();
+defineProps<HomeListProps>();
 </script>
