@@ -2,9 +2,9 @@ import gql from 'graphql-tag';
 
 export const userInfo = gql`
   fragment userInfo on users {
-    username
+    member_code
     avatar_url
-    member_information {
+    member_info {
       first_names
       last_names
       subscriptions {

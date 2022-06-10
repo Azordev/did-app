@@ -3,7 +3,7 @@
     :expirationDate="expirationDate"
     :firstName="firstName"
     :lastName="lastName"
-    :userCode="userCode"
+    :memberCode="memberCode"
     :isMembershipActive="isMembershipActive"
     :avatar="avatar"
   />
@@ -66,7 +66,7 @@ const {
   isMembershipActive,
   firstName,
   lastName,
-  userCode,
+  memberCode,
   avatar,
 } = parseUserData(props.user);
 </script>

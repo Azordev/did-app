@@ -22,7 +22,7 @@ const HomeHeaderTemplate = (args) => ({
 export const Default = HomeHeaderTemplate.bind({});
 // More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Default.args = {
-  userCode: 'VP00000000',
+  memberCode: 'VP00000000',
   firstName: 'Victor',
   lastName: 'Colmenarez',
   isMembershipActive: true,

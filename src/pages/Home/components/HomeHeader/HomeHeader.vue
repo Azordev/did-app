@@ -7,7 +7,7 @@
         >
       </p>
       <div class="Header__text">
-        <p>Codigo: {{ userCode }}</p>
+        <p>Codigo: {{ memberCode }}</p>
         <p
           :class="`Header__membership ${
             isMembershipActive
@@ -48,7 +48,7 @@ import './styles.scss';
 export interface HomeHeaderProps {
   firstName: string;
   lastName: string;
-  userCode: string;
+  memberCode: string;
   isMembershipActive: boolean;
   expirationDate: Date;
   avatar?: string;

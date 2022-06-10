@@ -37,7 +37,7 @@ export const handleUserData = () => {
   };
 
   const parseUserData = (user: UserType) => {
-    const userCode = ref<string>(user.username);
+    const memberCode = ref<string>(user.username);
     const avatar = user.avatar_url;
 
     const { firstName, lastName } = getUserName(user.member_information[0]);
@@ -47,7 +47,7 @@ export const handleUserData = () => {
     );
 
     return {
-      userCode,
+      memberCode,
       firstName,
       lastName,
       avatar,
