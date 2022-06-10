@@ -36,20 +36,25 @@ export const handleUserData = () => {
     };
   };
 
-  const getUserMemberCode = (username: string) => {
-    const userCode = ref<string>(username);
+  const parseUserData = (user: UserType) => {
+    const userCode = ref<string>(user.username);
+    const avatar = user.avatar_url;
 
-    return { userCode };
-  };
+    const { firstName, lastName } = getUserName(user.member_information[0]);
 
-  const parseUserData = (user: UserType) => ({
-    ...getExpirationDate(
+    const { expirationDate, isMembershipActive } = getExpirationDate(
       user.member_information[0].subscriptions[0].expiration
-    ),
-    ...getUserName(user.member_information[0]),
-    ...getUserMemberCode(user.username),
-    avatar: user.avatar_url,
-  });
+    );
+
+    return {
+      userCode,
+      firstName,
+      lastName,
+      avatar,
+      expirationDate,
+      isMembershipActive,
+    };
+  };
 
   return { parseUserData };
 };

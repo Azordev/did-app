@@ -17,7 +17,7 @@ export const getAllUsersQuery = gql`
 
 export const getUserSessionQuery = gql`
   ${userInfo}
-  query GetUserSession($password: String = "", $user_code: String = "") {
+  query GetUserSession($password: String!, $user_code: String!) {
     users(
       where: { password: { _eq: $password }, username: { _eq: $user_code } }
     ) {
@@ -28,7 +28,7 @@ export const getUserSessionQuery = gql`
 
 export const getUserByIdQuery = gql`
   ${userInfo}
-  query getUsers($id: uuid = "") {
+  query getUsers($id: uuid!) {
     users(where: { is_active: { _eq: true }, id: { _eq: $id } }) {
       ...userInfo
     }
