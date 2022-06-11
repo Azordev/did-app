@@ -8,4 +8,24 @@
   &__list {
     margin-bottom: 2.5rem;
   }
+
+  &__seeAll {
+    display: flex;
+    height: 6.375rem;
+    width: 5rem;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+
+    a {
+      color: $dark;
+      text-decoration: underline;
+    }
+  }
+
+  &__listItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
