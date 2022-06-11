@@ -1,5 +1,5 @@
 import { Notify } from 'quasar';
-import { PROVIDERS_QUERY, PROVIDER_QUERY } from '../services';
+import { PROVIDERS_QUERY, PROVIDER_BY_ID_QUERY } from '../services';
 import {
   useQuery,
   actionCallbackReturnTypes,
@@ -38,7 +38,7 @@ export const getListOfProviders = (variables: actionCallbackParamsTypes) => {
 
 export const getSpecificProvider = (id: string) => {
   return new Promise<Provider>((resolve, reject) => {
-    useQuery<getProviderReturnType>(PROVIDER_QUERY, { id })
+    useQuery<getProviderReturnType>(PROVIDER_BY_ID_QUERY, { id })
       .then(({ providers }) => {
         if (!providers || !providers.length) {
           Notify.create({

@@ -2,7 +2,7 @@ import { Notify } from 'quasar';
 import {
   PRODUCTS_QUERY,
   PRODUCTS_BY_PROVIDER_QUERY,
-  PRODUCT_QUERY,
+  PRODUCT_BY_ID_QUERY,
 } from '../services';
 import {
   useQuery,
@@ -76,7 +76,7 @@ export const getProductsByProvider = (id: string, query = '') => {
 
 export const getProductById = (id: string) => {
   return new Promise<product>((resolve, reject) => {
-    useQuery<getProductByIdReturnTypes>(PRODUCT_QUERY, { id })
+    useQuery<getProductByIdReturnTypes>(PRODUCT_BY_ID_QUERY, { id })
       .then(({ products }) => {
         if (!products || !products.length) {
           Notify.create({

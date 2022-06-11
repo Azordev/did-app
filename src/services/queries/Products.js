@@ -78,7 +78,7 @@ export const PRODUCTS_BY_PROVIDER_QUERY = gql`
   }
 `;
 
-export const PRODUCT_QUERY = gql`
+export const PRODUCT_BY_ID_QUERY = gql`
   query getDetailProduct($id: uuid = "") {
     products(where: { id: { _eq: $id } }) {
       base_price_sol

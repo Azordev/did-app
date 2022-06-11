@@ -34,7 +34,7 @@ export const PROVIDERS_QUERY = gql`
   }
 `;
 
-export const PROVIDER_QUERY = gql`
+export const PROVIDER_BY_ID_QUERY = gql`
   query getProviderDetail($id: uuid = "") {
     providers(where: { id: { _eq: $id } }) {
       address
