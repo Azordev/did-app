@@ -1,0 +1,10 @@
+.Event {
+  &__title {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__date {
+    font-size: 0.9em;
+  }
+}

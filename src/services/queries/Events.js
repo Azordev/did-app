@@ -15,3 +15,17 @@ export const EVENTS_QUERY = gql`
     }
   }
 `;
+
+export const EVENT_BY_ID_QUERY = gql`
+  query GetEventById($id: uuid!) {
+    events(where: { id: { _eq: $id } }) {
+      date
+      description
+      image_url
+      invitation_url
+      title
+      type
+      id
+    }
+  }
+`;
