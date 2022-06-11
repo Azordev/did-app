@@ -31,10 +31,10 @@ import { getProductsByProvider } from '../../actions';
 import providerHeader from './ProviderHeader.vue';
 import ProviderProducts from './ProviderProducts.vue';
 import CategoriesSlider from '../../components/CategoriesSlider';
-import { product, provider } from 'src/utils';
+import { Product, provider } from 'src/utils';
 
 const handleProviderProducts = () => {
-  const products = ref<product[]>([]);
+  const products = ref<Product[]>([]);
   const query = ref<string>('');
   const searchText = ref<string>('');
 

@@ -30,18 +30,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { Product } from '../../utils';
 
-export default defineComponent({
-  name: 'ProductsListItem',
-  props: {
-    product: {
-      type: Object,
-      default: () => {
-        return {};
-      },
-    },
-  },
-});
+interface ProductListItemProps {
+  product: Product;
+}
+
+defineProps<ProductListItemProps>();
 </script>
