@@ -9,11 +9,13 @@
 
     <template #default>
       <div>
-        {{ event.description }}
+        <div>
+          {{ event.description }}
+        </div>
+        <q-btn class="full-width q-mt-md" color="primary" size="lg" no-caps
+          >Participar</q-btn
+        >
       </div>
-      <q-btn class="full-width q-mt-md" color="primary" size="lg" no-caps
-        >Participar</q-btn
-      >
     </template>
   </detail-layout>
 </template>
@@ -22,6 +24,7 @@
 import { ref } from 'vue';
 import DetailLayout from '../../components/DetailLayout';
 import { Event } from 'src/utils';
+import './styles.scss';
 
 const parsedEventDate = ref<string>();
 
