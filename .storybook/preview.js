@@ -17,6 +17,15 @@ app.use(Quasar, {});
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
+  backgrounds: {
+    default: 'MainLayout',
+    values: [
+      {
+        name: 'MainLayout',
+        value: '#f2f2f2',
+      },
+    ],
+  },
   controls: {
     matchers: {
       color: /(background|color)$/i,
