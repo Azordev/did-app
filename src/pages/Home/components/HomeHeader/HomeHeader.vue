@@ -33,7 +33,13 @@
           />
         </q-avatar>
       </q-btn>
-      <q-btn class="Header__calendar" color="accent" dense no-caps>
+      <q-btn
+        :disabled="!isMembershipActive"
+        class="Header__calendar"
+        color="accent"
+        dense
+        no-caps
+      >
         <q-icon name="today" left />
         Calendario
       </q-btn>
