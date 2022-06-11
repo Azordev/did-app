@@ -8,7 +8,7 @@
     </template>
 
     <template #default>
-      <div>
+      <div class="full-width">
         <div>
           {{ event.description }}
         </div>
