@@ -6,7 +6,6 @@ export default {
   component: ProviderCard,
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
   components: { ProviderCard },
   setup() {
@@ -23,7 +22,6 @@ const Template = (args) => ({
 });
 
 export const Default = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Default.args = {
   image_url: DIDLogo,
   id: '1',

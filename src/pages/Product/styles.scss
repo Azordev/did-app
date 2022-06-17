@@ -1,0 +1,20 @@
+@import '../../css/app.scss';
+
+.Product {
+  &__price {
+    color: $accent;
+    font-size: 1.125rem;
+    font-weight: bold;
+  }
+
+  &__cart_button {
+    align-self: start;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  &__description {
+    font-size: 0.75rem;
+    color: $gray-dim;
+  }
+}

@@ -1,11 +1,14 @@
 <template>
-  <div>Event Page</div>
+  <back-button />
+  <event-layout :event="event" />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import EventLayout from './Event.layout.vue';
+import BackButton from '../../components/BackButton';
+import { handleEventQuery } from './utils/handleEventQuery.ts';
 
-export default defineComponent({
-  name: 'Event',
-});
+const { event, eventId, getEventDetail } = handleEventQuery();
+
+await getEventDetail(eventId);
 </script>

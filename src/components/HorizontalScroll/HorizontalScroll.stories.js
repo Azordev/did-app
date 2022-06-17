@@ -7,7 +7,6 @@ export default {
   component: HorizontalScroll,
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
   components: { HorizontalScroll, EventCard },
   setup() {

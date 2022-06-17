@@ -8,7 +8,6 @@ export default {
   component: HomeLayout,
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const HomeTemplate = (args) => ({
   components: { HomeLayout },
   setup() {
@@ -19,7 +18,6 @@ const HomeTemplate = (args) => ({
 });
 
 export const Page = HomeTemplate.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Page.args = {
   user,
   events,

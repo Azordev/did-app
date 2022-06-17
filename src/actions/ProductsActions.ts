@@ -4,7 +4,7 @@ import {
   useQuery,
   getProviderReturnType,
   getProductByIdReturnTypes,
-  product,
+  Product,
 } from '../utils';
 import { logger } from '../utils/logger';
 
@@ -16,7 +16,7 @@ export const getProductsByProvider = (id: string, query = '') => {
     query: parsedQuery,
   };
 
-  return new Promise<product[]>((resolve, reject) => {
+  return new Promise<Product[]>((resolve, reject) => {
     useQuery<getProviderReturnType>(PRODUCTS_BY_PROVIDER, variables)
       .then(({ providers }) => {
         if (!providers || !providers.length) {
@@ -39,7 +39,7 @@ export const getProductsByProvider = (id: string, query = '') => {
 };
 
 export const getProductById = (id: string) => {
-  return new Promise<product>((resolve, reject) => {
+  return new Promise<Product>((resolve, reject) => {
     useQuery<getProductByIdReturnTypes>(PRODUCT_BY_ID, { id })
       .then(({ products }) => {
         if (!products || !products.length) {

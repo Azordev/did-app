@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+import { eventInfo } from '../fragments';
 
 export const EVENTS = gql`
   query GetEventsForHome($limit: Int = 4) {
@@ -12,6 +13,15 @@ export const EVENTS = gql`
       image_url
       date
       type
+    }
+  }
+`;
+
+export const EVENT_BY_ID_QUERY = gql`
+  ${eventInfo}
+  query GetEventById($id: uuid!) {
+    events_by_pk(id: $id) {
+      ...eventsFragment
     }
   }
 `;

@@ -1,6 +1,8 @@
 @import '../../css/app.scss';
 
-.Product {
+.Detail {
+  background-color: $white-flight;
+
   &__container {
     width: 80%;
     margin: 0 auto;
@@ -16,29 +18,14 @@
   }
 
   &__image {
+    background-color: white;
     border-radius: 5px;
+    height: 60vh;
   }
 
-  &__details {
+  &__information {
     display: flex;
     justify-content: space-between;
     margin-top: 1.25rem;
-  }
-
-  &__price {
-    color: $accent;
-    font-size: 1.125rem;
-    font-weight: bold;
-  }
-
-  &__cart_button {
-    align-self: start;
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
-  &__description {
-    font-size: 0.75rem;
-    color: $gray-dim;
   }
 }

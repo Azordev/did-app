@@ -32,19 +32,12 @@
   </q-card>
 </template>
 
-<script lang="ts">
-import { product } from '../../utils';
-import { defineComponent, PropType } from 'vue';
+<script setup lang="ts">
+import { Product } from '../../utils';
 
-export default defineComponent({
-  name: 'ProviderProduct',
-  props: {
-    product: {
-      type: Object as PropType<product>,
-      default: () => {
-        return {};
-      },
-    },
-  },
-});
+interface ProviderProductProps {
+  product: Product;
+}
+
+defineProps<ProviderProductProps>();
 </script>

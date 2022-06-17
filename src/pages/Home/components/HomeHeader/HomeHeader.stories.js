@@ -10,7 +10,6 @@ export default {
   },
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const HomeHeaderTemplate = (args) => ({
   components: { HomeHeader },
   setup() {
@@ -20,7 +19,6 @@ const HomeHeaderTemplate = (args) => ({
 });
 
 export const Default = HomeHeaderTemplate.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Default.args = {
   memberCode: 'VP00000000',
   firstName: 'Victor',

@@ -76,7 +76,7 @@ export interface Provider {
   sales_phone?: string;
   created_at?: string;
   updated_at?: string;
-  products?: product[];
+  products?: Product[];
   products_aggregate?: query_aggregate;
 }
 
@@ -100,7 +100,7 @@ export interface GetProvidersCategories {
 }
 
 // Products
-export interface product {
+export interface Product {
   __typename: 'products';
   id: string;
   base_price_sol: number;
@@ -126,7 +126,7 @@ export interface getProviderReturnType {
 }
 
 export interface getProductByIdReturnTypes {
-  products: product[];
+  products: Product[];
 }
 
 // Events
@@ -148,6 +148,10 @@ export interface Event {
 // Query returns
 export interface getListOfEventsReturnTypes {
   events: Event[];
+}
+
+export interface EventByPKReturnTypes {
+  events_by_pk: Event;
 }
 
 // Util types

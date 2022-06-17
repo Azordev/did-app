@@ -9,7 +9,6 @@ export default {
   component: HomeList,
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 export const Events = (args) => ({
   components: { HomeList, EventCard },
   setup() {
