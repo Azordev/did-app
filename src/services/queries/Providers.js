@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const getListOfProvidersQuery = gql`
+export const PROVIDERS = gql`
   query getListOfProviders(
     $query: String = "%%"
     $limit: Int = 10
@@ -9,10 +9,10 @@ export const getListOfProvidersQuery = gql`
   ) {
     providers(
       where: {
-        _or: {
-          commercial_name: { _ilike: $query }
-          legal_name: { _ilike: $query }
-        }
+        _or: [
+          { commercial_name: { _ilike: $query } }
+          { legal_name: { _ilike: $query } }
+        ]
         is_active: { _eq: true }
       }
       offset: $offset
@@ -34,7 +34,7 @@ export const getListOfProvidersQuery = gql`
   }
 `;
 
-export const getProviderDetailsQuery = gql`
+export const PROVIDER_BY_ID = gql`
   query getProviderDetail($id: uuid = "") {
     providers(where: { id: { _eq: $id } }) {
       address
@@ -43,20 +43,6 @@ export const getProviderDetailsQuery = gql`
       commercial_name
       details
       logo_url
-    }
-  }
-`;
-
-export const getProviderCategory = gql`
-  query getProviderCategory {
-    provider_categories(
-      where: { category: { is_active: { _eq: true } } }
-      distinct_on: category_id
-    ) {
-      category {
-        name
-        id
-      }
     }
   }
 `;

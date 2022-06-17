@@ -1,0 +1,60 @@
+.Header {
+  background-color: $secondary;
+  border-radius: 5px;
+  padding: 1.95rem 1rem 1.3rem 1.95rem;
+  display: flex;
+  justify-content: space-between;
+
+  &__greetings {
+    font-size: 0.875rem;
+  }
+
+  &__names {
+    font-size: 1.125rem;
+    font-weight: bolder;
+  }
+
+  &__text {
+    font-size: 0.75rem;
+
+    p {
+      margin-bottom: 0.625rem;
+
+      &:last-of-type {
+        margin-bottom: 0px;
+      }
+    }
+  }
+
+  &__membership {
+    &--active {
+      color: $positive;
+    }
+
+    &--inactive {
+      color: $negative;
+    }
+  }
+
+  &__avatar {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  &__editIcon {
+    position: absolute;
+    bottom: -0.3rem;
+    right: -0.3rem;
+    background-color: white;
+    border-radius: 50%;
+    padding: 0.125rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}

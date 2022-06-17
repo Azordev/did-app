@@ -5,7 +5,7 @@
       v-model:password-value="userPassword"
       v-model:terms-and-conditions="termsAndConditions"
       :passwordValidations="passwordValidations"
-      :usernameValidations="userCodeValidations"
+      :usernameValidations="memberCodeValidations"
       :onSubmit="onSubmit"
       :isLoading="loginIsLoading"
     />
@@ -18,7 +18,7 @@ import './Login.scss';
 import { handleUserLogin, userAuthData } from '../../actions';
 import {
   passwordValidations,
-  userCodeValidations,
+  memberCodeValidations,
 } from '../../utils/validations';
 import LoginLayout from './Login.layout.vue';
 import { LocalStorage } from 'quasar';
@@ -34,9 +34,9 @@ export default defineComponent({
     const termsAndConditions = ref<boolean>(false);
     const loginIsLoading = ref<boolean>(false);
 
-    const logUser = ({ user_code, password }: userAuthData) => {
+    const logUser = ({ member_code, password }: userAuthData) => {
       loginIsLoading.value = true;
-      const variables = { user_code, password };
+      const variables = { member_code, password };
 
       handleUserLogin(variables)
         .then((res) => {
@@ -53,7 +53,7 @@ export default defineComponent({
       username,
       userPassword,
       passwordValidations,
-      userCodeValidations,
+      memberCodeValidations,
       loginIsLoading,
       termsAndConditions,
     };

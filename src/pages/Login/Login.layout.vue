@@ -9,7 +9,8 @@
       </div>
       <q-form
         @submit="
-          () => onSubmit({ user_code: usernameValue, password: passwordValue })
+          () =>
+            onSubmit({ member_code: usernameValue, password: passwordValue })
         "
         class="q-gutter-md"
       >

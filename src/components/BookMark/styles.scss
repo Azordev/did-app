@@ -1,0 +1,29 @@
+.BookMark {
+  background-color: $accent;
+  width: max-content;
+  color: white;
+  font-weight: 300;
+  font-size: 0.75rem;
+  position: relative;
+  padding: 0.3rem 0.95em;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: -10px;
+    border-bottom: 15px solid transparent;
+
+    border-right: 10px solid $accent;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: -10px;
+    border-top: 15px solid transparent;
+
+    border-right: 10px solid $accent;
+  }
+}

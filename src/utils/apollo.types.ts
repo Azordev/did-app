@@ -1,6 +1,6 @@
 // Functions types
-export interface actionCallbackReturnTypes {
-  items: object[];
+export interface actionCallbackReturnTypes<Return> {
+  items: Return[];
   totalItems: number;
 }
 
@@ -15,20 +15,28 @@ export interface orderByGraphQLParamType {
 }
 
 export interface actionCallbackParamsTypes {
-  limit: number;
-  offset: number;
+  limit?: number;
+  offset?: number;
   query?: string;
   order_by?: orderByGraphQLParamType;
 }
 
-export type actionCallbackType =
-  ({}: actionCallbackParamsTypes) => Promise<actionCallbackReturnTypes>;
+export type actionCallbackType = <
+  ReturnType
+>({}: actionCallbackParamsTypes) => Promise<
+  actionCallbackReturnTypes<ReturnType>
+>;
+
+export type ActionCallbackType = {
+  items: object[];
+  totalItems: number;
+};
 
 // Database Models
 // Users
 export interface Users {
   __typename: 'users';
-  username: string;
+  member_code: string;
   id: string;
   avatar_url: string;
   is_active: boolean;
@@ -51,7 +59,7 @@ export interface category {
 }
 
 // Providers
-export interface provider {
+export interface Provider {
   __typename: 'providers';
   id: string;
   logo_url: string;
@@ -79,12 +87,12 @@ export interface provider_category {
 
 // Query returns
 export interface getListOfProvidersReturnTypes {
-  providers: provider[];
+  providers: Provider[];
   providers_aggregate: query_aggregate;
 }
 
 export interface getProviderReturnType {
-  providers: provider[];
+  providers: Provider[];
 }
 
 export interface GetProvidersCategories {
@@ -109,16 +117,37 @@ export interface product {
 
 // Query returns
 export interface getListOfProvidersReturnTypes {
-  providers: provider[];
+  providers: Provider[];
   providers_aggregate: query_aggregate;
 }
 
 export interface getProviderReturnType {
-  providers: provider[];
+  providers: Provider[];
 }
 
 export interface getProductByIdReturnTypes {
   products: product[];
+}
+
+// Events
+export enum EventType {
+  PRIVATE = 'ATTENDANCE',
+  PUBLIC = 'WORKSHOP',
+}
+
+export interface Event {
+  __typename: 'events';
+  id: string;
+  title: string;
+  description?: string;
+  image_url?: string;
+  date: string;
+  type: EventType.PRIVATE | EventType.PUBLIC;
+}
+
+// Query returns
+export interface getListOfEventsReturnTypes {
+  events: Event[];
 }
 
 // Util types
