@@ -1,48 +1,12 @@
 import { Notify } from 'quasar';
-import {
-  PRODUCTS_QUERY,
-  PRODUCTS_BY_PROVIDER_QUERY,
-  PRODUCT_BY_ID_QUERY,
-} from '../services';
+import { PRODUCTS_BY_PROVIDER, PRODUCT_BY_ID } from '../services';
 import {
   useQuery,
-  actionCallbackReturnTypes,
-  actionCallbackParamsTypes,
   getProviderReturnType,
   getProductByIdReturnTypes,
   product,
 } from '../utils';
 import { logger } from '../utils/logger';
-
-export const getListOfProducts = (variables: actionCallbackParamsTypes) => {
-  return new Promise<actionCallbackReturnTypes>((resolve, reject) => {
-    useQuery<getProviderReturnType>(PRODUCTS_QUERY, variables)
-      .then(({ providers }) => {
-        if (
-          !providers ||
-          !providers.length ||
-          !providers[0]?.products?.length
-        ) {
-          Notify.create({
-            message: 'No se encontraron resultados para la busqueda actual',
-            type: 'negative',
-          });
-
-          reject(null);
-          return null;
-        }
-
-        resolve({
-          items: providers[0].products,
-          totalItems: providers[0]?.products_aggregate?.aggregate.count || 0,
-        });
-      })
-      .catch((err) => {
-        logger(err);
-        reject(null);
-      });
-  });
-};
 
 export const getProductsByProvider = (id: string, query = '') => {
   const parsedQuery = `%${query}%`;
@@ -53,7 +17,7 @@ export const getProductsByProvider = (id: string, query = '') => {
   };
 
   return new Promise<product[]>((resolve, reject) => {
-    useQuery<getProviderReturnType>(PRODUCTS_BY_PROVIDER_QUERY, variables)
+    useQuery<getProviderReturnType>(PRODUCTS_BY_PROVIDER, variables)
       .then(({ providers }) => {
         if (!providers || !providers.length) {
           Notify.create({
@@ -76,7 +40,7 @@ export const getProductsByProvider = (id: string, query = '') => {
 
 export const getProductById = (id: string) => {
   return new Promise<product>((resolve, reject) => {
-    useQuery<getProductByIdReturnTypes>(PRODUCT_BY_ID_QUERY, { id })
+    useQuery<getProductByIdReturnTypes>(PRODUCT_BY_ID, { id })
       .then(({ products }) => {
         if (!products || !products.length) {
           Notify.create({

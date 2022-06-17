@@ -1,5 +1,5 @@
 import { Notify } from 'quasar';
-import { PROVIDERS_QUERY, PROVIDER_BY_ID_QUERY } from '../services';
+import { PROVIDERS, PROVIDER_BY_ID } from '../services';
 import {
   useQuery,
   actionCallbackReturnTypes,
@@ -12,7 +12,7 @@ import { logger } from '../utils/logger';
 
 export const getListOfProviders = (variables: actionCallbackParamsTypes) => {
   return new Promise<actionCallbackReturnTypes<Provider>>((resolve, reject) => {
-    useQuery<getListOfProvidersReturnTypes>(PROVIDERS_QUERY, variables)
+    useQuery<getListOfProvidersReturnTypes>(PROVIDERS, variables)
       .then(({ providers, providers_aggregate }) => {
         if (!providers || !providers.length) {
           Notify.create({
@@ -38,7 +38,7 @@ export const getListOfProviders = (variables: actionCallbackParamsTypes) => {
 
 export const getSpecificProvider = (id: string) => {
   return new Promise<Provider>((resolve, reject) => {
-    useQuery<getProviderReturnType>(PROVIDER_BY_ID_QUERY, { id })
+    useQuery<getProviderReturnType>(PROVIDER_BY_ID, { id })
       .then(({ providers }) => {
         if (!providers || !providers.length) {
           Notify.create({

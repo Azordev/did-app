@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const PROVIDERS_QUERY = gql`
+export const PROVIDERS = gql`
   query getListOfProviders(
     $query: String = "%%"
     $limit: Int = 10
@@ -34,7 +34,7 @@ export const PROVIDERS_QUERY = gql`
   }
 `;
 
-export const PROVIDER_BY_ID_QUERY = gql`
+export const PROVIDER_BY_ID = gql`
   query getProviderDetail($id: uuid = "") {
     providers(where: { id: { _eq: $id } }) {
       address

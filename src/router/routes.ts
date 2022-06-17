@@ -43,11 +43,6 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/Event/index.vue'),
       },
       {
-        path: 'marketplace',
-        name: 'products',
-        component: () => import('pages/Products/index.vue'),
-      },
-      {
         path: 'marketplace/product/:id',
         name: 'productDetail',
         component: () => import('pages/Product/index.vue'),
