@@ -1,4 +1,4 @@
-import { getEventById } from './../../../actions/EventsActions';
+import { getEventById } from 'src/actions/EventsActions';
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { Event } from 'src/utils';
