@@ -17,9 +17,9 @@
         >
           <event-card
             :title="event.title"
-            :image_url="event.image_url"
+            :image_url="event.image_url || DIDLogo"
             :date="new Date(event.date)"
-            :isAnnouncement="event.type === 'PUBLIC'"
+            :isAnnouncement="event.type === EventType.PUBLIC"
             @onClick="
               $router.push({
                 name: 'eventDetail',
@@ -72,19 +72,33 @@
 import { UserType } from './mock';
 import { HomeHeader, HomeList } from './components';
 import { ProviderCard, EventCard } from '../../components';
-import { Event, Provider } from '../../utils';
-import { handleUserData } from './utils/handleUserData.ts';
+import { Event, EventType, Provider } from '../../utils';
+import { handleUserData } from './utils/handleUserData';
+import DIDLogo from '../../assets/logos/didperu.svg';
 import './styles.scss';
+import { Notify } from 'quasar';
+import { useRouter } from 'vue-router';
 
 interface HomeLayoutProps {
-  user: UserType;
-  events: Event[];
-  providers: Provider[];
+  user?: UserType;
+  events?: Event[];
+  providers?: Provider[];
 }
 
 const props = defineProps<HomeLayoutProps>();
 
 const { parseUserData } = handleUserData();
+
+if (!props.user) {
+  const router = useRouter();
+
+  Notify.create({
+    message: 'Hemos tenido problemas para localizar tu usuario',
+    type: 'Negative',
+  });
+
+  router.push({ name: 'login' });
+}
 
 const {
   expirationDate,
