@@ -1,6 +1,6 @@
 // Functions types
-export interface actionCallbackReturnTypes {
-  items: object[];
+export interface actionCallbackReturnTypes<Return> {
+  items: Return[];
   totalItems: number;
 }
 
@@ -15,14 +15,22 @@ export interface orderByGraphQLParamType {
 }
 
 export interface actionCallbackParamsTypes {
-  limit: number;
-  offset: number;
+  limit?: number;
+  offset?: number;
   query?: string;
   order_by?: orderByGraphQLParamType;
 }
 
-export type actionCallbackType =
-  ({}: actionCallbackParamsTypes) => Promise<actionCallbackReturnTypes>;
+export type actionCallbackType = <
+  ReturnType
+>({}: actionCallbackParamsTypes) => Promise<
+  actionCallbackReturnTypes<ReturnType>
+>;
+
+export type ActionCallbackType = {
+  items: object[];
+  totalItems: number;
+};
 
 // Database Models
 // Users
@@ -122,13 +130,19 @@ export interface getProductByIdReturnTypes {
 }
 
 // Events
+export enum EventType {
+  PRIVATE = 'ATTENDANCE',
+  PUBLIC = 'WORKSHOP',
+}
+
 export interface Event {
   __typename: 'events';
   id: string;
   title: string;
+  description?: string;
   image_url?: string;
   date: string;
-  type: 'PRIVATE' | 'PUBLIC';
+  type: EventType.PRIVATE | EventType.PUBLIC;
 }
 
 // Query returns

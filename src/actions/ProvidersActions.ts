@@ -11,7 +11,7 @@ import {
 import { logger } from '../utils/logger';
 
 export const getListOfProviders = (variables: actionCallbackParamsTypes) => {
-  return new Promise<actionCallbackReturnTypes>((resolve, reject) => {
+  return new Promise<actionCallbackReturnTypes<Provider>>((resolve, reject) => {
     useQuery<getListOfProvidersReturnTypes>(PROVIDERS_QUERY, variables)
       .then(({ providers, providers_aggregate }) => {
         if (!providers || !providers.length) {

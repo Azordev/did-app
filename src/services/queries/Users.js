@@ -1,21 +1,7 @@
 import gql from 'graphql-tag';
 import { userInfo } from '../fragments';
 
-export const USERS_QUERY = gql`
-  query GetAllUsers {
-    users {
-      member_code
-      type
-      password
-      is_active
-      id
-      created_at
-      avatar_url
-    }
-  }
-`;
-
-export const USER_LOGIN_QUERY = gql`
+export const USER_LOGIN = gql`
   ${userInfo}
   query GetUserSession($password: String!, $member_code: String!) {
     users(
@@ -29,10 +15,10 @@ export const USER_LOGIN_QUERY = gql`
   }
 `;
 
-export const USER_BY_ID_QUERY = gql`
+export const USER_BY_ID = gql`
   ${userInfo}
-  query getUsers($id: uuid!) {
-    users(where: { is_active: { _eq: true }, id: { _eq: $id } }) {
+  query USER_BY_ID($id: uuid = "") {
+    users_by_pk(id: $id) {
       ...userInfo
     }
   }

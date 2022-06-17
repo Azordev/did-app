@@ -7,9 +7,11 @@ export interface GetListOfEventsForHomeProps {
   limit: number;
 }
 
+const HOME_EVENTS_LIMIT = 4;
+
 export const getListOfEventsForHome = (
   variables: GetListOfEventsForHomeProps = {
-    limit: 4,
+    limit: HOME_EVENTS_LIMIT,
   }
 ) => {
   return new Promise<Event[]>((resolve, reject) => {

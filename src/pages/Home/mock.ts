@@ -11,15 +11,15 @@ export type MemberInformation = {
 };
 
 export type UserType = {
-  __typename: 'users';
-  avatar_url: string | null;
+  __typename: string;
+  avatar_url?: string;
   member_code: string;
   member_info: MemberInformation[];
 };
 
-export const user = {
+export const user: UserType = {
   __typename: 'users',
-  avatar_url: null,
+  avatar_url: undefined,
   member_code: 'VP00000000',
   member_info: [
     {
