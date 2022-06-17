@@ -12,7 +12,6 @@ export default {
   },
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 export const Default = (args) => ({
   components: { HomeTitle },
   setup() {

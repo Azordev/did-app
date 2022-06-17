@@ -5,7 +5,6 @@ export default {
   component: BookMark,
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
   components: { BookMark },
   setup() {
@@ -15,7 +14,6 @@ const Template = (args) => ({
 });
 
 export const Default = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Default.args = {
   label: 'Convocatoria',
 };

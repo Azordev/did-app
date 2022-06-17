@@ -6,7 +6,6 @@ export default {
   component: EventCard,
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
   components: { EventCard },
   setup() {
@@ -16,7 +15,6 @@ const Template = (args) => ({
 });
 
 export const Default = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Default.args = {
   title: 'Reunion Privada',
   image_url: DIDLogo,

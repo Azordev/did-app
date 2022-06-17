@@ -6,7 +6,6 @@ export default {
   component: DetailLayout,
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const DetailLayoutTemplate = (args) => ({
   components: { DetailLayout },
   setup() {
@@ -17,7 +16,6 @@ const DetailLayoutTemplate = (args) => ({
 });
 
 export const Default = DetailLayoutTemplate.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Default.args = {
   name: 'DID Product',
   image_url: DIDLogo,
