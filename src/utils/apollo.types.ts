@@ -150,6 +150,10 @@ export interface getListOfEventsReturnTypes {
   events: Event[];
 }
 
+export interface EventByPKReturnTypes {
+  events_by_pk: Event;
+}
+
 // Util types
 export interface query_aggregate {
   __typename: string;

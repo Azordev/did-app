@@ -1,3 +1,4 @@
+import { EventByPKReturnTypes } from './../utils/apollo.types';
 import { Notify } from 'quasar';
 import { EVENTS, EVENT_BY_ID_QUERY } from '../services';
 import { useQuery, getListOfEventsReturnTypes, Event } from '../utils';
@@ -29,9 +30,9 @@ export const getListOfEventsForHome = (
 
 export const getEventById = (id: string) => {
   return new Promise<Event>((resolve, reject) => {
-    useQuery<getListOfEventsReturnTypes>(EVENT_BY_ID_QUERY, { id })
-      .then(({ events }) => {
-        if (!events || !events.length) {
+    useQuery<EventByPKReturnTypes>(EVENT_BY_ID_QUERY, { id })
+      .then(({ events_by_pk: event }) => {
+        if (!event) {
           Notify.create({
             message: 'No se encontro el evento',
             type: 'negative',
@@ -41,7 +42,7 @@ export const getEventById = (id: string) => {
           return null;
         }
 
-        resolve(events[0]);
+        resolve(event);
       })
       .catch((err) => {
         logger(err);
