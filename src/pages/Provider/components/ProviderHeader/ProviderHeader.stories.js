@@ -1,8 +1,14 @@
 import ProviderHeader from './ProviderHeader.vue';
+import ProviderHeaderDocs from './ProviderHeader.documentation.mdx';
 
 export default {
   title: 'Pages/Providers/Components/ProviderHeader',
   component: ProviderHeader,
+  parameters: {
+    docs: {
+      page: ProviderHeaderDocs,
+    },
+  },
 };
 
 const Template = (args) => ({
