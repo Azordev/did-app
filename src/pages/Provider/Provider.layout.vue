@@ -16,8 +16,7 @@
 
 <script setup lang="ts">
 import { BaseLoading } from '../../components/LoadingComponent';
-import providerHeader from './components/ProviderHeader.vue';
-import ProviderProducts from './components/ProviderProducts.vue';
+import { ProviderHeader, ProviderProducts } from './components';
 import './Provider.scss';
 
 import { Product, Provider } from 'src/utils';

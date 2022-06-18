@@ -11,7 +11,7 @@
 <script lang="ts">
 import { Product } from 'src/utils';
 import { defineComponent, PropType } from 'vue';
-import ProviderProduct from './ProviderProduct.vue';
+import ProviderProduct from '../ProviderProduct';
 
 export default defineComponent({
   name: 'ProviderProducts',
