@@ -1,84 +1,34 @@
 <template>
   <div class="Provider">
     <provider-header
-      :logo-url="provider.logo_url"
-      :name="provider.commercial_name"
-      v-model:query-value="searchText"
-      @onSearch="getProductLists(id, searchText)"
+      :logo-url="provider?.logo_url"
+      :name="provider?.commercial_name"
+      :query-value="searchText"
+      @update:query-value="$emit('update:searchText', $event)"
+      @onSearch="$emit('onSearch')"
     />
     <div class="Provider__container">
-      <suspense>
-        <template #default>
-          <provider-products :products="products" />
-        </template>
-        <template #fallback>
-          <base-loading />
-        </template>
-      </suspense>
+      <base-loading v-if="isLoading" />
+      <provider-products v-else :products="products" />
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType, ref } from 'vue';
+<script setup lang="ts">
 import { BaseLoading } from '../../components/LoadingComponent';
-import { getProductsByProvider } from '../../actions';
-import providerHeader from './ProviderHeader.vue';
-import ProviderProducts from './ProviderProducts.vue';
+import providerHeader from './components/ProviderHeader.vue';
+import ProviderProducts from './components/ProviderProducts.vue';
+import './Provider.scss';
+
 import { Product, Provider } from 'src/utils';
 
-const handleProviderProducts = () => {
-  const products = ref<Product[]>([]);
-  const query = ref<string>('');
-  const searchText = ref<string>('');
-
-  const getProductLists = async (id: string, query: string) => {
-    if (id) {
-      await getProductsByProvider(id, query).then((res) => {
-        products.value = res;
-      });
-    }
-  };
-
-  return {
-    getProductLists,
-    query,
-    products,
-    searchText,
-  };
+type ProviderLayoutProps = {
+  id: string;
+  provider?: Provider;
+  products: Product[];
+  searchText: string;
+  isLoading?: boolean;
 };
 
-export default defineComponent({
-  name: 'ProviderLayout',
-  props: {
-    id: {
-      type: String,
-      default: '',
-    },
-    provider: {
-      type: Object as PropType<Provider>,
-      default: () => {
-        return {};
-      },
-    },
-  },
-  components: {
-    ProviderProducts,
-    BaseLoading,
-    providerHeader,
-  },
-  async setup(props) {
-    const { getProductLists, query, products, searchText } =
-      handleProviderProducts();
-
-    getProductLists(props.id, query.value);
-
-    return {
-      getProductLists,
-      products,
-      query,
-      searchText,
-    };
-  },
-});
+defineProps<ProviderLayoutProps>();
 </script>

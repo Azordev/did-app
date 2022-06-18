@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { product } from 'src/utils';
+import { Product } from 'src/utils';
 import { defineComponent, PropType } from 'vue';
 import ProviderProduct from './ProviderProduct.vue';
 
@@ -17,7 +17,7 @@ export default defineComponent({
   name: 'ProviderProducts',
   props: {
     products: {
-      type: Array as PropType<product[]>,
+      type: Array as PropType<Product[]>,
       default: () => {
         return [];
       },

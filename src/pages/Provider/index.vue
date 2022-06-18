@@ -1,41 +1,22 @@
 <template>
-  <provider-layout :id="id" :provider="provider" />
+  <provider-layout
+    :id="id"
+    :provider="provider"
+    :products="products"
+    v-model:search-text="searchText"
+    @onSearch="getProductLists(id, searchText)"
+    :isLoading="isLoading"
+  />
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { useRoute } from 'vue-router';
-import { getSpecificProvider } from '../../actions';
+<script setup lang="ts">
+import { getProviderById, handleProviderProducts } from './utils';
 import ProviderLayout from './Provider.layout.vue';
-import './Provider.scss';
 
-const getProviderById = () => {
-  const provider = ref({});
-  const route = useRoute();
-  const id = route.params.provider as string;
+const { provider, id } = await getProviderById();
 
-  getSpecificProvider(id).then((res) => {
-    provider.value = res;
-  });
+const { getProductLists, query, products, searchText, isLoading } =
+  handleProviderProducts();
 
-  return {
-    id,
-    provider,
-  };
-};
-
-export default defineComponent({
-  name: 'Provider',
-  components: {
-    ProviderLayout,
-  },
-  setup() {
-    const { provider, id } = getProviderById();
-
-    return {
-      provider,
-      id,
-    };
-  },
-});
+await getProductLists(id, query.value);
 </script>
