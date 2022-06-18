@@ -8,23 +8,13 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { Product } from 'src/utils';
-import { defineComponent, PropType } from 'vue';
 import ProviderProduct from '../ProviderProduct';
 
-export default defineComponent({
-  name: 'ProviderProducts',
-  props: {
-    products: {
-      type: Array as PropType<Product[]>,
-      default: () => {
-        return [];
-      },
-    },
-  },
-  components: {
-    ProviderProduct,
-  },
-});
+interface ProviderProductsProps {
+  products: Product[];
+}
+
+defineProps<ProviderProductsProps>();
 </script>

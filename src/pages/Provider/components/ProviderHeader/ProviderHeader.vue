@@ -32,25 +32,20 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+interface ProviderHeaderProps {
+  logoUrl: string;
+  name: string;
+  queryValue: string;
+}
 
-export default defineComponent({
-  name: 'ProviderProducts',
-  props: {
-    logoUrl: {
-      type: String,
-      default: '',
-    },
-    name: {
-      type: String,
-      default: '',
-    },
-    queryValue: {
-      type: String,
-      default: '',
-    },
-  },
-  emits: ['update:queryValue', 'onClear', 'onSearch'],
-});
+interface Emits {
+  (eventName: 'update:queryValue', value: string | number | null): void;
+  (eventName: 'onClear'): void;
+  (eventName: 'onSearch'): void;
+}
+
+defineProps<ProviderHeaderProps>();
+
+defineEmits<Emits>();
 </script>

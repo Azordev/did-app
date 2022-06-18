@@ -1,7 +1,7 @@
 import ProviderLayout from './Provider.layout.vue';
 import ProviderDoc from './Provider.documentation.mdx';
 import { providers } from '../Providers/mock';
-import { providerProducts } from './mock';
+import { providerProducts } from './components/ProviderProducts/mock';
 
 export default {
   title: 'Pages/Providers',
@@ -9,6 +9,23 @@ export default {
   parameters: {
     docs: {
       page: ProviderDoc,
+    },
+  },
+  argTypes: {
+    provider: {
+      name: 'provider',
+      type: {
+        required: true,
+      },
+      description: 'The provider',
+      control: {
+        type: null,
+      },
+    },
+    id: {
+      control: {
+        type: null,
+      },
     },
   },
 };

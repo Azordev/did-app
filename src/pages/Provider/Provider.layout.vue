@@ -21,13 +21,20 @@ import './Provider.scss';
 
 import { Product, Provider } from 'src/utils';
 
-type ProviderLayoutProps = {
+interface ProviderLayoutProps {
   id: string;
   provider?: Provider;
   products: Product[];
   searchText: string;
   isLoading?: boolean;
-};
+}
+
+interface ProviderLayoutEmits {
+  (eventName: 'update:searchText', value: string | number | null): void;
+  (eventName: 'onSearch'): void;
+}
 
 defineProps<ProviderLayoutProps>();
+
+defineEmits<ProviderLayoutEmits>();
 </script>
