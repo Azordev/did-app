@@ -1,3 +1,3 @@
-import ProviderHeader from './ProviderHeader';
+import ProviderHeader from './ProviderHeader.vue';
 
 export default ProviderHeader;

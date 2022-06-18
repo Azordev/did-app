@@ -1,3 +1,3 @@
-import ProviderProducts from './ProviderProducts';
+import ProviderProducts from './ProviderProducts.vue';
 
 export default ProviderProducts;
