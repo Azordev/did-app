@@ -4,7 +4,7 @@ import { providers } from '../Providers/mock';
 import { providerProducts } from './components/ProviderProducts/mock';
 
 export default {
-  title: 'Pages/Providers',
+  title: 'Pages/Provider',
   component: ProviderLayout,
   parameters: {
     docs: {

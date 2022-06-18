@@ -3,7 +3,7 @@ import ProviderProductsDoc from './ProviderProducts.documentation.mdx';
 import { providerProducts } from './mock';
 
 export default {
-  title: 'Pages/Providers/Components/ProviderProducts',
+  title: 'Pages/Provider/Components/ProviderProducts',
   component: ProviderProducts,
   parameters: {
     docs: {

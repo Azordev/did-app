@@ -2,7 +2,7 @@ import ProviderHeader from './ProviderHeader.vue';
 import ProviderHeaderDocs from './ProviderHeader.documentation.mdx';
 
 export default {
-  title: 'Pages/Providers/Components/ProviderHeader',
+  title: 'Pages/Provider/Components/ProviderHeader',
   component: ProviderHeader,
   parameters: {
     docs: {
