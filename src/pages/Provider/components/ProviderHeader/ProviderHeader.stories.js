@@ -23,5 +23,4 @@ export const Default = Template.bind({});
 Default.args = {
   logoUrl:
     'https://neufert-cdn.archdaily.net/uploads/account_logo/logo/662/large_LOGOTIPOS_horizontal-alta.jpg',
-  queryValue: '',
 };

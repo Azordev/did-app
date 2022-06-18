@@ -35,7 +35,6 @@
 <script setup lang="ts">
 interface ProviderHeaderProps {
   logoUrl: string;
-  name: string;
   queryValue: string;
 }
 
