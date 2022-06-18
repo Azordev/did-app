@@ -6,11 +6,6 @@
       v-model:query-value="searchText"
       @onSearch="getProductLists(id, searchText)"
     />
-    <categories-slider
-      class="Provider__categories"
-      :categories="[]"
-      :categorySelected="''"
-    />
     <div class="Provider__container">
       <suspense>
         <template #default>
@@ -30,8 +25,7 @@ import { BaseLoading } from '../../components/LoadingComponent';
 import { getProductsByProvider } from '../../actions';
 import providerHeader from './ProviderHeader.vue';
 import ProviderProducts from './ProviderProducts.vue';
-import CategoriesSlider from '../../components/CategoriesSlider';
-import { Product, provider } from 'src/utils';
+import { Product, Provider } from 'src/utils';
 
 const handleProviderProducts = () => {
   const products = ref<Product[]>([]);
@@ -62,7 +56,7 @@ export default defineComponent({
       default: '',
     },
     provider: {
-      type: Object as PropType<provider>,
+      type: Object as PropType<Provider>,
       default: () => {
         return {};
       },
@@ -70,7 +64,6 @@ export default defineComponent({
   },
   components: {
     ProviderProducts,
-    CategoriesSlider,
     BaseLoading,
     providerHeader,
   },
