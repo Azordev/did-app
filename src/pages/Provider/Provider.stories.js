@@ -13,16 +13,17 @@ export default {
   },
   argTypes: {
     provider: {
-      name: 'provider',
       type: {
         required: true,
       },
-      description: 'The provider',
       control: {
         type: null,
       },
     },
     id: {
+      type: {
+        required: true,
+      },
       control: {
         type: null,
       },
