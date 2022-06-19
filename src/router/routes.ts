@@ -1,4 +1,5 @@
 import { RouteRecordRaw } from 'vue-router';
+import { handleShoppingCart } from 'src/utils';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -26,6 +27,13 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('src/layouts/MainLayout/MainLayout.vue'),
+    beforeEnter: () => {
+      const { shoppingCart, clearShoppingCart } = handleShoppingCart();
+
+      if (shoppingCart.value?.length) {
+        clearShoppingCart();
+      }
+    },
     children: [
       {
         path: '',
@@ -43,19 +51,9 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/Event/index.vue'),
       },
       {
-        path: 'marketplace/product/:id',
-        name: 'productDetail',
-        component: () => import('pages/Product/index.vue'),
-      },
-      {
         path: 'providers',
         name: 'providers',
         component: () => import('pages/Providers/index.vue'),
-      },
-      {
-        path: 'providers/:provider',
-        name: 'providerDetail',
-        component: () => import('pages/Provider/index.vue'),
       },
       {
         path: 'profile',
@@ -66,6 +64,27 @@ const routes: RouteRecordRaw[] = [
         path: 'settings',
         name: 'userSettings',
         component: () => import('pages/Settings/index.vue'),
+      },
+    ],
+  },
+  {
+    path: '/provider',
+    component: () => import('src/layouts/MainLayout/MainLayout.vue'),
+    children: [
+      {
+        path: ':provider',
+        name: 'providerDetail',
+        component: () => import('pages/Provider/index.vue'),
+      },
+      {
+        path: 'product/:id',
+        name: 'productDetail',
+        component: () => import('pages/Product/index.vue'),
+      },
+      {
+        path: 'shopping-cart',
+        name: 'shoppingCart',
+        component: () => import('pages/ShoppingCart/index.vue'),
       },
     ],
   },

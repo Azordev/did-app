@@ -23,8 +23,11 @@
         <q-card-actions>
           <q-btn
             class="ProductList__item_button"
-            color="accent"
-            icon="add_shopping_cart"
+            :color="isProductInCart ? 'negative' : 'accent'"
+            :icon="
+              isProductInCart ? 'remove_shopping_cart' : 'add_shopping_cart'
+            "
+            @click.stop="$emit('onAddToShoppingCart', product)"
           />
         </q-card-actions>
       </q-card-section>
@@ -37,7 +40,13 @@ import { Product } from 'src/utils';
 
 interface ProviderProductProps {
   product: Product;
+  isProductInCart?: boolean;
+}
+
+interface Emits {
+  (eventName: 'onAddToShoppingCart', product: Product): void;
 }
 
 defineProps<ProviderProductProps>();
+defineEmits<Emits>();
 </script>

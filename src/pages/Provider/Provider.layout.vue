@@ -4,12 +4,18 @@
       :logo-url="provider?.logo_url || DIDLogo"
       :name="provider?.commercial_name"
       :query-value="searchText || ''"
+      :has-products-on-cart="!!cartProducts?.length"
       @update:query-value="$emit('update:searchText', $event?.toString())"
-      @onSearch="$emit('onSearch')"
+      @on-search="$emit('onSearch')"
     />
     <div class="Provider__container">
       <base-loading v-if="isLoading" />
-      <provider-products v-else :products="products" />
+      <provider-products
+        v-else
+        :cartProducts="cartProducts"
+        :products="products"
+        @on-add-to-shopping-cart="$emit('onAddToShoppingCart', $event)"
+      />
     </div>
   </div>
 </template>
@@ -28,11 +34,13 @@ interface ProviderLayoutProps {
   products: Product[];
   searchText?: string;
   isLoading?: boolean;
+  cartProducts?: Product[];
 }
 
 interface ProviderLayoutEmits {
   (eventName: 'update:searchText', value?: string): void;
   (eventName: 'onSearch'): void;
+  (eventName: 'onAddToShoppingCart', product: Product): void;
 }
 
 defineProps<ProviderLayoutProps>();
