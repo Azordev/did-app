@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { Product } from '../../utils';
+import { Product } from 'src/utils';
 
 interface ProviderProductProps {
   product: Product;

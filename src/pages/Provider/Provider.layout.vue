@@ -1,91 +1,41 @@
 <template>
   <div class="Provider">
     <provider-header
-      :logo-url="provider.logo_url"
-      :name="provider.commercial_name"
-      v-model:query-value="searchText"
-      @onSearch="getProductLists(id, searchText)"
-    />
-    <categories-slider
-      class="Provider__categories"
-      :categories="[]"
-      :categorySelected="''"
+      :logo-url="provider?.logo_url || DIDLogo"
+      :name="provider?.commercial_name"
+      :query-value="searchText || ''"
+      @update:query-value="$emit('update:searchText', $event?.toString())"
+      @onSearch="$emit('onSearch')"
     />
     <div class="Provider__container">
-      <suspense>
-        <template #default>
-          <provider-products :products="products" />
-        </template>
-        <template #fallback>
-          <base-loading />
-        </template>
-      </suspense>
+      <base-loading v-if="isLoading" />
+      <provider-products v-else :products="products" />
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType, ref } from 'vue';
-import { BaseLoading } from '../../components/LoadingComponent';
-import { getProductsByProvider } from '../../actions';
-import providerHeader from './ProviderHeader.vue';
-import ProviderProducts from './ProviderProducts.vue';
-import CategoriesSlider from '../../components/CategoriesSlider';
-import { Product, provider } from 'src/utils';
+<script setup lang="ts">
+import { BaseLoading } from 'src/components/LoadingComponent';
+import { ProviderHeader, ProviderProducts } from './components';
+import DIDLogo from 'src/assets/logos/didperu.svg';
+import './Provider.scss';
 
-const handleProviderProducts = () => {
-  const products = ref<Product[]>([]);
-  const query = ref<string>('');
-  const searchText = ref<string>('');
+import { Product, Provider } from 'src/utils';
 
-  const getProductLists = async (id: string, query: string) => {
-    if (id) {
-      await getProductsByProvider(id, query).then((res) => {
-        products.value = res;
-      });
-    }
-  };
+interface ProviderLayoutProps {
+  id: string;
+  provider?: Provider;
+  products: Product[];
+  searchText?: string;
+  isLoading?: boolean;
+}
 
-  return {
-    getProductLists,
-    query,
-    products,
-    searchText,
-  };
-};
+interface ProviderLayoutEmits {
+  (eventName: 'update:searchText', value?: string): void;
+  (eventName: 'onSearch'): void;
+}
 
-export default defineComponent({
-  name: 'ProviderLayout',
-  props: {
-    id: {
-      type: String,
-      default: '',
-    },
-    provider: {
-      type: Object as PropType<provider>,
-      default: () => {
-        return {};
-      },
-    },
-  },
-  components: {
-    ProviderProducts,
-    CategoriesSlider,
-    BaseLoading,
-    providerHeader,
-  },
-  async setup(props) {
-    const { getProductLists, query, products, searchText } =
-      handleProviderProducts();
+defineProps<ProviderLayoutProps>();
 
-    getProductLists(props.id, query.value);
-
-    return {
-      getProductLists,
-      products,
-      query,
-      searchText,
-    };
-  },
-});
+defineEmits<ProviderLayoutEmits>();
 </script>
