@@ -4,14 +4,14 @@
       v-for="product in products"
       :key="product.id"
       :product="product"
-      :is-product-in-cart="isProductInCart(product.id, cartProducts)"
+      :is-product-in-cart="checkIsProductInCart(product.id, cartProducts)"
       @on-add-to-shopping-cart="$emit('onAddToShoppingCart', $event)"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { Product, isProductInCart } from 'src/utils';
+import { Product, checkIsProductInCart } from 'src/utils';
 import ProviderProduct from '../ProviderProduct';
 
 interface ProviderProductsProps {
@@ -23,6 +23,6 @@ interface Emits {
   (eventName: 'onAddToShoppingCart', product: Product): void;
 }
 
-const props = defineProps<ProviderProductsProps>();
+defineProps<ProviderProductsProps>();
 defineEmits<Emits>();
 </script>

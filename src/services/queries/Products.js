@@ -26,6 +26,7 @@ export const PRODUCT_BY_ID = gql`
       description
       name
       image_url
+      id
     }
   }
 `;

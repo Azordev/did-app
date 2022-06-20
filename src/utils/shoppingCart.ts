@@ -6,6 +6,16 @@ enum SHOPPING_CART {
   KEY = 'shoppingCart',
 }
 
+export const checkIsProductInCart = (
+  id: string,
+  shoppingCart: Product[] | undefined
+) => {
+  console.log({ id, shoppingCart });
+  if (!shoppingCart) return false;
+
+  return shoppingCart.findIndex((product) => product.id === id) >= 0;
+};
+
 export const handleShoppingCart = () => {
   const shoppingCart = ref<Product[]>([]);
 
@@ -40,6 +50,19 @@ export const handleShoppingCart = () => {
     }
   };
 
+  /**
+   * Add a new Product if it still doesn't exists on the shopping cart, or remove it if it already exists
+   * @param product
+   * @returns
+   */
+  const toggleProduct = (product: Product) => {
+    if (checkIsProductInCart(product.id, shoppingCart.value)) {
+      return removeProduct(product.id);
+    }
+
+    addNewProduct(product);
+  };
+
   const clearShoppingCart = () => {
     LocalStorage.remove(SHOPPING_CART.KEY);
   };
@@ -48,15 +71,7 @@ export const handleShoppingCart = () => {
     shoppingCart,
     addNewProduct,
     removeProduct,
+    toggleProduct,
     clearShoppingCart,
   };
-};
-
-export const isProductInCart = (
-  id: string,
-  shoppingCart: Product[] | undefined
-) => {
-  if (!shoppingCart) return false;
-
-  return shoppingCart.findIndex((product) => product.id === id) >= 0;
 };
