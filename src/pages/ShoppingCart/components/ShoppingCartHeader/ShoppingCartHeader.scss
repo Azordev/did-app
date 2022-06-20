@@ -1,0 +1,19 @@
+@import '../../../../css/app.scss';
+
+.ShoppingCartHeader {
+  background-color: $secondary;
+  min-height: 130px;
+  max-height: 11.25rem;
+  padding: 1rem 1rem 1rem 0.5rem;
+
+  &__image {
+    height: 2.75rem;
+    max-width: 5.5rem;
+    margin: 0 auto;
+    display: block;
+
+    .q-img__image {
+      object-fit: contain !important;
+    }
+  }
+}

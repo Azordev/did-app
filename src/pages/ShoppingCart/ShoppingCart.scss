@@ -1,6 +1,54 @@
+@import '../../css/app.scss';
+
 .ShoppingCart {
   &__title {
     font-weight: bolder;
     font-size: 1rem;
+    line-height: 1rem;
+    margin: 0 0 2.75rem;
+  }
+
+  &__separator {
+    width: 100%;
+    height: 0.15rem;
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.4) 33%,
+      transparent 0%
+    );
+    background-position: bottom;
+    background-size: 1.875rem 0.25rem;
+    background-repeat: repeat-x;
+
+    margin-top: 2.75rem;
+  }
+
+  &__content {
+    padding: 1rem;
+  }
+
+  &__total {
+    margin-left: 0.5rem;
+  }
+
+  &__total,
+  &__result {
+    font-weight: bolder;
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+
+  &__totalContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+  }
+
+  &__consultButton {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
   }
 }

@@ -19,4 +19,5 @@ const currentProduct = providerProducts[0];
 export const Page = Template.bind({});
 Page.args = {
   product: currentProduct,
+  quantity: 1,
 };

@@ -1,5 +1,6 @@
 import ShoppingCartLayout from './ShoppingCart.layout.vue';
 import { providerProducts } from '../Provider/components/ProviderProducts/mock';
+import { providers } from '../Providers/mock';
 
 export default {
   title: 'Pages/ShoppingCart',
@@ -14,7 +15,10 @@ const Template = (args) => ({
   template: '<shopping-cart-layout v-bind="args" />',
 });
 
+const currentProvider = providers[0];
+
 export const Page = Template.bind({});
 Page.args = {
   products: providerProducts,
+  provider: currentProvider,
 };

@@ -2,7 +2,10 @@
   <li class="ProductListItem">
     <span class="ProductListItem__container">
       <div class="ProductListItem__leftAlignedContent">
-        <products-quantity :quantity="quantity || 1" />
+        <products-quantity
+          @onChange="$emit('onQuantityChange', $event)"
+          :quantity="quantity"
+        />
         <span class="ProductListItem__name">{{ product.name }}</span>
       </div>
       <span class="ProductListItem__price">
@@ -23,7 +26,7 @@ interface ProductListItemProps {
 }
 
 interface ProductListItemEmits {
-  (eventName: 'onChange', value: number): void;
+  (eventName: 'onQuantityChange', value: number): void;
 }
 
 defineProps<ProductListItemProps>();
