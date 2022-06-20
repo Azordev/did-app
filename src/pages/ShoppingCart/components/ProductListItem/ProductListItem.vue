@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { Product } from 'src/utils';
-import ProductsQuantity from '../ProducstQuantity';
+import ProductsQuantity from '../ProductsQuantity';
 import './ProductListItem.scss';
 
 interface ProductListItemProps {
