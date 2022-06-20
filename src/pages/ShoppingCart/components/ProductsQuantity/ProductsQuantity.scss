@@ -1,0 +1,24 @@
+.ProductsQuantity {
+  white-space: nowrap;
+
+  &__input {
+    align-self: center;
+    display: inline-block;
+
+    .q-field {
+      &__native {
+        text-align: center;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      &__control {
+        width: 1.3125rem;
+        height: 1.3125rem;
+        padding: 0 0.125rem;
+        border-radius: 6px;
+      }
+    }
+    margin: 0 0.625rem;
+  }
+}

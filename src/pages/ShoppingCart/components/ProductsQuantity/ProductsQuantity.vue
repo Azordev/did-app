@@ -1,6 +1,8 @@
 <template>
   <div class="ProductsQuantity">
-    <q-btn flat dense rounded @click="$emit('onChange', quantity + 1)">+</q-btn>
+    <q-btn dense flat rounded @click="$emit('onChange', quantity - 1)">
+      -
+    </q-btn>
     <q-input
       class="ProductsQuantity__input"
       bg-color="primary"
@@ -9,9 +11,7 @@
       dense
       :model-value="quantity"
     />
-    <q-btn dense flat rounded @click="$emit('onChange', quantity - 1)">
-      -
-    </q-btn>
+    <q-btn flat dense rounded @click="$emit('onChange', quantity + 1)">+</q-btn>
   </div>
 </template>
 

@@ -1,0 +1,20 @@
+.ProductListItem {
+  list-style-type: none;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+  }
+
+  &__price {
+    font-weight: 600;
+  }
+
+  &__leftAlignedContent {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+}
