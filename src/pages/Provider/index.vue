@@ -8,6 +8,12 @@
     v-model:search-text="searchText"
     @on-search="getProductLists(id, searchText)"
     @on-add-to-shopping-cart="toggleProduct($event)"
+    @click-on-product="
+      $router.push({
+        name: 'productDetail',
+        params: { provider: id, id: $event },
+      })
+    "
   />
 </template>
 

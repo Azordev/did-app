@@ -6,6 +6,7 @@
       :product="product"
       :is-product-in-cart="checkIsProductInCart(product.id, cartProducts)"
       @on-add-to-shopping-cart="$emit('onAddToShoppingCart', $event)"
+      @click-on-product="$emit('clickOnProduct', $event)"
     />
   </div>
 </template>
@@ -21,6 +22,7 @@ interface ProviderProductsProps {
 
 interface Emits {
   (eventName: 'onAddToShoppingCart', product: Product): void;
+  (eventName: 'clickOnProduct', id: string): void;
 }
 
 defineProps<ProviderProductsProps>();

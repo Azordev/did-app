@@ -17,7 +17,7 @@ import ProductListItem from '../ProductListItem/ProductListItem.vue';
 import './ProductList.scss';
 
 interface ProductListItemProps {
-  products: Product[];
+  products?: Product[];
 }
 
 interface ProductListItemEmits {

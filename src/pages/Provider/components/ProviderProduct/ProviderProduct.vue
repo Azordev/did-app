@@ -1,8 +1,5 @@
 <template>
-  <q-card
-    @click="$router.push({ name: 'productDetail', params: { id: product.id } })"
-    class="ProviderProduct"
-  >
+  <q-card @click="$emit('clickOnProduct', product.id)" class="ProviderProduct">
     <q-card-section class="ProviderProduct__card" horizontal>
       <div class="ProviderProduct__imgContainer">
         <q-img
@@ -45,6 +42,7 @@ interface ProviderProductProps {
 
 interface Emits {
   (eventName: 'onAddToShoppingCart', product: Product): void;
+  (eventName: 'clickOnProduct', id: string): void;
 }
 
 defineProps<ProviderProductProps>();

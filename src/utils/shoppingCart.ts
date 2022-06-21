@@ -10,7 +10,6 @@ export const checkIsProductInCart = (
   id: string,
   shoppingCart: Product[] | undefined
 ) => {
-  console.log({ id, shoppingCart });
   if (!shoppingCart) return false;
 
   return shoppingCart.findIndex((product) => product.id === id) >= 0;
@@ -29,7 +28,7 @@ export const handleShoppingCart = () => {
 
   const addNewProduct = (product: Product) => {
     const products = JSON.parse(JSON.stringify(shoppingCart.value));
-    products.push(product);
+    products.push({ product, quantity: 1 });
 
     LocalStorage.set(SHOPPING_CART.KEY, JSON.stringify(products));
 

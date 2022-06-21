@@ -32,8 +32,8 @@ import './ShoppingCart.scss';
 import ProductList from './components/ProductsList/ProductList.vue';
 
 interface ShoppingCartLayoutProps {
-  products: Product[];
-  provider: Provider;
+  products?: Product[];
+  provider?: Provider;
 }
 
 defineProps<ShoppingCartLayoutProps>();

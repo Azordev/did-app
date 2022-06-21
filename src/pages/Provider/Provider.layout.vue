@@ -15,6 +15,7 @@
         :cartProducts="cartProducts"
         :products="products"
         @on-add-to-shopping-cart="$emit('onAddToShoppingCart', $event)"
+        @click-on-product="$emit('clickOnProduct', $event)"
       />
     </div>
   </div>
@@ -41,6 +42,7 @@ interface ProviderLayoutEmits {
   (eventName: 'update:searchText', value?: string): void;
   (eventName: 'onSearch'): void;
   (eventName: 'onAddToShoppingCart', product: Product): void;
+  (eventName: 'clickOnProduct', event: string): void;
 }
 
 defineProps<ProviderLayoutProps>();
