@@ -18,8 +18,22 @@
           <p class="ShoppingCart__result">S/. {{ total }}</p>
         </div>
 
-        <q-btn class="ShoppingCart__button" color="primary" size="large" no-caps
-          >Consultar</q-btn
+        <a
+          :disable="!whatsappLink"
+          class="ShoppingCart__button"
+          target="_blank"
+          color="primary"
+          size="large"
+          no-caps
+          :href="whatsappLink"
+          >Consultar</a
+        >
+        <a
+          class="ShoppingCart__emailLink"
+          v-if="!whatsappLink"
+          target="_blank"
+          :href="emailLink"
+          >El proveedor no tiene numero de WhatsApp. Enviale un correo</a
         >
       </div>
       <div v-else>
@@ -54,6 +68,8 @@ interface ShoppingCartLayoutProps {
   cartProducts?: ShoppingCartProduct[];
   provider?: Provider;
   total: string;
+  whatsappLink?: string;
+  emailLink?: string;
 }
 
 interface ProductListItemEmits {

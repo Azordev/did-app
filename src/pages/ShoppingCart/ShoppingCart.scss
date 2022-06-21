@@ -47,9 +47,28 @@
 
   &__button {
     width: 80%;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0 auto;
     border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.125rem;
+    background-color: $primary;
+    color: $secondary;
+    font-weight: 500;
+    text-align: center;
+    height: 46.3px;
+
+    &:before {
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px 0px,
+        rgba(0, 0, 0, 0.14) 0px 2px 2px 0px,
+        rgba(0, 0, 0, 0.12) 0px 3px 1px -2px;
+      transition-delay: 0s;
+      transition-duration: 0.3s;
+      transition-property: box-shadow;
+      transition-timing-function: cubic-bezier(0.25, 0.8, 0.5, 1);
+    }
   }
 
   &__empty-title {
@@ -62,5 +81,15 @@
     font-size: 1rem;
     line-height: 1rem;
     margin: 0 0 2.75rem;
+  }
+
+  &__emailLink {
+    text-align: center;
+    display: block;
+    width: max-content;
+    max-width: 60%;
+    margin: 0 auto;
+    color: $primary;
+    margin: 1rem auto 0;
   }
 }

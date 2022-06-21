@@ -3,6 +3,8 @@
     :provider="provider"
     :cartProducts="productsWithQuantity"
     :total="total"
+    :whatsapp-link="whatsappLink"
+    :emailLink="emailLink"
     @on-quantity-change="
       (event) =>
         onQuantityChange({
@@ -26,10 +28,15 @@ import { getUpdatedProducts } from './utils/getUpdatedProducts';
 import { getProviderById } from './utils/getProviderById';
 import { calculateTotalPrice } from './utils/calculateTotalPrice';
 import {
+  getInvoiceText,
+  getWebWhatsappLink,
+  getEmailLink,
+} from './utils/getCustomerServiceLink';
+import {
   concatProductsAndQuantity,
   ShoppingCartProduct,
 } from './utils/concatProductsAndQuantity';
-import { ref, computed } from 'vue';
+import { ref, computed, ComputedRef } from 'vue';
 import { Notify } from 'quasar';
 import { useRoute } from 'vue-router';
 
@@ -82,7 +89,43 @@ const onQuantityChange = ({
   }
 };
 
-const total = computed(() => calculateTotalPrice(productsWithQuantity.value));
+const total: ComputedRef<string> = computed(() =>
+  calculateTotalPrice(productsWithQuantity.value)
+);
+
+const invoiceText: ComputedRef<string | undefined> = computed(() => {
+  if (!productsWithQuantity.value) {
+    return;
+  }
+
+  return getInvoiceText(productsWithQuantity.value);
+});
+
+const whatsappLink: ComputedRef<string | undefined> = computed(() => {
+  const phone = provider.value?.b2b_phone;
+
+  if (!invoiceText.value || !phone) {
+    return;
+  }
+
+  return getWebWhatsappLink({
+    message: invoiceText.value,
+    phone: phone,
+  });
+});
+
+const emailLink: ComputedRef<string | undefined> = computed(() => {
+  const email = provider.value?.b2b_email;
+
+  if (!invoiceText.value || !email) {
+    return;
+  }
+
+  return getEmailLink({
+    message: invoiceText.value,
+    email: email,
+  });
+});
 
 confirmBeforeExit({
   currentRouteParent: route.matched[0].path,
