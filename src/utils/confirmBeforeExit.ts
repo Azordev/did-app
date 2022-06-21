@@ -4,19 +4,31 @@ import { onBeforeRouteLeave } from 'vue-router';
 type ConfirmBeforeExit = {
   title?: string;
   message?: string;
-  currentRoute: string;
+  currentRouteParent: string;
 };
 
 export const confirmBeforeExit = ({
   title = '¿Estás seguro de que quieres dejar esta página?',
   message = 'Si sales de la página, se perderán los cambios',
-  currentRoute,
+  currentRouteParent,
 }: ConfirmBeforeExit) => {
   onBeforeRouteLeave((to, from, next) => {
-    if (currentRoute && to.path.indexOf(currentRoute) === -1) {
+    const routeParent = to.matched[0];
+
+    if (currentRouteParent && routeParent.path !== currentRouteParent) {
       Dialog.create({
         title: title,
         message: message,
+        ok: {
+          textColor: 'primary',
+          color: 'secondary',
+          label: 'Salir',
+        },
+        cancel: {
+          push: true,
+          color: 'primary',
+          label: 'Cancelar',
+        },
       })
         .onOk(() => {
           next();
@@ -27,6 +39,8 @@ export const confirmBeforeExit = ({
         .onDismiss(() => {
           next(false);
         });
+    } else {
+      next();
     }
   });
 };

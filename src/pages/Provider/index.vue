@@ -21,6 +21,9 @@
 import { getProviderById, handleProviderProducts } from './utils';
 import ProviderLayout from './Provider.layout.vue';
 import { handleShoppingCart, confirmBeforeExit } from 'src/utils';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 
 const { shoppingCart, toggleProduct } = handleShoppingCart();
 
@@ -30,7 +33,7 @@ const { getProductLists, query, products, searchText, isLoading } =
   handleProviderProducts();
 
 confirmBeforeExit({
-  currentRoute: 'provider',
+  currentRouteParent: route.matched[0].path,
   message:
     'Si sales de la página, se perderá lo que guardaste en el carrito de compras',
 });
