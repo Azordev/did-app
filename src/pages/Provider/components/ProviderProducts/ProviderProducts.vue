@@ -12,12 +12,12 @@
 </template>
 
 <script setup lang="ts">
-import { Product, checkIsProductInCart } from 'src/utils';
+import { Product, checkIsProductInCart, ShoppingCart } from 'src/utils';
 import ProviderProduct from '../ProviderProduct';
 
 interface ProviderProductsProps {
   products: Product[];
-  cartProducts?: Product[];
+  cartProducts?: ShoppingCart[];
 }
 
 interface Emits {

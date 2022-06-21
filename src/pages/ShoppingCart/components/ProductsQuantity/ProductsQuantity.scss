@@ -10,6 +10,17 @@
         text-align: center;
         font-size: 0.75rem;
         font-weight: 600;
+
+        /* Removing native arrows from input number */
+        /* Firefox */
+        -moz-appearance: textfield;
+
+        /* Chrome, Safari, Edge, Opera */
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
       }
 
       &__control {

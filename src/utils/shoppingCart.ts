@@ -6,17 +6,22 @@ enum SHOPPING_CART {
   KEY = 'shoppingCart',
 }
 
+export interface ShoppingCart {
+  productId: string;
+  quantity: number;
+}
+
 export const checkIsProductInCart = (
   id: string,
-  shoppingCart: Product[] | undefined
+  shoppingCart: ShoppingCart[] | undefined
 ) => {
   if (!shoppingCart) return false;
 
-  return shoppingCart.findIndex((product) => product.id === id) >= 0;
+  return shoppingCart.findIndex((product) => product.productId === id) >= 0;
 };
 
 export const handleShoppingCart = () => {
-  const shoppingCart = ref<Product[]>([]);
+  const shoppingCart = ref<ShoppingCart[]>([]);
 
   const storagedProducts = LocalStorage.getItem(SHOPPING_CART.KEY);
 
@@ -28,7 +33,8 @@ export const handleShoppingCart = () => {
 
   const addNewProduct = (product: Product) => {
     const products = JSON.parse(JSON.stringify(shoppingCart.value));
-    products.push({ product, quantity: 1 });
+
+    products.push({ productId: product.id, quantity: 1 });
 
     LocalStorage.set(SHOPPING_CART.KEY, JSON.stringify(products));
 
@@ -36,9 +42,13 @@ export const handleShoppingCart = () => {
   };
 
   const removeProduct = (id: string) => {
-    const products: Product[] = JSON.parse(JSON.stringify(shoppingCart.value));
+    const products: ShoppingCart[] = JSON.parse(
+      JSON.stringify(shoppingCart.value)
+    );
 
-    const productToRemove = products.findIndex((product) => product.id === id);
+    const productToRemove = products.findIndex(
+      (product) => product.productId === id
+    );
 
     if (productToRemove >= 0) {
       products.splice(productToRemove, 1);
@@ -62,6 +72,23 @@ export const handleShoppingCart = () => {
     addNewProduct(product);
   };
 
+  const editProductQuantity = (productId: string, newQuantity: number) => {
+    const productIndex = shoppingCart.value.findIndex(
+      (product) => productId === product.productId
+    );
+
+    if (productIndex >= 0) {
+      const productToEdit = shoppingCart.value[productIndex];
+
+      shoppingCart.value[productIndex] = {
+        ...productToEdit,
+        quantity: newQuantity,
+      };
+
+      LocalStorage.set(SHOPPING_CART.KEY, JSON.stringify(shoppingCart.value));
+    }
+  };
+
   const clearShoppingCart = () => {
     LocalStorage.remove(SHOPPING_CART.KEY);
   };
@@ -72,5 +99,6 @@ export const handleShoppingCart = () => {
     removeProduct,
     toggleProduct,
     clearShoppingCart,
+    editProductQuantity,
   };
 };

@@ -1,3 +1,4 @@
+import { ShoppingCart } from './../../../utils/shoppingCart';
 import { Notify } from 'quasar';
 import { Product } from 'src/utils/apollo.types';
 import { PRODUCTS_BY_ID } from 'src/services';
@@ -9,20 +10,20 @@ import { ref } from 'vue';
  * @param products
  * @returns Product
  */
-export const getUpdatedProducts = (products: Product[]) => {
+export const getUpdatedProducts = async (products: ShoppingCart[]) => {
   const updatedProducts = ref<Product[]>();
 
-  const productsWithId = products.filter((product) => product.id);
+  const productsWithId = products.filter((product) => product.productId);
 
   const productsIdList = productsWithId.map((product) => ({
-    id: { _eq: product.id },
+    id: { _eq: product.productId },
   }));
 
   const variables = {
     list: productsIdList,
   };
 
-  useQuery<GetProductsByIdReturnTypes>(PRODUCTS_BY_ID, variables)
+  await useQuery<GetProductsByIdReturnTypes>(PRODUCTS_BY_ID, variables)
     .then(({ products }) => {
       updatedProducts.value = products;
     })

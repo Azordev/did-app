@@ -27,7 +27,7 @@ import { ProviderHeader, ProviderProducts } from './components';
 import DIDLogo from 'src/assets/logos/didperu.svg';
 import './Provider.scss';
 
-import { Product, Provider } from 'src/utils';
+import { Product, Provider, ShoppingCart } from 'src/utils';
 
 interface ProviderLayoutProps {
   id: string;
@@ -35,7 +35,7 @@ interface ProviderLayoutProps {
   products: Product[];
   searchText?: string;
   isLoading?: boolean;
-  cartProducts?: Product[];
+  cartProducts?: ShoppingCart[];
 }
 
 interface ProviderLayoutEmits {

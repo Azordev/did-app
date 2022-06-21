@@ -3,13 +3,19 @@
     <span class="ProductListItem__container">
       <div class="ProductListItem__leftAlignedContent">
         <products-quantity
-          @onChange="$emit('onQuantityChange', $event)"
+          :max-available="product.available || Infinity"
+          @onChange="
+            $emit('onQuantityChange', {
+              productId: product.id,
+              quantity: $event,
+            })
+          "
           :quantity="quantity"
         />
         <span class="ProductListItem__name">{{ product.name }}</span>
       </div>
       <span class="ProductListItem__price">
-        S/. {{ product.base_price_sol }}
+        S/. {{ getTotal(product.base_price_sol, quantity) }}
       </span>
     </span>
   </li>
@@ -26,9 +32,16 @@ interface ProductListItemProps {
 }
 
 interface ProductListItemEmits {
-  (eventName: 'onQuantityChange', value: number): void;
+  (
+    eventName: 'onQuantityChange',
+    value: { productId: string; quantity: number }
+  ): void;
 }
 
 defineProps<ProductListItemProps>();
 defineEmits<ProductListItemEmits>();
+
+const getTotal = (price = 0, quantity = 0) => {
+  return (price * quantity).toFixed(2);
+};
 </script>

@@ -38,6 +38,7 @@ export const PRODUCTS_BY_ID = gql`
       id
       base_price_sol
       unit_system
+      available
     }
   }
 `;

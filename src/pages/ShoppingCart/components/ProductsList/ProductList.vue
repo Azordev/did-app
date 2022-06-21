@@ -1,37 +1,31 @@
 <template>
   <ul class="ProductList">
     <ProductListItem
-      v-for="product in products"
-      :product="product"
-      :quantity="productQuantity"
-      :key="product.id"
-      @on-quantity-change="onQuantityChange"
+      v-for="cartProduct in cartProducts"
+      :product="cartProduct.product"
+      :quantity="cartProduct.quantity"
+      :key="cartProduct.product.id"
+      @on-quantity-change="$emit('onQuantityChange', $event)"
     />
   </ul>
 </template>
 
 <script setup lang="ts">
-import { Product } from 'src/utils';
-import { ref } from 'vue';
 import ProductListItem from '../ProductListItem/ProductListItem.vue';
 import './ProductList.scss';
+import { ShoppingCartProduct } from '../../utils/concatProductsAndQuantity';
 
 interface ProductListItemProps {
-  products?: Product[];
+  cartProducts?: ShoppingCartProduct[];
 }
 
 interface ProductListItemEmits {
-  (eventName: 'onQuantityChange', quantity: number): void;
+  (
+    eventName: 'onQuantityChange',
+    value: { productId: string; quantity: number }
+  ): void;
 }
 
 defineProps<ProductListItemProps>();
-const emit = defineEmits<ProductListItemEmits>();
-
-const productQuantity = ref<number>(1);
-
-const onQuantityChange = (newQuantity: number) => {
-  productQuantity.value = newQuantity;
-
-  emit('onQuantityChange', productQuantity.value);
-};
+defineEmits<ProductListItemEmits>();
 </script>
