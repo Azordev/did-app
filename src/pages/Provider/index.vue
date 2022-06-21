@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import { getProviderById, handleProviderProducts } from './utils';
 import ProviderLayout from './Provider.layout.vue';
-import { handleShoppingCart } from 'src/utils';
+import { handleShoppingCart, confirmBeforeExit } from 'src/utils';
 
 const { shoppingCart, toggleProduct } = handleShoppingCart();
 
@@ -28,6 +28,12 @@ const { provider, id } = await getProviderById();
 
 const { getProductLists, query, products, searchText, isLoading } =
   handleProviderProducts();
+
+confirmBeforeExit({
+  currentRoute: 'provider',
+  message:
+    'Si sales de la página, se perderá lo que guardaste en el carrito de compras',
+});
 
 await getProductLists(id, query.value);
 </script>
