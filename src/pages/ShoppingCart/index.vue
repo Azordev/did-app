@@ -10,6 +10,12 @@
           newQuantity: event.quantity,
         })
     "
+    @back-to-provider="
+      $router.push({
+        name: 'providerDetail',
+        params: { provider: route.params.provider },
+      })
+    "
   />
 </template>
 

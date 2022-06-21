@@ -45,10 +45,22 @@
     margin: 0;
   }
 
-  &__consultButton {
+  &__button {
     width: 80%;
     display: block;
     margin: 0 auto;
     border-radius: 5px;
+  }
+
+  &__empty-title {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    margin: 0 0 2.75rem;
+  }
+
+  &__empty-description {
+    font-size: 1rem;
+    line-height: 1rem;
+    margin: 0 0 2.75rem;
   }
 }

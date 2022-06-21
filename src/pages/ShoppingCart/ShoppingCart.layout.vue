@@ -5,25 +5,40 @@
     <div class="ShoppingCart__content">
       <h1 class="ShoppingCart__title">Detalles de la compra</h1>
 
-      <product-list
-        @on-quantity-change="$emit('onQuantityChange', $event)"
-        :cartProducts="cartProducts"
-      />
+      <div v-if="cartProducts?.length">
+        <product-list
+          @on-quantity-change="$emit('onQuantityChange', $event)"
+          :cartProducts="cartProducts"
+        />
 
-      <div class="ShoppingCart__separator" />
+        <div class="ShoppingCart__separator" />
 
-      <div class="ShoppingCart__totalContainer">
-        <h4 class="ShoppingCart__total">Total</h4>
-        <p class="ShoppingCart__result">S/. {{ total }}</p>
+        <div class="ShoppingCart__totalContainer">
+          <h4 class="ShoppingCart__total">Total</h4>
+          <p class="ShoppingCart__result">S/. {{ total }}</p>
+        </div>
+
+        <q-btn class="ShoppingCart__button" color="primary" size="large" no-caps
+          >Consultar</q-btn
+        >
       </div>
-
-      <q-btn
-        class="ShoppingCart__consultButton"
-        color="primary"
-        size="large"
-        no-caps
-        >Consultar</q-btn
-      >
+      <div v-else>
+        <h2 class="ShoppingCart__empty-title">
+          No hay productos en tu carrito de compras
+        </h2>
+        <p class="ShoppingCart__empty-description">
+          Agrega productos a tu carrito de compras para poder comprar
+        </p>
+        <q-btn
+          class="ShoppingCart__button"
+          color="primary"
+          size="large"
+          no-caps
+          @click="$emit('backToProvider')"
+        >
+          Seguir comprando
+        </q-btn>
+      </div>
     </div>
   </div>
 </template>
@@ -46,6 +61,7 @@ interface ProductListItemEmits {
     eventName: 'onQuantityChange',
     value: { productId: string; quantity: number }
   ): void;
+  (eventName: 'backToProvider'): void;
 }
 
 defineProps<ShoppingCartLayoutProps>();
