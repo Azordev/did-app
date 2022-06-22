@@ -6,6 +6,7 @@ import {
   getInvoiceText,
   getWebWhatsappLink,
 } from './utils/getCustomerServiceLink';
+import { calculateTotalPrice } from './utils/calculateTotalPrice';
 
 export default {
   title: 'Pages/ShoppingCart',
@@ -26,6 +27,7 @@ const emailLink = getEmailLink({
   message: invoiceText,
   email: currentProvider.b2b_email,
 });
+const total = calculateTotalPrice(productsWithQuantity);
 
 const Template = (args) => ({
   components: { ShoppingCartLayout },
@@ -38,17 +40,13 @@ const Template = (args) => ({
 export const CartEmpty = Template.bind({});
 CartEmpty.args = {
   provider: currentProvider,
-  cartProducts: productsWithQuantity,
-  total: '10',
-  whatsappLink: whatsappLink,
-  emailLink: emailLink,
 };
 
 export const CartProviderWithoutWhatsApp = Template.bind({});
 CartProviderWithoutWhatsApp.args = {
   provider: currentProvider,
   cartProducts: productsWithQuantity,
-  total: '10',
+  total,
   whatsappLink: undefined,
   emailLink: emailLink,
 };
@@ -56,5 +54,9 @@ CartProviderWithoutWhatsApp.args = {
 export const CartWithProducts = Template.bind({});
 CartWithProducts.args = {
   provider: currentProvider,
+  cartProducts: productsWithQuantity,
   total: '10',
+  whatsappLink: whatsappLink,
+  emailLink: emailLink,
+  total,
 };
