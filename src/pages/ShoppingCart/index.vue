@@ -4,7 +4,7 @@
     :cartProducts="productsWithQuantity"
     :total="total"
     :whatsapp-link="whatsappLink"
-    :emailLink="emailLink"
+    :email-link="emailLink"
     @on-quantity-change="
       (event) =>
         onQuantityChange({
