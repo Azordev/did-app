@@ -60,7 +60,8 @@ export const handleShoppingCart = () => {
   };
 
   /**
-   * Add a new Product if it still doesn't exists on the shopping cart, or remove it if it already exists
+   * This function adds a new Product (update the ShoppingCart var with a new product and update the LocalStorage) in case it doesn't exist in the ShoppingCart yet.
+   * If that product is already on the shopping cart var, it will be removed from the shopping cart var and will be updated the LocalStorage with the changes.
    * @param product
    * @returns
    */

@@ -1,9 +1,9 @@
 <template>
-  <div class="ShoppingCart">
+  <div class="shopping-cart">
     <shopping-cart-header :image_url="provider?.logo_url" />
 
-    <div class="ShoppingCart__content">
-      <h1 class="ShoppingCart__title">Detalles de la compra</h1>
+    <div class="shopping-cart__content">
+      <h1 class="shopping-cart__title">Detalles de la compra</h1>
 
       <div v-if="cartProducts?.length">
         <product-list
@@ -11,16 +11,16 @@
           :cartProducts="cartProducts"
         />
 
-        <div class="ShoppingCart__separator" />
+        <div class="shopping-cart__separator" />
 
-        <div class="ShoppingCart__totalContainer">
-          <h4 class="ShoppingCart__total">Total</h4>
-          <p class="ShoppingCart__result">S/. {{ total }}</p>
+        <div class="shopping-cart__totalContainer">
+          <h4 class="shopping-cart__total">Total</h4>
+          <p class="shopping-cart__result">S/. {{ total }}</p>
         </div>
 
         <a
           :disable="!whatsappLink"
-          class="ShoppingCart__button"
+          class="shopping-cart__button"
           target="_blank"
           color="primary"
           size="large"
@@ -29,7 +29,7 @@
           >Consultar</a
         >
         <a
-          class="ShoppingCart__emailLink"
+          class="shopping-cart__emailLink"
           v-if="!whatsappLink"
           target="_blank"
           :href="emailLink"
@@ -37,14 +37,14 @@
         >
       </div>
       <div v-else>
-        <h2 class="ShoppingCart__empty-title">
+        <h2 class="shopping-cart__empty-title">
           No hay productos en tu carrito de compras
         </h2>
-        <p class="ShoppingCart__empty-description">
+        <p class="shopping-cart__empty-description">
           Agrega productos a tu carrito de compras para poder comprar
         </p>
         <q-btn
-          class="ShoppingCart__button"
+          class="shopping-cart__button"
           color="primary"
           size="large"
           no-caps
