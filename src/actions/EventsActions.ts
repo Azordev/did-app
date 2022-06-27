@@ -28,6 +28,19 @@ export const getListOfEventsForHome = (
   });
 };
 
+export const getListOfEvents = () => {
+  return new Promise<Event[]>((resolve, reject) => {
+    useQuery<getListOfEventsReturnTypes>(EVENTS)
+      .then(({ events }) => {
+        resolve(events);
+      })
+      .catch((err) => {
+        logger(err);
+        reject(null);
+      });
+  });
+};
+
 export const getEventById = (id: string) => {
   return new Promise<Event>((resolve, reject) => {
     useQuery<EventByPKReturnTypes>(EVENT_BY_ID_QUERY, { id })

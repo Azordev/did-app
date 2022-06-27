@@ -2,17 +2,14 @@ import gql from 'graphql-tag';
 import { eventInfo } from '../fragments';
 
 export const EVENTS = gql`
+  ${eventInfo}
   query GetEventsForHome($limit: Int = 4) {
     events(
       order_by: { date: asc }
       where: { is_active: { _eq: true } }
       limit: $limit
     ) {
-      id
-      title
-      image_url
-      date
-      type
+      ...eventsFragment
     }
   }
 `;

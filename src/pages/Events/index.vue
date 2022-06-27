@@ -1,11 +1,10 @@
 <template>
-  <div>Events Page</div>
+  <events-layout :events="events" />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import EventsLayout from './Events.layout.vue';
+import { getListOfEvents } from 'src/actions';
 
-export default defineComponent({
-  name: 'Events',
-});
+const events = await getListOfEvents();
 </script>
