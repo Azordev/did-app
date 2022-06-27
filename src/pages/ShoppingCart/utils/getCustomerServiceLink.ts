@@ -21,7 +21,14 @@ export const getInvoiceText = (shoppingCartProducts: ShoppingCartProduct[]) => {
 
   let invoice = shoppingCartProducts.reduce((acc, { product, quantity }) => {
     const { name, base_price_sol } = product;
-    const total = quantity * base_price_sol;
+    const total = Number(quantity) * Number(base_price_sol);
+
+    if (isNaN(total)) {
+      const fallbackText = 'error calculando el precio para este producto';
+
+      return `${acc}${name} = ${fallbackText}\n`;
+    }
+
     allProductsTotal += total;
 
     return `${acc}${name} ${quantity}x = S/. ${total}\n`;
