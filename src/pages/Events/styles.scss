@@ -1,0 +1,12 @@
+.events {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  &__container {
+    max-width: 90%;
+    margin: auto;
+    margin-top: 0.875rem;
+  }
+}
