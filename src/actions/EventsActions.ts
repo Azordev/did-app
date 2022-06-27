@@ -28,9 +28,13 @@ export const getListOfEventsForHome = (
   });
 };
 
-export const getListOfEvents = () => {
+export const getListOfEvents = (name = '') => {
+  const variables = {
+    name: `%${name}%`,
+  };
+
   return new Promise<Event[]>((resolve, reject) => {
-    useQuery<getListOfEventsReturnTypes>(EVENTS)
+    useQuery<getListOfEventsReturnTypes>(EVENTS, variables)
       .then(({ events }) => {
         resolve(events);
       })

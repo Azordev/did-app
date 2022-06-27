@@ -3,11 +3,11 @@ import { eventInfo } from '../fragments';
 
 export const EVENTS = gql`
   ${eventInfo}
-  query GetEventsForHome($limit: Int = 4) {
+  query GetEventsForHome($limit: Int = 4, $name: String = "%%") {
     events(
       order_by: { date: asc }
-      where: { is_active: { _eq: true } }
       limit: $limit
+      where: { is_active: { _eq: true }, title: { _ilike: $name } }
     ) {
       ...eventsFragment
     }
