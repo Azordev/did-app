@@ -20,6 +20,7 @@
             :image_url="event.image_url || DIDLogo"
             :date="new Date(event.date)"
             :isAnnouncement="event.type === EventType.PUBLIC"
+            class="HomeLayout__listItem--event"
             @onClick="
               $router.push({
                 name: 'eventDetail',
