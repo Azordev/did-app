@@ -18,28 +18,19 @@
         />
       </q-btn>
     </div>
-    <q-form class="providerHeader__form" @submit="$emit('onSearch')">
-      <q-input
-        bg-color="secondary"
-        outlined
-        placeholder="Buscar producto..."
-        @update:model-value="$emit('update:queryValue', $event)"
-        :model-value="queryValue"
-        class="providerHeader__form_search"
-        :rounded="false"
-      />
-      <q-btn
-        unelevated
-        type="submit"
-        color="primary"
-        icon="search"
-        class="providerHeader__form_button"
-      />
-    </q-form>
+    <search-bar
+      @on-search="$emit('onSearch')"
+      @on-clear="$emit('onClear')"
+      @update:query-value="$emit('update:queryValue', $event)"
+      :queryValue="queryValue"
+      placeholder="Buscar producto..."
+    />
   </div>
 </template>
 
 <script setup lang="ts">
+import SearchBar from 'src/components/SearchBar';
+
 interface ProviderHeaderProps {
   logoUrl: string;
   queryValue: string;

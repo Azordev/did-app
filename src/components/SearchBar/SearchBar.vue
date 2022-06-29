@@ -1,50 +1,48 @@
 <template>
-  <q-form @submit="$emit('onSearch')">
+  <q-form class="SearchBar__form" @submit="$emit('onSearch')">
     <q-input
-      class="SearchBar"
+      bg-color="secondary"
       outlined
-      :rounded="rounded"
-      bottom-slots
-      :model-value="queryValue"
+      :placeholder="placeholder"
       @update:model-value="$emit('update:queryValue', $event)"
-      :label="placeholder"
+      :model-value="queryValue"
+      class="SearchBar__input"
+      :rounded="false"
     >
       <template v-slot:append>
         <q-icon
-          v-if="queryValue !== ''"
+          v-if="queryValue?.length"
           name="close"
           @click="$emit('onClear')"
           class="cursor-pointer"
         />
       </template>
-
-      <template v-slot:prepend>
-        <q-icon class="SearchBar__button" name="search" type="submit" />
-      </template>
     </q-input>
+
+    <q-btn
+      unelevated
+      type="submit"
+      color="primary"
+      icon="search"
+      class="providerHeader__form_button"
+    />
   </q-form>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import './SearchBar.scss';
 
-export default defineComponent({
-  name: 'SearchBar',
-  props: {
-    queryValue: {
-      type: String,
-      default: '',
-    },
-    placeholder: {
-      type: String,
-      default: 'Buscar...',
-    },
-    rounded: {
-      type: Boolean,
-      default: true,
-    },
-  },
-  emit: ['update:queryValue', 'onClear'],
-});
+interface SearchBarProps {
+  placeholder?: string;
+  queryValue: string;
+}
+
+interface SearchBarEmits {
+  (eventName: 'update:queryValue', value: string | number | null): void;
+  (eventName: 'onSearch'): void;
+  (eventName: 'onClear'): void;
+}
+
+defineProps<SearchBarProps>();
+defineEmits<SearchBarEmits>();
 </script>

@@ -7,6 +7,7 @@
       :has-products-on-cart="!!cartProducts?.length"
       @update:query-value="$emit('update:searchText', $event?.toString())"
       @on-search="$emit('onSearch')"
+      @on-clear="$emit('onClear')"
     />
     <div class="Provider__container">
       <base-loading v-if="isLoading" />
@@ -41,6 +42,7 @@ interface ProviderLayoutProps {
 interface ProviderLayoutEmits {
   (eventName: 'update:searchText', value?: string): void;
   (eventName: 'onSearch'): void;
+  (eventName: 'onClear'): void;
   (eventName: 'onAddToShoppingCart', product: Product): void;
   (eventName: 'clickOnProduct', event: string): void;
 }
