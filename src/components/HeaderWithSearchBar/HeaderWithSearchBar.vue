@@ -1,17 +1,19 @@
 <template>
-  <div class="providerHeader">
-    <div class="providerHeader__topContainer">
-      <q-img class="providerHeader__img" :src="logoUrl" />
+  <div class="header">
+    <div class="header__top-container">
+      <q-img class="header__img" :src="logoUrl" v-if="logoUrl" />
+      <h2 class="header__title" v-else>{{ title }}</h2>
       <q-btn
         @click="$router.push({ name: 'shoppingCart' })"
         size="10px"
         round
         color="accent"
         icon="shopping_basket"
+        v-if="showShoppingCart"
       >
         <q-badge
           v-if="hasProductsOnCart"
-          class="providerHeader__btnBadge"
+          class="header__btn-badge"
           floating
           rounded
           color="red"
@@ -30,10 +32,13 @@
 
 <script setup lang="ts">
 import SearchBar from 'src/components/SearchBar';
+import './styles.scss';
 
 interface ProviderHeaderProps {
-  logoUrl: string;
   queryValue: string;
+  logoUrl?: string;
+  title?: string;
+  showShoppingCart?: boolean;
   hasProductsOnCart?: boolean;
 }
 
@@ -44,6 +49,5 @@ interface Emits {
 }
 
 defineProps<ProviderHeaderProps>();
-
 defineEmits<Emits>();
 </script>
