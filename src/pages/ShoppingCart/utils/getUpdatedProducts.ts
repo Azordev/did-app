@@ -20,7 +20,7 @@ export const getUpdatedProducts = async (products: ShoppingCart[]) => {
   }));
 
   const variables = {
-    list: productsIdList,
+    filters: productsIdList,
   };
 
   await useQuery<GetProductsByIdReturnTypes>(PRODUCTS_BY_ID, variables)
