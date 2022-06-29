@@ -10,7 +10,7 @@ export const calculateTotalPrice = (
 
     if (isNaN(basePrice) || isNaN(quantity)) {
       Notify.create({
-        message: `Ocurrio un error calculando el precio de ${cartProduct.product.name}, por lo que no se ha incluido en la cuenta, por favor intenta removerlo de tu carrito e incluyendolo nuevamente.`,
+        message: `Ocurrió un error calculando el precio de ${cartProduct.product.name}, por lo que no se ha incluido en la cuenta, por favor intenta removerlo de tu carrito e incluyendolo nuevamente.`,
         color: 'negative',
       });
       return 0;
