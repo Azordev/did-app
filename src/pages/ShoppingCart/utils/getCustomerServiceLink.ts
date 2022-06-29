@@ -34,7 +34,7 @@ export const getInvoiceText = (shoppingCartProducts: ShoppingCartProduct[]) => {
     return `${acc}${name} ${quantity}x = S/. ${total}\n`;
   }, '');
 
-  invoice += '\n----------------\n';
+  invoice += '\n-----\n';
   invoice += `\nTotal: ${allProductsTotal}`;
 
   return invoice;
