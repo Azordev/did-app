@@ -60,14 +60,14 @@ export const handleShoppingCart = () => {
   };
 
   /**
-   * This function adds a new Product (update the ShoppingCart var with a new product and update the LocalStorage) in case it doesn't exist in the ShoppingCart yet.
-   * If that product is already on the shopping cart var, it will be removed from the shopping cart var and will be updated the LocalStorage with the changes.
+   * This function adds a new Product (update the ShoppingCart var with a new product and update the LocalStorage) in case it still doesn't exist in the ShoppingCart.
+   * If the product was already on the shopping cart var, it will be removed from the shopping cart var and will be updated the LocalStorage with the changes.
    * @param product
-   * @returns
    */
   const toggleProduct = (product: Product) => {
     if (checkIsProductInCart(product.id, shoppingCart.value)) {
-      return removeProduct(product.id);
+      removeProduct(product.id);
+      return;
     }
 
     addNewProduct(product);

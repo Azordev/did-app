@@ -8,7 +8,7 @@ type ConfirmBeforeExit = {
 };
 
 export const confirmBeforeExit = ({
-  title = '¿Estás seguro de que quieres dejar esta página?',
+  title = '¿Estás seguro de que quieres abandonar esta página?',
   message = 'Si sales de la página, se perderán los cambios',
   currentRouteParent,
 }: ConfirmBeforeExit) => {

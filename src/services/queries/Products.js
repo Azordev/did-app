@@ -32,8 +32,8 @@ export const PRODUCT_BY_ID = gql`
 `;
 
 export const PRODUCTS_BY_ID = gql`
-  query getListOfProducts($list: [products_bool_exp!]) {
-    products(where: { _or: $list }) {
+  query getListOfProducts($filters: [products_bool_exp!]) {
+    products(where: { _or: $filters }) {
       name
       id
       base_price_sol

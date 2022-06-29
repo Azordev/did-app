@@ -27,7 +27,7 @@ const { product, productId, getProductDetail } = handleProductQuery();
 const { shoppingCart, toggleProduct } = handleShoppingCart();
 
 confirmBeforeExit({
-  currentRouteParent: route.matched[0].path,
+  currentRouteParent: route.matched[0]?.path,
   message:
     'Si sales de la página, se perderá lo que guardaste en el carrito de compras',
 });
