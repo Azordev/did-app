@@ -1,8 +1,5 @@
 <template>
-  <q-card
-    @click="$router.push({ name: 'productDetail', params: { id: product.id } })"
-    class="ProviderProduct"
-  >
+  <q-card @click="$emit('clickOnProduct', product.id)" class="ProviderProduct">
     <q-card-section class="ProviderProduct__card" horizontal>
       <div class="ProviderProduct__imgContainer">
         <q-img
@@ -23,8 +20,11 @@
         <q-card-actions>
           <q-btn
             class="ProductList__item_button"
-            color="accent"
-            icon="add_shopping_cart"
+            :color="isProductInCart ? 'negative' : 'accent'"
+            :icon="
+              isProductInCart ? 'remove_shopping_cart' : 'add_shopping_cart'
+            "
+            @click.stop="$emit('onAddToShoppingCart', product)"
           />
         </q-card-actions>
       </q-card-section>
@@ -37,7 +37,14 @@ import { Product } from 'src/utils';
 
 interface ProviderProductProps {
   product: Product;
+  isProductInCart?: boolean;
+}
+
+interface Emits {
+  (eventName: 'onAddToShoppingCart', product: Product): void;
+  (eventName: 'clickOnProduct', id: string): void;
 }
 
 defineProps<ProviderProductProps>();
+defineEmits<Emits>();
 </script>

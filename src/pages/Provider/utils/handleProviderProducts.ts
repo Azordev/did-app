@@ -16,7 +16,7 @@ export const handleProviderProducts = () => {
 
       Notify.create({
         message:
-          'Ocurrio un error, asegurate de que el Proveedor que seleccionaste existe',
+          'Ocurrió un error, asegurate de que el Proveedor que seleccionaste existe',
         type: 'negative',
       });
 

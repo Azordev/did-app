@@ -2,16 +2,14 @@
   <providers-layout
     :isLoading="isLoading"
     :providers="providers"
-    :totalPages="totalPages"
-    :currentPage="currentPage"
     v-model:query-value="searchText"
     @onClear="onClearSearch()"
-    @onSearch="getProductList(1, searchText, order_by)"
-    @onSelectCategory="onSelectProvidersCategory"
+    @onSearch="getProvidersList(1, searchText, order_by)"
   />
 </template>
 
 <script lang="ts">
+import { confirmBeforeExit } from 'src/utils';
 import { defineComponent } from 'vue';
 import { getListOfProviders } from '../../actions';
 import { handleListQuery } from '../../utils/apollo';
@@ -35,10 +33,10 @@ export default defineComponent({
       searchText,
       order_by,
       onClearSearch,
-      getItemsList: getProductList,
+      getItemsList: getProvidersList,
     } = handleListQuery(getListOfProviders);
 
-    getProductList(currentPage.value, query.value, order_by.value);
+    getProvidersList(currentPage.value, query.value, order_by.value);
 
     return {
       providers,
@@ -51,7 +49,7 @@ export default defineComponent({
       searchText,
       order_by,
       onClearSearch,
-      getProductList,
+      getProvidersList,
     };
   },
 });

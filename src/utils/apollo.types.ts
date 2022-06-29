@@ -129,6 +129,10 @@ export interface getProductByIdReturnTypes {
   products: Product[];
 }
 
+export interface GetProductsByIdReturnTypes {
+  products: Product[];
+}
+
 // Events
 export enum EventType {
   PRIVATE = 'ATTENDANCE',

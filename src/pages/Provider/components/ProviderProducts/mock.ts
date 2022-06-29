@@ -9,7 +9,7 @@ export const providerProducts: Product[] = [
     image_url:
       'https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Yugioh_Card_Back.jpg/250px-Yugioh_Card_Back.jpg',
     name: 'Storybook test card',
-    available: 1,
+    available: 5,
     details: 'Nueva',
     provider_id: '1',
     unit_system: 'S',

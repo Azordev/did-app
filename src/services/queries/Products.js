@@ -26,6 +26,19 @@ export const PRODUCT_BY_ID = gql`
       description
       name
       image_url
+      id
+    }
+  }
+`;
+
+export const PRODUCTS_BY_ID = gql`
+  query getListOfProducts($filters: [products_bool_exp!]) {
+    products(where: { _or: $filters }) {
+      name
+      id
+      base_price_sol
+      unit_system
+      available
     }
   }
 `;
