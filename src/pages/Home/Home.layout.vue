@@ -8,7 +8,11 @@
     :avatar="avatar"
   />
   <div class="HomeLayout__content">
-    <home-list class="HomeLayout__list" title="Eventos">
+    <home-list
+      see-more-route-name="events"
+      class="HomeLayout__list"
+      title="Eventos"
+    >
       <template v-if="isMembershipActive">
         <div
           class="HomeLayout__listItem"
@@ -31,16 +35,17 @@
             "
           />
         </div>
-        <div class="HomeLayout__seeAll">
-          <router-link :to="{ name: 'events' }">Ver todos</router-link>
-        </div>
       </template>
       <div v-else>
         Por favor actualice su membresia para ver los proximos eventos
         disponibles en DID
       </div>
     </home-list>
-    <home-list class="HomeLayout__list" title="Proveedores">
+    <home-list
+      see-more-route-name="providers"
+      class="HomeLayout__list"
+      title="Proveedores"
+    >
       <template v-if="isMembershipActive">
         <div
           class="HomeLayout__listItem"
@@ -57,9 +62,6 @@
             :image_url="provider.logo_url"
             :id="provider.id"
           />
-        </div>
-        <div class="HomeLayout__seeAll">
-          <router-link :to="{ name: 'providers' }">Ver todos</router-link>
         </div>
       </template>
       <div v-else>

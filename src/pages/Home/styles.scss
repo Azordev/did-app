@@ -6,21 +6,7 @@
   }
 
   &__list {
-    margin-bottom: 2.5rem;
-  }
-
-  &__seeAll {
-    display: flex;
-    height: 6.375rem;
-    width: 5rem;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-
-    a {
-      color: $dark;
-      text-decoration: underline;
-    }
+    margin-bottom: 2rem;
   }
 
   &__listItem {

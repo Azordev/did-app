@@ -1,9 +1,14 @@
 <template>
   <div>
-    <home-title>{{ title }}</home-title>
+    <div class="home-list__title-container">
+      <home-title>{{ title }}</home-title>
+      <span v-if="seeMoreRouteName" class="home-list__see-all">
+        <router-link :to="{ name: seeMoreRouteName }">Ver más</router-link>
+      </span>
+    </div>
     <horizontal-scroll>
       <slot>
-        <div class="HomeList__comingSoon">Muy pronto!</div>
+        <div class="home-list__coming-soon">Muy pronto!</div>
       </slot>
     </horizontal-scroll>
   </div>
@@ -17,6 +22,7 @@ import './styles.scss';
 
 interface HomeListProps {
   title: string;
+  seeMoreRouteName: string;
 }
 
 defineProps<HomeListProps>();
