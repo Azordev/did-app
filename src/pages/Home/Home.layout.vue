@@ -8,7 +8,11 @@
     :avatar="avatar"
   />
   <div class="HomeLayout__content">
-    <home-list class="HomeLayout__list" title="Eventos">
+    <home-list
+      see-more-route-name="events"
+      class="HomeLayout__list"
+      title="Eventos"
+    >
       <template v-if="isMembershipActive">
         <div
           class="HomeLayout__listItem"
@@ -36,7 +40,11 @@
         disponibles en DID
       </div>
     </home-list>
-    <home-list class="HomeLayout__list" title="Proveedores">
+    <home-list
+      see-more-route-name="providers"
+      class="HomeLayout__list"
+      title="Proveedores"
+    >
       <template v-if="isMembershipActive">
         <div
           class="HomeLayout__listItem"
