@@ -1,18 +1,12 @@
 .Providers {
-  padding: 0.625rem;
-
   &__content {
-    padding: 0.625rem;
-
-    @media screen and (min-width: 25rem) {
-      padding: 1.875rem;
-    }
+    padding: 2.31rem;
   }
 }
 
 .ProvidersList {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 2.5rem 1.25rem;
   margin-top: 1.25rem;
 
@@ -20,11 +14,17 @@
     cursor: pointer;
     height: 100%;
     width: 100%;
+    min-width: 6.25rem;
+    min-height: 6.25rem;
 
     img {
       aspect-ratio: 1/1;
       object-fit: scale-down;
     }
+  }
+
+  @media screen and (min-width: 25rem) {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   @media screen and (min-width: 37.5rem) {

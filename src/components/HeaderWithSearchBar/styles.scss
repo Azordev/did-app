@@ -1,0 +1,42 @@
+@import '../../css/app.scss';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: $secondary;
+  padding: 2.18rem 2.31rem 1.12rem;
+  border-radius: 0 0 5px 5px;
+
+  &__img {
+    max-height: 30vh;
+    width: 4.375rem;
+    height: 1.875rem;
+    aspect-ratio: 16/9;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain !important;
+    }
+  }
+
+  &__btnBadge {
+    bottom: 0;
+    top: unset;
+  }
+
+  &__topContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+  }
+
+  &__title {
+    margin: 0 0 0.75rem;
+    line-height: 0.875rem;
+    font-weight: bold;
+    font-size: 0.9375rem;
+    color: $gray-dim;
+  }
+}

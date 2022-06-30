@@ -8,6 +8,7 @@
     v-model:search-text="searchText"
     @on-search="getProductLists(id, searchText)"
     @on-add-to-shopping-cart="toggleProduct($event)"
+    @on-clear="clearSearch()"
     @click-on-product="
       $router.push({
         name: 'productDetail',
@@ -31,6 +32,11 @@ const { provider, id } = await getProviderById();
 
 const { getProductLists, query, products, searchText, isLoading } =
   handleProviderProducts();
+
+const clearSearch = () => {
+  searchText.value = '';
+  getProductLists(id, searchText.value);
+};
 
 confirmBeforeExit({
   currentRouteParent: route.matched[0].path,

@@ -9,7 +9,6 @@
 </template>
 
 <script lang="ts">
-import { confirmBeforeExit } from 'src/utils';
 import { defineComponent } from 'vue';
 import { getListOfProviders } from '../../actions';
 import { handleListQuery } from '../../utils/apollo';

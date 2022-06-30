@@ -1,12 +1,13 @@
 <template>
   <div class="Provider">
-    <provider-header
+    <header-with-search-bar
       :logo-url="provider?.logo_url || DIDLogo"
       :name="provider?.commercial_name"
       :query-value="searchText || ''"
       :has-products-on-cart="!!cartProducts?.length"
       @update:query-value="$emit('update:searchText', $event?.toString())"
       @on-search="$emit('onSearch')"
+      @on-clear="$emit('onClear')"
     />
     <div class="Provider__container">
       <base-loading v-if="isLoading" />
@@ -22,8 +23,8 @@
 </template>
 
 <script setup lang="ts">
-import { BaseLoading } from 'src/components/LoadingComponent';
-import { ProviderHeader, ProviderProducts } from './components';
+import { BaseLoading, HeaderWithSearchBar } from 'src/components';
+import { ProviderProducts } from './components';
 import DIDLogo from 'src/assets/logos/didperu.svg';
 import './Provider.scss';
 
@@ -41,6 +42,7 @@ interface ProviderLayoutProps {
 interface ProviderLayoutEmits {
   (eventName: 'update:searchText', value?: string): void;
   (eventName: 'onSearch'): void;
+  (eventName: 'onClear'): void;
   (eventName: 'onAddToShoppingCart', product: Product): void;
   (eventName: 'clickOnProduct', event: string): void;
 }
