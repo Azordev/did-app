@@ -1,10 +1,19 @@
 <template>
-  <events-layout :events="events" />
+  <events-layout
+    :events="events"
+    :is-loading="isLoading"
+    @on-clear="clearSearch"
+    @on-search="getEventList(searchText)"
+    v-model:search-text="searchText"
+  />
 </template>
 
 <script setup lang="ts">
 import EventsLayout from './Events.layout.vue';
-import { getListOfEvents } from 'src/actions';
+import { handleEventList } from './utils/handleEventList';
 
-const events = await getListOfEvents();
+const { isLoading, clearSearch, getEventList, events, searchText } =
+  handleEventList();
+
+await getEventList();
 </script>
