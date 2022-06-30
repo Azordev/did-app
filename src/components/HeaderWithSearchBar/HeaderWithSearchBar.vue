@@ -23,7 +23,7 @@
     <search-bar
       @on-search="$emit('onSearch')"
       @on-clear="$emit('onClear')"
-      @update:query-value="$emit('update:queryValue', $event)"
+      @update:query-value="$emit('update:queryValue', $event?.toString())"
       :queryValue="queryValue"
       placeholder="Buscar producto..."
     />
@@ -43,7 +43,7 @@ interface ProviderHeaderProps {
 }
 
 interface Emits {
-  (eventName: 'update:queryValue', value: string | number | null): void;
+  (eventName: 'update:queryValue', value?: string): void;
   (eventName: 'onClear'): void;
   (eventName: 'onSearch'): void;
 }

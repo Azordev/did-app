@@ -1,16 +1,14 @@
 <template>
   <div class="Providers">
-    <back-button toHome />
+    <header-with-search-bar
+      title="Proveedores"
+      :query-value="queryValue || ''"
+      @update:query-value="$emit('update:queryValue', $event?.toString())"
+      @on-search="$emit('onSearch')"
+      @on-clear="$emit('onClear')"
+    />
 
     <div class="Providers__content">
-      <search-bar
-        @on-search="$emit('onSearch')"
-        @on-clear="$emit('onClear')"
-        @update:query-value="$emit('update:queryValue', $event)"
-        :query-value="queryValue"
-        class="Providers__search"
-      />
-
       <list-grid
         className="ProvidersList"
         :isLoading="isLoading"
@@ -34,14 +32,13 @@
 
 <script setup lang="ts">
 import ListGrid from '../../components/ListGrid';
-import BackButton from '../../components/BackButton';
-import SearchBar from '../../components/SearchBar';
+import { HeaderWithSearchBar } from 'src/components';
 import ProvidersListItem from './ProvidersListItem.vue';
 import { Provider } from 'src/utils';
 
 interface ProvidersLayoutEmits {
   (EventName: 'onSelectCategory', categorySelected: string): void;
-  (EventName: 'update:queryValue', queryValue: string): void;
+  (EventName: 'update:queryValue', value?: string): void;
   (EventName: 'onSearch'): void;
   (EventName: 'onClear'): void;
 }
