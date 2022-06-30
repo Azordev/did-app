@@ -5,6 +5,12 @@
   display: flex;
   justify-content: space-between;
 
+  &__calendar {
+    .q-btn__content {
+      padding: 0.1rem 0.5rem;
+    }
+  }
+
   &__greetings {
     font-size: 0.875rem;
   }
