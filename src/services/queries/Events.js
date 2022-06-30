@@ -1,27 +1,24 @@
 import gql from 'graphql-tag';
-import { eventInfo } from '../fragments';
+import { EventInfo } from '../fragments';
 
 export const EVENTS = gql`
-  query GetEventsForHome($limit: Int = 4) {
+  ${EventInfo}
+  query GetEventsForHome($limit: Int = 4, $name: String = "%%") {
     events(
       order_by: { date: asc }
-      where: { is_active: { _eq: true } }
       limit: $limit
+      where: { is_active: { _eq: true }, title: { _ilike: $name } }
     ) {
-      id
-      title
-      image_url
-      date
-      type
+      ...EventsFragment
     }
   }
 `;
 
 export const EVENT_BY_ID_QUERY = gql`
-  ${eventInfo}
+  ${EventInfo}
   query GetEventById($id: uuid!) {
     events_by_pk(id: $id) {
-      ...eventsFragment
+      ...EventsFragment
     }
   }
 `;

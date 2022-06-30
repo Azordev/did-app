@@ -1,11 +1,19 @@
 <template>
-  <div>Events Page</div>
+  <events-layout
+    :events="events"
+    :is-loading="isLoading"
+    @on-clear="clearSearch"
+    @on-search="getEventList(searchText)"
+    v-model:search-text="searchText"
+  />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import EventsLayout from './Events.layout.vue';
+import { handleEventList } from './utils/handleEventList';
 
-export default defineComponent({
-  name: 'Events',
-});
+const { isLoading, clearSearch, getEventList, events, searchText } =
+  handleEventList();
+
+await getEventList();
 </script>

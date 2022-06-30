@@ -1,18 +1,21 @@
 @import '../../css/app.scss';
 
 .SearchBar {
-  .q-field__control {
-    background-color: $secondary;
+  &__form {
+    display: flex;
+    gap: 0.81rem;
   }
 
-  .q-field__label,
-  &__button {
-    font-weight: bolder;
-    color: $gray-chinese-silver;
-  }
+  &__input {
+    width: 100%;
 
-  &__button {
-    cursor: pointer;
-    margin-left: 0.125rem;
+    .q-field__control {
+      border-radius: 6px;
+      height: 3.125rem;
+    }
+
+    .q-field__native {
+      padding-left: 0.5rem;
+    }
   }
 }

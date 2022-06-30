@@ -1,10 +1,8 @@
 .EventCard {
   cursor: pointer;
-  height: 6.375rem;
+  height: 6.25rem;
   padding: 0.625rem;
   overflow: hidden;
-  width: 60vw;
-  max-width: 20rem;
   min-width: 16rem;
 
   &__container {

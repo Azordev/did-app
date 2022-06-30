@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
-export const eventInfo = gql`
-  fragment eventsFragment on events {
+export const EventInfo = gql`
+  fragment EventsFragment on events {
     date
     description
     image_url

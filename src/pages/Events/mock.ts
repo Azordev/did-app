@@ -1,4 +1,4 @@
-import { Event } from '../../utils';
+import { Event, EventType } from '../../utils';
 import DIDLogo from '../../assets/logos/didperu.svg';
 
 export const events: Event[] = [
@@ -8,7 +8,7 @@ export const events: Event[] = [
     date: '02/05/2023',
     title: 'Reunion Privada',
     image_url: DIDLogo,
-    type: 'PRIVATE',
+    type: EventType.PRIVATE,
   },
   {
     __typename: 'events',
@@ -16,7 +16,7 @@ export const events: Event[] = [
     date: '02/06/2023',
     title: 'Reunion Publica',
     image_url: DIDLogo,
-    type: 'PUBLIC',
+    type: EventType.PUBLIC,
   },
   {
     __typename: 'events',
@@ -24,7 +24,7 @@ export const events: Event[] = [
     date: '02/08/2023',
     title: 'Reunion de trabajo',
     image_url: DIDLogo,
-    type: 'PUBLIC',
+    type: EventType.PUBLIC,
   },
   {
     __typename: 'events',
@@ -32,6 +32,6 @@ export const events: Event[] = [
     date: '02/10/2023',
     title: 'Reunion',
     image_url: DIDLogo,
-    type: 'PRIVATE',
+    type: EventType.PRIVATE,
   },
 ];

@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
-import { userInfo } from '../fragments';
+import { UserInfo } from '../fragments';
 
 export const USER_LOGIN = gql`
-  ${userInfo}
+  ${UserInfo}
   query GetUserSession($password: String!, $member_code: String!) {
     users(
       where: {
@@ -10,16 +10,16 @@ export const USER_LOGIN = gql`
         member_code: { _eq: $member_code }
       }
     ) {
-      ...userInfo
+      ...UserInfo
     }
   }
 `;
 
 export const USER_BY_ID = gql`
-  ${userInfo}
+  ${UserInfo}
   query USER_BY_ID($id: uuid = "") {
     users_by_pk(id: $id) {
-      ...userInfo
+      ...UserInfo
     }
   }
 `;
