@@ -1,5 +1,23 @@
 @import '../../../../css/app.scss';
 
-.HomeList__comingSoon {
-  font-weight: 600;
+.home-list {
+  &__coming-soon {
+    font-weight: 600;
+  }
+
+  &__title-container {
+    justify-content: space-between;
+    display: flex;
+  }
+
+  &__see-all {
+    white-space: nowrap;
+    padding-right: 1.25rem;
+
+    a {
+      color: $gray-dim;
+      text-decoration: none;
+      font-size: 0.75rem;
+    }
+  }
 }
