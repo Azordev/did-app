@@ -1,5 +1,5 @@
 import EventCard from './EventCard';
-import DIDLogo from '../../assets/logos/didperu.svg';
+import DIDLogo from '../../assets/logos/didperu-dark.svg';
 
 export default {
   title: 'Pages/Events/Components/Card',
