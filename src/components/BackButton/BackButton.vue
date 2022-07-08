@@ -4,29 +4,20 @@
     color="gray-dim"
     dense
     size="md"
-    :icon="arrowIcon"
-    :label="toHome ? 'Inicio' : 'Atrás'"
+    :icon="matArrowBackIosNew"
+    :label="label"
     no-caps
     @click="toHome ? $router.push({ name: 'dashboard' }) : $router.back()"
   />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import { matArrowBackIosNew } from '@quasar/extras/material-icons';
 
-export default defineComponent({
-  name: 'SearchBar',
-  emits: ['onChange'],
-  props: {
-    toHome: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  emit: ['update:queryValue', 'onClear'],
-  setup() {
-    return { arrowIcon: matArrowBackIosNew };
-  },
-});
+interface BackButtonProps {
+  toHome?: boolean;
+  label?: string;
+}
+
+defineProps<BackButtonProps>();
 </script>
