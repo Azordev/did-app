@@ -1,8 +1,8 @@
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="30.101"
-    height="30.071"
+    :width="width"
+    :height="height"
     viewBox="0 0 30.101 30.071"
   >
     <g id="Grupo_13259" data-name="Grupo 13259" transform="translate(0)">
@@ -26,4 +26,15 @@
   </svg>
 </template>
 
-<script setup></script>
+<script setup lang="ts">
+defineProps({
+  width: {
+    type: Number,
+    default: 30.101,
+  },
+  height: {
+    type: Number,
+    default: 30.071,
+  },
+});
+</script>

@@ -77,7 +77,7 @@ import { HomeHeader, HomeList } from './components';
 import { ProviderCard, EventCard } from '../../components';
 import { Event, EventType, Provider } from '../../utils';
 import { handleUserData } from './utils/handleUserData';
-import DIDLogo from '../../assets/logos/didperu_dark.svg';
+import DIDLogo from '../../assets/logos/didperu-dark.svg';
 import './styles.scss';
 import { Notify } from 'quasar';
 import { useRouter } from 'vue-router';

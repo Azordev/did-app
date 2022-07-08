@@ -3,8 +3,8 @@
     id="Grupo_13204"
     data-name="Grupo 13204"
     xmlns="http://www.w3.org/2000/svg"
-    width="27.671"
-    height="29.94"
+    :width="width"
+    :height="height"
     viewBox="0 0 27.671 29.94"
   >
     <g id="Grupo_95" data-name="Grupo 95" transform="translate(0)">
@@ -19,4 +19,15 @@
   </svg>
 </template>
 
-<script setup></script>
+<script setup lang="ts">
+defineProps({
+  width: {
+    type: Number,
+    default: 27.671,
+  },
+  height: {
+    type: Number,
+    default: 29.94,
+  },
+});
+</script>
