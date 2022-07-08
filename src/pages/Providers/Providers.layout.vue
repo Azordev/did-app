@@ -13,7 +13,7 @@
       <list-grid
         className="ProvidersList"
         :isLoading="isLoading"
-        :listItemsLength="providers.length"
+        :listItemsLength="providers?.length || 0"
       >
         <provider-card
           v-for="provider in providers"
@@ -47,7 +47,7 @@ interface ProvidersLayoutEmits {
 
 interface ProvidersLayoutProps {
   isLoading: boolean;
-  providers: Provider[];
+  providers?: Provider[];
   queryValue: string;
 }
 
