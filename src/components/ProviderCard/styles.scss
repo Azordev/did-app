@@ -5,6 +5,8 @@
   padding: 0.2rem;
   overflow: hidden;
   position: relative;
+  box-shadow: unset;
+  border: 1px solid #dfdfdf;
 
   &__image {
     width: 100%;
