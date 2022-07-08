@@ -1,6 +1,7 @@
 <template>
   <div class="Providers">
     <list-header
+      class="Providers__header"
       title="Proveedores"
       :query-value="queryValue || ''"
       @update:query-value="$emit('update:queryValue', $event?.toString())"
@@ -14,16 +15,17 @@
         :isLoading="isLoading"
         :listItemsLength="providers.length"
       >
-        <providers-list-item
+        <provider-card
           v-for="provider in providers"
           :key="provider.id"
-          :provider="provider"
           @onClick="
             $router.push({
               name: 'providerDetail',
               params: { provider: provider.id },
             })
           "
+          class="ProvidersList__item"
+          :image_url="provider.logo_url"
         />
       </list-grid>
     </div>
@@ -33,7 +35,7 @@
 <script setup lang="ts">
 import ListGrid from '../../components/ListGrid';
 import { ListHeader } from 'src/components';
-import ProvidersListItem from './ProvidersListItem.vue';
+import ProviderCard from 'src/components/ProviderCard';
 import { Provider } from 'src/utils';
 
 interface ProvidersLayoutEmits {

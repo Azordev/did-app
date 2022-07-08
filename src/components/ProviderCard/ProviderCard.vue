@@ -9,8 +9,12 @@ import './styles.scss';
 
 interface ProviderCardProps {
   image_url: string;
-  id: string;
+}
+
+interface ProviderCardEmits {
+  (EventName: 'onClick'): void;
 }
 
 defineProps<ProviderCardProps>();
+defineEmits<ProviderCardEmits>();
 </script>
