@@ -58,7 +58,7 @@
           >¿Olvidaste tu contraseña?</a
         >
         <a class="login__get_account" href="mailto:adidperu@gmail.com">
-          ¿Deseas asociarte a DID Perú?
+          Adquiere tu membresía de DID Perú
         </a>
       </div>
     </main>
