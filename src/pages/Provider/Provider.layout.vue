@@ -1,6 +1,6 @@
 <template>
   <div class="Provider">
-    <header-with-search-bar
+    <list-header
       :logo-url="provider?.logo_url || DIDLogo"
       :name="provider?.commercial_name"
       :query-value="searchText || ''"
@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { BaseLoading, HeaderWithSearchBar } from 'src/components';
+import { BaseLoading, ListHeader } from 'src/components';
 import { ProviderProducts } from './components';
 import DIDLogo from 'src/assets/logos/didperu.svg';
 import './Provider.scss';

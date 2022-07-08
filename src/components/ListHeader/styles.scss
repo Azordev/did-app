@@ -5,7 +5,7 @@
   top: 0;
   z-index: 100;
   background-color: $secondary;
-  padding: 2.18rem 2.31rem 1.12rem;
+  padding: 1.44rem 2.31rem 0.69rem 2.75rem;
   border-radius: 0 0 5px 5px;
 
   &__img {
@@ -36,7 +36,7 @@
     margin: 0 0 0.75rem;
     line-height: 0.875rem;
     font-weight: bold;
-    font-size: 0.9375rem;
+    font-size: 1.19rem;
     color: $gray-dim;
   }
 }

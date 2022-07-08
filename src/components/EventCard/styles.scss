@@ -1,9 +1,11 @@
 .EventCard {
   cursor: pointer;
-  height: 6.25rem;
+  height: 6.5rem;
   padding: 0.5rem;
   overflow: hidden;
   min-width: 16rem;
+  box-shadow: unset;
+  border: 1px solid #dfdfdf;
 
   &__container {
     height: 100%;

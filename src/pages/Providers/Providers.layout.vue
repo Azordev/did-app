@@ -1,6 +1,6 @@
 <template>
   <div class="Providers">
-    <header-with-search-bar
+    <list-header
       title="Proveedores"
       :query-value="queryValue || ''"
       @update:query-value="$emit('update:queryValue', $event?.toString())"
@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import ListGrid from '../../components/ListGrid';
-import { HeaderWithSearchBar } from 'src/components';
+import { ListHeader } from 'src/components';
 import ProvidersListItem from './ProvidersListItem.vue';
 import { Provider } from 'src/utils';
 
