@@ -21,6 +21,7 @@
       </q-btn>
     </div>
     <search-bar
+      v-if="showSearchBar"
       @on-search="$emit('onSearch')"
       @on-clear="$emit('onClear')"
       @update:query-value="$emit('update:queryValue', $event?.toString())"
@@ -38,6 +39,7 @@ interface ProviderHeaderProps {
   queryValue: string;
   logoUrl?: string;
   title?: string;
+  showSearchBar?: boolean;
   showShoppingCart?: boolean;
   hasProductsOnCart?: boolean;
 }
@@ -48,6 +50,6 @@ interface Emits {
   (eventName: 'onSearch'): void;
 }
 
-defineProps<ProviderHeaderProps>();
+const props = defineProps<ProviderHeaderProps>();
 defineEmits<Emits>();
 </script>
