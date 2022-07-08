@@ -15,5 +15,7 @@ const Template = (args) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'Convocatoria',
+  title: 'Convocatoria',
+  showSearchBar: true,
+  showShoppingCart: false,
 };
