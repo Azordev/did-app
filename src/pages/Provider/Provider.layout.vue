@@ -5,6 +5,8 @@
       :name="provider?.commercial_name"
       :query-value="searchText || ''"
       :has-products-on-cart="!!cartProducts?.length"
+      show-search-bar
+      show-shopping-cart
       @update:query-value="$emit('update:searchText', $event?.toString())"
       @on-search="$emit('onSearch')"
       @on-clear="$emit('onClear')"
