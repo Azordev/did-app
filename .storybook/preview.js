@@ -25,6 +25,7 @@ app.use(Quasar, {
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
+  layout: 'fullscreen',
   backgrounds: {
     default: 'MainLayout',
     values: [
