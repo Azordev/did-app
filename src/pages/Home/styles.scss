@@ -7,6 +7,12 @@
 
   &__list {
     margin-bottom: 2.56rem;
+
+    &--providers {
+      .HorizontalScroll {
+        gap: 0.7rem;
+      }
+    }
   }
 
   &__listItem {

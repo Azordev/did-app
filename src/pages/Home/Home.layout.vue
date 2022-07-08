@@ -43,7 +43,7 @@
     </home-list>
     <home-list
       see-more-route-name="providers"
-      class="HomeLayout__list"
+      class="HomeLayout__list HomeLayout__list--providers"
       title="Proveedores"
     >
       <template v-if="isMembershipActive">

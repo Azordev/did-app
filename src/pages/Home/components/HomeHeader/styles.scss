@@ -1,7 +1,7 @@
 .Header {
   background-color: $secondary;
   border-radius: 5px;
-  padding: 1.95rem 1.25rem 2.5rem 1.95rem;
+  padding: 1.95rem 2.375rem 2.5rem 2.375rem;
   min-height: 245px;
   display: flex;
   justify-content: space-between;
@@ -27,19 +27,23 @@
   }
 
   &__greetings {
-    font-size: 1.1875rem;
+    font-size: 1.19rem;
+    margin-bottom: 1.19rem;
+    line-height: 1.625rem;
   }
 
   &__names {
+    margin-top: 0.25rem;
     font-size: 1.8125rem;
     font-weight: bolder;
+    line-height: 1.82rem;
   }
 
   &__text {
     font-size: 0.875rem;
 
     p {
-      margin-bottom: 0.625rem;
+      margin-bottom: 0.8rem;
 
       &:last-of-type {
         margin-bottom: 0px;
@@ -81,7 +85,7 @@
   &__actions {
     display: flex;
     align-items: flex-end;
+    gap: 2.375rem;
     flex-direction: column;
-    justify-content: space-between;
   }
 }
