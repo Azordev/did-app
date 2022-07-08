@@ -2,18 +2,22 @@
 
 .HomeLayout {
   &__content {
-    padding: 1.375rem 0 1.25rem 2rem;
+    padding: 1.9375rem 0 0 2rem;
   }
 
   &__list {
-    margin-bottom: 2rem;
+    margin-bottom: 2.56rem;
   }
 
   &__listItem {
     &--event {
-      width: 75vw;
-      min-width: 15.5rem;
-      max-width: 26rem;
+      width: 16.2rem;
+      height: 6.5rem;
+    }
+
+    .ProviderCard {
+      width: 6.35rem;
+      height: 6.35rem;
     }
   }
 }
