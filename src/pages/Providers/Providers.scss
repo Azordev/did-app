@@ -11,7 +11,7 @@
 .ProvidersList {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2.5rem 1.25rem;
+  gap: 2.5rem 0.625rem;
 
   &__item {
     cursor: pointer;
@@ -19,6 +19,7 @@
     width: 100%;
     min-width: 6.25rem;
     min-height: 6.25rem;
+    aspect-ratio: 1/1;
 
     img {
       aspect-ratio: 1/1;
@@ -26,11 +27,11 @@
     }
   }
 
-  @media screen and (min-width: 25rem) {
+  @media screen and (min-width: 350px) {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
-  @media screen and (min-width: 37.5rem) {
+  @media screen and (min-width: 600px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
