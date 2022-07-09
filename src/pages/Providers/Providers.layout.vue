@@ -1,13 +1,6 @@
 <template>
   <div class="Providers">
-    <header-with-search-bar
-      class="Providers__header"
-      title="Proveedores"
-      :query-value="queryValue || ''"
-      @update:query-value="$emit('update:queryValue', $event?.toString())"
-      @on-search="$emit('onSearch')"
-      @on-clear="$emit('onClear')"
-    />
+    <header-with-back-btn class="Providers__header" label="Proveedores" />
 
     <div class="Providers__content">
       <list-grid
@@ -34,7 +27,7 @@
 
 <script setup lang="ts">
 import ListGrid from '../../components/ListGrid';
-import { HeaderWithSearchBar } from 'src/components';
+import { HeaderWithBackBtn } from 'src/components';
 import ProviderCard from 'src/components/ProviderCard';
 import DIDLogo from 'src/assets/logos/didperu.svg';
 import { Provider } from 'src/utils';

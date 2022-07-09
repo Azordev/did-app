@@ -21,11 +21,16 @@
     background-color: white;
     border-radius: 5px;
     height: 60vh;
+
+    .q-img__image {
+      padding: 20px;
+      object-fit: scale-down !important;
+    }
   }
 
   &__information {
     display: flex;
     justify-content: space-between;
-    margin-top: 1.25rem;
+    margin-top: 1.06rem;
   }
 }
