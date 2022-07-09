@@ -1,5 +1,5 @@
 <template>
-  <detail-layout :image_url="event.image_url">
+  <detail-layout class="Event__container" :image_url="event.image_url">
     <template #custom-name>
       <span class="Event__title">
         <span>{{ event.title }}</span>
@@ -8,11 +8,11 @@
     </template>
 
     <template #default>
-      <div class="full-width">
-        <div>
+      <div class="Event__detail">
+        <div class="Event__description">
           {{ event.description }}
         </div>
-        <q-btn class="full-width q-mt-md" color="primary" size="lg" no-caps
+        <q-btn class="Event__btn-participate" color="primary" size="lg" no-caps
           >Participar</q-btn
         >
       </div>
