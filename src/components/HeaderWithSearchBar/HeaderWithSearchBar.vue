@@ -1,8 +1,12 @@
 <template>
-  <div class="header">
-    <div class="header__top-container">
-      <q-img class="header__img" :src="logoUrl" v-if="logoUrl" />
-      <h2 class="header__title" v-else>{{ title }}</h2>
+  <div class="header-with-search-bar">
+    <div class="header-with-search-bar__top-container">
+      <q-img
+        class="header-with-search-bar__img"
+        :src="logoUrl"
+        v-if="logoUrl"
+      />
+      <h2 class="header-with-search-bar__title" v-else>{{ title }}</h2>
       <q-btn
         @click="$router.push({ name: 'shoppingCart' })"
         size="10px"
@@ -13,7 +17,7 @@
       >
         <q-badge
           v-if="hasProductsOnCart"
-          class="header__btn-badge"
+          class="header-with-search-bar__btn-badge"
           floating
           rounded
           color="red"
@@ -21,7 +25,6 @@
       </q-btn>
     </div>
     <search-bar
-      v-if="showSearchBar"
       @on-search="$emit('onSearch')"
       @on-clear="$emit('onClear')"
       @update:query-value="$emit('update:queryValue', $event?.toString())"
@@ -39,7 +42,6 @@ interface ProviderHeaderProps {
   queryValue: string;
   logoUrl?: string;
   title?: string;
-  showSearchBar?: boolean;
   showShoppingCart?: boolean;
   hasProductsOnCart?: boolean;
 }
@@ -50,6 +52,6 @@ interface Emits {
   (eventName: 'onSearch'): void;
 }
 
-const props = defineProps<ProviderHeaderProps>();
+defineProps<ProviderHeaderProps>();
 defineEmits<Emits>();
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="Providers">
-    <list-header
+    <header-with-search-bar
       class="Providers__header"
       title="Proveedores"
       :query-value="queryValue || ''"
@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import ListGrid from '../../components/ListGrid';
-import { ListHeader } from 'src/components';
+import { HeaderWithSearchBar } from 'src/components';
 import ProviderCard from 'src/components/ProviderCard';
 import DIDLogo from 'src/assets/logos/didperu.svg';
 import { Provider } from 'src/utils';

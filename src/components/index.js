@@ -1,6 +1,6 @@
 import ProviderCard from './ProviderCard';
 import EventCard from './EventCard';
-import ListHeader from './ListHeader';
+import HeaderWithSearchBar from './HeaderWithSearchBar';
 import BaseLoading from './LoadingComponent';
 
-export { ListHeader, ProviderCard, EventCard, BaseLoading };
+export { HeaderWithSearchBar, ProviderCard, EventCard, BaseLoading };

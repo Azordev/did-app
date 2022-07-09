@@ -1,5 +1,5 @@
 <template>
-  <list-header
+  <header-with-search-bar
     title="Eventos"
     :query-value="searchText || ''"
     @update:query-value="$emit('update:searchText', $event?.toString())"
@@ -28,7 +28,7 @@
 
 <script lang="ts" setup>
 import { Event, EventType } from 'src/utils';
-import { ListHeader } from 'src/components';
+import { HeaderWithSearchBar } from 'src/components';
 import EventCard from 'src/components/EventCard';
 import DIDLogo from 'src/assets/logos/didperu-dark.svg';
 import './styles.scss';
