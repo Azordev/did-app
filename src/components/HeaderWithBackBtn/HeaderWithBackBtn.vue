@@ -1,7 +1,7 @@
 <template>
-  <div class="ItemHeader">
+  <div class="HeaderWithBackBtn">
     <back-button v-if="showBackBtn" />
-    <span class="ItemHeader__text">{{ label }}</span>
+    <span class="HeaderWithBackBtn__text">{{ label }}</span>
   </div>
 </template>
 
@@ -9,10 +9,10 @@
 import BackButton from 'src/components/BackButton';
 import './styles.scss';
 
-interface ItemHeaderProps {
+interface HeaderWithBackBtnProps {
   label: string;
   showBackBtn?: boolean;
 }
 
-defineProps<ItemHeaderProps>();
+defineProps<HeaderWithBackBtnProps>();
 </script>
