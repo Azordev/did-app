@@ -8,13 +8,14 @@
       />
       <h2 class="header-with-search-bar__title" v-else>{{ title }}</h2>
       <q-btn
+        class="header-with-search-bar__cart-btn"
         @click="$router.push({ name: 'shoppingCart' })"
         size="10px"
         round
         color="accent"
-        icon="shopping_basket"
         v-if="showShoppingCart"
       >
+        <shopping-cart-icon :width="15.67" :height="19.76" />
         <q-badge
           v-if="hasProductsOnCart"
           class="header-with-search-bar__btn-badge"
@@ -30,12 +31,14 @@
       @update:query-value="$emit('update:queryValue', $event?.toString())"
       :queryValue="queryValue"
       placeholder="Buscar producto..."
+      class="header-with-search-bar__input"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 import SearchBar from 'src/components/SearchBar';
+import shoppingCartIcon from './assets/shoppingCartIcon.vue';
 import './styles.scss';
 
 interface ProviderHeaderProps {

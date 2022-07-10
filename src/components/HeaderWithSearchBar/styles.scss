@@ -5,14 +5,13 @@
   top: 0;
   z-index: 100;
   background-color: $secondary;
-  padding: 1.44rem 2.31rem 0.69rem 2.75rem;
+  padding: 2rem 2.94rem 0.69rem 2.94rem;
   border-radius: 0 0 5px 5px;
+  height: 9.625rem;
 
   &__img {
-    max-height: 30vh;
-    width: 4.375rem;
-    height: 1.875rem;
-    aspect-ratio: 16/9;
+    width: 5rem;
+    height: 2.5rem;
 
     img {
       height: 100%;
@@ -21,15 +20,22 @@
     }
   }
 
-  &__btnBadge {
+  &__btn-badge {
     bottom: 0;
+    right: 0.25rem;
     top: unset;
   }
 
-  &__topContainer {
+  &__cart-btn {
+    width: 2.75rem;
+    height: 2.75rem;
+    color: red;
+  }
+
+  &__top-container {
     display: flex;
     justify-content: space-between;
-    margin: 1rem 0;
+    margin-bottom: 0.875rem;
   }
 
   &__title {
@@ -38,5 +44,11 @@
     font-weight: bold;
     font-size: 1.19rem;
     color: $gray-dim;
+  }
+
+  &__input {
+    .q-field__control {
+      height: 2.8125rem;
+    }
   }
 }

@@ -2,7 +2,7 @@
   <div class="Provider">
     <header-with-search-bar
       :logo-url="provider?.logo_url || DIDLogo"
-      :name="provider?.commercial_name"
+      :title="provider?.commercial_name"
       :query-value="searchText || ''"
       :has-products-on-cart="!!cartProducts?.length"
       show-search-bar
