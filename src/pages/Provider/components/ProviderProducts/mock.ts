@@ -4,7 +4,7 @@ export const providerProducts: Product[] = [
   {
     __typename: 'products',
     base_price_sol: 40,
-    description: 'This card allow to you create a Storybook',
+    description: 'This card allow you to create a Storybook',
     id: '1',
     image_url:
       'https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Yugioh_Card_Back.jpg/250px-Yugioh_Card_Back.jpg',
@@ -19,7 +19,7 @@ export const providerProducts: Product[] = [
     __typename: 'products',
     base_price_sol: 40,
     description:
-      'This card fix all the bugs of your program and made it compile quickly',
+      'This card fix all the bugs of your program and made it to compile quickly',
     id: '2',
     image_url:
       'https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Yugioh_Card_Back.jpg/250px-Yugioh_Card_Back.jpg',
