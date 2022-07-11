@@ -1,17 +1,25 @@
 <template>
-  <detail-layout :image_url="product?.image_url" :name="product?.name">
-    <div class="Product__details">
-      <div>
-        <span class="Product__price">S/. {{ product?.base_price_sol }}</span>
-        <p class="Product__description">{{ product?.description }}</p>
+  <detail-layout class="Product" :image_url="product?.image_url">
+    <template #custom-name>
+      <span class="Product__title">
+        <span>{{ product.name }}</span>
+      </span>
+    </template>
+
+    <template #default>
+      <div class="Product__details">
+        <div>
+          <span class="Product__price">S/. {{ product?.base_price_sol }}</span>
+          <p class="Product__description">{{ product?.description }}</p>
+        </div>
       </div>
       <q-btn
-        class="ProductList__item_button"
+        class="Product__cart-button"
         :color="isProductInCart ? 'negative' : 'accent'"
         :icon="isProductInCart ? 'remove_shopping_cart' : 'add_shopping_cart'"
         @click.stop="$emit('onAddToShoppingCart', product)"
       />
-    </div>
+    </template>
   </detail-layout>
 </template>
 

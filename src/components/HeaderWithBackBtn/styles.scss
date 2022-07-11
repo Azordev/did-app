@@ -14,4 +14,13 @@
     color: $gray-dim;
     line-height: 1.125rem;
   }
+
+  &__img {
+    width: 4.94rem;
+    height: 2.06rem;
+
+    img {
+      object-fit: contain !important;
+    }
+  }
 }
