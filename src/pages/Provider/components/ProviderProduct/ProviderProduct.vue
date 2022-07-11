@@ -5,7 +5,7 @@
         <q-img
           class="ProviderProduct__img"
           ratio="4/3"
-          :src="product.image_url"
+          :src="product.image_url || DIDLogo"
         />
       </div>
 
@@ -17,9 +17,9 @@
         <span class="ProviderProduct__price">
           <strong>S./ {{ product.base_price_sol }} </strong></span
         >
-        <q-card-actions>
+        <q-card-actions class="ProviderProduct__cart-button-container">
           <q-btn
-            class="ProductList__item_button"
+            class="ProviderProduct__cart-button"
             :color="isProductInCart ? 'negative' : 'accent'"
             :icon="
               isProductInCart ? 'remove_shopping_cart' : 'add_shopping_cart'
@@ -34,6 +34,7 @@
 
 <script setup lang="ts">
 import { Product } from 'src/utils';
+import DIDLogo from 'src/assets/logos/didperu-dark.svg';
 
 interface ProviderProductProps {
   product: Product;
