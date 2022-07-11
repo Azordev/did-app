@@ -23,8 +23,8 @@
     height: 60vh;
 
     .q-img__image {
-      padding: 20px;
-      object-fit: scale-down !important;
+      padding: 1.25rem;
+      object-fit: contain !important;
     }
   }
 

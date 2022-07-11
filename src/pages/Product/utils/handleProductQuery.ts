@@ -9,9 +9,9 @@ export const handleProductQuery = () => {
   const isLoading = ref<boolean>(false);
   const productId = route.params.id as string;
 
-  const getProductDetail = async (id: string) => {
+  const getProductDetail = async () => {
     isLoading.value = true;
-    await getProductById(id).then((result) => {
+    await getProductById(productId).then((result) => {
       product.value = result;
       isLoading.value = false;
     });

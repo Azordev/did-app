@@ -1,7 +1,8 @@
 <template>
   <div class="HeaderWithBackBtn">
     <back-button v-if="showBackBtn" />
-    <span class="HeaderWithBackBtn__text">{{ label }}</span>
+    <q-img class="HeaderWithBackBtn__img" v-if="imgUrl" :src="imgUrl" />
+    <span v-else class="HeaderWithBackBtn__text">{{ label }}</span>
   </div>
 </template>
 
@@ -11,6 +12,7 @@ import './styles.scss';
 
 interface HeaderWithBackBtnProps {
   label: string;
+  imgUrl?: string;
   showBackBtn?: boolean;
 }
 
