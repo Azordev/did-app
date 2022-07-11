@@ -1,7 +1,7 @@
 .EventCard {
   cursor: pointer;
   height: 6.25rem;
-  padding: 0.625rem;
+  padding: 0.5rem;
   overflow: hidden;
   min-width: 16rem;
 
@@ -22,7 +22,8 @@
   }
 
   &__imageContainer {
-    width: 5.5rem;
+    width: 5.625rem;
+    height: 5.625rem;
     margin-right: 0.9375rem;
     flex-shrink: 0;
   }
@@ -37,8 +38,8 @@
     p {
       overflow: hidden;
       text-overflow: ellipsis;
-      font-size: 0.875rem;
-      font-weight: bolder;
+      font-size: 0.82rem;
+      font-weight: normal;
       margin: 0;
       white-space: nowrap;
     }
@@ -48,7 +49,7 @@
     position: absolute;
     bottom: 0px;
     right: 0px;
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
   }
 
   &__bookmark {

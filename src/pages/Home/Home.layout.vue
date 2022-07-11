@@ -43,7 +43,7 @@
     </home-list>
     <home-list
       see-more-route-name="providers"
-      class="HomeLayout__list"
+      class="HomeLayout__list HomeLayout__list--providers"
       title="Proveedores"
     >
       <template v-if="isMembershipActive">
@@ -77,7 +77,7 @@ import { HomeHeader, HomeList } from './components';
 import { ProviderCard, EventCard } from '../../components';
 import { Event, EventType, Provider } from '../../utils';
 import { handleUserData } from './utils/handleUserData';
-import DIDLogo from '../../assets/logos/didperu.svg';
+import DIDLogo from '../../assets/logos/didperu-dark.svg';
 import './styles.scss';
 import { Notify } from 'quasar';
 import { useRouter } from 'vue-router';

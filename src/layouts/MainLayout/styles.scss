@@ -21,7 +21,7 @@
   justify-content: center;
 
   &__button {
-    padding: 0.5rem 0 0.25rem;
+    padding: 1.05rem 0;
     color: $lightgray;
     max-width: 100%;
     overflow: hidden;
@@ -30,11 +30,6 @@
     .q-btn__content {
       display: flex;
       flex-direction: column;
-    }
-
-    svg {
-      width: 1rem;
-      min-height: 1rem;
     }
 
     svg,

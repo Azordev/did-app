@@ -24,8 +24,8 @@ export const user: UserType = {
   member_info: [
     {
       __typename: 'members',
-      first_names: 'Victor',
-      last_names: 'Colmenarez',
+      first_names: 'Ana',
+      last_names: 'Maria',
       subscriptions: [
         {
           __typename: 'subscriptions',

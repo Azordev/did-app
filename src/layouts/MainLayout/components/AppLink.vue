@@ -6,7 +6,6 @@
       flat
     >
       <slot name="icon"></slot>
-      <span class="navbar__text">{{ title }}</span>
     </q-btn>
   </router-link>
 </template>
@@ -20,10 +19,6 @@ export default {
   props: {
     to: {
       type: Object as PropType<RouteLocationRaw>,
-    },
-    title: {
-      type: String,
-      default: '',
     },
   },
 };

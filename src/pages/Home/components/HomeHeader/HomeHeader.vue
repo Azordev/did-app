@@ -7,7 +7,7 @@
         >
       </p>
       <div class="Header__text">
-        <p>Codigo: {{ memberCode }}</p>
+        <p>Código: {{ memberCode }}</p>
         <p
           :class="`Header__membership ${
             isMembershipActive
@@ -17,14 +17,15 @@
         >
           {{ userMembershipStatus }}
         </p>
-        <p>Valido hasta: {{ parsedExpirationDate }}</p>
+        <p class="Header__expiration-date">
+          Válido hasta: {{ parsedExpirationDate }}
+        </p>
       </div>
     </div>
     <div class="Header__actions">
       <q-btn flat round>
         <q-avatar class="Header__avatar" color="black" text-color="white">
-          <img v-if="avatar" :src="avatar" />
-          <q-icon size="2.375rem" v-else name="person" />
+          <q-img :src="avatar || userDefaultImg" />
           <q-icon
             color="black"
             size="1.19rem"
@@ -40,7 +41,9 @@
         dense
         no-caps
       >
-        <q-icon name="today" left />
+        <q-icon
+          :name="`svguse:${homeCalendarIcon}#calendar|0 0 16.485 18.206`"
+        />
         Calendario
       </q-btn>
     </div>
@@ -49,6 +52,8 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import homeCalendarIcon from 'src/assets/icons/home-calendar.svg';
+import userDefaultImg from 'src/assets/images/user-default.svg';
 import './styles.scss';
 
 export interface HomeHeaderProps {
@@ -63,7 +68,7 @@ export interface HomeHeaderProps {
 const props = defineProps<HomeHeaderProps>();
 
 const userMembershipStatus = computed(() =>
-  props.isMembershipActive ? 'Membresia activa' : 'Membresia inactiva'
+  props.isMembershipActive ? 'Membresía activa' : 'Membresía inactiva'
 );
 
 const parsedExpirationDate = computed(() =>
