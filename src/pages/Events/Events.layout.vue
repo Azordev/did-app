@@ -1,7 +1,7 @@
 <template>
   <header-with-back-btn label="Eventos" class="events__header" />
   <div class="events__container">
-    <div class="events__list">
+    <div class="events__list" v-if="events?.length || isLoading">
       <template v-if="!isLoading">
         <event-card
           v-for="event in events"
@@ -16,6 +16,9 @@
         />
       </template>
       <base-loading v-else />
+    </div>
+    <div class="events__empty-message" v-else>
+      <p>Pronto habran más eventos disponibles.</p>
     </div>
   </div>
 </template>
