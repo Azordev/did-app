@@ -2,7 +2,18 @@
 
 .Provider {
   background: $white-flight;
-  min-height: 100vh;
+
+  &__no-products {
+    padding: 1.06rem 1.95rem 0 1.44rem;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  &__no-products-text {
+    span {
+      padding-left: 0.5rem;
+    }
+  }
 }
 
 .ProviderProducts {
