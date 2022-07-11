@@ -4,6 +4,7 @@
 
     <div class="Providers__content">
       <list-grid
+        v-if="providers?.length || isLoading"
         className="ProvidersList"
         :isLoading="isLoading"
         :listItemsLength="providers?.length || 0"
@@ -21,6 +22,16 @@
           :image_url="provider.logo_url || DIDLogo"
         />
       </list-grid>
+      <div v-else>
+        <div class="Providers__no-providers">
+          <div class="Providers__no-providers-text">
+            <span
+              >Estamos trabajando para traerte los mejores proveedores.
+              <br /><br />Pronto podrás verlos en esta sección.
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

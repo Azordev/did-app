@@ -22,5 +22,5 @@ const {
   getItemsList: getProvidersList,
 } = handleListQuery(getListOfProviders);
 
-getProvidersList(currentPage.value, query.value, order_by.value);
+await getProvidersList(currentPage.value, query.value, order_by.value);
 </script>
