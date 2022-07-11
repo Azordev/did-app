@@ -13,6 +13,10 @@
   &__input {
     width: 100%;
 
+    .q-field__append {
+      height: 3.125rem;
+    }
+
     .q-field__control {
       border-radius: 6px;
       height: 3.125rem;
