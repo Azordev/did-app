@@ -18,4 +18,10 @@
     align-items: center;
     gap: 0.625rem;
   }
+
+  &__name {
+    margin: 0 1.25rem 0 0.18rem;
+    font-size: 1.06rem;
+    line-height: 1.25rem;
+  }
 }
