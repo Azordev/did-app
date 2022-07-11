@@ -10,8 +10,8 @@ export const handleProviderProducts = () => {
   const searchText = ref<string>('');
   const isLoading = ref<boolean>(false);
 
-  const getProductLists = async (id: string, query: string) => {
-    if (!id) {
+  const getProductLists = async (_id: string, _query: string) => {
+    if (!_id) {
       const router = useRouter();
 
       Notify.create({
@@ -27,7 +27,8 @@ export const handleProviderProducts = () => {
 
     isLoading.value = true;
 
-    await getProductsByProvider(id, query).then((res) => {
+    await getProductsByProvider(_id, _query).then((res) => {
+      query.value = searchText.value;
       products.value = res;
       isLoading.value = false;
     });
