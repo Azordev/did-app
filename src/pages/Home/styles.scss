@@ -20,9 +20,14 @@
   }
 
   &__listItem {
-    &--event {
+    &--event.EventCard {
       width: 16.2rem;
-      height: 6.5rem;
+      height: 6.65rem;
+
+      .EventCard__imageContainer {
+        width: 5.625rem;
+        height: 5.6rem;
+      }
     }
 
     .ProviderCard {

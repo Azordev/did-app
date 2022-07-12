@@ -2,10 +2,17 @@
 
 .Provider {
   background: $white-flight;
-  min-height: 100vh;
 
-  &__categories {
-    margin: 1rem 0;
+  &__no-products {
+    padding: 1.06rem 1.95rem 0 1.44rem;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  &__no-products-text {
+    span {
+      padding-left: 0.5rem;
+    }
   }
 }
 
@@ -13,18 +20,21 @@
   display: grid;
   grid-auto-flow: row;
   grid-auto-rows: 8rem;
-  gap: 1rem;
-  margin: 0.5rem 1.5rem 0.5rem 1.125rem;
+  gap: 0.67rem;
+  margin: 1.06rem 1.94rem 1.06rem 1.45rem;
 }
 
 .ProviderProduct {
   cursor: pointer;
   height: 100%;
   overflow: hidden;
+  box-shadow: unset;
+  border: 1px solid $gray-border;
 
   &__card {
     height: 100%;
     overflow: hidden;
+    padding: 0.625rem;
   }
 
   &__img {
@@ -35,12 +45,13 @@
       border-radius: 5px;
       width: 100%;
       height: 100%;
+      object-fit: contain !important;
     }
   }
 
   &__imgContainer {
-    width: 8rem;
-    padding: 0.5rem;
+    width: 6.87rem;
+    height: 6.87rem;
     flex-shrink: 0;
   }
 
@@ -48,6 +59,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 0.25rem 0 0;
+    font-size: 0.875rem;
+    line-height: 0.875rem;
+    font-weight: bold;
   }
 
   &__name {
@@ -55,18 +70,47 @@
     align-self: center;
     justify-self: center;
     min-width: 0;
+    margin: 0 1.25rem 0 1.75rem;
 
     p {
+      font-size: 0.875rem;
+      font-weight: bold;
+      margin: 0;
+      line-height: 0.875rem;
+
       overflow: hidden;
       text-overflow: ellipsis;
-      font-size: 0.875rem;
-      font-weight: bolder;
-      margin: 0;
+
+      max-height: 2.625rem; /* (Number of lines you want visible) * (line-height) */
+      line-height: 0.875rem;
+
+      @supports (display: -webkit-box) {
+        // For browsers compatibles with line-clamp
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* number of lines to show */
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
     }
   }
 
   &__price {
     white-space: nowrap;
     align-self: center;
+    padding-right: 0.875rem;
+  }
+
+  &__cart-button-container {
+    padding: 0 0.5rem 0 0;
+    align-self: end;
+  }
+
+  &__cart-button {
+    width: 2.19rem;
+    height: 2.19rem;
+
+    .q-icon {
+      font-size: 0.9rem;
+    }
   }
 }

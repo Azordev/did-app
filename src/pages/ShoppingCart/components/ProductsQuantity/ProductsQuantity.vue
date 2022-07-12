@@ -6,6 +6,7 @@
       rounded
       :disable="quantity <= 1"
       @click="$emit('onChange', quantity - 1)"
+      class="ProductsQuantity__button"
     >
       -
     </q-btn>
@@ -27,6 +28,7 @@
       rounded
       :disable="quantity >= maxAvailable"
       @click="$emit('onChange', quantity + 1)"
+      class="ProductsQuantity__button"
       >+</q-btn
     >
   </div>

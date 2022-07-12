@@ -6,6 +6,7 @@
     :is-loading="isLoading"
     :cart-products="shoppingCart"
     v-model:search-text="searchText"
+    :current-query="query"
     @on-search="getProductLists(id, searchText)"
     @on-add-to-shopping-cart="toggleProduct($event)"
     @on-clear="clearSearch()"

@@ -1,20 +1,45 @@
 @import '../../css/app.scss';
 
 .Product {
+  .Detail {
+    &__name {
+      margin: 2.625rem 0 1.25rem;
+      line-height: 1.19rem;
+    }
+
+    &__image {
+      height: unset;
+      aspect-ratio: 1/1;
+    }
+
+    &__information {
+      margin-top: 1.68rem;
+    }
+  }
+
+  &__title {
+    font-size: 1.25rem;
+  }
+
   &__price {
     color: $accent;
-    font-size: 1.125rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
     font-weight: bold;
   }
 
-  &__cart_button {
+  &__cart-button {
     align-self: start;
-    width: 2.5rem;
-    height: 2.5rem;
+    border-radius: 5px;
+    margin-left: 0.625rem;
+    width: 3.5rem;
+    height: 3.5rem;
   }
 
   &__description {
-    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.19rem;
     color: $gray-dim;
   }
 }

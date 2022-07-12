@@ -1,39 +1,46 @@
 <template>
   <div class="Providers">
-    <header-with-search-bar
-      title="Proveedores"
-      :query-value="queryValue || ''"
-      @update:query-value="$emit('update:queryValue', $event?.toString())"
-      @on-search="$emit('onSearch')"
-      @on-clear="$emit('onClear')"
-    />
+    <header-with-back-btn class="Providers__header" label="Proveedores" />
 
     <div class="Providers__content">
       <list-grid
+        v-if="providers?.length || isLoading"
         className="ProvidersList"
         :isLoading="isLoading"
-        :listItemsLength="providers.length"
+        :listItemsLength="providers?.length || 0"
       >
-        <providers-list-item
+        <provider-card
           v-for="provider in providers"
           :key="provider.id"
-          :provider="provider"
           @onClick="
             $router.push({
               name: 'providerDetail',
               params: { provider: provider.id },
             })
           "
+          class="ProvidersList__item"
+          :image_url="provider.logo_url || DIDLogo"
         />
       </list-grid>
+      <div v-else>
+        <div class="Providers__no-providers">
+          <div class="Providers__no-providers-text">
+            <span
+              >Estamos trabajando para traerte los mejores proveedores.
+              <br /><br />Pronto podrás verlos en esta sección.
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import ListGrid from '../../components/ListGrid';
-import { HeaderWithSearchBar } from 'src/components';
-import ProvidersListItem from './ProvidersListItem.vue';
+import { HeaderWithBackBtn } from 'src/components';
+import ProviderCard from 'src/components/ProviderCard';
+import DIDLogo from 'src/assets/logos/didperu.svg';
 import { Provider } from 'src/utils';
 
 interface ProvidersLayoutEmits {
@@ -45,7 +52,7 @@ interface ProvidersLayoutEmits {
 
 interface ProvidersLayoutProps {
   isLoading: boolean;
-  providers: Provider[];
+  providers?: Provider[];
   queryValue: string;
 }
 

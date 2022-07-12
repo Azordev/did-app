@@ -1,13 +1,7 @@
 <template>
-  <header-with-search-bar
-    title="Eventos"
-    :query-value="searchText || ''"
-    @update:query-value="$emit('update:searchText', $event?.toString())"
-    @on-search="$emit('onSearch')"
-    @on-clear="$emit('onClear')"
-  />
+  <header-with-back-btn label="Eventos" class="events__header" />
   <div class="events__container">
-    <div class="events__list">
+    <div class="events__list" v-if="events?.length || isLoading">
       <template v-if="!isLoading">
         <event-card
           v-for="event in events"
@@ -23,14 +17,17 @@
       </template>
       <base-loading v-else />
     </div>
+    <div class="events__empty-message" v-else>
+      <p>Pronto habran más eventos disponibles.</p>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { Event, EventType } from 'src/utils';
-import { HeaderWithSearchBar } from 'src/components';
+import { HeaderWithBackBtn } from 'src/components';
 import EventCard from 'src/components/EventCard';
-import DIDLogo from 'src/assets/logos/didperu.svg';
+import DIDLogo from 'src/assets/logos/didperu-dark.svg';
 import './styles.scss';
 import BaseLoading from 'src/components/LoadingComponent/BaseLoading.vue';
 

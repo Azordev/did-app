@@ -1,12 +1,12 @@
 <template>
-  <back-button />
-  <event-layout :event="event" />
+  <header-with-back-btn show-back-btn label="Eventos" />
+  <event-layout v-if="event" :event="event" />
 </template>
 
 <script setup lang="ts">
 import EventLayout from './Event.layout.vue';
-import BackButton from '../../components/BackButton';
-import { handleEventQuery } from './utils/handleEventQuery.ts';
+import HeaderWithBackBtn from 'src/components/HeaderWithBackBtn';
+import { handleEventQuery } from './utils/handleEventQuery';
 
 const { event, eventId, getEventDetail } = handleEventQuery();
 

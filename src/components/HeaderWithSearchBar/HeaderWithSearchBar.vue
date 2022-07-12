@@ -1,19 +1,24 @@
 <template>
-  <div class="header">
-    <div class="header__top-container">
-      <q-img class="header__img" :src="logoUrl" v-if="logoUrl" />
-      <h2 class="header__title" v-else>{{ title }}</h2>
+  <div class="header-with-search-bar">
+    <div class="header-with-search-bar__top-container">
+      <q-img
+        class="header-with-search-bar__img"
+        :src="logoUrl"
+        v-if="logoUrl"
+      />
+      <h2 class="header-with-search-bar__title" v-else>{{ title }}</h2>
       <q-btn
+        class="header-with-search-bar__cart-btn"
         @click="$router.push({ name: 'shoppingCart' })"
         size="10px"
         round
         color="accent"
-        icon="shopping_basket"
         v-if="showShoppingCart"
       >
+        <shopping-cart-icon :width="15.67" :height="19.76" />
         <q-badge
           v-if="hasProductsOnCart"
-          class="header__btn-badge"
+          class="header-with-search-bar__btn-badge"
           floating
           rounded
           color="red"
@@ -26,12 +31,14 @@
       @update:query-value="$emit('update:queryValue', $event?.toString())"
       :queryValue="queryValue"
       placeholder="Buscar producto..."
+      class="header-with-search-bar__input"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 import SearchBar from 'src/components/SearchBar';
+import shoppingCartIcon from './assets/shoppingCartIcon.vue';
 import './styles.scss';
 
 interface ProviderHeaderProps {

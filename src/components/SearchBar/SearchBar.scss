@@ -3,11 +3,19 @@
 .SearchBar {
   &__form {
     display: flex;
-    gap: 0.81rem;
+    gap: 1.06rem;
+  }
+
+  &__form_button {
+    border-radius: 0.31rem;
   }
 
   &__input {
     width: 100%;
+
+    .q-field__append {
+      height: 3.125rem;
+    }
 
     .q-field__control {
       border-radius: 6px;
@@ -16,6 +24,8 @@
 
     .q-field__native {
       padding-left: 0.5rem;
+      font-size: 0.56rem;
+      line-height: 0.81rem;
     }
   }
 }

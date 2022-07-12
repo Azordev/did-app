@@ -64,7 +64,9 @@ export const handleShoppingCart = () => {
    * If the product was already on the shopping cart var, it will be removed from the shopping cart var and will be updated the LocalStorage with the changes.
    * @param product
    */
-  const toggleProduct = (product: Product) => {
+  const toggleProduct = (product?: Product) => {
+    if (!product) return;
+
     if (checkIsProductInCart(product.id, shoppingCart.value)) {
       removeProduct(product.id);
       return;

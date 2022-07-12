@@ -1,6 +1,6 @@
 <template>
   <div class="ShoppingCartHeader">
-    <back-button />
+    <back-button class="ShoppingCartHeader__back-btn" label="Atrás" />
     <div class="ShoppingCartHeader__container">
       <q-img class="ShoppingCartHeader__image" :src="image_url || DIDLogo" />
     </div>
