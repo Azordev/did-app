@@ -46,16 +46,16 @@
       overflow: hidden;
       text-overflow: ellipsis;
 
-      // For browsers compatibles with line-clamp
-      display: -webkit-box;
-      -webkit-line-clamp: 3; /* number of lines to show */
-      line-clamp: 3;
-      -webkit-box-orient: vertical;
-
-      // For non-compatible browsers
-      overflow: hidden;
       max-height: 2.625rem; /* (Number of lines you want visible) * (line-height) */
       line-height: 0.875rem;
+
+      @supports (display: -webkit-box) {
+        // For browsers compatibles with line-clamp
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* number of lines to show */
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
     }
   }
 
