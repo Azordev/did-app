@@ -65,9 +65,7 @@ export const handleShoppingCart = () => {
    * @param product
    */
   const toggleProduct = (product?: Product) => {
-    if (!product) {
-      return;
-    }
+    if (!product) return;
 
     if (checkIsProductInCart(product.id, shoppingCart.value)) {
       removeProduct(product.id);
