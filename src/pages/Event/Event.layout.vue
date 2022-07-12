@@ -12,9 +12,9 @@
         <div class="Event__description">
           {{ event.description }}
         </div>
-        <q-btn class="Event__btn-participate" color="primary" size="lg" no-caps
-          >Participar</q-btn
-        >
+        <q-btn class="Event__btn-participate" color="primary" size="lg" no-caps>
+          Participar
+        </q-btn>
       </div>
     </template>
   </detail-layout>
