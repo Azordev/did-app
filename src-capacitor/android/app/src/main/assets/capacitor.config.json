@@ -1,0 +1,10 @@
+{
+  "appId": "org.azordev.did.app",
+  "appName": "DID",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "www",
+  "server": {
+    "url": "http://192.168.100.194:9500"
+  }
+}
