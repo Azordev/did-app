@@ -3,8 +3,5 @@
   "appName": "DID",
   "bundledWebRuntime": false,
   "npmClient": "yarn",
-  "webDir": "www",
-  "server": {
-    "url": "http://192.168.100.194:9500"
-  }
+  "webDir": "www"
 }
