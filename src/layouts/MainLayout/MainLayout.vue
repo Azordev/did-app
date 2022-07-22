@@ -19,17 +19,20 @@
 
     <nav bordered class="navbar__container bg-white text-black">
       <div class="navbar">
-        <app-link :to="{ name: 'dashboard' }" title="Inicio">
+        <app-link :to="{ name: 'dashboard' }">
           <template #icon>
             <home-icon />
           </template>
         </app-link>
-        <app-link :to="{ name: 'events' }" title="Eventos">
+        <app-link :sub-routes="['eventDetail']" :to="{ name: 'events' }">
           <template #icon>
             <events-icon />
           </template>
         </app-link>
-        <app-link :to="{ name: 'providers' }" title="Proveedores">
+        <app-link
+          :sub-routes="['providerDetail', 'productDetail', 'shoppingCart']"
+          :to="{ name: 'providers' }"
+        >
           <template #icon>
             <providers-icon />
           </template>
