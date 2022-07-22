@@ -10,16 +10,12 @@
   </router-link>
 </template>
 
-<script lang="ts">
-import { PropType } from '@vue/runtime-core';
+<script setup lang="ts">
 import { RouteLocationRaw } from 'vue-router';
 
-export default {
-  name: 'AppLink',
-  props: {
-    to: {
-      type: Object as PropType<RouteLocationRaw>,
-    },
-  },
-};
+interface AppLinkProps {
+  to: RouteLocationRaw;
+}
+
+defineProps<AppLinkProps>();
 </script>
