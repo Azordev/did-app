@@ -1,0 +1,11 @@
+{
+  "params": {
+    "include": ["all"],
+    "icon": "./docs/icon.png",
+    "background": "./docs/splashscreen.png",
+    "splashscreenColor": "000000",
+    "skipTrim": true,
+    "splashscreenIconRatio": 0,
+    "themeColor": "ffffff"
+  }
+}

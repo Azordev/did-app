@@ -3,5 +3,11 @@
   "appName": "DID",
   "bundledWebRuntime": false,
   "npmClient": "yarn",
-  "webDir": "www"
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "androidScaleType": "CENTER_CROP",
+      "splashFullScreen": true
+    }
+  }
 }
