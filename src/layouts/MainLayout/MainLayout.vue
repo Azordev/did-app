@@ -7,7 +7,11 @@
             <component :is="Component"></component>
           </template>
           <template #fallback>
-            <div>Loading...</div>
+            <div class="loading-screen">
+              <div class="loading-screen__image">
+                <q-img :src="DIDLogo" />
+              </div>
+            </div>
           </template>
         </suspense>
       </router-view>
@@ -15,17 +19,20 @@
 
     <nav bordered class="navbar__container bg-white text-black">
       <div class="navbar">
-        <app-link :to="{ name: 'dashboard' }" title="Inicio">
+        <app-link :to="{ name: 'dashboard' }">
           <template #icon>
             <home-icon />
           </template>
         </app-link>
-        <app-link :to="{ name: 'events' }" title="Eventos">
+        <app-link :sub-routes="['eventDetail']" :to="{ name: 'events' }">
           <template #icon>
             <events-icon />
           </template>
         </app-link>
-        <app-link :to="{ name: 'providers' }" title="Proveedores">
+        <app-link
+          :sub-routes="['providerDetail', 'productDetail', 'shoppingCart']"
+          :to="{ name: 'providers' }"
+        >
           <template #icon>
             <providers-icon />
           </template>
@@ -35,19 +42,9 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import DIDLogo from 'src/assets/logos/didperu.svg';
 import { eventsIcon, homeIcon, providersIcon } from './assets';
 import AppLink from './components/AppLink.vue';
 import './styles.scss';
-
-export default defineComponent({
-  name: 'MainLayout',
-  components: {
-    eventsIcon,
-    homeIcon,
-    providersIcon,
-    AppLink,
-  },
-});
 </script>
