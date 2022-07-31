@@ -43,19 +43,10 @@ import ProviderCard from 'src/components/ProviderCard';
 import DIDLogo from 'src/assets/logos/didperu.svg';
 import { Provider } from 'src/utils';
 
-interface ProvidersLayoutEmits {
-  (EventName: 'onSelectCategory', categorySelected: string): void;
-  (EventName: 'update:queryValue', value?: string): void;
-  (EventName: 'onSearch'): void;
-  (EventName: 'onClear'): void;
-}
-
 interface ProvidersLayoutProps {
   isLoading: boolean;
   providers?: Provider[];
-  queryValue: string;
 }
 
 defineProps<ProvidersLayoutProps>();
-defineEmits<ProvidersLayoutEmits>();
 </script>

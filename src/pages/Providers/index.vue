@@ -1,9 +1,5 @@
 <template>
-  <providers-layout
-    :isLoading="isLoading"
-    :providers="providers"
-    v-model:query-value="searchText"
-  />
+  <providers-layout :isLoading="isLoading" :providers="providers" />
 </template>
 
 <script setup lang="ts">
@@ -11,8 +7,7 @@ import { handleProvidersList } from './utils';
 import ProvidersLayout from './Providers.layout.vue';
 import './Providers.scss';
 
-const { providers, getProvidersList, isLoading, query, searchText } =
-  handleProvidersList();
+const { providers, getProvidersList, isLoading } = handleProvidersList();
 
-await getProvidersList(query.value);
+await getProvidersList();
 </script>
