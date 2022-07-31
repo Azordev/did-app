@@ -1,0 +1,13 @@
+{
+  "appId": "org.azordev.did.app",
+  "appName": "DID",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "androidScaleType": "CENTER_CROP",
+      "splashFullScreen": true
+    }
+  }
+}
