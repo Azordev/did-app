@@ -16,6 +16,4 @@ events.value = await getListOfEventsForHome();
 await getListOfProviders({ limit: 6 }).then((res) => {
   providers.value = res;
 });
-
-return { user, events, providers };
 </script>
