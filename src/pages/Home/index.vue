@@ -19,8 +19,8 @@ export default defineComponent({
     const providers = ref<Provider[]>();
 
     events.value = await getListOfEventsForHome();
-    await getListOfProviders({ limit: 6 }).then(({ items }) => {
-      providers.value = items;
+    await getListOfProviders({ limit: 6 }).then((res) => {
+      providers.value = res;
     });
 
     return { user, events, providers };
