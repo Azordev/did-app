@@ -19,9 +19,9 @@
           rounded
           color="black"
           outlined
-          :label="usernameAttrs.label"
-          :hint="usernameAttrs.hint"
-          :type="usernameAttrs.type"
+          :label="usernameAttrs?.label"
+          :hint="usernameAttrs?.hint"
+          :type="usernameAttrs?.type"
           :model-value="usernameValue"
           @update:model-value="$emit('update:usernameValue', $event)"
           lazy-rules
@@ -33,9 +33,9 @@
           rounded
           color="black"
           outlined
-          :label="passwordAttrs.label"
-          :hint="passwordAttrs.hint"
-          :type="passwordAttrs.type"
+          :label="passwordAttrs?.label"
+          :hint="passwordAttrs?.hint"
+          :type="passwordAttrs?.type"
           :model-value="passwordValue"
           @update:model-value="$emit('update:passwordValue', $event)"
           lazy-rules
@@ -78,13 +78,13 @@ interface InputAttrsProps {
 interface LoginLayoutProps {
   onSubmit: (userData: { member_code: string; password: string }) => void;
   usernameValue: string;
-  usernameAttrs: InputAttrsProps;
+  usernameAttrs?: InputAttrsProps;
   passwordValue: string;
-  passwordAttrs: InputAttrsProps;
+  passwordAttrs?: InputAttrsProps;
   termsAndConditions: boolean;
   isLoading: boolean;
-  usernameValidations: ((value: string) => boolean)[];
-  passwordValidations: ((value: string) => boolean)[];
+  usernameValidations: ((value: string) => boolean | string)[];
+  passwordValidations: ((value: string) => boolean | string)[];
 }
 
 interface LoginLayoutEmits {

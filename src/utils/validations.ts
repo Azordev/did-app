@@ -10,7 +10,7 @@ export const memberCodeValidations = [
   (val: string) =>
     val.length === 10 || 'El codigo debe tener una longitud de 10 caracteres',
   (val: string) =>
-    val.match(/^[A-Z]{2}[0-9]{8}$/i) || 'El formato del codigo es incorrecto',
+    !!val.match(/^[A-Z]{2}[0-9]{8}$/i) || 'El formato del codigo es incorrecto',
 ];
 
 export const passwordValidations = [

@@ -1,6 +1,6 @@
 // Database Models
-// Users
-export interface Users {
+// User
+export interface User {
   __typename: 'users';
   member_code: string;
   id: string;
@@ -13,8 +13,8 @@ export interface Users {
 }
 
 // Query return
-export interface GetUsers {
-  users: Users[];
+export interface GetUser {
+  users: User[];
 }
 
 // Category
