@@ -2,14 +2,7 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "editorconfig.editorconfig",
-    "wayou.vscode-todo-highlight",
-    "Vue.volar",
-    "MisterJ.vue-volar-extention-pack",
-    "Wscats.vue",
-    "sdras.vue-vscode-snippets",
-    "Vue.vscode-typescript-vue-plugin",
-    "syler.sass-indented"
+    "MisterJ.vue-volar-extention-pack"
   ],
   "unwantedRecommendations": [
     "octref.vetur",
