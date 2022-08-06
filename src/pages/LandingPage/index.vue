@@ -3,5 +3,3 @@
     <div>Landing Page</div>
   </q-page>
 </template>
-
-<script setup></script>

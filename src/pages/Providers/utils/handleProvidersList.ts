@@ -6,11 +6,11 @@ export const handleProvidersList = () => {
   const isLoading = ref<boolean>(false);
   const providers = ref<Provider[]>([]);
 
-  const getProvidersList = async (_limit?: number) => {
+  const getProvidersList = async (limit?: number) => {
     isLoading.value = true;
 
     const variables = {
-      limit: _limit,
+      limit,
     };
 
     await getListOfProviders(variables).then((res) => {
