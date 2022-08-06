@@ -13,7 +13,7 @@ export interface User {
 }
 
 // Query return
-export interface GetUser {
+export interface Users {
   users: User[];
 }
 
