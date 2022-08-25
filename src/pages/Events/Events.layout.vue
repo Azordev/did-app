@@ -33,16 +33,8 @@ import BaseLoading from 'src/components/LoadingComponent/BaseLoading.vue';
 
 interface EventLayoutProps {
   events?: Event[];
-  searchText: string;
   isLoading: boolean;
 }
 
-interface EventLayoutEmits {
-  (eventName: 'update:searchText', value?: string): void;
-  (eventName: 'onSearch'): void;
-  (eventName: 'onClear'): void;
-}
-
 defineProps<EventLayoutProps>();
-defineEmits<EventLayoutEmits>();
 </script>

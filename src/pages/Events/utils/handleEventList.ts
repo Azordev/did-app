@@ -3,18 +3,12 @@ import { Event, logger } from 'src/utils';
 import { getListOfEvents } from '../../../actions';
 
 export const handleEventList = () => {
-  const searchText = ref<string>('');
   const events = ref<Event[]>();
   const isLoading = ref<boolean>(false);
 
-  const clearSearch = () => {
-    searchText.value = '';
-    getListOfEvents(searchText.value);
-  };
-
-  const getEventList = async (name?: string) => {
+  const getEventList = async () => {
     isLoading.value = true;
-    await getListOfEvents(name)
+    await getListOfEvents()
       .then((event) => {
         events.value = event;
       })
@@ -26,5 +20,5 @@ export const handleEventList = () => {
       });
   };
 
-  return { events, searchText, isLoading, getEventList, clearSearch };
+  return { events, isLoading, getEventList };
 };

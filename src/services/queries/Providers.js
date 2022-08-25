@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 export const PROVIDERS = gql`
   query getListOfProviders(
     $query: String = "%%"
-    $limit: Int = 10
+    $limit: Int = 100
     $offset: Int = 0
     $order_by: providers_order_by! = {}
   ) {

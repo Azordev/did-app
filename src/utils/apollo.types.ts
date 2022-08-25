@@ -1,40 +1,6 @@
-// Functions types
-export interface actionCallbackReturnTypes<Return> {
-  items: Return[];
-  totalItems: number;
-}
-
-export interface orderByParamTypes {
-  label?: string;
-  content?: string;
-  column?: string;
-}
-
-export interface orderByGraphQLParamType {
-  [key: string]: string;
-}
-
-export interface actionCallbackParamsTypes {
-  limit?: number;
-  offset?: number;
-  query?: string;
-  order_by?: orderByGraphQLParamType;
-}
-
-export type actionCallbackType = <
-  ReturnType
->({}: actionCallbackParamsTypes) => Promise<
-  actionCallbackReturnTypes<ReturnType>
->;
-
-export type ActionCallbackType = {
-  items: object[];
-  totalItems: number;
-};
-
 // Database Models
-// Users
-export interface Users {
+// User
+export interface User {
   __typename: 'users';
   member_code: string;
   id: string;
@@ -47,8 +13,8 @@ export interface Users {
 }
 
 // Query return
-export interface GetUsers {
-  users: Users[];
+export interface Users {
+  users: User[];
 }
 
 // Category

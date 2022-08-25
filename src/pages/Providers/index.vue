@@ -1,26 +1,13 @@
 <template>
-  <providers-layout
-    :isLoading="isLoading"
-    :providers="providers"
-    v-model:query-value="searchText"
-  />
+  <providers-layout :isLoading="isLoading" :providers="providers" />
 </template>
 
 <script setup lang="ts">
-import { getListOfProviders } from '../../actions';
-import { handleListQuery } from '../../utils/apollo';
+import { handleProvidersList } from './utils';
 import ProvidersLayout from './Providers.layout.vue';
 import './Providers.scss';
 
-const {
-  items: providers,
-  query,
-  currentPage,
-  isLoading,
-  searchText,
-  order_by,
-  getItemsList: getProvidersList,
-} = handleListQuery(getListOfProviders);
+const { providers, getProvidersList, isLoading } = handleProvidersList();
 
-await getProvidersList(currentPage.value, query.value, order_by.value);
+await getProvidersList();
 </script>

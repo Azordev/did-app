@@ -6,14 +6,14 @@
       v-model:terms-and-conditions="termsAndConditions"
       :passwordValidations="passwordValidations"
       :usernameValidations="memberCodeValidations"
-      :onSubmit="onSubmit"
+      :onSubmit="onLogin"
       :isLoading="loginIsLoading"
     />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import './Login.scss';
 import { handleUserLogin, userAuthData } from '../../actions';
 import {
@@ -23,40 +23,25 @@ import {
 import LoginLayout from './Login.layout.vue';
 import { LocalStorage } from 'quasar';
 
-export default defineComponent({
-  name: 'Login',
-  components: {
-    LoginLayout,
-  },
-  setup: async () => {
-    const username = ref<string>('');
-    const userPassword = ref<string>('');
-    const termsAndConditions = ref<boolean>(false);
-    const loginIsLoading = ref<boolean>(false);
+const username = ref<string>('');
+const userPassword = ref<string>('');
+const termsAndConditions = ref<boolean>(false);
+const loginIsLoading = ref<boolean>(false);
 
-    const logUser = ({ member_code, password }: userAuthData) => {
-      loginIsLoading.value = true;
-      const variables = { member_code, password };
+const onLogin = ({ member_code, password }: userAuthData) => {
+  loginIsLoading.value = true;
+  const variables = { member_code, password };
 
-      handleUserLogin(variables)
-        .then((res) => {
-          LocalStorage.set('user', res);
-          console.log(res);
-        })
-        .finally(() => {
-          loginIsLoading.value = false;
-        });
-    };
-
-    return {
-      onSubmit: logUser,
-      username,
-      userPassword,
-      passwordValidations,
-      memberCodeValidations,
-      loginIsLoading,
-      termsAndConditions,
-    };
-  },
-});
+  handleUserLogin(variables)
+    .then((res) => {
+      /**
+       * Remove this code and add here your logic for user login
+       * For example:
+       */
+      LocalStorage.set('user', res);
+    })
+    .finally(() => {
+      loginIsLoading.value = false;
+    });
+};
 </script>

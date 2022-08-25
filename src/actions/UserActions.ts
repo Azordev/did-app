@@ -1,6 +1,6 @@
 import { Notify } from 'quasar';
 import { USER_LOGIN } from '../services';
-import { useQuery, GetUsers } from '../utils';
+import { useQuery, Users, User } from '../utils';
 import { logger } from '../utils/logger';
 
 export interface userAuthData {
@@ -9,10 +9,10 @@ export interface userAuthData {
 }
 
 export const handleUserLogin = ({ member_code, password }: userAuthData) => {
-  return new Promise((resolve, reject) => {
+  return new Promise<User>((resolve, reject) => {
     const variables: object = { member_code, password };
 
-    useQuery<GetUsers>(USER_LOGIN, variables)
+    useQuery<Users>(USER_LOGIN, variables)
       .then(({ users }) => {
         if (!users || !users.length) {
           Notify.create({

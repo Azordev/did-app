@@ -2,18 +2,21 @@ import { Notify } from 'quasar';
 import { PROVIDERS, PROVIDER_BY_ID } from '../services';
 import {
   useQuery,
-  actionCallbackReturnTypes,
-  actionCallbackParamsTypes,
   Provider,
   getListOfProvidersReturnTypes,
   getProviderReturnType,
 } from '../utils';
 import { logger } from '../utils/logger';
 
-export const getListOfProviders = (variables: actionCallbackParamsTypes) => {
-  return new Promise<actionCallbackReturnTypes<Provider>>((resolve, reject) => {
+type getListOfProvidersProps = {
+  query?: string;
+  limit?: number;
+};
+
+export const getListOfProviders = (variables: getListOfProvidersProps) => {
+  return new Promise<Provider[]>((resolve, reject) => {
     useQuery<getListOfProvidersReturnTypes>(PROVIDERS, variables)
-      .then(({ providers, providers_aggregate }) => {
+      .then(({ providers }) => {
         if (!providers || !providers.length) {
           Notify.create({
             message: 'No se encontraron resultados para la busqueda actual',
@@ -24,10 +27,7 @@ export const getListOfProviders = (variables: actionCallbackParamsTypes) => {
           return null;
         }
 
-        resolve({
-          items: providers,
-          totalItems: providers_aggregate.aggregate.count,
-        });
+        resolve(providers);
       })
       .catch((err) => {
         logger(err);

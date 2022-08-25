@@ -19,9 +19,9 @@
           rounded
           color="black"
           outlined
-          :label="usernameAttrs.label"
-          :hint="usernameAttrs.hint"
-          :type="usernameAttrs.type"
+          :label="usernameAttrs?.label"
+          :hint="usernameAttrs?.hint"
+          :type="usernameAttrs?.type"
           :model-value="usernameValue"
           @update:model-value="$emit('update:usernameValue', $event)"
           lazy-rules
@@ -33,9 +33,9 @@
           rounded
           color="black"
           outlined
-          :label="passwordAttrs.label"
-          :hint="passwordAttrs.hint"
-          :type="passwordAttrs.type"
+          :label="passwordAttrs?.label"
+          :hint="passwordAttrs?.hint"
+          :type="passwordAttrs?.type"
           :model-value="passwordValue"
           @update:model-value="$emit('update:passwordValue', $event)"
           lazy-rules
@@ -65,70 +65,34 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import didLogo from '../../assets/logos/didperu.svg';
+import { QInputProps } from 'quasar';
 
-export default defineComponent({
-  props: {
-    onSubmit: {
-      type: Function,
-      default: () => {
-        return {};
-      },
-    },
-    usernameValue: {
-      type: String,
-      default: '',
-    },
-    usernameAttrs: {
-      type: Object,
-      default: () => {
-        return {
-          label: 'Código de socio',
-          type: 'text',
-        };
-      },
-    },
-    passwordValue: {
-      type: String,
-      default: '',
-    },
-    passwordAttrs: {
-      type: Object,
-      default: () => {
-        return {
-          label: 'Contraseña',
-          type: 'password',
-        };
-      },
-    },
-    termsAndConditions: {
-      type: Boolean,
-      default: false,
-    },
-    isLoading: {
-      type: Boolean,
-      default: false,
-    },
-    usernameValidations: {
-      type: Array,
-      default: () => [],
-    },
-    passwordValidations: {
-      type: Array,
-      default: () => [],
-    },
-  },
-  emits: [
-    'update:usernameValue',
-    'update:passwordValue',
-    'update:termsAndConditions',
-  ],
-  setup() {
-    return {
-      didLogo,
-    };
-  },
-});
+interface InputAttrsProps {
+  label: QInputProps['label'];
+  hint: QInputProps['hint'];
+  type: QInputProps['type'];
+}
+
+interface LoginLayoutProps {
+  onSubmit: (userData: { member_code: string; password: string }) => void;
+  usernameValue: string;
+  usernameAttrs?: InputAttrsProps;
+  passwordValue: string;
+  passwordAttrs?: InputAttrsProps;
+  termsAndConditions: boolean;
+  isLoading: boolean;
+  usernameValidations: ((value: string) => boolean | string)[];
+  passwordValidations: ((value: string) => boolean | string)[];
+}
+
+interface LoginLayoutEmits {
+  (eventName: 'update:usernameValue', value?: string | number | null): void;
+  (eventName: 'update:passwordValue', value?: string | number | null): void;
+  (eventName: 'termsAndConditions', value?: boolean): void;
+}
+
+defineProps<LoginLayoutProps>();
+defineEmits<LoginLayoutEmits>();
 </script>
