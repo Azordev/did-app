@@ -5,6 +5,7 @@
   min-height: 245px;
   display: flex;
   justify-content: space-between;
+  column-gap: 20px;
 
   &__calendar {
     border-radius: 5px;
@@ -14,6 +15,7 @@
       padding: 0;
       font-size: 0.9rem;
       font-weight: 600;
+      column-gap: 1px;
     }
 
     .q-icon {
@@ -22,6 +24,22 @@
       svg {
         width: 17px;
         height: 20px;
+      }
+    }
+    @media (max-width: 390px) {
+      .q-btn__content {
+        font-size: 0.6rem;
+        align-items: center;
+        font-weight: 500;
+        column-gap: 1px;
+      }
+      .q-icon {
+        margin-right: 2px;
+
+        svg {
+          width: 13px;
+          height: 15px;
+        }
       }
     }
   }
