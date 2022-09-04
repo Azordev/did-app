@@ -1,0 +1,41 @@
+.UserInformation {
+  background-color: $secondary;
+  margin-top: 3px;
+  padding-left: 2.5rem;
+  padding-top: 1rem;
+  padding-bottom: 5rem;
+
+  &__text {
+    font-size: 0.875rem;
+
+    p {
+      font-weight: bolder;
+      margin-bottom: 10rem;
+
+      &:last-of-type {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  &__password {
+    font-size: 0.875rem;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 5px;
+
+    p {
+      font-weight: bolder;
+      margin-bottom: 10rem;
+
+      &:last-of-type {
+        margin-bottom: 1rem;
+      }
+    }
+    .q-btn {
+      background-color: #c9c9c9;
+      color: $secondary;
+      margin-right: 10px;
+    }
+  }
+}

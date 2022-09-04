@@ -7,6 +7,7 @@ export const UserInfo = gql`
     member_info {
       first_names
       last_names
+      email
       subscriptions {
         expiration
       }

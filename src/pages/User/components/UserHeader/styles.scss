@@ -1,0 +1,98 @@
+.UserHeader {
+  background-color: $secondary;
+  border-radius: 5px;
+  padding: 1.95rem 2.375rem 2.5rem 2.375rem;
+  min-height: 245px;
+  display: flex;
+  justify-content: space-between;
+
+  &__inicio {
+    border-radius: 5px;
+    padding: 0.32rem 0.625rem;
+    text-transform: none;
+    padding-left: 0px;
+
+    .q-btn__content {
+      font-size: 0.9rem;
+      justify-content: center;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .q-icon {
+      margin-right: 1px;
+
+      svg {
+        width: 17px;
+        height: 20px;
+      }
+    }
+  }
+
+  &__greetings {
+    font-size: 1.19rem;
+    margin-bottom: 1.19rem;
+    line-height: 1.625rem;
+  }
+
+  &__names {
+    margin-top: 0.25rem;
+    font-size: 1.8125rem;
+    font-weight: bolder;
+    line-height: 1.82rem;
+  }
+
+  &__text {
+    font-size: 0.875rem;
+
+    p {
+      margin-bottom: 0.8rem;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__membership {
+    font-size: 0.9375rem;
+    &--active {
+      color: $positive;
+    }
+
+    &--inactive {
+      color: $negative;
+    }
+  }
+
+  &__expiration-date {
+    font-size: 0.9375rem;
+  }
+
+  &__avatar {
+    width: 5.7rem;
+    height: 5.7rem;
+  }
+
+  &__editIcon {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(40%);
+    right: 0.5rem;
+    background-color: white;
+    border-radius: 50%;
+    padding: 0.4rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.1rem;
+    flex-direction: column;
+  }
+
+  &__information {
+    margin-top: 2rem;
+  }
+}

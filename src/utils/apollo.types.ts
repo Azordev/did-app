@@ -1,3 +1,4 @@
+import { MemberInformation } from '../pages/User/mock';
 // Database Models
 // User
 export interface User {
@@ -7,6 +8,7 @@ export interface User {
   avatar_url: string;
   is_active: boolean;
   type: string;
+  member_info: MemberInformation;
   created_at?: string;
   updated_at?: string;
   password?: string;
@@ -15,6 +17,9 @@ export interface User {
 // Query return
 export interface Users {
   users: User[];
+}
+export interface getUserReturnType {
+  users_by_pk: User;
 }
 
 // Category
