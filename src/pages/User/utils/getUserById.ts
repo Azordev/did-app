@@ -4,10 +4,9 @@ import { getSpecificUser } from 'src/actions';
 import { ref } from 'vue';
 import { Notify } from 'quasar';
 
-export const getUserbyId = async () => {
+export const getUserbyId = async (id: string) => {
   const user = ref<User>();
   const route = useRoute();
-  const id = 'b5ca33ca-fd87-4858-a285-e15429c6dd9b';
 
   await getSpecificUser(id).then((res) => {
     user.value = res;
@@ -23,7 +22,6 @@ export const getUserbyId = async () => {
       router.back();
     }
   });
-  console.log(user.value);
   return {
     id,
     user,

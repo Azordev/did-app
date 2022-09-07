@@ -1,16 +1,16 @@
 .UserHeader {
   background-color: $secondary;
-  border-radius: 5px;
+  border-radius: 1rem;
   padding: 1.95rem 2.375rem 2.5rem 2.375rem;
   min-height: 245px;
   display: flex;
   justify-content: space-between;
 
-  &__inicio {
-    border-radius: 5px;
+  &__home {
+    border-radius: 1rem;
     padding: 0.32rem 0.625rem;
     text-transform: none;
-    padding-left: 0px;
+    padding-left: 0;
 
     .q-btn__content {
       font-size: 0.9rem;

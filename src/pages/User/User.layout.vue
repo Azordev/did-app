@@ -22,7 +22,6 @@ import { UserHeader, UserData } from './components';
 import { handleUserData } from './utils/handleUserData';
 import { Notify } from 'quasar';
 import { useRouter } from 'vue-router';
-import './styles.scss';
 
 interface UserLayoutProps {
   user?: UserType;

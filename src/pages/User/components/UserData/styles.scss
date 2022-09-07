@@ -1,6 +1,6 @@
 .UserInformation {
   background-color: $secondary;
-  margin-top: 3px;
+  margin-top: 0.2rem;
   padding-left: 2.5rem;
   padding-top: 1rem;
   padding-bottom: 5rem;
@@ -33,7 +33,7 @@
       }
     }
     .q-btn {
-      background-color: #c9c9c9;
+      background-color: $gray-light;
       color: $secondary;
       margin-right: 10px;
     }

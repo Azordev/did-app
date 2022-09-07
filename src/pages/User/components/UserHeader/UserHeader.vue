@@ -4,7 +4,7 @@
       <div>
         <q-btn
           flat
-          class="UserHeader__inicio"
+          class="UserHeader__home"
           @click="$router.push({ name: 'dashboard' })"
         >
           <q-icon name="navigate_before" />

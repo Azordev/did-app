@@ -22,6 +22,7 @@ $positive: #78981e;
 $negative: #c10015;
 $info: #31ccec;
 $warning: #f2c037;
+$gray-light: #c9c9c9;
 
 // Replacing the Quasar default CSS variables for the custom CSS variables
 :root {
@@ -32,4 +33,5 @@ $warning: #f2c037;
   --q-positive: #{$positive};
   --q-info: #{$info};
   --q-warning: #{$warning};
+  --q-gray-light: #{gray-light};
 }

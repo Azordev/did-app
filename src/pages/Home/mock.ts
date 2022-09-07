@@ -1,7 +1,3 @@
-import { getUserbyId } from './utils/getUserById';
-
-const userById = await getUserbyId();
-
 export type Subscriptions = {
   __typename: 'subscriptions';
   expiration: string;
@@ -24,12 +20,12 @@ export type UserType = {
 export const user: UserType = {
   __typename: 'users',
   avatar_url: undefined,
-  member_code: userById.user.value?.member_code || 'VP00000000',
+  member_code: 'VP00000000',
   member_info: [
     {
       __typename: 'members',
-      first_names: userById.user.value?.member_info.first_names || 'Ana',
-      last_names: userById.user.value?.member_info.last_names || 'Ana',
+      first_names: 'Ana',
+      last_names: 'Maria',
       subscriptions: [
         {
           __typename: 'subscriptions',
