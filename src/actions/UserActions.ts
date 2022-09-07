@@ -49,7 +49,6 @@ export const getSpecificUser = (id: string) => {
           });
 
           reject(null);
-          return null;
         }
         resolve(user);
       })
