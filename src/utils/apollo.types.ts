@@ -1,5 +1,26 @@
-import { MemberInformation } from '../pages/User/mock';
 // Database Models
+
+//types
+export type Subscriptions = {
+  __typename: 'subscriptions';
+  expiration: string;
+};
+
+export type MemberInformation = {
+  __typename: 'members';
+  first_names: string;
+  last_names: string;
+  email: string;
+  subscriptions: Subscriptions[];
+};
+
+export type UserType = {
+  __typename: string;
+  avatar_url?: string;
+  member_code: string;
+  member_info: MemberInformation[];
+};
+
 // User
 export interface User {
   __typename: 'users';

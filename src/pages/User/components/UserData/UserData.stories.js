@@ -5,7 +5,7 @@ export default {
 };
 
 const UserDataTemplate = (args) => ({
-  components: { UserUserData },
+  components: { UserData },
   setup() {
     return { args };
   },
@@ -13,4 +13,9 @@ const UserDataTemplate = (args) => ({
 });
 
 export const Default = UserDataTemplate.bind({});
-Default.args = {};
+Default.args = {
+  firstName,
+  lastName,
+  memberCode,
+  email,
+};

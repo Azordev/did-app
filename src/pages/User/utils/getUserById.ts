@@ -4,27 +4,28 @@ import { getSpecificUser } from 'src/actions';
 import { ref } from 'vue';
 import { Notify } from 'quasar';
 
-export const getUserbyId = async (
-  id = 'b5ca33ca-fd87-4858-a285-e15429c6dd9b'
-) => {
+export const getUserbyId = async () => {
   const user = ref<User>();
   const route = useRoute();
-  await getSpecificUser(id).then((res) => {
-    user.value = res;
+  const id = route.params.id as string;
 
-    if (!user.value) {
-      const router = useRouter();
+  await getSpecificUser(id)
+    .then((res) => {
+      user.value = res;
 
-      Notify.create({
-        message: 'Tuvimos problemas para encontrar al Usuario',
-        type: 'negative',
-      });
+      if (!user.value) {
+        const router = useRouter();
 
-      router.back();
-    }
-  });
+        Notify.create({
+          message: 'Tuvimos problemas para encontrar al Usuario',
+          type: 'negative',
+        });
+
+        router.back();
+      }
+    })
+    .catch((err) => console.error(err));
   return {
-    id,
     user,
   };
 };

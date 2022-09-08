@@ -2,14 +2,7 @@
   <header class="UserHeader">
     <div class="UserHeader__actions">
       <div>
-        <q-btn
-          flat
-          class="UserHeader__home"
-          @click="$router.push({ name: 'dashboard' })"
-        >
-          <q-icon name="navigate_before" />
-          Inicio
-        </q-btn>
+        <back-button :toHome="true" :label="'Inicio'" />
       </div>
       <q-btn flat round>
         <q-avatar class="UserHeader__avatar" color="black" text-color="white">
@@ -46,6 +39,7 @@
 import { computed } from 'vue';
 import userDefaultImg from 'src/assets/images/user-default.svg';
 import './styles.scss';
+import BackButton from 'src/components/BackButton/BackButton.vue';
 
 export interface UserHeaderProps {
   isMembershipActive: boolean;

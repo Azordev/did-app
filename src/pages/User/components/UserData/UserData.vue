@@ -9,7 +9,7 @@
       <p>{{ lastName }}</p>
     </div>
     <div class="UserInformation__text">
-      <span>codigo</span>
+      <span>Codigo</span>
       <p>{{ memberCode }}</p>
     </div>
     <div class="UserInformation__password">
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="UserInformation__text">
-      <span>correo</span>
+      <span>Correo</span>
       <p>{{ email }}</p>
     </div>
   </div>
@@ -38,5 +38,5 @@ export interface UserDataProps {
   email: string;
 }
 
-const props = defineProps<UserDataProps>();
+defineProps<UserDataProps>();
 </script>

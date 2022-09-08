@@ -21,7 +21,7 @@ export const getUserbyId = async (
         type: 'negative',
       });
 
-      router.push({ name: 'dashboard' });
+      router.back();
     }
   });
   return {

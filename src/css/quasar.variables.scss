@@ -1,3 +1,4 @@
+@import 'colors.variables.scss';
 // Quasar SCSS (& Sass) Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
@@ -22,7 +23,6 @@ $positive: #78981e;
 $negative: #c10015;
 $info: #31ccec;
 $warning: #f2c037;
-$gray-light: #c9c9c9;
 
 // Replacing the Quasar default CSS variables for the custom CSS variables
 :root {
@@ -33,5 +33,4 @@ $gray-light: #c9c9c9;
   --q-positive: #{$positive};
   --q-info: #{$info};
   --q-warning: #{$warning};
-  --q-gray-light: #{gray-light};
 }
