@@ -1,7 +1,13 @@
+import UserHeader from './UserHeader.vue';
+
 export default {
-  title: 'Pages/User/Components/Header',
+  title: 'Pages/User/Components/UserHeader',
   component: UserHeader,
-  argsTypes: {},
+  argsTypes: {
+    expirationDate: {
+      control: 'date',
+    },
+  },
 };
 
 const UserHeaderTemplate = (args) => ({
@@ -13,4 +19,7 @@ const UserHeaderTemplate = (args) => ({
 });
 
 export const Default = UserHeaderTemplate.bind({});
-Default.args = {};
+Default.args = {
+  isMembershipActive: true,
+  expirationDate: new Date('08/08/2022'),
+};

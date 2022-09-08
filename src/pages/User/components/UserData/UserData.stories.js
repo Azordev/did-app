@@ -1,7 +1,8 @@
+import UserData from './UserData.vue';
+
 export default {
   title: 'Pages/User/Components/UserData',
   component: UserData,
-  argsTypes: {},
 };
 
 const UserDataTemplate = (args) => ({
@@ -14,8 +15,8 @@ const UserDataTemplate = (args) => ({
 
 export const Default = UserDataTemplate.bind({});
 Default.args = {
-  firstName,
-  lastName,
-  memberCode,
-  email,
+  firstName: 'Victor',
+  lastName: 'Colmenarez',
+  memberCode: 'VP00000000',
+  email: 'xxxx@correo.com',
 };

@@ -9,7 +9,7 @@
       <p>{{ lastName }}</p>
     </div>
     <div class="UserInformation__text">
-      <span>Codigo</span>
+      <span>Código</span>
       <p>{{ memberCode }}</p>
     </div>
     <div class="UserInformation__password">

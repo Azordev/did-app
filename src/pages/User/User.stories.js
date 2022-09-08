@@ -1,4 +1,5 @@
 import UserLayout from './User.layout.vue';
+import { user } from './mock.ts';
 
 export default {
   title: 'Pages/User',
@@ -10,8 +11,7 @@ const UserTemplate = (args) => ({
   setup() {
     return { args };
   },
-  template:
-    '<div style="background-color: #f2f2f2"><user-layout v-bind="args" /></div>',
+  template: '<user-layout v-bind="args" />',
 });
 
 export const Page = UserTemplate.bind({});
