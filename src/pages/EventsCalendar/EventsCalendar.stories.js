@@ -1,5 +1,7 @@
+import { ref } from 'vue';
 import EventsCalendar from './EventsCalendar.layout.vue';
-import { events } from './mock.ts';
+import { mock_events, events_dates } from './mock.ts';
+import { getDateFromTimestamptz } from './utils/parseTimestamptz';
 
 export default {
   title: 'Pages/EventsCalendar',
@@ -9,12 +11,26 @@ export default {
 const Template = (args) => ({
   components: { EventsCalendar },
   setup() {
-    return { args };
+    const events = ref([]);
+
+    const selectDate = (selectedDateString) => {
+      const selectedDate = new Date(selectedDateString);
+
+      events.value = mock_events.filter((event) => {
+        const { date: eventDateString } = getDateFromTimestamptz(event.date);
+        const eventDate = new Date(eventDateString);
+
+        return eventDate.getTime() === selectedDate.getTime();
+      });
+    };
+
+    return { args, events, selectDate };
   },
-  template: '<events-calendar v-bind="args" />',
+  template:
+    '<events-calendar @selectDate="selectDate" :events="events" v-bind="args" />',
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  events,
+  eventsDates: events_dates,
 };

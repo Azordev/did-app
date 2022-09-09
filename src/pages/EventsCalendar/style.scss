@@ -24,6 +24,52 @@
     .col {
       flex: unset;
     }
+
+    .q-date__calendar-item {
+      .q-btn {
+        color: $secondary;
+        background-color: #2196f3;
+
+        .q-date__event {
+          display: none;
+        }
+      }
+
+      .q-btn--unelevated {
+        position: relative;
+      }
+
+      .q-btn--unelevated::before {
+        content: 'expand_more';
+
+        font-size: 1.2rem;
+
+        position: absolute;
+        top: 50%;
+
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+
+        /* Support for all WebKit browsers. */
+        -webkit-font-smoothing: antialiased;
+        /* Support for Safari and Chrome. */
+        text-rendering: optimizeLegibility;
+
+        /* Support for Firefox. */
+        -moz-osx-font-smoothing: grayscale;
+
+        /* Support for IE. */
+        font-feature-settings: 'liga';
+      }
+    }
   }
 
   &__events {
@@ -42,7 +88,11 @@
 
     &-date {
       font-weight: 600;
-      font-size: 1.2em;
+      font-size: 1.15em;
+    }
+
+    &-date::first-letter {
+      text-transform: capitalize;
     }
   }
 }
