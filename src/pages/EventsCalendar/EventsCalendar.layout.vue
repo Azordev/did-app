@@ -15,8 +15,8 @@
     no-unset
     v-model="selectedDate"
     :locale="dateLocales"
-    :events="eventsDates"
-    :options="eventsDates"
+    :events="eventsDates || []"
+    :options="eventsDates || []"
     @update:model-value="$emit('selectDate', $event)"
   />
   <div class="events-calendar__events">
