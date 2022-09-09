@@ -44,6 +44,8 @@ export const EVENTS_BY_USER_AND_DAY = gql`
       }
     ) {
       date
+      id
+      title
     }
   }
 `;
