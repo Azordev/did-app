@@ -1,5 +1,48 @@
 @import 'src/css/app.scss';
 
-.events-calendar__header {
-  margin-bottom: 1.25rem;
+.events-calendar {
+  &__header {
+    margin-bottom: 1.25rem;
+  }
+
+  &__calendar {
+    width: 100%;
+
+    .q-date__header {
+      display: none;
+    }
+
+    .q-date__navigation {
+      align-content: center;
+      justify-content: center;
+    }
+
+    .q-date__arrow {
+      display: none;
+    }
+
+    .col {
+      flex: unset;
+    }
+  }
+
+  &__events {
+    margin-top: 1.25rem;
+  }
+
+  &__event {
+    background: $secondary;
+    display: grid;
+    grid-template-columns: 0.3fr 0.7fr;
+    padding: 1.35rem 0.7rem;
+    color: $gray-dark;
+    font-size: 0.9em;
+    border-bottom: 1px solid #{$gray-dim}0D;
+    cursor: pointer;
+
+    &-date {
+      font-weight: 600;
+      font-size: 1.2em;
+    }
+  }
 }
