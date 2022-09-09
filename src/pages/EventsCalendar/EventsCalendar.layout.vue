@@ -55,7 +55,7 @@ const parseEventDay = (_date: string) => {
     month: 'long',
   });
 
-  const day = date.getDate();
+  const day = date.getUTCDate();
 
   return `${month} ${day}`;
 };
