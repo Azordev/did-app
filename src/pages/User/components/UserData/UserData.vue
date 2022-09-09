@@ -17,7 +17,7 @@
         <span>Contraseña</span>
         <p>************</p>
       </div>
-      <div>
+      <div class="UserInformation__btn">
         <q-btn unelevated rounded label="Cambiar Contraseña" />
       </div>
     </div>

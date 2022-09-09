@@ -1,7 +1,7 @@
 <template>
   <header class="UserHeader">
     <div class="UserHeader__actions">
-      <div>
+      <div class="UserHeader__home">
         <back-button :toHome="true" :label="'Inicio'" />
       </div>
       <q-btn flat round>

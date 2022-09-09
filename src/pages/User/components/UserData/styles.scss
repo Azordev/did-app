@@ -1,7 +1,6 @@
-@use 'src/css/colors.variables.scss';
+@import 'src/css/app.scss';
 
 .UserInformation {
-  background-color: $secondary;
   margin-top: 0.2rem;
   padding-left: 2.5rem;
   padding-top: 1rem;
@@ -13,6 +12,7 @@
     p {
       font-weight: bolder;
       margin-bottom: 10rem;
+      font-family: Helvetica;
 
       &:last-of-type {
         margin-bottom: 1rem;
@@ -29,6 +29,7 @@
     p {
       font-weight: bolder;
       margin-bottom: 10rem;
+      font-family: Helvetica;
 
       &:last-of-type {
         margin-bottom: 1rem;
@@ -36,8 +37,16 @@
     }
     .q-btn {
       background-color: $gray-light;
-      color: $secondary;
+      color: $gray-dark;
+      text-transform: none;
       margin-right: 10px;
+      padding: 0.1rem 1rem 0.1rem 1rem;
+    }
+  }
+
+  &__btn {
+    span {
+      font-family: Helvetica;
     }
   }
 }
