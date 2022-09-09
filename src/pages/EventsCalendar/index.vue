@@ -9,4 +9,6 @@ import EventsCalendar from './EventsCalendar.layout.vue';
 
 const events = ref<Event[]>([]);
 const eventsDates = ref<string[]>([]);
+
+// Add here the logic to get the events for the current user and save it in events and eventsDates variables
 </script>
