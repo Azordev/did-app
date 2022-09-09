@@ -25,7 +25,7 @@
       <div class="events-calendar__event-date">
         {{ parseEventDay(event.date) }}
       </div>
-      <div>{{ event.title }}</div>
+      <div class="events-calendar__event-title">{{ event.title }}</div>
     </div>
   </div>
 </template>
@@ -55,7 +55,7 @@ const parseEventDay = (_date: string) => {
     month: 'long',
   });
 
-  const day = date.getDay();
+  const day = date.getDate();
 
   return `${month} ${day}`;
 };
