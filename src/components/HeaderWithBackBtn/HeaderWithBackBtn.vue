@@ -1,6 +1,6 @@
 <template>
   <div class="HeaderWithBackBtn">
-    <back-button v-if="showBackBtn" />
+    <back-button v-if="showBackBtn" :to-home="backBtnToHome" />
     <q-img class="HeaderWithBackBtn__img" v-if="imgUrl" :src="imgUrl" />
     <span v-else class="HeaderWithBackBtn__text">{{ label }}</span>
     <span
@@ -20,6 +20,7 @@ interface HeaderWithBackBtnProps {
   imgUrl?: string;
   showBackBtn?: boolean;
   floatRightLabel: string;
+  backBtnToHome?: boolean;
 }
 
 defineProps<HeaderWithBackBtnProps>();

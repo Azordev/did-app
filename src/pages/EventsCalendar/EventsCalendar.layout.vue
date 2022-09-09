@@ -1,5 +1,6 @@
 <template>
   <header-with-back-btn
+    back-btn-to-home
     show-back-btn
     label="Inicio"
     float-right-label="Calendario"
