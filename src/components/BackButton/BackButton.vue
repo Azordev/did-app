@@ -1,7 +1,7 @@
 <template>
   <q-btn
     flat
-    color="black"
+    :color="colorDefault"
     dense
     :align="'left'"
     size="md"
@@ -19,7 +19,10 @@ import './styles.scss';
 interface BackButtonProps {
   toHome?: boolean;
   label?: string;
+  color?: string;
 }
 
-defineProps<BackButtonProps>();
+const props = defineProps<BackButtonProps>();
+
+const colorDefault = props.color ? props.color : 'gray-dim';
 </script>

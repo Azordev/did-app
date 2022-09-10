@@ -2,7 +2,7 @@
   <header class="UserHeader">
     <div class="UserHeader__actions">
       <div class="UserHeader__home">
-        <back-button :toHome="true" :label="'Inicio'" />
+        <back-button :color="'black'" :toHome="true" :label="'Inicio'" />
       </div>
       <q-btn flat round>
         <q-avatar class="UserHeader__avatar" color="black" text-color="white">
