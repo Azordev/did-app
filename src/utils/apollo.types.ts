@@ -1,6 +1,11 @@
 // Database Models
+// User
+export enum UserType {
+  MEMBER = 'MEMBER',
+  PROVIDER = 'PROVIDER',
+  ADMIN = 'ADMIN',
+}
 
-//types
 export type Subscriptions = {
   __typename: 'subscriptions';
   expiration: string;
@@ -14,22 +19,14 @@ export type MemberInformation = {
   subscriptions: Subscriptions[];
 };
 
-export type UserType = {
-  __typename: string;
-  avatar_url?: string;
-  member_code: string;
-  member_info: MemberInformation[];
-};
-
-// User
 export interface User {
   __typename: 'users';
   member_code: string;
   id: string;
-  avatar_url: string;
+  avatar_url?: string;
   is_active: boolean;
-  type: string;
-  member_info: MemberInformation;
+  type: UserType.MEMBER | UserType.PROVIDER | UserType.ADMIN;
+  member_info: MemberInformation[];
   created_at?: string;
   updated_at?: string;
   password?: string;
