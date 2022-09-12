@@ -19,7 +19,9 @@ export const EVENT_BY_ID_QUERY = gql`
   query GetEventById($event_id: uuid!, $member_id: uuid = "") {
     events_by_pk(id: $event_id) {
       ...EventsFragment
-      inscriptions(where: { member_id: { _eq: $member_id } }) {
+      inscriptions(
+        where: { member_id: { _eq: $member_id }, event_id: { _eq: $event_id } }
+      ) {
         id
       }
     }

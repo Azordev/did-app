@@ -123,6 +123,13 @@ export interface GetProductsByIdReturnTypes {
   products: Product[];
 }
 
+// Inscriptions
+export interface Inscriptions {
+  id: string;
+  member_id: string;
+  event_id: string;
+}
+
 // Events
 export enum EventType {
   PRIVATE = 'ATTENDANCE',
@@ -137,6 +144,7 @@ export interface Event {
   image_url?: string;
   date: string;
   type: EventType.PRIVATE | EventType.PUBLIC;
+  inscriptions: Inscriptions[];
 }
 
 // Query returns
