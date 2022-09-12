@@ -1,0 +1,26 @@
+{
+  "days": [
+    "Lunes",
+    "Martes",
+    "Miercoles",
+    "Jueves",
+    "Viernes",
+    "Sabado",
+    "Domingo"
+  ],
+  "daysShort": ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"],
+  "months": [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre"
+  ]
+}
