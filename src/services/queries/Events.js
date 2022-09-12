@@ -22,3 +22,30 @@ export const EVENT_BY_ID_QUERY = gql`
     }
   }
 `;
+
+export const EVENTS_BY_USER_QUERY = gql`
+  query GetEventsByUser($userId: uuid!) {
+    events(
+      distinct_on: date
+      where: { inscriptions: { member_id: { _eq: $userId } } }
+    ) {
+      date
+    }
+  }
+`;
+
+export const EVENTS_BY_USER_AND_DAY = gql`
+  query getEventsByUserAndDay($date: timestamptz!, $userId: uuid!) {
+    events(
+      distinct_on: date
+      where: {
+        inscriptions: { member_id: { _eq: $userId } }
+        date: { _gte: $date }
+      }
+    ) {
+      date
+      id
+      title
+    }
+  }
+`;

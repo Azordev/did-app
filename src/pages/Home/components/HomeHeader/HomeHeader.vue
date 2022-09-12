@@ -40,6 +40,7 @@
         color="accent"
         dense
         no-caps
+        @click="$router.push({ name: 'eventsCalendar' })"
       >
         <q-icon
           :name="`svguse:${homeCalendarIcon}#calendar|0 0 16.485 18.206`"

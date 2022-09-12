@@ -1,0 +1,107 @@
+@import 'src/css/app.scss';
+
+.events-calendar {
+  &__header {
+    margin-bottom: 1.25rem;
+  }
+
+  &__calendar {
+    width: 100%;
+
+    .q-date__header {
+      display: none;
+    }
+
+    .q-date__navigation {
+      align-content: center;
+      justify-content: center;
+    }
+
+    .q-date__arrow {
+      display: none;
+    }
+
+    .col {
+      flex: unset;
+    }
+
+    .q-date__calendar-item {
+      .q-btn {
+        color: $secondary;
+        background-color: #2196f3;
+
+        .q-date__event {
+          display: none;
+        }
+      }
+
+      .q-btn--unelevated {
+        position: relative;
+      }
+
+      .q-btn--unelevated::before {
+        content: 'expand_more';
+
+        font-size: 1.2rem;
+
+        position: absolute;
+        top: 50%;
+
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+
+        /* Support for all WebKit browsers. */
+        -webkit-font-smoothing: antialiased;
+        /* Support for Safari and Chrome. */
+        text-rendering: optimizeLegibility;
+
+        /* Support for Firefox. */
+        -moz-osx-font-smoothing: grayscale;
+
+        /* Support for IE. */
+        font-feature-settings: 'liga';
+      }
+    }
+  }
+
+  &__events {
+    margin-top: 1.25rem;
+  }
+
+  &__event {
+    background: $secondary;
+    display: grid;
+    grid-template-columns: 0.33fr 0.7fr;
+    gap: 0.625rem;
+    padding: 1.35rem 0.7rem;
+    color: $gray-dark;
+    font-size: 0.9em;
+    border-bottom: 1px solid #{$gray-dim}0D;
+    cursor: pointer;
+
+    &-date {
+      font-weight: 600;
+      font-size: 1.15em;
+      white-space: nowrap;
+    }
+
+    &-date::first-letter {
+      text-transform: capitalize;
+    }
+
+    &-title {
+      width: 100%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}
