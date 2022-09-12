@@ -1,6 +1,9 @@
-import { UserType } from '../../utils/apollo.types';
+import { User, UserType } from 'src/utils/apollo.types';
 
-export const user: UserType = {
+export const user: User = {
+  id: '000',
+  is_active: true,
+  type: UserType.MEMBER,
   __typename: 'users',
   avatar_url: undefined,
   member_code: 'VP00000000',
