@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="Header__actions">
-      <q-btn flat round>
+      <q-btn flat round @click="$router.push({ name: 'userProfile' })">
         <q-avatar class="Header__avatar" color="black" text-color="white">
           <q-img :src="avatar || userDefaultImg" />
           <q-icon

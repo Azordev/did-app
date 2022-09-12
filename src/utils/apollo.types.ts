@@ -1,4 +1,26 @@
 // Database Models
+
+//types
+export type Subscriptions = {
+  __typename: 'subscriptions';
+  expiration: string;
+};
+
+export type MemberInformation = {
+  __typename: 'members';
+  first_names: string;
+  last_names: string;
+  email: string;
+  subscriptions: Subscriptions[];
+};
+
+export type UserType = {
+  __typename: string;
+  avatar_url?: string;
+  member_code: string;
+  member_info: MemberInformation[];
+};
+
 // User
 export interface User {
   __typename: 'users';
@@ -7,6 +29,7 @@ export interface User {
   avatar_url: string;
   is_active: boolean;
   type: string;
+  member_info: MemberInformation;
   created_at?: string;
   updated_at?: string;
   password?: string;
@@ -15,6 +38,9 @@ export interface User {
 // Query return
 export interface Users {
   users: User[];
+}
+export interface getUserReturnType {
+  users_by_pk: User;
 }
 
 // Category
