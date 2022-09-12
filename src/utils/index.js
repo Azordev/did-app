@@ -4,3 +4,4 @@ export * from './logger';
 export * from './validations';
 export * from './shoppingCart';
 export * from './confirmBeforeExit';
+export * from './auth';
