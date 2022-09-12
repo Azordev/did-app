@@ -13,6 +13,7 @@ export type Subscriptions = {
 
 export type MemberInformation = {
   __typename: 'members';
+  id: string;
   first_names: string;
   last_names: string;
   email: string;

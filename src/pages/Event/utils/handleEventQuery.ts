@@ -9,9 +9,10 @@ export const handleEventQuery = () => {
   const isLoading = ref<boolean>(false);
   const eventId = route.params.event as string;
 
-  const getEventDetail = async (id: string) => {
+  const getEventDetail = async (member_id: string, event_id: string) => {
     isLoading.value = true;
-    await getEventById(id).then((result) => {
+
+    await getEventById(member_id, event_id).then((result) => {
       event.value = result;
       isLoading.value = false;
     });

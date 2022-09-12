@@ -45,9 +45,9 @@ export const getListOfEvents = (name = '') => {
   });
 };
 
-export const getEventById = (id: string) => {
+export const getEventById = (member_id: string, event_id: string) => {
   return new Promise<Event>((resolve, reject) => {
-    useQuery<EventByPKReturnTypes>(EVENT_BY_ID_QUERY, { id })
+    useQuery<EventByPKReturnTypes>(EVENT_BY_ID_QUERY, { member_id, event_id })
       .then(({ events_by_pk: event }) => {
         if (!event) {
           Notify.create({

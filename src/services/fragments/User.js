@@ -6,6 +6,7 @@ export const UserInfo = gql`
     member_code
     avatar_url
     member_info {
+      id
       first_names
       last_names
       email

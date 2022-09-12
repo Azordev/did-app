@@ -16,9 +16,12 @@ export const EVENTS = gql`
 
 export const EVENT_BY_ID_QUERY = gql`
   ${EventInfo}
-  query GetEventById($id: uuid!) {
-    events_by_pk(id: $id) {
+  query GetEventById($event_id: uuid!, $member_id: uuid = "") {
+    events_by_pk(id: $event_id) {
       ...EventsFragment
+      inscriptions(where: { member_id: { _eq: $member_id } }) {
+        id
+      }
     }
   }
 `;
