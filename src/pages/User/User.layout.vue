@@ -17,14 +17,14 @@
 </template>
 
 <script setup lang="ts">
-import { UserType } from './mock';
+import { User } from 'src/utils/apollo.types';
 import { UserHeader, UserData } from './components';
 import { handleUserData } from './utils/handleUserData';
 import { Notify } from 'quasar';
 import { useRouter } from 'vue-router';
 
 interface UserLayoutProps {
-  user?: UserType;
+  user?: User;
 }
 
 const props = defineProps<UserLayoutProps>();

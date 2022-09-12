@@ -1,16 +1,17 @@
 @import 'src/css/app.scss';
 
 .UserInformation {
-  margin-top: 0.2rem;
+  margin-top: 3.35rem;
   padding-left: 2.5rem;
-  padding-top: 1rem;
   padding-bottom: 5rem;
 
-  &__text {
-    font-size: 0.875rem;
+  &__text,
+  &__password {
+    font-size: 0.75rem;
 
     p {
-      font-weight: bolder;
+      font-size: 1.32rem;
+      font-weight: 700;
       margin-bottom: 10rem;
       font-family: Helvetica;
 
@@ -24,26 +25,17 @@
   }
 
   &__password {
-    font-size: 0.875rem;
     display: flex;
     justify-content: space-between;
     column-gap: 5px;
     font-family: Helvetica;
 
-    p {
-      font-weight: bolder;
-      margin-bottom: 10rem;
-      font-family: Helvetica;
-
-      &:last-of-type {
-        margin-bottom: 1rem;
-      }
-    }
     .q-btn {
       background-color: $gray-light;
       color: $secondary;
       margin-right: 10px;
       padding: 0.1rem 1rem 0.1rem 1rem;
+
       span {
         font-size: 10px;
       }
