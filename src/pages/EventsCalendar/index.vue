@@ -7,25 +7,17 @@
 </template>
 
 <script setup lang="ts">
-import { Event } from 'src/utils';
-import { ref } from 'vue';
 import EventsCalendar from './EventsCalendar.layout.vue';
-import { mock_events, events_dates } from './mock';
-import { getDateFromTimestamptz } from './utils/parseTimestamptz';
+import { handleEventsCalendar } from './utils/handleEventsCalendar';
 
-const events = ref<Event[]>([]);
-const eventsDates = ref<string[]>(events_dates);
+const { events, eventsDates, getEventsByDate, getEventsDates } =
+  handleEventsCalendar();
+
+eventsDates.value = getEventsDates();
 
 const selectDate = (selectedDateString: string) => {
   const selectedDate = new Date(selectedDateString);
 
-  events.value = mock_events.filter((event) => {
-    const { date: eventDateString } = getDateFromTimestamptz(event.date);
-    const eventDate = new Date(eventDateString);
-
-    return eventDate.getTime() === selectedDate.getTime();
-  });
+  events.value = getEventsByDate(selectedDate);
 };
-
-// Reeplace mock data for database data
 </script>
