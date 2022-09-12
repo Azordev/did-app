@@ -11,6 +11,8 @@
         :lastName="lastName"
         :memberCode="memberCode"
         :email="email"
+        :new-password="newPassword"
+        @update:new-password="$emit('update:newPassword', $event)"
       />
     </div>
   </div>
@@ -20,27 +22,20 @@
 import { User } from 'src/utils/apollo.types';
 import { UserHeader, UserData } from './components';
 import { handleUserData } from 'src/utils';
-import { Notify } from 'quasar';
-import { useRouter } from 'vue-router';
 
 interface UserLayoutProps {
-  user?: User;
+  user: User;
+  newPassword: string;
+}
+
+interface UserLayoutEmits {
+  (eventName: 'update:newPassword', value: string): void;
 }
 
 const props = defineProps<UserLayoutProps>();
+defineEmits<UserLayoutEmits>();
 
 const { parseUserData } = handleUserData();
-
-if (!props.user) {
-  const router = useRouter();
-
-  Notify.create({
-    message: 'Hemos tenido problemas para localizar tu usuario',
-    type: 'Negative',
-  });
-
-  router.push({ name: 'login' });
-}
 
 const {
   expirationDate,

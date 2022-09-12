@@ -14,5 +14,5 @@ export const memberCodeValidations = [
 ];
 
 export const passwordValidations = [
-  (val: string) => val.length > 0 || 'La contraseña',
+  (val: string) => val.length > 0 || 'La contraseña es requerida',
 ];

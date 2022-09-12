@@ -26,9 +26,9 @@
 
   &__password {
     display: flex;
-    justify-content: space-between;
     column-gap: 5px;
     font-family: Helvetica;
+    margin-bottom: 0.5rem;
 
     .q-btn {
       background-color: $gray-light;
@@ -45,9 +45,20 @@
     }
   }
 
-  &__btn {
+  &__password-form-btn,
+  &__edit-password-btn {
     span {
       font-family: Helvetica;
     }
+  }
+
+  &__password-form-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__edit-password-btn {
+    margin-left: auto;
   }
 }
