@@ -10,7 +10,7 @@
   &::before {
     content: '';
     position: absolute;
-    top: 0px;
+    top: 0;
     left: -10px;
     border-bottom: 15px solid transparent;
 
@@ -20,7 +20,7 @@
   &::after {
     content: '';
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
     left: -10px;
     border-top: 15px solid transparent;
 
