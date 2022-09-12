@@ -54,6 +54,11 @@ const routes: RouteRecordRaw[] = [
         meta: { requiresAuth: true },
       },
       {
+        path: 'eventsCalendar',
+        name: 'eventsCalendar',
+        component: () => import('pages/EventsCalendar/index.vue'),
+      },
+      {
         path: 'providers',
         name: 'providers',
         component: () => import('pages/Providers/index.vue'),
