@@ -1,4 +1,3 @@
-import { time } from 'console';
 import { route } from 'quasar/wrappers';
 import {
   createMemoryHistory,
@@ -37,7 +36,7 @@ export default route(function (/* { store, ssrContext } */) {
 
   Router.beforeEach((to, from) => {
     if (to.meta.requiresAuth && !LocalStorage.getItem('user')) {
-      return { name: 'login', query: { redirectTo: to.path } };
+      return { name: 'login', query: { to: to.path } };
     }
   });
 
