@@ -5,7 +5,7 @@ import {
   createWebHashHistory,
   createWebHistory,
 } from 'vue-router';
-
+import { LocalStorage } from 'quasar';
 import routes from './routes';
 
 /*
@@ -32,6 +32,12 @@ export default route(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.VUE_ROUTER_BASE),
+  });
+
+  Router.beforeEach((to) => {
+    if (to.meta.requiresAuth && !LocalStorage.getItem('user')) {
+      return { name: 'login', query: { to: to.path } };
+    }
   });
 
   return Router;
