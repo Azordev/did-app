@@ -1,10 +1,10 @@
 <template>
   <header class="UserHeader">
     <div class="UserHeader__actions">
-      <div class="UserHeader__home">
-        <back-button :color="'black'" :toHome="true" :label="'Inicio'" />
+      <div class="UserHeader__back_btn">
+        <back-button color="gray-dark" :toHome="true" label="Inicio" />
       </div>
-      <q-btn flat round>
+      <q-btn class="UserHeader__avatar_btn" flat round>
         <q-avatar class="UserHeader__avatar" color="black" text-color="white">
           <q-img :src="avatar || userDefaultImg" />
           <q-icon
@@ -55,7 +55,6 @@ const userMembershipStatus = computed(() =>
 
 const parsedExpirationDate = computed(() =>
   props.expirationDate.toLocaleString('en-US', {
-    day: '2-digit',
     month: '2-digit',
     year: 'numeric',
   })
