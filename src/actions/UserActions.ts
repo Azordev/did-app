@@ -1,6 +1,6 @@
 import { Notify } from 'quasar';
-import { USER_LOGIN } from '../services';
-import { useQuery, Users, User } from '../utils';
+import { USER_LOGIN, USER_BY_ID } from '../services';
+import { useQuery, Users, User, getUserReturnType } from '../utils';
 import { logger } from '../utils/logger';
 
 export interface userAuthData {
@@ -30,6 +30,27 @@ export const handleUserLogin = ({ member_code, password }: userAuthData) => {
         });
 
         resolve(users[0]);
+      })
+      .catch((err) => {
+        logger(err);
+        reject(null);
+      });
+  });
+};
+
+export const getSpecificUser = (id: string) => {
+  return new Promise<User>((resolve, reject) => {
+    useQuery<getUserReturnType>(USER_BY_ID, { id })
+      .then(({ users_by_pk: user }) => {
+        if (!user) {
+          Notify.create({
+            message: 'No se encontro el usuario',
+            type: 'negative',
+          });
+
+          reject(null);
+        }
+        resolve(user);
       })
       .catch((err) => {
         logger(err);
