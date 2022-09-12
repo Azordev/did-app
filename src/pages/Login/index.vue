@@ -22,12 +22,12 @@ import {
 } from '../../utils/validations';
 import LoginLayout from './Login.layout.vue';
 import { LocalStorage } from 'quasar';
-
+import { useRouter } from 'vue-router';
 const username = ref<string>('');
 const userPassword = ref<string>('');
 const termsAndConditions = ref<boolean>(false);
 const loginIsLoading = ref<boolean>(false);
-
+const router = useRouter();
 const onLogin = ({ member_code, password }: userAuthData) => {
   loginIsLoading.value = true;
   const variables = { member_code, password };
@@ -38,6 +38,7 @@ const onLogin = ({ member_code, password }: userAuthData) => {
        * Remove this code and add here your logic for user login
        * For example:
        */
+      router.push({ name: 'dashboard' });
       LocalStorage.set('user', res);
     })
     .finally(() => {
