@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import { MemberInformation, User } from 'src/utils';
+import { MemberInformation, User } from './apollo.types';
 
 export const handleUserData = () => {
   const getExpirationDate = (expiration?: string) => {
@@ -40,6 +40,7 @@ export const handleUserData = () => {
 
   const parseUserData = (user?: User) => {
     const memberCode = ref<string>(user?.member_code ?? '');
+    const email = ref<string>(user?.member_info.email ?? '');
     const avatar = user?.avatar_url;
 
     const { firstName, lastName } = getUserName(user?.member_info);
@@ -54,6 +55,7 @@ export const handleUserData = () => {
     return {
       memberCode,
       firstName,
+      email,
       lastName,
       avatar,
       expirationDate,

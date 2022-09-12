@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import { User } from 'src/utils/apollo.types';
 import { UserHeader, UserData } from './components';
-import { handleUserData } from './utils/handleUserData';
+import { handleUserData } from 'src/utils';
 import { Notify } from 'quasar';
 import { useRouter } from 'vue-router';
 
