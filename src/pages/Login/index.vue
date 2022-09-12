@@ -23,11 +23,13 @@ import {
 import LoginLayout from './Login.layout.vue';
 import { LocalStorage } from 'quasar';
 import { useRouter } from 'vue-router';
+
 const username = ref<string>('');
 const userPassword = ref<string>('');
 const termsAndConditions = ref<boolean>(false);
 const loginIsLoading = ref<boolean>(false);
 const router = useRouter();
+
 const onLogin = ({ member_code, password }: userAuthData) => {
   loginIsLoading.value = true;
   const variables = { member_code, password };
