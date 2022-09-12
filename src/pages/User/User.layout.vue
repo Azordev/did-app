@@ -12,7 +12,13 @@
         :memberCode="memberCode"
         :email="email"
         :new-password="newPassword"
+        :is-form-loading="isFormLoading"
+        :is-editing-password="isEditingPassword"
+        :see-password="seePassword"
+        @see-password="$emit('seePassword', $event)"
+        @edit-password="$emit('editPassword', $event)"
         @update:new-password="$emit('update:newPassword', $event)"
+        @save-password="$emit('savePassword', $event)"
       />
     </div>
   </div>
@@ -26,10 +32,16 @@ import { handleUserData } from 'src/utils';
 interface UserLayoutProps {
   user: User;
   newPassword: string;
+  isFormLoading: boolean;
+  isEditingPassword: boolean;
+  seePassword: boolean;
 }
 
 interface UserLayoutEmits {
   (eventName: 'update:newPassword', value: string): void;
+  (eventName: 'savePassword', value: string): void;
+  (eventName: 'editPassword', value: boolean): void;
+  (eventName: 'seePassword', value: boolean): void;
 }
 
 const props = defineProps<UserLayoutProps>();

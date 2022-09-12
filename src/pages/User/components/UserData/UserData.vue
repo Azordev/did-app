@@ -35,7 +35,7 @@
               <q-icon
                 :name="seePassword ? 'visibility_off' : 'visibility'"
                 class="cursor-pointer"
-                @click="seePassword = !seePassword"
+                @click="$emit('seePassword', !seePassword)"
               />
             </template>
           </q-input>
@@ -48,14 +48,22 @@
             unelevated
             rounded
             label="Cambiar Contraseña"
-            @click="isEditingPassword = true"
+            @click="$emit('editPassword', true)"
           />
         </div>
         <div class="UserInformation__password-form-btns" v-else>
-          <q-btn type="submit" dense unelevated rounded label="Guardar" />
           <q-btn
+            :loading="isFormLoading"
+            type="submit"
+            dense
+            unelevated
+            rounded
+            label="Guardar"
+          />
+          <q-btn
+            :loading="isFormLoading"
             type="reset"
-            @click="isEditingPassword = false"
+            @click="$emit('editPassword', false)"
             dense
             unelevated
             rounded
@@ -72,7 +80,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import './styles.scss';
 import { passwordValidations } from 'src/utils';
 
@@ -82,15 +89,18 @@ export interface UserDataProps {
   memberCode: string;
   email: string;
   newPassword: string;
+  seePassword: boolean;
+  isEditingPassword: boolean;
+  isFormLoading: boolean;
 }
 
 interface UserDataEmits {
   (eventName: 'update:newPassword', value: boolean): void;
+  (eventName: 'editPassword', value: boolean): void;
+  (eventName: 'seePassword', value: boolean): void;
+  (eventName: 'savePassword', value: string): void;
 }
 
 defineProps<UserDataProps>();
 defineEmits<UserDataEmits>();
-
-const isEditingPassword = ref<boolean>(false);
-const seePassword = ref<boolean>(false);
 </script>
