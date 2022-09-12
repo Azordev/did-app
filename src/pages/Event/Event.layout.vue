@@ -30,6 +30,7 @@ const parsedEventDate = ref<string>();
 
 interface EventLayoutProps {
   event: Event;
+  userInscriptionId?: string;
 }
 
 const props = defineProps<EventLayoutProps>();
