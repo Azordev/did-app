@@ -19,16 +19,18 @@
           color="primary"
           size="lg"
           no-caps
+          :loading="isLoading"
         >
           Participar
         </q-btn>
         <q-btn
           v-else
-          @click="$emit('unSubscribeUserToEvent')"
+          @click="$emit('unsubscribeUserToEvent', userInscriptionId)"
           class="Event__btn-participate"
           color="primary"
           size="lg"
           no-caps
+          :loading="isLoading"
         >
           Desuscribirse
         </q-btn>
@@ -48,10 +50,12 @@ const parsedEventDate = ref<string>();
 interface EventLayoutProps {
   event: Event;
   userInscriptionId?: string;
+  isLoading: boolean;
 }
 
 interface EventLayoutEmits {
   (eventName: 'subscribeUserToEvent', value: void): void;
+  (eventName: 'unsubscribeUserToEvent', value: string): void;
 }
 
 defineEmits<EventLayoutEmits>();

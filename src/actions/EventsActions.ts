@@ -4,6 +4,7 @@ import {
   EVENTS,
   EVENT_BY_ID_QUERY,
   SUBSCRIBE_USER_TO_EVENT,
+  UNSUBSCRIBE_USER_TO_EVENT,
 } from '../services';
 import { useQuery, getListOfEventsReturnTypes, Event } from 'src/utils';
 
@@ -86,6 +87,26 @@ export const subscribeUserToEvent = (member_id: string, event_id: string) => {
 
     onDone(({ data }) => {
       resolve(data.insert_inscriptions_one.id);
+    });
+    onError((error) => {
+      reject(error);
+    });
+  });
+};
+
+export const unsubscribeUserToEvent = (inscription_id: string) => {
+  return new Promise<string>((resolve, reject) => {
+    const { mutate, onDone, onError } = useMutation(UNSUBSCRIBE_USER_TO_EVENT, {
+      variables: {
+        inscription_id,
+      },
+    });
+
+    mutate();
+
+    onDone(({ data }) => {
+      console.log(data);
+      resolve('non');
     });
     onError((error) => {
       reject(error);

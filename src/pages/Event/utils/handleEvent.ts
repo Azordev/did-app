@@ -1,4 +1,8 @@
-import { getEventById, subscribeUserToEvent } from 'src/actions/EventsActions';
+import {
+  getEventById,
+  subscribeUserToEvent,
+  unsubscribeUserToEvent,
+} from 'src/actions/EventsActions';
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { Event } from 'src/utils';
@@ -39,12 +43,31 @@ export const handleEvent = () => {
       });
   };
 
+  const onUnsubscribeUserToEvent = (inscriptionId: string) => {
+    isLoading.value = true;
+
+    unsubscribeUserToEvent(inscriptionId)
+      .then(() => {
+        userInscriptionId.value = undefined;
+      })
+      .catch(() => {
+        Notify.create({
+          message: 'Something went wrong, please try again.',
+          type: 'negative',
+        });
+      })
+      .finally(() => {
+        isLoading.value = false;
+      });
+  };
+
   return {
-    onSubscribeUserToEvent,
     userInscriptionId,
     event,
     isLoading,
     eventId,
     getEventDetail,
+    onUnsubscribeUserToEvent,
+    onSubscribeUserToEvent,
   };
 };

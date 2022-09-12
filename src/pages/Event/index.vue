@@ -4,7 +4,9 @@
     v-if="event"
     :event="event"
     :user-inscription-id="userInscriptionId"
-    @subscribeUserToEvent="() => onSubscribeUserToEvent(member_id, eventId)"
+    :is-loading="isLoading"
+    @unsubscribe-user-to-event="onUnsubscribeUserToEvent($event)"
+    @subscribe-user-to-event="() => onSubscribeUserToEvent(member_id, eventId)"
   />
 </template>
 
@@ -19,7 +21,9 @@ const {
   event,
   eventId,
   userInscriptionId,
+  isLoading,
   onSubscribeUserToEvent,
+  onUnsubscribeUserToEvent,
   getEventDetail,
 } = handleEvent();
 const user = ref<User>(getUser());
