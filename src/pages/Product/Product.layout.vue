@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-import DetailLayout from '../../components/DetailLayout';
+import DetailLayout from 'src/components/DetailLayout';
 import { Product } from 'src/utils';
 
 interface ProductLayoutProps {

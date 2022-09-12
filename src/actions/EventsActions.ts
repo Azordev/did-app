@@ -1,4 +1,4 @@
-import { EventByPKReturnTypes } from './../utils/apollo.types';
+import { EventByPKReturnTypes } from 'src/utils/apollo.types';
 import { Notify } from 'quasar';
 import { EVENTS, EVENT_BY_ID_QUERY } from '../services';
 import { useQuery, getListOfEventsReturnTypes, Event } from '../utils';

@@ -73,11 +73,11 @@
 
 <script setup lang="ts">
 import { UserType } from './mock';
-import { HomeHeader, HomeList } from './components';
-import { ProviderCard, EventCard } from '../../components';
-import { Event, EventType, Provider } from '../../utils';
+import { HomeHeader, HomeList } from 'src/components';
+import { ProviderCard, EventCard } from 'src/components';
+import { Event, EventType, Provider } from 'src/utils';
 import { handleUserData } from './utils/handleUserData';
-import DIDLogo from '../../assets/logos/didperu-dark.svg';
+import DIDLogo from 'src/assets/logos/didperu-dark.svg';
 import './styles.scss';
 import { Notify } from 'quasar';
 import { useRouter } from 'vue-router';

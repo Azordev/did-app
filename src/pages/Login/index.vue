@@ -15,11 +15,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import './Login.scss';
-import { handleUserLogin, userAuthData } from '../../actions';
+import { handleUserLogin, userAuthData } from 'src/actions';
 import {
   passwordValidations,
   memberCodeValidations,
-} from '../../utils/validations';
+} from 'src/utils/validations';
 import LoginLayout from './Login.layout.vue';
 import { LocalStorage } from 'quasar';
 import { useRouter } from 'vue-router';

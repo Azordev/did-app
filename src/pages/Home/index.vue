@@ -5,8 +5,8 @@
 <script setup lang="ts">
 import HomeLayout from './Home.layout.vue';
 import { user } from './mock';
-import { getListOfEventsForHome, getListOfProviders } from '../../actions';
-import { Event, Provider } from '../../utils';
+import { getListOfEventsForHome, getListOfProviders } from 'src/actions';
+import { Event, Provider } from 'src/utils';
 import { ref } from 'vue';
 
 const events = ref<Event[]>();

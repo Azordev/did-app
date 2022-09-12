@@ -22,7 +22,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import DetailLayout from '../../components/DetailLayout';
+import DetailLayout from 'src/components/DetailLayout';
 import { Event } from 'src/utils';
 import './styles.scss';
 
