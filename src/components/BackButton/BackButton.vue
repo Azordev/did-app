@@ -1,8 +1,9 @@
 <template>
   <q-btn
     flat
-    color="gray-dim"
+    :color="colorDefault"
     dense
+    :align="'left'"
     size="md"
     :icon="matArrowBackIosNew"
     :label="label"
@@ -13,11 +14,15 @@
 
 <script setup lang="ts">
 import { matArrowBackIosNew } from '@quasar/extras/material-icons';
+import './styles.scss';
 
 interface BackButtonProps {
   toHome?: boolean;
   label?: string;
+  color?: string;
 }
 
-defineProps<BackButtonProps>();
+const props = defineProps<BackButtonProps>();
+
+const colorDefault = props.color ? props.color : 'gray-dim';
 </script>
