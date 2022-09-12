@@ -34,7 +34,7 @@ export default route(function (/* { store, ssrContext } */) {
     history: createHistory(process.env.VUE_ROUTER_BASE),
   });
 
-  Router.beforeEach((to, from) => {
+  Router.beforeEach((to) => {
     if (to.meta.requiresAuth && !LocalStorage.getItem('user')) {
       return { name: 'login', query: { to: to.path } };
     }
