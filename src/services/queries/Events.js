@@ -3,7 +3,7 @@ import { EventInfo } from '../fragments';
 
 export const EVENTS = gql`
   ${EventInfo}
-  query GetEventsForHome($limit: Int = 4, $name: String = "%%") {
+  query GetEventsList($limit: Int, $name: String = "%%") {
     events(
       order_by: { date: asc }
       limit: $limit
