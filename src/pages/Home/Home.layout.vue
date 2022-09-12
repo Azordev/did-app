@@ -73,7 +73,7 @@
 
 <script setup lang="ts">
 import { UserType } from './mock';
-import { HomeHeader, HomeList } from 'src/components';
+import { HomeHeader, HomeList } from './components';
 import { ProviderCard, EventCard } from 'src/components';
 import { Event, EventType, Provider } from 'src/utils';
 import { handleUserData } from './utils/handleUserData';
