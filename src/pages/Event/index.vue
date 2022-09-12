@@ -4,6 +4,7 @@
     v-if="event"
     :event="event"
     :user-inscription-id="userInscriptionId"
+    @subscribeUserToEvent="() => onSubscribeUserToEvent(member_id, eventId)"
   />
 </template>
 
@@ -14,9 +15,15 @@ import { handleEvent } from './utils/handleEvent';
 import { getUser, User } from 'src/utils';
 import { ref } from 'vue';
 
-const { event, eventId, userInscriptionId, getEventDetail } = handleEvent();
+const {
+  event,
+  eventId,
+  userInscriptionId,
+  onSubscribeUserToEvent,
+  getEventDetail,
+} = handleEvent();
 const user = ref<User>(getUser());
-const member_id = user.value.member_info.id;
+const member_id = ref<string>(user.value.member_info.id);
 
-await getEventDetail(member_id, eventId);
+await getEventDetail(member_id.value, eventId);
 </script>

@@ -12,8 +12,25 @@
         <div class="Event__description">
           {{ event.description }}
         </div>
-        <q-btn class="Event__btn-participate" color="primary" size="lg" no-caps>
+        <q-btn
+          v-if="!userInscriptionId"
+          @click="$emit('subscribeUserToEvent')"
+          class="Event__btn-participate"
+          color="primary"
+          size="lg"
+          no-caps
+        >
           Participar
+        </q-btn>
+        <q-btn
+          v-else
+          @click="$emit('unSubscribeUserToEvent')"
+          class="Event__btn-participate"
+          color="primary"
+          size="lg"
+          no-caps
+        >
+          Desuscribirse
         </q-btn>
       </div>
     </template>
@@ -33,6 +50,11 @@ interface EventLayoutProps {
   userInscriptionId?: string;
 }
 
+interface EventLayoutEmits {
+  (eventName: 'subscribeUserToEvent', value: void): void;
+}
+
+defineEmits<EventLayoutEmits>();
 const props = defineProps<EventLayoutProps>();
 
 parsedEventDate.value = new Date(props.event.date).toLocaleString('en-US', {
