@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import HeaderWithBackBtn from 'src/components/HeaderWithBackBtn';
-import { ref, defineProps, defineEmits } from 'vue';
+import { ref } from 'vue';
 import dateLocales from './dateLocales.json';
 import './style.scss';
 import { Event } from 'src/utils';
@@ -45,7 +45,7 @@ interface EventsCalendarProps {
 }
 
 interface EventsCalendarEmits {
-  (eventName: 'selectDate', value?: string): void;
+  (eventName: 'selectDate', value: string): void;
 }
 
 const parseEventDay = (_date: string) => {
