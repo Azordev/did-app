@@ -34,12 +34,8 @@ const onLogin = ({ member_code, password }: userAuthData) => {
 
   handleUserLogin(variables)
     .then((res) => {
-      /**
-       * Remove this code and add here your logic for user login
-       * For example:
-       */
-      router.push({ name: 'dashboard' });
       LocalStorage.set('user', res);
+      router.push({ name: 'dashboard' });
     })
     .finally(() => {
       loginIsLoading.value = false;

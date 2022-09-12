@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import { MemberInformation, UserType } from '../mock';
+import { MemberInformation, User } from 'src/utils';
 
 export const handleUserData = () => {
   const getExpirationDate = (expiration?: string) => {
@@ -38,14 +38,17 @@ export const handleUserData = () => {
     };
   };
 
-  const parseUserData = (user?: UserType) => {
+  const parseUserData = (user?: User) => {
     const memberCode = ref<string>(user?.member_code ?? '');
     const avatar = user?.avatar_url;
 
-    const { firstName, lastName } = getUserName(user?.member_info[0]);
+    const { firstName, lastName } = getUserName(user?.member_info);
+
+    const subscriptions = user?.member_info.subscriptions || [];
+    const lastSubscription = subscriptions[subscriptions.length - 1];
 
     const { expirationDate, isMembershipActive } = getExpirationDate(
-      user?.member_info[0].subscriptions[0].expiration
+      lastSubscription?.expiration
     );
 
     return {

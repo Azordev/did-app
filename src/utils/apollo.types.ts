@@ -26,7 +26,7 @@ export interface User {
   avatar_url?: string;
   is_active: boolean;
   type: UserType.MEMBER | UserType.PROVIDER | UserType.ADMIN;
-  member_info: MemberInformation[];
+  member_info: MemberInformation;
   created_at?: string;
   updated_at?: string;
   password?: string;

@@ -72,10 +72,9 @@
 </template>
 
 <script setup lang="ts">
-import { UserType } from './mock';
 import { HomeHeader, HomeList } from './components';
 import { ProviderCard, EventCard } from '../../components';
-import { Event, EventType, Provider } from '../../utils';
+import { Event, EventType, Provider, User } from '../../utils';
 import { handleUserData } from './utils/handleUserData';
 import DIDLogo from '../../assets/logos/didperu-dark.svg';
 import './styles.scss';
@@ -83,7 +82,7 @@ import { Notify } from 'quasar';
 import { useRouter } from 'vue-router';
 
 interface HomeLayoutProps {
-  user?: UserType;
+  user?: User;
   events?: Event[];
   providers?: Provider[];
 }
