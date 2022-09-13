@@ -62,7 +62,7 @@ export const handleEventsCalendar = () => {
 
           if (!userEventsDates?.length) {
             Notify.create({
-              message: 'Aun no estas subscrito a ningun evento.',
+              message: 'No estas suscrito a ningun evento este mes.',
               type: 'info',
             });
 
