@@ -4,6 +4,7 @@
       :expirationDate="expirationDate"
       :isMembershipActive="isMembershipActive"
       :avatar="avatar"
+      :member-code="memberCode"
     />
     <div>
       <user-data
