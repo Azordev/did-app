@@ -5,6 +5,7 @@ import {
   EVENT_BY_ID_QUERY,
   SUBSCRIBE_USER_TO_EVENT,
   UNSUBSCRIBE_USER_TO_EVENT,
+  EVENTS_BY_MEMBER_AND_DAY,
 } from '../services';
 import { useQuery, getListOfEventsReturnTypes, Event } from 'src/utils';
 
@@ -105,11 +106,34 @@ export const unsubscribeUserToEvent = (inscription_id: string) => {
     mutate();
 
     onDone(({ data }) => {
-      console.log(data);
-      resolve('non');
+      resolve(data);
     });
     onError((error) => {
       reject(error);
     });
+  });
+};
+
+export const eventsByMemberAndDay = (date: Date, member_id: string) => {
+  const from_date = new Date(date).toLocaleDateString('en').split(',')[0];
+  const to_date = new Date(date.setDate(date.getDate() + 1))
+    .toLocaleString('en')
+    .split(',')[0];
+
+  const variables = {
+    from_date,
+    to_date,
+    member_id,
+  };
+
+  return new Promise<Event[]>((resolve, reject) => {
+    useQuery<getListOfEventsReturnTypes>(EVENTS_BY_MEMBER_AND_DAY, variables)
+      .then(({ events }) => {
+        resolve(events);
+      })
+      .catch((err) => {
+        logger(err);
+        reject(null);
+      });
   });
 };

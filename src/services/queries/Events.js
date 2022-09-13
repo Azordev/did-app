@@ -39,17 +39,20 @@ export const EVENTS_BY_USER_QUERY = gql`
   }
 `;
 
-export const EVENTS_BY_USER_AND_DAY = gql`
-  query getEventsByUserAndDay($date: timestamptz!, $userId: uuid!) {
+export const EVENTS_BY_MEMBER_AND_DAY = gql`
+  query EventsByMemberAndDay(
+    $from_date: timestamptz
+    $to_date: timestamptz
+    $member_id: uuid = ""
+  ) {
     events(
-      distinct_on: date
       where: {
-        inscriptions: { member_id: { _eq: $userId } }
-        date: { _gte: $date }
+        date: { _gte: $from_date, _lt: $to_date }
+        inscriptions: { member_id: { _eq: $member_id } }
       }
     ) {
-      date
       id
+      date
       title
     }
   }
