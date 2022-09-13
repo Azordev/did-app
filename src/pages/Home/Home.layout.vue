@@ -21,7 +21,8 @@
         >
           <event-card
             :title="event.title"
-            :image_url="event.image_url || DIDLogo"
+            :image_url="event.image_url"
+            :fallback="DIDLogoDark"
             :date="new Date(event.date)"
             :isAnnouncement="event.type === EventType.PUBLIC"
             class="HomeLayout__listItem--event"
@@ -59,6 +60,7 @@
                 params: { provider: provider.id },
               })
             "
+            :fallback="DIDLogo"
             :image_url="provider.logo_url"
             :id="provider.id"
           />
@@ -76,7 +78,9 @@ import { HomeHeader, HomeList } from './components';
 import { ProviderCard, EventCard } from '../../components';
 import { Event, EventType, Provider, User } from '../../utils';
 import { handleUserData } from 'src/utils';
-import DIDLogo from '../../assets/logos/didperu-dark.svg';
+import DIDLogoDark from '../../assets/logos/didperu-dark.svg';
+import DIDLogo from 'src/assets/logos/didperu.svg';
+
 import './styles.scss';
 import { Notify } from 'quasar';
 import { useRouter } from 'vue-router';

@@ -1,5 +1,9 @@
 <template>
-  <detail-layout class="Event__container" :image_url="event.image_url">
+  <detail-layout
+    class="Event__container"
+    :image_url="event.image_url"
+    :fallback="DIDLogo"
+  >
     <template #custom-name>
       <span class="Event__title">
         <span>{{ event.title }}</span>
@@ -43,6 +47,7 @@
 import { ref } from 'vue';
 import DetailLayout from '../../components/DetailLayout';
 import { Event } from 'src/utils';
+import DIDLogo from '../../assets/logos/didperu-dark.svg';
 import './styles.scss';
 
 const parsedEventDate = ref<string>();
