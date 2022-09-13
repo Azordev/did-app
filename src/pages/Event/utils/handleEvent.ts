@@ -19,7 +19,8 @@ export const handleEvent = () => {
     isLoading.value = true;
 
     await getEventById(memberId, eventId).then((result) => {
-      userInscriptionId.value = result.inscriptions[0]?.id;
+      const inscriptions = result.inscriptions || [];
+      userInscriptionId.value = inscriptions[0]?.id;
       event.value = result;
       isLoading.value = false;
     });
