@@ -20,13 +20,13 @@ export const handleUserPassword = () => {
 
           Notify.create({
             type: 'positive',
-            message: 'User password updated successfully',
+            message: 'La contraseña se actualizó correctamente.',
           });
           resolve();
         })
         .catch(() => {
           Notify.create({
-            message: 'Something went wrong, please try again.',
+            message: 'Ocurrio un error, por favor vuelve a intentar.',
             type: 'negative',
           });
           reject();

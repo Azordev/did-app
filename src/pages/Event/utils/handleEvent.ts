@@ -34,7 +34,7 @@ export const handleEvent = () => {
       })
       .catch(() => {
         Notify.create({
-          message: 'Something went wrong, please try again.',
+          message: 'Ocurrio un error, por favor vuelve a intentar.',
           type: 'negative',
         });
       })
@@ -52,7 +52,7 @@ export const handleEvent = () => {
       })
       .catch(() => {
         Notify.create({
-          message: 'Something went wrong, please try again.',
+          message: 'Ocurrio un error, por favor vuelve a intentar.',
           type: 'negative',
         });
       })
