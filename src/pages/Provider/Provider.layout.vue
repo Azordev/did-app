@@ -12,6 +12,59 @@
       @on-clear="$emit('onClear')"
     />
     <div class="Provider__container">
+      <q-btn
+        :disabled="isLoading"
+        class="Provider__filter-btn"
+        color="accent"
+        dense
+        no-caps
+        outline
+      >
+        <div class="Provider__filter-btn-content">
+          <q-icon
+            class="Provider__filter-btn-icon"
+            size="14px"
+            name="filter_alt"
+          />
+          Filtrar
+        </div>
+        <q-menu transition-show="jump-down" transition-hide="jump-up">
+          <q-list style="min-width: 100px">
+            <q-item>
+              <q-item-section>
+                Precio maximo
+                <q-input
+                  suffix="$"
+                  type="number"
+                  dense
+                  model-value=""
+                  rounded
+                  outlined
+                />
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section>
+                Precio minimo
+                <q-input
+                  type="number"
+                  suffix="$"
+                  dense
+                  model-value=""
+                  rounded
+                  outlined
+                />
+              </q-item-section>
+            </q-item>
+            <q-separator />
+            <q-item>
+              <q-item-section>
+                <q-btn color="accent" rounded>Buscar</q-btn>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-menu>
+      </q-btn>
       <base-loading v-if="isLoading" />
       <provider-products
         v-else-if="products?.length"
