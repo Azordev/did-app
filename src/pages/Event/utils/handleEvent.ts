@@ -5,7 +5,7 @@ import {
 } from 'src/actions/EventsActions';
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { Event } from 'src/utils';
+import { Event, logger } from 'src/utils';
 import { Notify } from 'quasar';
 
 export const handleEvent = () => {
@@ -33,7 +33,8 @@ export const handleEvent = () => {
       .then((res) => {
         userInscriptionId.value = res;
       })
-      .catch(() => {
+      .catch((error) => {
+        logger(error);
         Notify.create({
           message: 'Ocurrio un error, por favor vuelve a intentar.',
           type: 'negative',
@@ -51,7 +52,8 @@ export const handleEvent = () => {
       .then(() => {
         userInscriptionId.value = undefined;
       })
-      .catch(() => {
+      .catch((error) => {
+        logger(error);
         Notify.create({
           message: 'Ocurrio un error, por favor vuelve a intentar.',
           type: 'negative',

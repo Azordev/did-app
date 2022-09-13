@@ -1,5 +1,6 @@
 import { Notify } from 'quasar';
 import { updateUserPassword } from 'src/actions';
+import { logger } from 'src/utils';
 import { ref } from 'vue';
 
 export const handleUserPassword = () => {
@@ -24,7 +25,8 @@ export const handleUserPassword = () => {
           });
           resolve();
         })
-        .catch(() => {
+        .catch((error) => {
+          logger(error);
           Notify.create({
             message: 'Ocurrio un error, por favor vuelve a intentar.',
             type: 'negative',
