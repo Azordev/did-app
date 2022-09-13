@@ -7,13 +7,17 @@
 </template>
 
 <script setup lang="ts">
+import { getUser } from 'src/utils';
 import EventsCalendar from './EventsCalendar.layout.vue';
 import { handleEventsCalendar } from './utils/handleEventsCalendar';
 
 const { events, eventsDates, getEventsByDate, getEventsDates } =
   handleEventsCalendar();
+const user = getUser();
 
-eventsDates.value = getEventsDates();
+await getEventsDates(user.member_info.id).then((_eventsDates) => {
+  eventsDates.value = _eventsDates;
+});
 
 const selectDate = (selectedDateString: string) => {
   const selectedDate = new Date(selectedDateString);

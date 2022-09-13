@@ -128,6 +128,12 @@ export interface Inscriptions {
   id: string;
   member_id: string;
   event_id: string;
+  event_information: Event;
+}
+
+// Query returns
+export interface getListOfInscriptionsReturnType {
+  inscriptions: Inscriptions[];
 }
 
 // Events
@@ -144,7 +150,7 @@ export interface Event {
   image_url?: string;
   date: string;
   type: EventType.PRIVATE | EventType.PUBLIC;
-  inscriptions: Inscriptions[];
+  inscriptions?: Inscriptions[];
 }
 
 // Query returns
