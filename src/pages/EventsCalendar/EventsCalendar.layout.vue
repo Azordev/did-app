@@ -2,7 +2,7 @@
   <header-with-back-btn
     back-btn-to-home
     show-back-btn
-    label="Inicio"
+    label-back="Inicio"
     float-right-label="Calendario"
     class="events-calendar__header"
   />
