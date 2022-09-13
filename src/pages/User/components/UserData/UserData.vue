@@ -55,7 +55,6 @@
           <q-btn
             :loading="isFormLoading"
             type="submit"
-            dense
             unelevated
             rounded
             label="Guardar"
@@ -64,7 +63,6 @@
             :loading="isFormLoading"
             type="reset"
             @click="$emit('editPassword', false)"
-            dense
             unelevated
             rounded
             label="Cancelar"
