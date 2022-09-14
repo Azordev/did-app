@@ -47,7 +47,7 @@
 import { ref } from 'vue';
 import DetailLayout from 'src/components/DetailLayout';
 import { Event } from 'src/utils';
-import DIDLogo from '../../assets/logos/didperu-dark.svg';
+import DIDLogo from 'src/assets/logos/didperu-dark.svg';
 import './styles.scss';
 
 const parsedEventDate = ref<string>();

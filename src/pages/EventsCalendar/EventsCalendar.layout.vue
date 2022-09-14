@@ -33,6 +33,9 @@
   <div class="flex flex-center" v-else>
     <q-spinner color="primary" size="3em" />
   </div>
+  <div v-if="!isLoading" class="events-calendar__tip_text">
+    Puedes cambiar el mes y año presionando sobre ellos en el calendario.
+  </div>
 </template>
 
 <script setup lang="ts">

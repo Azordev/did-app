@@ -119,6 +119,12 @@
       overflow: hidden;
     }
   }
+
+  &__tip_text {
+    margin-top: 1.45rem;
+    padding: 0 1.65rem;
+    color: rgba($primary, 0.6);
+  }
 }
 
 @keyframes spinning {

@@ -75,10 +75,15 @@
 
 <script setup lang="ts">
 import { HomeHeader, HomeList } from './components';
+<<<<<<< HEAD
 import { ProviderCard, EventCard } from '../../components';
 import { Event, EventType, Provider, User } from '../../utils';
+=======
+import { ProviderCard, EventCard } from 'src/components';
+import { Event, EventType, Provider, User } from 'src/utils';
+>>>>>>> 568bc37b88c080c3527b06e68dd0438fe3ac0ad2
 import { handleUserData } from 'src/utils';
-import DIDLogoDark from '../../assets/logos/didperu-dark.svg';
+import DIDLogoDark from 'src/assets/logos/didperu-dark.svg';
 import DIDLogo from 'src/assets/logos/didperu.svg';
 import './styles.scss';
 import { Notify } from 'quasar';
