@@ -24,7 +24,7 @@ interface HeaderWithBackBtnProps {
   labelBack?: string;
   imgUrl?: string;
   showBackBtn?: boolean;
-  floatRightLabel: string;
+  floatRightLabel?: string;
   backBtnToHome?: boolean;
 }
 

@@ -1,5 +1,6 @@
 import { Notify } from 'quasar';
-import { USER_LOGIN, USER_BY_ID } from '../services';
+import { USER_LOGIN, USER_BY_ID, UPDATE_USER_PASSWORD } from '../services';
+import { useMutation } from '@vue/apollo-composable';
 import { useQuery, Users, User, getUserReturnType } from '../utils';
 import { logger } from '../utils/logger';
 
@@ -56,5 +57,23 @@ export const getSpecificUser = (id: string) => {
         logger(err);
         reject(null);
       });
+  });
+};
+
+export const updateUserPassword = (userId: string, newPassword: string) => {
+  return new Promise<void>((resolve, reject) => {
+    const { mutate, onDone, onError } = useMutation(UPDATE_USER_PASSWORD, {
+      variables: {
+        id: userId,
+        password: newPassword,
+      },
+    });
+
+    mutate();
+
+    onDone(() => resolve());
+    onError((error) => {
+      reject(error);
+    });
   });
 };

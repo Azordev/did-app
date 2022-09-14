@@ -7,7 +7,9 @@
     class="events-calendar__header"
   />
   <q-date
-    class="events-calendar__calendar"
+    :class="`events-calendar__calendar ${
+      isLoading && 'events-calendar__calendar--loading'
+    }`"
     color="blue"
     flat
     square
@@ -20,13 +22,16 @@
     :options="eventsDates || []"
     @update:model-value="$emit('selectDate', $event)"
   />
-  <div class="events-calendar__events">
+  <div v-if="!isLoading" class="events-calendar__events">
     <div class="events-calendar__event" v-for="event in events" :key="event.id">
       <div class="events-calendar__event-date">
         {{ parseEventDay(event.date) }}
       </div>
       <div class="events-calendar__event-title">{{ event.title }}</div>
     </div>
+  </div>
+  <div class="flex flex-center" v-else>
+    <q-spinner color="primary" size="3em" />
   </div>
 </template>
 
@@ -42,6 +47,7 @@ const selectedDate = ref('');
 interface EventsCalendarProps {
   events: Event[];
   eventsDates: string[];
+  isLoading: boolean;
 }
 
 interface EventsCalendarEmits {

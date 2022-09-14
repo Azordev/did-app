@@ -19,7 +19,8 @@
             })
           "
           class="ProvidersList__item"
-          :image_url="provider.logo_url || DIDLogo"
+          :image_url="provider.logo_url"
+          :fallback="DIDLogo"
         />
       </list-grid>
       <div v-else>

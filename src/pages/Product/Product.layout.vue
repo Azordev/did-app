@@ -1,5 +1,9 @@
 <template>
-  <detail-layout class="Product" :image_url="product?.image_url">
+  <detail-layout
+    class="Product"
+    :image_url="product?.image_url"
+    :fallback="DIDLogo"
+  >
     <template #custom-name>
       <span class="Product__title">
         <span>{{ product.name }}</span>
@@ -24,7 +28,8 @@
 </template>
 
 <script lang="ts" setup>
-import DetailLayout from 'src/components/DetailLayout';
+import DetailLayout from '../../components/DetailLayout';
+import DIDLogo from 'src/assets/logos/didperu.svg';
 import { Product } from 'src/utils';
 
 interface ProductLayoutProps {

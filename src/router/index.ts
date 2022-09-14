@@ -5,8 +5,9 @@ import {
   createWebHashHistory,
   createWebHistory,
 } from 'vue-router';
-import { LocalStorage } from 'quasar';
+import { LocalStorage, Notify } from 'quasar';
 import routes from './routes';
+import { handleUserData, User } from 'src/utils';
 
 /*
  * If not building with SSR mode, you can
@@ -35,8 +36,22 @@ export default route(function (/* { store, ssrContext } */) {
   });
 
   Router.beforeEach((to) => {
-    if (to.meta.requiresAuth && !LocalStorage.getItem('user')) {
+    const user = LocalStorage.getItem('user') as User;
+
+    if (to.meta.requiresAuth && !user) {
       return { name: 'login', query: { to: to.path } };
+    }
+
+    const { parseUserData } = handleUserData();
+
+    const { isMembershipActive } = parseUserData(user);
+
+    if (to.meta.requiresMembershipActive && !isMembershipActive.value) {
+      Notify.create({
+        message: 'Por favor renueva tu membresia para acceder a esta seccion.',
+        type: 'negative',
+      });
+      return { name: 'dashboard' };
     }
   });
 

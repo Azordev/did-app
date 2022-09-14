@@ -1,23 +1,9 @@
-export type Subscriptions = {
-  __typename: 'subscriptions';
-  expiration: string;
-};
+import { User, UserType } from 'src/utils';
 
-export type MemberInformation = {
-  __typename: 'members';
-  first_names: string;
-  last_names: string;
-  subscriptions: Subscriptions[];
-};
-
-export type UserType = {
-  __typename: string;
-  avatar_url?: string;
-  member_code: string;
-  member_info: MemberInformation[];
-};
-
-export const user: UserType = {
+export const user: User = {
+  id: '000',
+  is_active: true,
+  type: UserType.MEMBER,
   __typename: 'users',
   avatar_url: undefined,
   member_code: 'VP00000000',
@@ -26,6 +12,7 @@ export const user: UserType = {
       __typename: 'members',
       first_names: 'Ana',
       last_names: 'Maria',
+      email: 't3sting@mail.com',
       subscriptions: [
         {
           __typename: 'subscriptions',

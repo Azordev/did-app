@@ -6,7 +6,11 @@
           class="ProviderProduct__img"
           ratio="4/3"
           :src="product.image_url || DIDLogo"
-        />
+        >
+          <template v-slot:error>
+            <q-img :src="DIDLogo" />
+          </template>
+        </q-img>
       </div>
 
       <div class="ProviderProduct__name">
