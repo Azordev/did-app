@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-import DetailLayout from '../../components/DetailLayout';
+import DetailLayout from 'src/components/DetailLayout';
 import DIDLogo from 'src/assets/logos/didperu.svg';
 import { Product } from 'src/utils';
 
