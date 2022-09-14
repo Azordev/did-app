@@ -35,7 +35,10 @@
                 Precio maximo
                 <q-input
                   prefix="S/."
+                  max="999999.99"
+                  min="0.50"
                   type="number"
+                  step="0.50"
                   dense
                   :model-value="maxPriceFilter"
                   @update:model-value="$emit('update:maxPriceFilter', $event)"
@@ -51,6 +54,9 @@
                   type="number"
                   prefix="S/."
                   dense
+                  step="0.50"
+                  :max="(maxPriceFilter || 0.01) - 0.01"
+                  min="0.01"
                   :model-value="minPriceFilter"
                   @update:model-value="$emit('update:minPriceFilter', $event)"
                   rounded
