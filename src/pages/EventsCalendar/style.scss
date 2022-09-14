@@ -7,6 +7,10 @@
 
   &__calendar {
     width: 100%;
+    font-size: 1.1875rem;
+    font-weight: bold;
+    color: $gray-dim;
+    line-height: 1.125rem;
 
     .q-date__header {
       display: none;

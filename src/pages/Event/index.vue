@@ -1,5 +1,5 @@
 <template>
-  <header-with-back-btn show-back-btn label="Eventos" />
+  <header-with-back-btn show-back-btn label-back="Eventos" />
   <event-layout v-if="event" :event="event" />
 </template>
 
