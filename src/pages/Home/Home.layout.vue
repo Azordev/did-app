@@ -75,8 +75,8 @@
 
 <script setup lang="ts">
 import { HomeHeader, HomeList } from './components';
-import { ProviderCard, EventCard } from '../../components';
-import { Event, EventType, Provider, User } from '../../utils';
+import { ProviderCard, EventCard } from 'src/components';
+import { Event, EventType, Provider, User } from 'src/utils';
 import { handleUserData } from 'src/utils';
 import DIDLogoDark from 'src/assets/logos/didperu-dark.svg';
 import DIDLogo from 'src/assets/logos/didperu.svg';
