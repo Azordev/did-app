@@ -1,4 +1,3 @@
-// config/envparser.js
 const DotEnv = require('dotenv');
 const parsedEnv = DotEnv.config().parsed;
 
