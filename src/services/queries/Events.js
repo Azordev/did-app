@@ -7,7 +7,11 @@ export const EVENTS = gql`
     events(
       order_by: { date: asc }
       limit: $limit
-      where: { is_active: { _eq: true }, title: { _ilike: $name } }
+      where: {
+        is_active: { _eq: true }
+        title: { _ilike: $name }
+        date: { _gte: "now()" }
+      }
     ) {
       ...EventsFragment
     }
