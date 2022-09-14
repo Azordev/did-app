@@ -7,6 +7,8 @@
     :cart-products="shoppingCart"
     v-model:search-text="searchText"
     :current-query="query"
+    v-model:max-price-filter="maxPriceFilter"
+    v-model:min-price-filter="minPriceFilter"
     @on-search="getProductLists(id, searchText)"
     @on-add-to-shopping-cart="toggleProduct($event)"
     @on-clear="clearSearch()"
@@ -31,8 +33,15 @@ const { shoppingCart, toggleProduct } = handleShoppingCart();
 
 const { provider, id } = await getProviderById();
 
-const { getProductLists, query, products, searchText, isLoading } =
-  handleProviderProducts();
+const {
+  getProductLists,
+  query,
+  products,
+  searchText,
+  isLoading,
+  maxPriceFilter,
+  minPriceFilter,
+} = handleProviderProducts();
 
 const clearSearch = () => {
   searchText.value = '';

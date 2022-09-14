@@ -66,7 +66,7 @@
 </template>
 
 <script setup lang="ts">
-import didLogo from '../../assets/logos/didperu.svg';
+import didLogo from 'src/assets/logos/didperu.svg';
 import { QInputProps } from 'quasar';
 
 interface InputAttrsProps {
