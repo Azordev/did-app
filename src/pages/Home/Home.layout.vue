@@ -78,7 +78,7 @@ import { HomeHeader, HomeList } from './components';
 import { ProviderCard, EventCard } from '../../components';
 import { Event, EventType, Provider, User } from '../../utils';
 import { handleUserData } from 'src/utils';
-import DIDLogoDark from '../../assets/logos/didperu-dark.svg';
+import DIDLogoDark from 'src/assets/logos/didperu-dark.svg';
 import DIDLogo from 'src/assets/logos/didperu.svg';
 import './styles.scss';
 import { Notify } from 'quasar';
