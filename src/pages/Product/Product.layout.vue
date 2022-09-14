@@ -28,11 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-<<<<<<< HEAD
-import DetailLayout from '../../components/DetailLayout';
-=======
 import DetailLayout from 'src/components/DetailLayout';
->>>>>>> 568bc37b88c080c3527b06e68dd0438fe3ac0ad2
 import DIDLogo from 'src/assets/logos/didperu.svg';
 import { Product } from 'src/utils';
 
