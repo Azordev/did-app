@@ -9,6 +9,8 @@ export const handleProviderProducts = () => {
   const query = ref<string>('');
   const searchText = ref<string>('');
   const isLoading = ref<boolean>(false);
+  const maxPriceFilter = ref<number>();
+  const minPriceFilter = ref<number>();
 
   const getProductLists = async (_id: string, _query: string) => {
     if (!_id) {
@@ -36,6 +38,8 @@ export const handleProviderProducts = () => {
 
   return {
     getProductLists,
+    maxPriceFilter,
+    minPriceFilter,
     query,
     products,
     searchText,
