@@ -36,6 +36,7 @@
                 <q-input
                   prefix="S/."
                   max="999999.99"
+                  placeholder="0.00"
                   min="0.50"
                   type="number"
                   step="0.50"
@@ -52,6 +53,7 @@
                 Precio minimo
                 <q-input
                   type="number"
+                  placeholder="0.00"
                   prefix="S/."
                   dense
                   step="0.50"
