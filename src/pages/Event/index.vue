@@ -1,5 +1,9 @@
 <template>
-  <header-with-back-btn show-back-btn label="Eventos" />
+  <header-with-back-btn
+    class="Event__btnBack"
+    show-back-btn
+    label-back="Eventos"
+  />
   <event-layout
     v-if="event"
     :event="event"
@@ -8,7 +12,6 @@
     @unsubscribe-user-to-event="onUnsubscribeUserToEvent($event)"
     @subscribe-user-to-event="() => onSubscribeUserToEvent(member_id, eventId)"
   />
-
 </template>
 
 <script setup lang="ts">
