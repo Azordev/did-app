@@ -1,23 +1,31 @@
 <template>
   <events-calendar
     :events="events"
-    @selectDate="selectDate"
     :events-dates="eventsDates"
+    :is-loading="isLoading"
+    @selectDate="selectDate"
   />
 </template>
 
 <script setup lang="ts">
+import { getUser } from 'src/utils';
 import EventsCalendar from './EventsCalendar.layout.vue';
 import { handleEventsCalendar } from './utils/handleEventsCalendar';
 
-const { events, eventsDates, getEventsByDate, getEventsDates } =
+const { events, eventsDates, isLoading, getEventsByDate, getEventsDates } =
   handleEventsCalendar();
+const user = getUser();
+const memberId = user.member_info.id;
 
-eventsDates.value = getEventsDates();
+await getEventsDates(memberId).then((_eventsDates) => {
+  eventsDates.value = _eventsDates;
+});
 
 const selectDate = (selectedDateString: string) => {
   const selectedDate = new Date(selectedDateString);
 
-  events.value = getEventsByDate(selectedDate);
+  getEventsByDate(selectedDate, memberId).then((_events) => {
+    events.value = _events;
+  });
 };
 </script>

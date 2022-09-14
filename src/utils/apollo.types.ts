@@ -13,6 +13,7 @@ export type Subscriptions = {
 
 export type MemberInformation = {
   __typename: 'members';
+  id: string;
   first_names: string;
   last_names: string;
   email: string;
@@ -26,7 +27,7 @@ export interface User {
   avatar_url?: string;
   is_active: boolean;
   type: UserType.MEMBER | UserType.PROVIDER | UserType.ADMIN;
-  member_info: MemberInformation[];
+  member_info: MemberInformation;
   created_at?: string;
   updated_at?: string;
   password?: string;
@@ -122,6 +123,19 @@ export interface GetProductsByIdReturnTypes {
   products: Product[];
 }
 
+// Inscriptions
+export interface Inscriptions {
+  id: string;
+  member_id: string;
+  event_id: string;
+  event_information: Event;
+}
+
+// Query returns
+export interface getListOfInscriptionsReturnType {
+  inscriptions: Inscriptions[];
+}
+
 // Events
 export enum EventType {
   PRIVATE = 'ATTENDANCE',
@@ -136,6 +150,7 @@ export interface Event {
   image_url?: string;
   date: string;
   type: EventType.PRIVATE | EventType.PUBLIC;
+  inscriptions?: Inscriptions[];
 }
 
 // Query returns

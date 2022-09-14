@@ -2,7 +2,15 @@
   <q-card @click="$emit('onClick')" class="EventCard">
     <q-card-section class="EventCard__container" horizontal>
       <div class="EventCard__imageContainer">
-        <q-img class="EventCard__image" ratio="4/3" :src="image_url" />
+        <q-img
+          class="EventCard__image"
+          ratio="4/3"
+          :src="image_url || fallback"
+        >
+          <template v-slot:error>
+            <q-img class="EventCard__image" ratio="4/3" :src="fallback" />
+          </template>
+        </q-img>
       </div>
 
       <div class="EventCard__name">
@@ -26,7 +34,8 @@ import BookMark from '../BookMark';
 
 export interface EventCardProps {
   title: string;
-  image_url: string;
+  image_url?: string;
+  fallback: string;
   date: Date;
   isAnnouncement: boolean;
 }

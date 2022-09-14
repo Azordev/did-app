@@ -19,7 +19,7 @@ interface HeaderWithBackBtnProps {
   label: string;
   imgUrl?: string;
   showBackBtn?: boolean;
-  floatRightLabel: string;
+  floatRightLabel?: string;
   backBtnToHome?: boolean;
 }
 

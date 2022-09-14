@@ -1,34 +1,94 @@
-import { Event } from 'src/utils';
+import { Event, logger } from 'src/utils';
 import { ref } from 'vue';
-import { mock_events, events_dates } from '../mock';
+import { userActiveInscriptions, eventsByMemberAndDay } from 'src/actions';
 import { getDateFromTimestamptz } from './parseTimestamptz';
+import { Notify } from 'quasar';
 
 export const handleEventsCalendar = () => {
   const events = ref<Event[]>([]);
   const eventsDates = ref<string[]>([]);
+  const isLoading = ref<boolean>(false);
 
-  // Replace mock data for a call to database
-  const getEventsByDate = (date: Date) => {
+  const getEventsByDate = async (date: Date, member_id: string) => {
     if (!date) {
       return [];
     }
 
-    return mock_events.filter((event) => {
-      const { date: eventDateString } = getDateFromTimestamptz(event.date);
-      const eventDate = new Date(eventDateString);
+    isLoading.value = true;
 
-      return eventDate.getTime() === date.getTime();
+    return new Promise<Event[]>((resolve, reject) => {
+      eventsByMemberAndDay(date, member_id)
+        .then((events) => {
+          if (!events?.length) {
+            Notify.create({
+              message:
+                'Ocurrió un error buscando los eventos de este día, por favor vuelve a intentar.',
+              type: 'negative',
+            });
+            reject();
+          }
+
+          resolve(events);
+        })
+        .catch((error) => {
+          Notify.create({
+            message: 'Ocurrio un error, por favor vuelve a intentar',
+            type: 'negative',
+          });
+          logger(error);
+          reject([]);
+        })
+        .finally(() => {
+          isLoading.value = false;
+        });
     });
   };
 
-  // Replace mock data for a call to database
-  const getEventsDates = () => {
-    return events_dates;
+  const getEventsDates = async (member_id: string) => {
+    const todayDate = new Date();
+    const daysToSubtract = 10;
+    const daysAgoDate = todayDate.setDate(todayDate.getDate() - daysToSubtract);
+    const fromDate = new Date(daysAgoDate).toLocaleString('en').split(',')[0];
+
+    isLoading.value = true;
+
+    return new Promise<string[]>((resolve, reject) => {
+      userActiveInscriptions(member_id, fromDate)
+        .then((inscriptions) => {
+          const userEventsDates = inscriptions.map(
+            (inscription) =>
+              getDateFromTimestamptz(inscription.event_information.date).date
+          );
+
+          if (!userEventsDates?.length) {
+            Notify.create({
+              message: 'No estas suscrito a ningun evento este mes.',
+              type: 'info',
+            });
+
+            resolve([]);
+          }
+
+          resolve(userEventsDates);
+        })
+        .catch((error) => {
+          Notify.create({
+            message: 'Ocurrio un error, por favor vuelve a intentar',
+            type: 'negative',
+          });
+          logger(error);
+          reject([]);
+        })
+        .finally(() => {
+          isLoading.value = false;
+        });
+    });
   };
 
   return {
     getEventsByDate,
     getEventsDates,
+    isLoading,
     events,
     eventsDates,
   };
