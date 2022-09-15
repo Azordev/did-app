@@ -38,6 +38,10 @@ export default route(function (/* { store, ssrContext } */) {
   Router.beforeEach((to) => {
     const user = LocalStorage.getItem('user') as User;
 
+    if (user && to.name === 'login') {
+      return { name: 'dashboard' };
+    }
+
     if (to.meta.requiresAuth && !user) {
       return { name: 'login', query: { to: to.path } };
     }
