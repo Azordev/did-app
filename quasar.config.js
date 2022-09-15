@@ -11,6 +11,8 @@
 const { configure } = require('quasar/wrappers');
 const path = require('path');
 
+const envparsers = require('./config/envparser');
+
 module.exports = configure(function (/* ctx */) {
   return {
     eslint: {
@@ -63,9 +65,8 @@ module.exports = configure(function (/* ctx */) {
 
       // publicPath: '/',
       // analyze: true,
-      env: {
-        GRAPHQL_URL: 'https://did-db.herokuapp.com/v1/graphql',
-      },
+      env: envparsers(),
+
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
