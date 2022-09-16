@@ -19,6 +19,12 @@
                 class="UserHeader__editIcon"
                 name="add"
               />
+              <input
+                type="file"
+                id="avatar"
+                accept=".jpg, .jpeg, .png"
+                @change="uploadImage"
+              />
             </q-avatar>
           </q-btn>
           <div class="UserHeader__information">
@@ -57,6 +63,7 @@ import userDefaultImg from 'src/assets/images/user-default.svg';
 import './styles.scss';
 import BackButton from 'src/components/BackButton/BackButton.vue';
 import QrCode from 'qrcode-vue3';
+import { handleAvatarUpload } from './utils/handleAvatarUpload';
 
 export interface UserHeaderProps {
   isMembershipActive: boolean;
@@ -67,6 +74,10 @@ export interface UserHeaderProps {
 
 const props = defineProps<UserHeaderProps>();
 
+const uploadImage = async (event: Event) => {
+  const file = (event.target as HTMLInputElement).files?.item(0);
+  const uploadedImage = await handleAvatarUpload(file);
+};
 const userMembershipStatus = computed(() =>
   props.isMembershipActive ? 'Membresía activa' : 'Membresía inactiva'
 );

@@ -3,6 +3,7 @@ import { USER_LOGIN, USER_BY_ID, UPDATE_USER_PASSWORD } from '../services';
 import { useMutation } from '@vue/apollo-composable';
 import { useQuery, Users, User, getUserReturnType } from '../utils';
 import { logger } from '../utils/logger';
+import axios from 'axios';
 
 export interface userAuthData {
   member_code: string;
@@ -76,4 +77,16 @@ export const updateUserPassword = (userId: string, newPassword: string) => {
       reject(error);
     });
   });
+};
+
+export const uploadAvatar = async (authId: string, file: string) => {
+  if (!file) return null;
+  authId = authId || authId;
+  try {
+    const url = axios.post(`www.did-admin.tk/api/${file}`);
+    console.log('save file');
+    return url;
+  } catch (err) {
+    console.error(err);
+  }
 };

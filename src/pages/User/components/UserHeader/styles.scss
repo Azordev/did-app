@@ -69,6 +69,7 @@
   }
 
   &__avatar_btn {
+    position: relative;
     margin-top: 0.5rem;
   }
 
@@ -103,5 +104,14 @@
 
   &__qr_code {
     align-self: flex-end;
+  }
+
+  .q-btn input[type='file'] {
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: scale(2);
+    opacity: 0;
   }
 }
