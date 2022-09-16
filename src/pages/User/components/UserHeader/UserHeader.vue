@@ -22,7 +22,7 @@
               <input
                 type="file"
                 id="avatar"
-                accept=".jpg, .jpeg, .png"
+                accept="image/png, image/jpeg, image/jpg"
                 @change="uploadImage"
               />
             </q-avatar>
