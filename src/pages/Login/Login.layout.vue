@@ -5,7 +5,7 @@
     </header>
     <main>
       <div class="login__caption">
-        <p>Ingresa a DID Peru</p>
+        <p>Ingresa a DID Perú</p>
       </div>
       <q-form
         @submit="
@@ -16,9 +16,10 @@
       >
         <q-input
           input-class="login__input"
-          rounded
           color="black"
           outlined
+          autofocus
+          placeholder="Código de socio"
           :label="usernameAttrs?.label"
           :hint="usernameAttrs?.hint"
           :type="usernameAttrs?.type"
@@ -30,9 +31,9 @@
 
         <q-input
           input-class="login__input"
-          rounded
           color="black"
           outlined
+          placeholder="Contraseña"
           :label="passwordAttrs?.label"
           :hint="passwordAttrs?.hint"
           :type="passwordAttrs?.type"
@@ -48,7 +49,6 @@
             :loading="isLoading"
             color="black"
             unelevated
-            rounded
             class="full-width login__submit"
           />
         </div>
