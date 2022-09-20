@@ -65,7 +65,10 @@ module.exports = configure(function (/* ctx */) {
 
       // publicPath: '/',
       // analyze: true,
-      env: envparsers(),
+      // env: envparsers(),
+      env: {
+        GRAPHQL_URL: 'https://did-db.herokuapp.com/v1/graphql',
+      },
 
       // rawDefine: {}
       // ignorePublicFolder: true,
