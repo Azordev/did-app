@@ -15,6 +15,7 @@
         class="q-gutter-md"
       >
         <q-input
+          dense
           input-class="login__input"
           color="black"
           outlined
@@ -29,6 +30,7 @@
         />
 
         <q-input
+          dense
           input-class="login__input"
           color="black"
           outlined
