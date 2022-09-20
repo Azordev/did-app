@@ -1,7 +1,8 @@
 @import '../../css/app.scss';
 
 .login {
-  padding: 2.5rem 1.25rem 0;
+  padding: 6rem 1.25rem 0;
+  width: 21.563rem;
   max-width: 64rem;
   margin: 0 auto;
 
@@ -20,12 +21,13 @@
   &__caption {
     font-size: 1.1875rem;
     text-align: center;
-    margin-bottom: 1.625rem;
+    margin-bottom: 2rem;
     font-weight: 600;
   }
 
   &__submit {
     padding: 0.75rem 0;
+    text-transform: initial;
   }
 
   &__other_links {
@@ -41,7 +43,7 @@
   &__get_account {
     display: block;
     text-decoration: none;
-    margin-top: 3.1875rem;
+    margin-top: 1rem;
     color: $accent;
     font-weight: 500;
   }
