@@ -18,7 +18,6 @@
           input-class="login__input"
           color="black"
           outlined
-          autofocus
           placeholder="Código de socio"
           :label="usernameAttrs?.label"
           :hint="usernameAttrs?.hint"
