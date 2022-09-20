@@ -70,14 +70,22 @@ export interface UserHeaderProps {
   expirationDate: Date;
   avatar?: string;
   memberCode: string;
+  newAvatar?: string;
+}
+
+interface UserHeaderEmits {
+  (eventName: 'saveAvatar', value: string): void;
 }
 
 const props = defineProps<UserHeaderProps>();
+const emits = defineEmits<UserHeaderEmits>();
 
 const uploadImage = async (event: Event) => {
   const file = (event.target as HTMLInputElement).files?.item(0);
   const uploadedImage = await handleAvatarUpload(file);
+  emits('saveAvatar', uploadedImage);
 };
+
 const userMembershipStatus = computed(() =>
   props.isMembershipActive ? 'Membresía activa' : 'Membresía inactiva'
 );

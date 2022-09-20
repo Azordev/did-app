@@ -1,5 +1,10 @@
 import { Notify } from 'quasar';
-import { USER_LOGIN, USER_BY_ID, UPDATE_USER_PASSWORD } from '../services';
+import {
+  USER_LOGIN,
+  USER_BY_ID,
+  UPDATE_USER_PASSWORD,
+  UPDATE_USER_AVATAR,
+} from '../services';
 import { useMutation } from '@vue/apollo-composable';
 import { useQuery, Users, User, getUserReturnType } from '../utils';
 import { logger } from '../utils/logger';
@@ -79,14 +84,20 @@ export const updateUserPassword = (userId: string, newPassword: string) => {
   });
 };
 
-export const uploadAvatar = async (authId: string, file: string) => {
-  if (!file) return null;
-  authId = authId || authId;
-  try {
-    const url = axios.post(`www.did-admin.tk/api/${file}`);
-    console.log('save file');
-    return url;
-  } catch (err) {
-    console.error(err);
-  }
+export const uploadUserAvatar = async (authId: string, newAvatar: string) => {
+  return new Promise<void>((resolve, reject) => {
+    const { mutate, onDone, onError } = useMutation(UPDATE_USER_AVATAR, {
+      variables: {
+        id: authId,
+        avatar: newAvatar,
+      },
+    });
+
+    mutate();
+
+    onDone(() => resolve());
+    onError((error) => {
+      reject(error);
+    });
+  });
 };
