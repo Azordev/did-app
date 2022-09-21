@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { User } from 'src/utils/apollo.types';
 import { LocalStorage } from 'quasar';
+import { getUser } from 'src/utils/auth';
 import { Notify } from 'quasar';
 import { uploadUserAvatar } from 'src/actions';
 import { logger } from 'src/utils';
@@ -18,8 +19,7 @@ export const handleAvatarUpload = async (file: File | null | undefined) => {
       .then((res) => res.data)
       .catch((err) => console.error(err));
 
-    const user = LocalStorage.getItem('user') as User;
-    LocalStorage.remove('user');
+    const user = getUser();
     user.avatar_url = uploadImage.data.fileUrl;
     LocalStorage.set('user', user);
 
@@ -41,7 +41,7 @@ export const updateImageGraqhql = () => {
 
           Notify.create({
             type: 'positive',
-            message: 'La Imagen se actualizó correctamente.',
+            message: 'La imagen se actualizó correctamente.',
           });
           resolve();
         })
