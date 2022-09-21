@@ -63,7 +63,10 @@ import userDefaultImg from 'src/assets/images/user-default.svg';
 import './styles.scss';
 import BackButton from 'src/components/BackButton/BackButton.vue';
 import QrCode from 'qrcode-vue3';
-import { handleAvatarUpload } from './utils/handleAvatarUpload';
+import {
+  handleAvatarUpload,
+  updateImageGraqhql,
+} from './utils/handleAvatarUpload';
 import { ref, Ref } from 'vue';
 
 export interface UserHeaderProps {
@@ -71,21 +74,19 @@ export interface UserHeaderProps {
   expirationDate: Date;
   avatar?: string;
   memberCode: string;
-  newAvatar?: string;
-}
-
-interface UserHeaderEmits {
-  (eventName: 'saveAvatar', value: string): void;
+  id: string;
 }
 
 const showAvatar: Ref<string | undefined> = ref('');
 const props = defineProps<UserHeaderProps>();
-const emits = defineEmits<UserHeaderEmits>();
+
 showAvatar.value = props.avatar ? props.avatar : userDefaultImg;
+
 const uploadImage = async (event: Event) => {
   const file = (event.target as HTMLInputElement).files?.item(0);
   const uploadedImage = await handleAvatarUpload(file);
-  emits('saveAvatar', uploadedImage);
+  const { onUpdateUserAvatar } = updateImageGraqhql();
+  onUpdateUserAvatar(props.id, uploadedImage);
   showAvatar.value = uploadedImage;
 };
 

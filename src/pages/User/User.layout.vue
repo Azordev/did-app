@@ -5,8 +5,7 @@
       :isMembershipActive="isMembershipActive"
       :avatar="avatar"
       :member-code="memberCode"
-      :new-avatar="newAvatar"
-      @save-avatar="$emit('saveAvatar', $event)"
+      :id="user.id"
     />
     <div>
       <user-data
@@ -38,7 +37,6 @@ interface UserLayoutProps {
   isFormLoading: boolean;
   isEditingPassword: boolean;
   seePassword: boolean;
-  newAvatar: string;
 }
 
 interface UserLayoutEmits {
@@ -46,7 +44,6 @@ interface UserLayoutEmits {
   (eventName: 'savePassword', value: string): void;
   (eventName: 'editPassword', value: boolean): void;
   (eventName: 'seePassword', value: boolean): void;
-  (eventName: 'saveAvatar', value: string): void;
 }
 
 const props = defineProps<UserLayoutProps>();

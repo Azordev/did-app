@@ -8,7 +8,6 @@ import {
 import { useMutation } from '@vue/apollo-composable';
 import { useQuery, Users, User, getUserReturnType } from '../utils';
 import { logger } from '../utils/logger';
-import axios from 'axios';
 
 export interface userAuthData {
   member_code: string;
