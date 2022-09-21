@@ -68,6 +68,7 @@ module.exports = configure(function (/* ctx */) {
       // env: envparsers(),
       env: {
         GRAPHQL_URL: 'https://did-db.herokuapp.com/v1/graphql',
+        NEXT_URL: 'https://www.did-admin.tk/api',
       },
 
       // rawDefine: {}

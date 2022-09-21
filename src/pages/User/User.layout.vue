@@ -5,6 +5,7 @@
       :isMembershipActive="isMembershipActive"
       :avatar="avatar"
       :member-code="memberCode"
+      :id="user.id"
     />
     <div>
       <user-data
