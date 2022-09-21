@@ -12,7 +12,7 @@
               color="black"
               text-color="white"
             >
-              <q-img :src="avatar || userDefaultImg" />
+              <q-img :src="showAvatar" />
               <q-icon
                 color="black"
                 size="1.19rem"
@@ -64,6 +64,7 @@ import './styles.scss';
 import BackButton from 'src/components/BackButton/BackButton.vue';
 import QrCode from 'qrcode-vue3';
 import { handleAvatarUpload } from './utils/handleAvatarUpload';
+import { ref, Ref } from 'vue';
 
 export interface UserHeaderProps {
   isMembershipActive: boolean;
@@ -77,13 +78,15 @@ interface UserHeaderEmits {
   (eventName: 'saveAvatar', value: string): void;
 }
 
+const showAvatar: Ref<string | undefined> = ref('');
 const props = defineProps<UserHeaderProps>();
 const emits = defineEmits<UserHeaderEmits>();
-
+showAvatar.value = props.avatar ? props.avatar : userDefaultImg;
 const uploadImage = async (event: Event) => {
   const file = (event.target as HTMLInputElement).files?.item(0);
   const uploadedImage = await handleAvatarUpload(file);
   emits('saveAvatar', uploadedImage);
+  showAvatar.value = uploadedImage;
 };
 
 const userMembershipStatus = computed(() =>

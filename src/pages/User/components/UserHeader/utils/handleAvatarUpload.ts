@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { User } from 'src/utils/apollo.types';
+import { LocalStorage } from 'quasar';
 
 export const handleAvatarUpload = async (file: File | null | undefined) => {
   if (!file) return null;
@@ -11,6 +13,11 @@ export const handleAvatarUpload = async (file: File | null | undefined) => {
       .post(url, formData)
       .then((res) => res.data)
       .catch((err) => console.error(err));
+
+    const user = LocalStorage.getItem('user') as User;
+    LocalStorage.clear();
+    user.avatar_url = uploadImage.data.fileUrl;
+    LocalStorage.set('user', user);
 
     return uploadImage.data.fileUrl;
   }
