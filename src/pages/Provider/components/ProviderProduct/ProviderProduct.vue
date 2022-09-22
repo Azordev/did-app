@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { Product } from 'src/utils';
-import addCart from 'src/assets/icons/addCart.png';
+import addCart from 'src/assets/icons/addCart.svg';
 import DIDLogo from 'src/assets/logos/didperu-dark.svg';
 
 interface ProviderProductProps {
