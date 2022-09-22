@@ -4,6 +4,7 @@
       v-if="showBackBtn"
       :label="labelBack"
       :to-home="backBtnToHome"
+      :img="imgBack"
     />
     <q-img class="HeaderWithBackBtn__img" v-if="imgUrl" :src="imgUrl" />
     <span v-else class="HeaderWithBackBtn__text">{{ label }}</span>
@@ -22,6 +23,7 @@ import './styles.scss';
 interface HeaderWithBackBtnProps {
   label?: string;
   labelBack?: string;
+  imgBack?: string;
   imgUrl?: string;
   showBackBtn?: boolean;
   floatRightLabel?: string;

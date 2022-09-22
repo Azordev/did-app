@@ -1,9 +1,5 @@
 <template>
-  <header-with-back-btn
-    show-back-btn
-    :label="product?.name || ''"
-    :img-url="provider?.logo_url"
-  />
+  <header-with-back-btn show-back-btn :img-back="provider?.logo_url" />
   <product-layout
     v-if="product"
     @on-add-to-shopping-cart="toggleProduct(product)"
