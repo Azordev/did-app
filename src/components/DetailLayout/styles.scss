@@ -29,9 +29,8 @@
     }
 
     &--error {
-      background-color: #000 !important;
-
       .q-img__container {
+        background-color: #000;
         display: flex;
         justify-content: center;
         align-items: center;

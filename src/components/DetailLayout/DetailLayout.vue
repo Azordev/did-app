@@ -20,7 +20,6 @@
 
 <script lang="ts" setup>
 import './styles.scss';
-import { useAttrs } from 'vue';
 
 interface DetailLayoutProps {
   name?: string;
@@ -29,7 +28,4 @@ interface DetailLayoutProps {
 }
 
 defineProps<DetailLayoutProps>();
-
-const { name } = useAttrs();
-console.log(name);
 </script>
