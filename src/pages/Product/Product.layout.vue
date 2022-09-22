@@ -29,7 +29,7 @@
 
 <script lang="ts" setup>
 import DetailLayout from 'src/components/DetailLayout';
-import DIDLogo from 'src/assets/logos/didperu.svg';
+import DIDLogo from 'src/assets/logos/product-default.svg';
 import { Product } from 'src/utils';
 
 interface ProductLayoutProps {

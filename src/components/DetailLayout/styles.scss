@@ -27,6 +27,22 @@
       padding: 1.25rem;
       object-fit: contain !important;
     }
+
+    &--error {
+      background-color: #000 !important;
+
+      .q-img__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .q-img__image {
+        background-color: transparent;
+        width: auto;
+        height: auto;
+      }
+    }
   }
 
   &__information {
