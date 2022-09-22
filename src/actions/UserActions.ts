@@ -1,5 +1,10 @@
 import { Notify } from 'quasar';
-import { USER_LOGIN, USER_BY_ID, UPDATE_USER_PASSWORD } from '../services';
+import {
+  USER_LOGIN,
+  USER_BY_ID,
+  UPDATE_USER_PASSWORD,
+  UPDATE_USER_AVATAR,
+} from '../services';
 import { useMutation } from '@vue/apollo-composable';
 import { useQuery, Users, User, getUserReturnType } from '../utils';
 import { logger } from '../utils/logger';
@@ -66,6 +71,24 @@ export const updateUserPassword = (userId: string, newPassword: string) => {
       variables: {
         id: userId,
         password: newPassword,
+      },
+    });
+
+    mutate();
+
+    onDone(() => resolve());
+    onError((error) => {
+      reject(error);
+    });
+  });
+};
+
+export const uploadUserAvatar = async (authId: string, newAvatar: string) => {
+  return new Promise<void>((resolve, reject) => {
+    const { mutate, onDone, onError } = useMutation(UPDATE_USER_AVATAR, {
+      variables: {
+        id: authId,
+        avatar: newAvatar,
       },
     });
 

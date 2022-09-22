@@ -12,12 +12,18 @@
               color="black"
               text-color="white"
             >
-              <q-img :src="avatar || userDefaultImg" />
+              <q-img :src="showAvatar" />
               <q-icon
                 color="black"
                 size="1.19rem"
                 class="UserHeader__editIcon"
                 name="add"
+              />
+              <input
+                type="file"
+                id="avatar"
+                accept="image/png, image/jpeg, image/jpg"
+                @change="uploadImage"
               />
             </q-avatar>
           </q-btn>
@@ -57,15 +63,32 @@ import userDefaultImg from 'src/assets/images/user-default.svg';
 import './styles.scss';
 import BackButton from 'src/components/BackButton/BackButton.vue';
 import QrCode from 'qrcode-vue3';
+import {
+  handleAvatarUpload,
+  updateImageGraqhql,
+} from './utils/handleAvatarUpload';
+import { ref, Ref } from 'vue';
 
 export interface UserHeaderProps {
   isMembershipActive: boolean;
   expirationDate: Date;
   avatar?: string;
   memberCode: string;
+  id: string;
 }
 
+const showAvatar: Ref<string | undefined> = ref('');
 const props = defineProps<UserHeaderProps>();
+
+showAvatar.value = props.avatar ? props.avatar : userDefaultImg;
+
+const uploadImage = async (event: Event) => {
+  const file = (event.target as HTMLInputElement).files?.item(0);
+  const uploadedImage = await handleAvatarUpload(file);
+  const { onUpdateUserAvatar } = updateImageGraqhql();
+  onUpdateUserAvatar(props.id, uploadedImage);
+  showAvatar.value = uploadedImage;
+};
 
 const userMembershipStatus = computed(() =>
   props.isMembershipActive ? 'Membresía activa' : 'Membresía inactiva'
