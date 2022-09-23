@@ -4,7 +4,7 @@
   }
 
   &__header {
-    padding-left: 3.94rem;
+    padding-left: 1.98rem;
   }
 
   &__no-providers-text {
@@ -15,6 +15,10 @@
   @media screen and (min-width: 414px) {
     &__content {
       padding: 2rem 3.125rem;
+    }
+
+    &__header {
+      padding-left: 3.94rem;
     }
   }
 }
