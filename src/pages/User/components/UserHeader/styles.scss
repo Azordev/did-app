@@ -2,7 +2,7 @@
 
 .UserHeader {
   background-color: $secondary;
-  padding: 1.625rem 2.75rem 1rem 2.5rem;
+  padding: 1.625rem 1.2rem 1rem 2.5rem;
   min-height: 245px;
   border-radius: 0 0 5px 5px;
   display: flex;
@@ -89,6 +89,10 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
   }
 
+  &__content {
+    flex-wrap: nowrap;
+  }
+
   &__actions {
     display: flex;
     align-items: flex-start;
@@ -98,12 +102,24 @@
 
   &__information {
     margin-top: 0.875rem;
-    font-size: 1.06rem;
+    font-size: 0.8rem;
     font-weight: 500;
+  }
+
+  &__summary {
+    width: 100%;
+    min-width: 7rem;
   }
 
   &__qr_code {
     align-self: flex-end;
+    width: 100%;
+    max-width: 8rem;
+    min-width: 7rem;
+
+    & > div {
+      text-align: right;
+    }
   }
 
   .q-btn input[type='file'] {
