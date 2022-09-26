@@ -1,15 +1,25 @@
 .Providers {
   &__content {
-    padding: 2rem 3.125rem;
+    padding: 2rem 1.56rem;
   }
 
   &__header {
-    padding-left: 3.94rem;
+    padding-left: 1.98rem;
   }
 
   &__no-providers-text {
     font-size: 1.2rem;
     text-align: center;
+  }
+
+  @media screen and (min-width: 414px) {
+    &__content {
+      padding: 2rem 3.125rem;
+    }
+
+    &__header {
+      padding-left: 3.94rem;
+    }
   }
 }
 
@@ -22,13 +32,16 @@
     cursor: pointer;
     height: 100%;
     width: 100%;
-    min-width: 6.25rem;
-    min-height: 6.25rem;
     aspect-ratio: 1/1;
 
     img {
       aspect-ratio: 1/1;
       object-fit: scale-down;
+    }
+
+    @media screen and (min-width: 414px) {
+      min-width: 6.25rem;
+      min-height: 6.25rem;
     }
   }
 
