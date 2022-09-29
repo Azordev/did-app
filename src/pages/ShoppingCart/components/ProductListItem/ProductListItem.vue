@@ -3,7 +3,7 @@
     <span class="ProductListItem__container">
       <div class="ProductListItem__leftAlignedContent">
         <products-quantity
-          :max-available="product.available || Infinity"
+          :max-available="Infinity"
           @onChange="
             $emit('onQuantityChange', {
               productId: product.id,
