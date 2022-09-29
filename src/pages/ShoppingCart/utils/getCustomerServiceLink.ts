@@ -1,9 +1,16 @@
 import { ShoppingCartProduct } from './concatProductsAndQuantity';
+import { Provider } from 'src/utils/apollo.types';
 
 interface GetWhatsappLinkProps {
   phone: string;
   message: string;
 }
+
+// interface Provider {
+//   value: {
+//     commercial_name: string;
+//   };
+// }
 
 export const getWebWhatsappLink = ({
   phone,
@@ -16,9 +23,14 @@ export const getWebWhatsappLink = ({
   return url;
 };
 
-export const getInvoiceText = (shoppingCartProducts: ShoppingCartProduct[]) => {
+export const getInvoiceText = (
+  shoppingCartProducts: ShoppingCartProduct[],
+  provider: string | undefined
+) => {
   let allProductsTotal = 0;
-
+  const greetings = `Hola ${
+    provider || 'Proveedor'
+  }, observé su tienda en la aplicación de DID y me encuentro interesado en los siguientes productos:\n\n`;
   let invoice = shoppingCartProducts.reduce((acc, { product, quantity }) => {
     const { name, base_price_sol } = product;
     const total = Number(quantity) * Number(base_price_sol);
@@ -37,7 +49,7 @@ export const getInvoiceText = (shoppingCartProducts: ShoppingCartProduct[]) => {
   invoice += '\n-----\n';
   invoice += `\nTotal: ${allProductsTotal}`;
 
-  return invoice;
+  return greetings + invoice;
 };
 
 interface GetEmailLinkProps {
