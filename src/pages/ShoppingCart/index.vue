@@ -98,7 +98,10 @@ const invoiceText: ComputedRef<string | undefined> = computed(() => {
     return;
   }
 
-  return getInvoiceText(productsWithQuantity.value);
+  return getInvoiceText(
+    productsWithQuantity.value,
+    provider.value?.commercial_name
+  );
 });
 
 const whatsappLink: ComputedRef<string | undefined> = computed(() => {
