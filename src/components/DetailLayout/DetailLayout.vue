@@ -3,9 +3,13 @@
     <h1 class="Detail__name">
       <slot name="custom-name">{{ name }}</slot>
     </h1>
-    <q-img class="Detail__image" :src="image_url || fallback">
+    <q-img
+      class="Detail__image"
+      :src="image_url || fallback"
+      :class="{ 'Detail__image--error': !image_url }"
+    >
       <template v-slot:error>
-        <q-img :src="fallback" />
+        <q-img :src="fallback" class="Detail__image--error" />
       </template>
     </q-img>
     <div class="Detail__information">
