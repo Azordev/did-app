@@ -6,12 +6,6 @@ interface GetWhatsappLinkProps {
   message: string;
 }
 
-// interface Provider {
-//   value: {
-//     commercial_name: string;
-//   };
-// }
-
 export const getWebWhatsappLink = ({
   phone,
   message,
