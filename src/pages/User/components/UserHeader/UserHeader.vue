@@ -4,8 +4,8 @@
       <div class="UserHeader__back_btn">
         <back-button color="gray-dark" :toHome="true" label="Inicio" />
       </div>
-      <div class="row justify-between full-width">
-        <div>
+      <div class="UserHeader__content row justify-between full-width">
+        <div class="UserHeader__summary">
           <q-btn class="UserHeader__avatar_btn" flat round>
             <q-avatar
               class="UserHeader__avatar"
