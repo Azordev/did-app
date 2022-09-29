@@ -1,5 +1,4 @@
 import { ShoppingCartProduct } from './concatProductsAndQuantity';
-import { Provider } from 'src/utils/apollo.types';
 
 interface GetWhatsappLinkProps {
   phone: string;
@@ -19,7 +18,7 @@ export const getWebWhatsappLink = ({
 
 export const getInvoiceText = (
   shoppingCartProducts: ShoppingCartProduct[],
-  provider: string | undefined
+  provider?: string
 ) => {
   let allProductsTotal = 0;
   const greetings = `Hola ${
