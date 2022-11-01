@@ -46,7 +46,7 @@
         </div>
         <qr-code
           class="UserHeader__qr_code"
-          :value="`https://www.did-admin.tk/${memberCode}`"
+          :value="`https://did-admin-panel.vercel.app/info/${memberCode}`"
           :height="118"
           :width="118"
           :dotsOptions="{ type: 'square', color: '#000000' }"
@@ -77,6 +77,7 @@ export interface UserHeaderProps {
   id: string;
 }
 
+const ADMIN_URL = process.env.ADMIN_URL;
 const showAvatar: Ref<string | undefined> = ref('');
 const props = defineProps<UserHeaderProps>();
 
