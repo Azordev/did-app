@@ -77,7 +77,6 @@ export interface UserHeaderProps {
   id: string;
 }
 
-const ADMIN_URL = process.env.ADMIN_URL;
 const showAvatar: Ref<string | undefined> = ref('');
 const props = defineProps<UserHeaderProps>();
 
