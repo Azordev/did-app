@@ -1,6 +1,6 @@
 {
   "name": "did",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A project for DID members",
   "author": "Victor P <victordev2002@gmail.com>",
   "private": true,
