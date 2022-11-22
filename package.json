@@ -14,6 +14,9 @@
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",
+    "@capacitor/cli": "^4.5.0",
+    "@capacitor/core": "^4.5.0",
+    "@capacitor/ios": "^4.5.0",
     "@quasar/extras": "^1.0.0",
     "@vue/apollo-composable": "^4.0.0-alpha.16",
     "axios": "^0.27.2",

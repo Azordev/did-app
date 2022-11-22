@@ -1,0 +1,1 @@
+import{m as e,f as a,j as o,d as s,C as n}from"./index.e198538d.js";import"./style.9c7825b9.js";const t={class:"base-loading"},m=e({__name:"BaseLoading",setup(r){return(c,_)=>(a(),o("div",t,[s(n)]))}});export{m as _};

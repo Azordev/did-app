@@ -1,0 +1,1 @@
+import{_ as e,m as n,f as t,j as a}from"./index.3f04a291.js";const o=n({name:"Settings"});function s(r,c,i,p,_,f){return t(),a("div",null,"Settings Page")}var m=e(o,[["render",s]]);export{m as default};
