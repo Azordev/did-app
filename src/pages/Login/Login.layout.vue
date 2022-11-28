@@ -55,12 +55,12 @@
         </div>
       </q-form>
       <div class="login__other_links">
-        <a class="login__forgotten_link" href="mailto:adidperu@gmail.com"
-          >¿Olvidaste tu contraseña?</a
-        >
-        <a class="login__get_account" href="mailto:adidperu@gmail.com">
+        <button @click="openRecoverPasswordModal" class="login__forgotten_link">
+          ¿Olvidaste tu contraseña?
+        </button>
+        <button @click="openRecoverPasswordModal" class="login__get_account">
           Crear cuenta
-        </a>
+        </button>
       </div>
     </main>
   </div>
@@ -68,8 +68,31 @@
 
 <script setup lang="ts">
 import didLogo from 'src/assets/logos/didperu.svg';
-import { QInputProps } from 'quasar';
+import { QInputProps, copyToClipboard, Dialog, Notify } from 'quasar';
 
+const openRecoverPasswordModal = () => {
+  Dialog.create({
+    title: 'Recuperar contrasenha',
+    message: 'Contenido para mostrar contrasenha',
+    cancel: {
+      textColor: 'primary',
+      color: 'secondary',
+      label: 'Entendido',
+    },
+    ok: {
+      textColor: 'secondary',
+      color: 'primary',
+      label: 'Copiar',
+    },
+  }).onOk(() => {
+    copyToClipboard('adidperu@gmail.com').then(() => {
+      Notify.create({
+        message: 'Dirección de correo copiada al portapapeles',
+        type: 'info',
+      });
+    });
+  });
+};
 interface InputAttrsProps {
   label: QInputProps['label'];
   hint: QInputProps['hint'];
