@@ -69,16 +69,17 @@
 <script setup lang="ts">
 import didLogo from 'src/assets/logos/didperu.svg';
 import infoIcon from 'src/assets/icons/info-svgrepo-com.svg';
+import copyIcon from 'src/assets/icons/copy-svgrepo-com.svg';
 import { QInputProps, copyToClipboard, Dialog, Notify } from 'quasar';
 
 const openRecoverPasswordModal = () => {
   const email = 'adidperu@gmail.com';
   Dialog.create({
-    title: `<img class="infoIcon" src="${infoIcon}" alt="DID Logo" />`,
+    title: `<img class="infoIcon" src="${infoIcon}" alt="Info icon" />`,
     message: `
     <div class="text-center">
       Si deseas recuperar tu cuenta o crear una puedes ponerte en contacto con nosotros y te ayudaremos haz saber tu peticion a este email:
-      <div class="email_link" color="brand">${email}<div>
+      <div class="email" color="brand">${email} <img class="email__copy_icon" src="${copyIcon}" alt="copy icon" /><div>
     </div>`,
     html: true,
     cancel: {

@@ -73,8 +73,17 @@
   display: block;
 }
 
-.email_link {
+.email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 7px;
   font-weight: 500;
   color: blue;
   text-decoration: underline;
+  margin-top: 10px;
+
+  &__copy_icon {
+    width: 20px;
+  }
 }
