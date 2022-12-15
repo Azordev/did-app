@@ -58,9 +58,9 @@
         <a class="login__forgotten_link" href="mailto:adidperu@gmail.com"
           >¿Olvidaste tu contraseña?</a
         >
-        <a class="login__get_account" href="mailto:adidperu@gmail.com">
-          Adquiere tu membresía de DID Perú
-        </a>
+        <button class="login__get_account" @click="createAccount">
+          Crear cuenta
+        </button>
       </div>
     </main>
   </div>
@@ -69,6 +69,13 @@
 <script setup lang="ts">
 import didLogo from 'src/assets/logos/didperu.svg';
 import { QInputProps } from 'quasar';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const createAccount = () => {
+  router.push({ name: 'signup' });
+};
 
 interface InputAttrsProps {
   label: QInputProps['label'];
