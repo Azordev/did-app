@@ -68,7 +68,7 @@ export const handleUserLogin = ({ member_code, password }: userAuthData) => {
 export const handleUserSignup = async (newUser: userSignupData) => {
   return new Promise<User>((resolve, reject) => {
     const startDate = new Date().toISOString().split('T')[0];
-    const url = 'http://localhost:3000/api' + '/members';
+    const url = process.env.NEXT_URL + '/members';
     const splitName = newUser.full_name.split(' ', 2);
     const namePartner = splitName[0];
     const lastnamePartner = splitName[1];
