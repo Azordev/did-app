@@ -29,7 +29,6 @@ import {
   passwordValidations,
 } from 'src/utils/validations';
 import SignupLayout from './Signup.layout.vue';
-import { LocalStorage } from 'quasar';
 import { useRouter } from 'vue-router';
 
 const username = ref<string>('');

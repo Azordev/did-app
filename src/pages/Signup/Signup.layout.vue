@@ -5,7 +5,7 @@
     </header>
     <main>
       <div class="login__caption">
-        <p>Ingresa a DID Perú</p>
+        <p>Registrate en DID Perú</p>
       </div>
       <q-form
         @submit="
@@ -79,7 +79,7 @@
         />
         <div>
           <q-btn
-            label="Ingresar"
+            label="Registrar"
             type="submit"
             :loading="isLoading"
             color="black"

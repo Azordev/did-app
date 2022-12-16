@@ -33,6 +33,7 @@ export interface userMemberData {
   password: string;
   position?: string;
   type?: string;
+  isActive: boolean;
 }
 
 export const handleUserLogin = ({ member_code, password }: userAuthData) => {
@@ -87,6 +88,7 @@ export const handleUserSignup = async (newUser: userSignupData) => {
       memberCode,
       position: 'Socio',
       type: 'MEMBER',
+      isActive: false,
     };
     axios
       .post(url, member)
