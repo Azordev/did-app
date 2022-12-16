@@ -74,12 +74,15 @@
       <span>Correo</span>
       <p>{{ email }}</p>
     </div>
+    <q-btn color="red" label="Cerrar sesion" @click="logout" />
   </div>
 </template>
 
 <script setup lang="ts">
 import './styles.scss';
 import { passwordValidations } from 'src/utils';
+import { useRouter } from 'vue-router';
+import { LocalStorage } from 'quasar';
 
 export interface UserDataProps {
   firstName: string;
@@ -91,6 +94,12 @@ export interface UserDataProps {
   isEditingPassword: boolean;
   isFormLoading: boolean;
 }
+
+const router = useRouter();
+const logout = () => {
+  LocalStorage.clear();
+  router.push({ name: 'login' });
+};
 
 interface UserDataEmits {
   (eventName: 'update:newPassword', value: boolean): void;

@@ -1,7 +1,8 @@
 <template>
   <div class="login">
     <signup-layout
-      v-model:fullname-value="username"
+      v-model:firstname-value="userfirstname"
+      v-model:lastname-value="userlastname"
       v-model:email-value="userEmail"
       v-model:dni-value="userDni"
       v-model:password-value="userPassword"
@@ -9,7 +10,6 @@
       :passwordValidations="passwordValidations"
       :usernameValidations="memberCodeValidations"
       :emailValidations="emailValidations"
-      :fullnameValidation="fullnameValidation"
       :dniValidation="dniValidation"
       :onSubmit="onASubmit"
       :isLoading="loginIsLoading"
@@ -22,7 +22,6 @@ import { ref } from 'vue';
 import '../Login/Login.scss';
 import { handleUserSignup, userSignupData } from 'src/actions';
 import {
-  fullnameValidation,
   emailValidations,
   memberCodeValidations,
   dniValidation,
@@ -31,7 +30,8 @@ import {
 import SignupLayout from './Signup.layout.vue';
 import { useRouter } from 'vue-router';
 
-const username = ref<string>('');
+const userfirstname = ref<string>('');
+const userlastname = ref<string>('');
 const userEmail = ref<string>('');
 const userDni = ref<string>('');
 const userPassword = ref<string>('');
@@ -39,10 +39,17 @@ const termsAndConditions = ref<boolean>(false);
 const loginIsLoading = ref<boolean>(false);
 const router = useRouter();
 
-const onASubmit = ({ full_name, email, dni, password }: userSignupData) => {
+const onASubmit = ({
+  first_name,
+  last_name,
+  email,
+  dni,
+  password,
+}: userSignupData) => {
   loginIsLoading.value = true;
   const variables = {
-    full_name,
+    first_name,
+    last_name,
     email,
     dni,
     password,

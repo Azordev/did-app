@@ -27,6 +27,7 @@
           @update:model-value="$emit('update:usernameValue', $event)"
           lazy-rules
           :rules="usernameValidations"
+          autocomplete="username"
         />
 
         <q-input
@@ -37,11 +38,12 @@
           placeholder="Contraseña"
           :label="passwordAttrs?.label"
           :hint="passwordAttrs?.hint"
-          :type="passwordAttrs?.type"
           :model-value="passwordValue"
           @update:model-value="$emit('update:passwordValue', $event)"
           lazy-rules
           :rules="passwordValidations"
+          autocomplete="current-password"
+          type="password"
         />
         <div>
           <q-btn

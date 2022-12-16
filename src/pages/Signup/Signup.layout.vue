@@ -11,7 +11,8 @@
         @submit="
           () =>
             onSubmit({
-              full_name: fullnameValue,
+              first_name: firstnameValue,
+              last_name: lastnameValue,
               email: emailValue,
               dni: dniValue,
               password: passwordValue,
@@ -19,20 +20,32 @@
         "
         class="q-gutter-md"
       >
-        <q-input
-          dense
-          input-class="login__input"
-          color="black"
-          outlined
-          placeholder="Inserte nombre y apellido"
-          :label="fullnameAttrs?.label"
-          :hint="fullnameAttrs?.hint"
-          :type="fullnameAttrs?.type"
-          :model-value="fullnameValue"
-          @update:model-value="$emit('update:fullnameValue', $event)"
-          lazy-rules
-          :rules="fullnameValidation"
-        />
+        <div class="login__group">
+          <q-input
+            dense
+            input-class="login__input"
+            color="black"
+            outlined
+            placeholder="Inserte nombre"
+            :label="nameAttrs?.label"
+            :hint="nameAttrs?.hint"
+            :type="nameAttrs?.type"
+            :model-value="firstnameValue"
+            @update:model-value="$emit('update:firstnameValue', $event)"
+          />
+          <q-input
+            dense
+            input-class="login__input"
+            color="black"
+            outlined
+            placeholder="Inserte apellido"
+            :label="lastnameAttrs?.label"
+            :hint="lastnameAttrs?.hint"
+            :type="lastnameAttrs?.type"
+            :model-value="lastnameValue"
+            @update:model-value="$emit('update:lastnameValue', $event)"
+          />
+        </div>
         <q-input
           dense
           input-class="login__input"
@@ -47,7 +60,6 @@
           lazy-rules
           :rules="emailValidations"
         />
-
         <q-input
           dense
           input-class="login__input"
@@ -71,11 +83,12 @@
           placeholder="Registre contraseña"
           :label="passwordAttrs?.label"
           :hint="passwordAttrs?.hint"
-          :type="passwordAttrs?.type"
+          type="password"
           :model-value="passwordValue"
           @update:model-value="$emit('update:passwordValue', $event)"
           lazy-rules
           :rules="passwordValidations"
+          autocomplete="new-password"
         />
         <div>
           <q-btn
@@ -116,13 +129,16 @@ interface InputAttrsProps {
 
 interface LoginLayoutProps {
   onSubmit: (userData: {
-    full_name: string;
+    first_name: string;
+    last_name: string;
     email: string;
     dni: string;
     password: string;
   }) => void;
-  fullnameValue: string;
-  fullnameAttrs?: InputAttrsProps;
+  firstnameValue: string;
+  nameAttrs?: InputAttrsProps;
+  lastnameValue: string;
+  lastnameAttrs?: InputAttrsProps;
   emailValue: string;
   emailAttrs?: InputAttrsProps;
   dniValue: string;
@@ -132,14 +148,14 @@ interface LoginLayoutProps {
   termsAndConditions: boolean;
   isLoading: boolean;
 
-  fullnameValidation: ((value: string) => boolean | string)[];
   emailValidations: ((value: string) => boolean | string)[];
   dniValidation: ((value: string) => boolean | string)[];
   passwordValidations: ((value: string) => boolean | string)[];
 }
 
 interface LoginLayoutEmits {
-  (eventName: 'update:fullnameValue', value?: string | number | null): void;
+  (eventName: 'update:firstnameValue', value?: string | number | null): void;
+  (eventName: 'update:lastnameValue', value?: string | number | null): void;
   (eventName: 'update:emailValue', value?: string | number | null): void;
   (eventName: 'update:dniValue', value?: string | number | null): void;
   (eventName: 'update:passwordValue', value?: string | number | null): void;

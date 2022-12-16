@@ -17,11 +17,6 @@ export const passwordValidations = [
   (val: string) => val.length > 0 || 'La contraseña es requerida',
 ];
 
-export const fullnameValidation = [
-  (val: string) =>
-    val.split(' ').length === 2 || 'Debe ingresar un nombre y un apellido',
-];
-
 export const dniValidation = [
   (val: string) =>
     val.length === 8 || 'El codigo debe tener una longitud de 8 caracteres',

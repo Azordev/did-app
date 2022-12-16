@@ -16,7 +16,8 @@ export interface userAuthData {
 }
 
 export interface userSignupData {
-  full_name: string;
+  first_name: string;
+  last_name: string;
   email: string;
   dni: string;
   password: string;
@@ -70,21 +71,15 @@ export const handleUserSignup = async (newUser: userSignupData) => {
   return new Promise<User>((resolve, reject) => {
     const startDate = new Date().toISOString().split('T')[0];
     const url = process.env.NEXT_URL + '/members';
-    const splitName = newUser.full_name.split(' ', 2);
-    const namePartner = splitName[0];
-    const lastnamePartner = splitName[1];
     const memberCode =
-      splitName
-        .map((e) => e[0])
-        .join('')
-        .toUpperCase() + newUser.dni;
-    console.log(memberCode);
+      `${newUser.first_name[0]}${newUser.last_name[0]}`.toUpperCase() +
+      newUser.dni;
     const member: userMemberData = {
       email: newUser.email,
       password: newUser.password,
       startDate,
-      namePartner,
-      lastnamePartner,
+      namePartner: newUser.first_name,
+      lastnamePartner: newUser.last_name,
       memberCode,
       position: 'Socio',
       type: 'MEMBER',
