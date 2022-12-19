@@ -7,6 +7,23 @@
         v-if="logoUrl"
       />
       <h2 class="header-with-search-bar__title" v-else>{{ title }}</h2>
+      <q-btn
+        class="header-with-search-bar__cart-btn"
+        @click="$router.push({ name: 'shoppingCart' })"
+        size="10px"
+        round
+        color="accent"
+        v-if="showShoppingCart"
+      >
+        <shopping-cart-icon :width="15.67" :height="19.76" />
+        <q-badge
+          v-if="hasProductsOnCart"
+          class="header-with-search-bar__btn-badge"
+          floating
+          rounded
+          color="red"
+        />
+      </q-btn>
     </div>
     <search-bar
       @on-search="$emit('onSearch')"

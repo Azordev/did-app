@@ -17,6 +17,12 @@
           <p class="Product__description">{{ product?.description }}</p>
         </div>
       </div>
+      <q-btn
+        class="Product__cart-button"
+        :color="isProductInCart ? 'negative' : 'accent'"
+        :icon="isProductInCart ? 'favorite' : 'favorite_border'"
+        @click.stop="$emit('onAddToShoppingCart', product)"
+      />
     </template>
   </detail-layout>
 </template>

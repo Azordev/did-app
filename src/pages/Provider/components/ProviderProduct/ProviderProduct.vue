@@ -21,6 +21,14 @@
         <span class="ProviderProduct__price">
           <strong>S./ {{ product.base_price_sol }} </strong></span
         >
+        <q-card-actions class="ProviderProduct__cart-button-container">
+          <q-btn
+            class="ProviderProduct__cart-button"
+            :color="isProductInCart ? 'negative' : 'accent'"
+            :icon="isProductInCart ? 'remove_shopping_cart' : `img:${fav}`"
+            @click.stop="$emit('onAddToShoppingCart', product)"
+          />
+        </q-card-actions>
       </q-card-section>
     </q-card-section>
   </q-card>
@@ -28,6 +36,7 @@
 
 <script setup lang="ts">
 import { Product } from 'src/utils';
+import fav from 'src/assets/icons/fav.svg';
 import DIDLogo from 'src/assets/logos/didperu-dark.svg';
 
 interface ProviderProductProps {
