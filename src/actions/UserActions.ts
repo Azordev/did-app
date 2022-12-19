@@ -97,6 +97,7 @@ export const handleUserSignup = async (newUser: userSignupData) => {
           type: 'info',
           timeout: 20000,
           html: true,
+          position: 'top',
         });
         resolve(data);
       })
