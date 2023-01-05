@@ -38,10 +38,10 @@
       </div>
       <div v-else>
         <h2 class="shopping-cart__empty-title">
-          No hay productos en tu orden de consulta
+          No hay productos en tu lista de favoritos
         </h2>
         <p class="shopping-cart__empty-description">
-          Agrega favoritos a tu orden de consulta
+          No has elegido productos favoritos
         </p>
         <q-btn
           class="shopping-cart__button"

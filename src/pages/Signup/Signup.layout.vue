@@ -32,6 +32,7 @@
             :type="nameAttrs?.type"
             :model-value="firstnameValue"
             @update:model-value="$emit('update:firstnameValue', $event)"
+            :rules="[(val) => !!val || 'Nombre es requirido']"
           />
           <q-input
             dense
@@ -44,6 +45,7 @@
             :type="lastnameAttrs?.type"
             :model-value="lastnameValue"
             @update:model-value="$emit('update:lastnameValue', $event)"
+            :rules="[(val) => !!val || 'Apellido es requerido']"
           />
         </div>
         <q-input
