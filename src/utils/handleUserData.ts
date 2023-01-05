@@ -6,12 +6,13 @@ export const handleUserData = () => {
     const expirationDate = ref<Date>(new Date('01/01/1999'));
     const isMembershipActive = ref<boolean>(false);
 
+    const dateArray = expiration?.split('/');
+
     const _currentDate = new Date();
 
-    const _expirationString = expiration;
-
-    if (_expirationString) {
-      expirationDate.value = new Date(_expirationString);
+    if (expiration && dateArray) {
+      const newdate = dateArray[1] + '/' + dateArray[0] + '/' + dateArray[2];
+      expirationDate.value = new Date(newdate);
     }
 
     isMembershipActive.value =

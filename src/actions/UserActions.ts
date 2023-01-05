@@ -70,7 +70,7 @@ export const handleUserLogin = ({ member_code, password }: userAuthData) => {
 export const handleUserSignup = async (newUser: userSignupData) => {
   return new Promise<User>((resolve, reject) => {
     const startDate = new Date().toISOString().split('T')[0];
-    const url = process.env.NEXT_URL + '/members';
+    const url = process.env.NEXT_URL;
     const memberCode =
       `${newUser.first_name[0]}${newUser.last_name[0]}`.toUpperCase() +
       newUser.dni;
@@ -86,8 +86,17 @@ export const handleUserSignup = async (newUser: userSignupData) => {
       isActive: false,
     };
     axios
-      .post(url, member)
+      .post(url + '/members', member)
       .then(({ data }) => {
+        const parseStartDate = new Date(startDate);
+        const expiration = new Date(
+          parseStartDate.setFullYear(parseStartDate.getFullYear() + 1)
+        );
+        const subscriptionData = {
+          expiration: expiration.toLocaleDateString(),
+          memberId: data.data.memberId,
+        };
+        axios.post(url + '/subscriptions', subscriptionData);
         Notify.create({
           message:
             'Cuenta registrada exitosamente. Usa el siguiente codigo para iniciar sesión' +
