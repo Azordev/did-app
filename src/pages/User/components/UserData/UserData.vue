@@ -74,7 +74,15 @@
       <span>Correo</span>
       <p>{{ email }}</p>
     </div>
-    <q-btn color="red" label="Cerrar sesion" @click="logout" />
+    <div class="UserInformation__logout-btn">
+      <q-btn
+        color="red"
+        size="md"
+        rounded
+        label="Cerrar sesion"
+        @click="logout"
+      />
+    </div>
   </div>
 </template>
 
