@@ -61,7 +61,7 @@ export interface HomeHeaderProps {
   firstName: string;
   lastName: string;
   memberCode: string;
-  isMembershipActive: boolean;
+  isMembershipActive?: boolean;
   expirationDate: Date;
   avatar?: string;
 }
