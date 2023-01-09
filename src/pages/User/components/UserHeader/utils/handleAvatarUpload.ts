@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { User } from 'src/utils/apollo.types';
 import { LocalStorage } from 'quasar';
 import { getUser } from 'src/utils/auth';
 import { Notify } from 'quasar';

@@ -38,9 +38,6 @@
               >
                 {{ userMembershipStatus }}
               </p>
-              <p class="UserHeader__expiration-date">
-                Válido hasta: {{ parsedExpirationDate }}
-              </p>
             </div>
           </div>
         </div>
@@ -91,13 +88,6 @@ const uploadImage = async (event: Event) => {
 };
 
 const userMembershipStatus = computed(() =>
-  props.isMembershipActive ? 'Membresía activa' : 'Membresía inactiva'
-);
-
-const parsedExpirationDate = computed(() =>
-  props.expirationDate.toLocaleString('en-US', {
-    month: '2-digit',
-    year: 'numeric',
-  })
+  props.isMembershipActive ? 'Usuario activo' : 'Usuario inactivo'
 );
 </script>
