@@ -57,9 +57,6 @@
         </div>
       </q-form>
       <div class="login__other_links">
-        <a class="login__forgotten_link" href="mailto:adidperu@gmail.com"
-          >¿Olvidaste tu contraseña?</a
-        >
         <button class="login__get_account" @click="createAccount">
           Crear cuenta
         </button>

@@ -72,8 +72,8 @@ export const handleUserSignup = async (newUser: userSignupData) => {
     const startDate = new Date().toISOString().split('T')[0];
     const url = process.env.NEXT_URL;
     const memberCode =
-      `${newUser.first_name[0]}${newUser.last_name[0]}`.toUpperCase() +
-      newUser.dni;
+      // `${newUser.first_name[0]}${newUser.last_name[0]}`.toUpperCase() +
+      newUser.dni.trim();
     const member: userMemberData = {
       email: newUser.email,
       password: newUser.password,

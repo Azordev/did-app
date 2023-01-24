@@ -67,7 +67,7 @@
           input-class="login__input"
           color="black"
           outlined
-          placeholder="Inserte DNI"
+          placeholder="Inserte un código de usuario"
           :label="dniAttrs?.label"
           :hint="dniAttrs?.hint"
           :type="dniAttrs?.type"
@@ -75,6 +75,7 @@
           @update:model-value="$emit('update:dniValue', $event)"
           lazy-rules
           :rules="dniValidation"
+          maxlength="10"
         />
 
         <q-input

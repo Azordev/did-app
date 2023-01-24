@@ -19,7 +19,8 @@ export const passwordValidations = [
 
 export const dniValidation = [
   (val: string) =>
-    val.length === 8 || 'El código debe tener una longitud de 8 caracteres',
+    val.trim().length === 10 ||
+    'El código debe tener una longitud de 10 caracteres',
   (val: string) =>
-    !!val.match(/^[0-9]{8}$/i) || 'El formato del código es incorrecto',
+    !val.match(/\b\s+\b/g) || 'El formato del código es incorrecto',
 ];
