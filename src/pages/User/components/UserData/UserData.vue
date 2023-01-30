@@ -79,8 +79,17 @@
         color="red"
         size="md"
         rounded
-        label="Cerrar sesion"
+        label="Cerrar sesión"
         @click="logout"
+      />
+    </div>
+    <div class="UserInformation__logout-btn">
+      <q-btn
+        color="red-10"
+        size="md"
+        rounded
+        label="Eliminar cuenta"
+        @click="deleteAccount"
       />
     </div>
   </div>
@@ -91,6 +100,9 @@ import './styles.scss';
 import { passwordValidations } from 'src/utils';
 import { useRouter } from 'vue-router';
 import { LocalStorage } from 'quasar';
+import { getUser } from 'src/utils/auth';
+import axios from 'axios';
+import { Dialog } from 'quasar';
 
 export interface UserDataProps {
   firstName: string;
@@ -107,6 +119,22 @@ const router = useRouter();
 const logout = () => {
   LocalStorage.clear();
   router.push({ name: 'login' });
+};
+
+const deleteAccount = () => {
+  const user = getUser();
+  const url = process.env.NEXT_URL + '/members/' + user.member_info.id;
+
+  Dialog.create({
+    title: 'Confirm',
+    message: '¿Quieres eliminar la cuenta?',
+    cancel: true,
+  }).onOk(async () => {
+    await axios
+      .delete(url)
+      .then(() => logout())
+      .catch((err) => console.error(err));
+  });
 };
 
 interface UserDataEmits {

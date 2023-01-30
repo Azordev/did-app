@@ -9,8 +9,6 @@ export const emailValidations = [
 export const memberCodeValidations = [
   (val: string) =>
     val.length === 10 || 'El código debe tener una longitud de 10 caracteres',
-  (val: string) =>
-    !!val.match(/^[A-Z]{2}[0-9]{8}$/i) || 'El formato del código es incorrecto',
 ];
 
 export const passwordValidations = [
