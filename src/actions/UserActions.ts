@@ -71,9 +71,7 @@ export const handleUserSignup = async (newUser: userSignupData) => {
   return new Promise<User>((resolve, reject) => {
     const startDate = new Date().toISOString().split('T')[0];
     const url = process.env.NEXT_URL;
-    const memberCode =
-      // `${newUser.first_name[0]}${newUser.last_name[0]}`.toUpperCase() +
-      newUser.dni.trim();
+    const memberCode = newUser.dni.trim();
     const member: userMemberData = {
       email: newUser.email,
       password: newUser.password,
@@ -83,7 +81,7 @@ export const handleUserSignup = async (newUser: userSignupData) => {
       memberCode,
       position: 'Socio',
       type: 'MEMBER',
-      isActive: false,
+      isActive: true,
     };
     axios
       .post(url + '/members', member)
