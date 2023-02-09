@@ -10,7 +10,9 @@
         <p>Código: {{ memberCode }}</p>
         <p
           :class="`Header__membership ${
-            isMembershipActive || 'Header__membership--inactive'
+            isMembershipActive
+              ? 'Header__membership--active'
+              : 'Header__membership--inactive'
           }`"
         >
           {{ userMembershipStatus }}
