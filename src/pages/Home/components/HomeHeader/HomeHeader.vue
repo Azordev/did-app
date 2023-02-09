@@ -10,9 +10,7 @@
         <p>Código: {{ memberCode }}</p>
         <p
           :class="`Header__membership ${
-            isMembershipActive
-              ? 'Header__membership--active'
-              : 'Header__membership--inactive'
+            isMembershipActive || 'Header__membership--inactive'
           }`"
         >
           {{ userMembershipStatus }}
@@ -69,7 +67,7 @@ export interface HomeHeaderProps {
 const props = defineProps<HomeHeaderProps>();
 
 const userMembershipStatus = computed(() =>
-  props.isMembershipActive ? 'Usuario activo' : 'Usuario inactivo'
+  props.isMembershipActive ? 'Usuario' : 'Usuario'
 );
 
 const parsedExpirationDate = computed(() =>

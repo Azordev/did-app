@@ -17,24 +17,6 @@
           <h4 class="shopping-cart__total">Total</h4>
           <p class="shopping-cart__result">S/. {{ total }}</p>
         </div>
-
-        <a
-          :disable="!whatsappLink"
-          class="shopping-cart__button"
-          target="_blank"
-          color="primary"
-          size="large"
-          no-caps
-          :href="whatsappLink"
-          >Consultar</a
-        >
-        <a
-          class="shopping-cart__emailLink"
-          v-if="!whatsappLink"
-          target="_blank"
-          :href="emailLink"
-          >El proveedor no tiene numero de WhatsApp. Enviale un correo</a
-        >
       </div>
       <div v-else>
         <h2 class="shopping-cart__empty-title">

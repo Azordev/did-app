@@ -31,9 +31,7 @@
             <div class="UserHeader__text">
               <p
                 :class="`UserHeader__membership ${
-                  isMembershipActive
-                    ? 'UserHeader__membership--active'
-                    : 'UserHeader__membership--inactive'
+                  isMembershipActive || 'UserHeader__membership--inactive'
                 }`"
               >
                 {{ userMembershipStatus }}
@@ -88,6 +86,6 @@ const uploadImage = async (event: Event) => {
 };
 
 const userMembershipStatus = computed(() =>
-  props.isMembershipActive ? 'Usuario activo' : 'Usuario inactivo'
+  props.isMembershipActive ? 'Usuario' : 'Usuario'
 );
 </script>
