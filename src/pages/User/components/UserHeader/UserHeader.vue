@@ -36,7 +36,7 @@
                     : 'UserHeader__membership--inactive'
                 }`"
               >
-                {{ userMembershipStatus }}
+                Usuario
               </p>
             </div>
           </div>
@@ -55,7 +55,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
 import userDefaultImg from 'src/assets/images/user-default.svg';
 import './styles.scss';
 import BackButton from 'src/components/BackButton/BackButton.vue';
@@ -86,8 +85,4 @@ const uploadImage = async (event: Event) => {
   onUpdateUserAvatar(props.id, uploadedImage);
   showAvatar.value = uploadedImage;
 };
-
-const userMembershipStatus = computed(() =>
-  props.isMembershipActive ? 'Usuario' : 'Usuario'
-);
 </script>
