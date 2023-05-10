@@ -25,7 +25,7 @@
           <q-btn
             class="ProviderProduct__cart-button"
             :color="isProductInCart ? 'negative' : 'accent'"
-            :icon="isProductInCart ? 'remove_shopping_cart' : `img:${addCart}`"
+            :icon="isProductInCart ? 'star_rate' : 'star_purple500'"
             @click.stop="$emit('onAddToShoppingCart', product)"
           />
         </q-card-actions>
@@ -36,7 +36,6 @@
 
 <script setup lang="ts">
 import { Product } from 'src/utils';
-import addCart from 'src/assets/icons/addCart.svg';
 import DIDLogo from 'src/assets/logos/didperu-dark.svg';
 
 interface ProviderProductProps {

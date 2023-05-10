@@ -4,20 +4,15 @@ import { MemberInformation, User } from './apollo.types';
 export const handleUserData = () => {
   const getExpirationDate = (expiration?: string) => {
     const expirationDate = ref<Date>(new Date('01/01/1999'));
-    const isMembershipActive = ref<boolean>(false);
 
-    const _currentDate = new Date();
+    const dateArray = expiration?.split('/');
 
-    const _expirationString = expiration;
-
-    if (_expirationString) {
-      expirationDate.value = new Date(_expirationString);
+    if (expiration && dateArray) {
+      const newdate = dateArray[1] + '/' + dateArray[0] + '/' + dateArray[2];
+      expirationDate.value = new Date(newdate);
     }
 
-    isMembershipActive.value =
-      _currentDate.getTime() < expirationDate.value.getTime();
-
-    return { expirationDate, isMembershipActive };
+    return { expirationDate };
   };
 
   const getUserName = (memberInformation?: MemberInformation) => {
@@ -42,15 +37,13 @@ export const handleUserData = () => {
     const memberCode = ref<string>(user?.member_code ?? '');
     const email = ref<string>(user?.member_info.email ?? '');
     const avatar = user?.avatar_url;
+    const isMembershipActive = user?.is_active;
 
     const { firstName, lastName } = getUserName(user?.member_info);
 
     const subscriptions = user?.member_info.subscriptions || [];
     const lastSubscription = subscriptions[subscriptions.length - 1];
-
-    const { expirationDate, isMembershipActive } = getExpirationDate(
-      lastSubscription?.expiration
-    );
+    const { expirationDate } = getExpirationDate(lastSubscription?.expiration);
 
     return {
       memberCode,

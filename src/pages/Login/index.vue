@@ -10,6 +10,16 @@
       :isLoading="loginIsLoading"
     />
   </div>
+  <div class="copyright">
+    <b>Asociación de Diseñadores de Interiores del Peru</b>
+    <br />
+    Correo electrónico unete@didperu.com
+    <br />
+    Dirección: Av Augusto Pérez Aranibar 1586 Urb Santa Monica, San
+    Isidro, Lima, Perú.
+    <br />
+    <b>Derechos Reservados</b>
+  </div>
 </template>
 
 <script setup lang="ts">

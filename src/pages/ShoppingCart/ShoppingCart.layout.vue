@@ -3,7 +3,7 @@
     <shopping-cart-header :image_url="provider?.logo_url" />
 
     <div class="shopping-cart__content">
-      <h1 class="shopping-cart__title">Detalles de la compra</h1>
+      <h1 class="shopping-cart__title">Detalles de la consulta</h1>
 
       <div v-if="cartProducts?.length">
         <product-list
@@ -17,31 +17,13 @@
           <h4 class="shopping-cart__total">Total</h4>
           <p class="shopping-cart__result">S/. {{ total }}</p>
         </div>
-
-        <a
-          :disable="!whatsappLink"
-          class="shopping-cart__button"
-          target="_blank"
-          color="primary"
-          size="large"
-          no-caps
-          :href="whatsappLink"
-          >Consultar</a
-        >
-        <a
-          class="shopping-cart__emailLink"
-          v-if="!whatsappLink"
-          target="_blank"
-          :href="emailLink"
-          >El proveedor no tiene numero de WhatsApp. Enviale un correo</a
-        >
       </div>
       <div v-else>
         <h2 class="shopping-cart__empty-title">
-          No hay productos en tu carrito de compras
+          No hay productos en tu lista de favoritos
         </h2>
         <p class="shopping-cart__empty-description">
-          Agrega productos a tu carrito de compras para poder comprar
+          No has elegido productos favoritos
         </p>
         <q-btn
           class="shopping-cart__button"
@@ -50,7 +32,7 @@
           no-caps
           @click="$emit('backToProvider')"
         >
-          Seguir comprando
+          Seguir consultando
         </q-btn>
       </div>
     </div>

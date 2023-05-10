@@ -50,7 +50,7 @@ export default route(function (/* { store, ssrContext } */) {
 
     const { isMembershipActive } = parseUserData(user);
 
-    if (to.meta.requiresMembershipActive && !isMembershipActive.value) {
+    if (to.meta.requiresMembershipActive && !isMembershipActive) {
       Notify.create({
         message: 'Por favor renueva tu membresia para acceder a esta seccion.',
         type: 'negative',

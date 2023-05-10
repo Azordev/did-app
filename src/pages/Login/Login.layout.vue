@@ -27,6 +27,7 @@
           @update:model-value="$emit('update:usernameValue', $event)"
           lazy-rules
           :rules="usernameValidations"
+          autocomplete="username"
         />
 
         <q-input
@@ -37,11 +38,12 @@
           placeholder="Contraseña"
           :label="passwordAttrs?.label"
           :hint="passwordAttrs?.hint"
-          :type="passwordAttrs?.type"
           :model-value="passwordValue"
           @update:model-value="$emit('update:passwordValue', $event)"
           lazy-rules
           :rules="passwordValidations"
+          autocomplete="current-password"
+          type="password"
         />
         <div>
           <q-btn
@@ -55,12 +57,9 @@
         </div>
       </q-form>
       <div class="login__other_links">
-        <a class="login__forgotten_link" href="mailto:adidperu@gmail.com"
-          >¿Olvidaste tu contraseña?</a
-        >
-        <a class="login__get_account" href="mailto:adidperu@gmail.com">
-          Adquiere tu membresía de DID Perú
-        </a>
+        <button class="login__get_account" @click="createAccount">
+          Crear cuenta
+        </button>
       </div>
     </main>
   </div>
@@ -69,6 +68,13 @@
 <script setup lang="ts">
 import didLogo from 'src/assets/logos/didperu.svg';
 import { QInputProps } from 'quasar';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const createAccount = () => {
+  router.push({ name: 'signup' });
+};
 
 interface InputAttrsProps {
   label: QInputProps['label'];
