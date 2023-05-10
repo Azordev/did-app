@@ -51,7 +51,7 @@ const clearSearch = () => {
 confirmBeforeExit({
   currentRouteParent: route.matched[0].path,
   message:
-    'Si sales de la página, se perderá lo que guardaste en el carrito de compras',
+    'Si sales de la página, se perderá lo que guardaste en la lista de favoritos',
 });
 
 await getProductLists(id, query.value);

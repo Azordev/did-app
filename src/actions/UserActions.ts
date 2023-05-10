@@ -1,4 +1,5 @@
 import { Notify } from 'quasar';
+import axios from 'axios';
 import {
   USER_LOGIN,
   USER_BY_ID,
@@ -12,6 +13,28 @@ import { logger } from '../utils/logger';
 export interface userAuthData {
   member_code: string;
   password: string;
+}
+
+export interface userSignupData {
+  first_name: string;
+  last_name: string;
+  email: string;
+  dni: string;
+  password: string;
+  position?: string;
+  type?: string;
+}
+
+export interface userMemberData {
+  memberCode: string;
+  namePartner: string;
+  lastnamePartner: string;
+  email: string;
+  startDate?: string;
+  password: string;
+  position?: string;
+  type?: string;
+  isActive: boolean;
 }
 
 export const handleUserLogin = ({ member_code, password }: userAuthData) => {
@@ -36,6 +59,54 @@ export const handleUserLogin = ({ member_code, password }: userAuthData) => {
         });
 
         resolve(users[0]);
+      })
+      .catch((err) => {
+        logger(err);
+        reject(null);
+      });
+  });
+};
+
+export const handleUserSignup = async (newUser: userSignupData) => {
+  return new Promise<User>((resolve, reject) => {
+    const startDate = new Date().toISOString().split('T')[0];
+    const url = process.env.NEXT_URL;
+    const memberCode = newUser.dni.trim();
+    const member: userMemberData = {
+      email: newUser.email,
+      password: newUser.password,
+      startDate,
+      namePartner: newUser.first_name,
+      lastnamePartner: newUser.last_name,
+      memberCode,
+      position: 'Socio',
+      type: 'MEMBER',
+      isActive: true,
+    };
+    axios
+      .post(url + '/members', member)
+      .then(({ data }) => {
+        const parseStartDate = new Date(startDate);
+        const expiration = new Date(
+          parseStartDate.setFullYear(parseStartDate.getFullYear() + 1)
+        );
+        const subscriptionData = {
+          expiration: expiration.toLocaleDateString(),
+          memberId: data.data.memberId,
+        };
+        axios.post(url + '/subscriptions', subscriptionData);
+        Notify.create({
+          message:
+            'Cuenta registrada exitosamente. Usa el siguiente codigo para iniciar sesión' +
+            '<div><strong>' +
+            memberCode +
+            '</strong></div>',
+          type: 'info',
+          timeout: 20000,
+          html: true,
+          position: 'top',
+        });
+        resolve(data);
       })
       .catch((err) => {
         logger(err);

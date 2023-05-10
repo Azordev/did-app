@@ -20,7 +20,7 @@
       <q-btn
         class="Product__cart-button"
         :color="isProductInCart ? 'negative' : 'accent'"
-        :icon="isProductInCart ? 'remove_shopping_cart' : 'add_shopping_cart'"
+        :icon="isProductInCart ? 'favorite' : 'favorite_border'"
         @click.stop="$emit('onAddToShoppingCart', product)"
       />
     </template>

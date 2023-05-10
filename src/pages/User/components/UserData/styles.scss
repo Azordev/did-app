@@ -61,4 +61,13 @@
   &__edit-password-btn {
     margin-left: auto;
   }
+
+  &__logout-btn {
+    margin-top: 20px;
+
+    span {
+      font-size: 10px;
+      font-family: Helvetica;
+    }
+  }
 }

@@ -87,9 +87,7 @@
         <div class="Provider__no-products-text">
           <q-icon v-if="currentQuery" name="search" />
           <span>{{ notProductsMessage }}</span>
-          <a :href="`mailto:${provider?.b2b_email}`">{{
-            provider?.b2b_email
-          }}</a>
+          {{ provider?.b2b_email }}
         </div>
       </div>
     </div>

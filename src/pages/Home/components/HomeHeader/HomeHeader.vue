@@ -15,10 +15,10 @@
               : 'Header__membership--inactive'
           }`"
         >
-          {{ userMembershipStatus }}
+          Usuario
         </p>
         <p class="Header__expiration-date">
-          Válido hasta: {{ parsedExpirationDate }}
+          {{ parsedExpirationDate }}
         </p>
       </div>
     </div>
@@ -61,16 +61,12 @@ export interface HomeHeaderProps {
   firstName: string;
   lastName: string;
   memberCode: string;
-  isMembershipActive: boolean;
+  isMembershipActive?: boolean;
   expirationDate: Date;
   avatar?: string;
 }
 
 const props = defineProps<HomeHeaderProps>();
-
-const userMembershipStatus = computed(() =>
-  props.isMembershipActive ? 'Membresía activa' : 'Membresía inactiva'
-);
 
 const parsedExpirationDate = computed(() =>
   props.expirationDate.toLocaleString('en-US', {
