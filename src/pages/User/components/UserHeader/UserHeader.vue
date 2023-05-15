@@ -11,6 +11,7 @@
               class="UserHeader__avatar"
               color="black"
               text-color="white"
+              @click="openModal"
             >
               <q-img :src="showAvatar" />
               <q-icon
@@ -18,12 +19,6 @@
                 size="1.19rem"
                 class="UserHeader__editIcon"
                 name="add"
-              />
-              <input
-                type="file"
-                id="avatar"
-                accept="image/png, image/jpeg, image/jpg"
-                @change="uploadImage"
               />
             </q-avatar>
           </q-btn>
@@ -64,6 +59,8 @@ import {
   updateImageGraqhql,
 } from './utils/handleAvatarUpload';
 import { ref, Ref } from 'vue';
+import { Dialog } from 'quasar';
+import ModalFile from 'src/components/ModalFile/ModalFile.vue';
 
 export interface UserHeaderProps {
   isMembershipActive: boolean;
@@ -84,5 +81,15 @@ const uploadImage = async (event: Event) => {
   const { onUpdateUserAvatar } = updateImageGraqhql();
   onUpdateUserAvatar(props.id, uploadedImage);
   showAvatar.value = uploadedImage;
+};
+
+const openModal = async () => {
+  Dialog.create({
+    component: ModalFile,
+    componentProps: {
+      uploadImage: uploadImage,
+      id: props.id,
+    },
+  });
 };
 </script>

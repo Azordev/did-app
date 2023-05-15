@@ -19,5 +19,7 @@ html,
 body,
 #q-app {
   height: 100%;
+  position: relative;
+  min-height: 650px;
 }
 </style>
