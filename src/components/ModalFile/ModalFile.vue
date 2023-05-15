@@ -5,18 +5,19 @@
         <q-card-section class="row justify-end q-pb-none">
           <q-btn icon="close" flat round dense v-close-popup />
         </q-card-section>
-        <q-card-section class="column items-center text-center q-pt-none gap-sm"
-          >El tamaño ideal para las imágenes de avatar es de
-          <b>100x100 píxeles</b>. Te sugerimos ajustar tu imagen antes de
-          subirla
-          <q-space />
+        <q-card-section class="text-center q-pt-none">
+          <div class="q-mb-sm">
+            El tamaño ideal para las imágenes de avatar es de
+            <b>100x100 píxeles</b>.
+          </div>
+          Te sugerimos ajustar tu imagen antes de subirla
           <q-file
             label-color="white"
             bg-color="dark"
             standout
             v-model="selectedFiles"
             label="Subir imagen"
-            class="q-mt-md"
+            class="q-mt-md custom"
             accept="image/png, image/jpeg, image/jpg"
             @input="handleChange"
           >
@@ -31,6 +32,7 @@
 </template>
 <script>
 import { useDialogPluginComponent } from 'quasar';
+import './styles.scss';
 
 export default {
   props: {
