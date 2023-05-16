@@ -151,6 +151,7 @@ export interface Event {
   date: string;
   type: EventType.PRIVATE | EventType.PUBLIC;
   inscriptions?: Inscriptions[];
+  requirements_url?: string;
 }
 
 // Query returns

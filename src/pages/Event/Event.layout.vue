@@ -16,6 +16,17 @@
         <div class="Event__description">
           {{ event.description }}
         </div>
+        <div class="q-mt-md">
+          <q-btn
+            v-if="event.requirements_url"
+            icon="cloud_download"
+            round
+            color="dark"
+            size="lg"
+            :href="event.requirements_url"
+            download
+          />
+        </div>
         <q-btn
           v-if="!userInscriptionId"
           @click="$emit('subscribeUserToEvent')"

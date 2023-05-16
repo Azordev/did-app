@@ -6,6 +6,7 @@ export const EventInfo = gql`
     description
     image_url
     invitation_url
+    requirements_url
     title
     type
     id
